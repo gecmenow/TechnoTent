@@ -1,0 +1,56 @@
+﻿@model TechnoTent.Models.DataBase.DbAdmin
+
+@section AdminHeader
+{
+    <header class="admin-header">
+        <a href="/" class="admin-header__logo">
+            <span class="logo-lg"><b>Админ</b> панель</span>
+        </a>
+        <nav class="navbar-header-top">
+            <a href="#" class="settings navbar-header__toggle"><i class="fa fa-cogs" aria-hidden="true"></i></a>
+            <ul class="navbar-header__list" style="display: none;">
+                <li class="navbar-header__item">
+                    <a href="/admin"><i class="fas fa-cog"><span>Настройки</span></i></a>
+                </li>
+                <li class="navbar-header__item">
+                    <a href="/admin/logout"><i class="fas fa-sign-out-alt"><span>Выйти</span></i></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+}
+
+<main>
+    <section class="auth">
+        <div class="wrapper">
+            <div class="auth-container">
+                <nav class="auth-navigation">
+                    <ul class="auth-tabs__list">
+                        <li class="auth-tabs__item active" data-form="sign-in">Вход</li>
+
+                    </ul>
+                </nav>
+                <div class="auth-tabs__content">
+                    <div class="auth-tabs__wrapper sign-in auth-tabs--active">
+                        @using (Html.BeginForm("Login", "Admin", FormMethod.Post, new { @class = "auth-form", enctype = "multipart/form-data" }))
+                        {
+                            <div class="form-input-wrapper">
+                                <input class="form-input" type="login" name="Login" placeholder="Email">
+                                <div class="form-input__underlined"></div>
+                                <i class="form-input__icon fas fa-user"></i>
+                                <div class="error-message login__error-message" style="display: none;">Введите Login.</div>
+                            </div>
+                            <div class="form-input-wrapper">
+                                <input class="form-input" type="password" name="Password" placeholder="Пароль">
+                                <div class="form-input__underlined"></div>
+                                <i class="form-input__icon form-input__icon-password fas fa-lock"></i>
+                                <div class="error-message password__error-message" style="display: none;">Введите пароль.</div>
+                            </div>
+                            <input class="auth-form__button" type="submit" value="Войти">
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

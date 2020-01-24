@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Акции";
+}
+
+@model TechnoTent.Models.ViewModel.StocksVM
+
+<main>
+    <section class="article-card">
+        <div class="wrapper">
+            <h2 class="page-title">@Model.Title</h2>
+            <div class="article__date">
+                <i class="far fa-calendar-alt"></i>@Model.DateTime.ToShortDateString()
+            </div>
+            <div class="article">
+                @if (Model.Image != null)
+                {
+                    <img class="article__image" src="~/Content/images/stocks/@Model.Image" title="@Model.Title">
+                }
+                else
+                {
+                    <img src="~/Content/images/no_image.svg" alt="@Model.Title" class="info-item__img">
+                }
+                <div class="article__text">
+                    @Html.Raw(Model.Text)
+                </div>
+            </div>
+            <h2 class="page-title">@Resources.Resource.stocks_title</h2>
+            <div class="info__list">
+                @foreach (var stocks in Model.StocksList)
+                {
+                    <div class="info__item bg-gray">
+                        @if (stocks.Image != null)
+                        {
+                            <img src="~/Content/images/stocks/" alt="@stocks.Title" class="info-item__img">
+                        }
+                        else
+                        {
+                            <img src="~/Content/images/no_image.svg" alt="@stocks.Title" class="info-item__img">
+                        }
+                        <div class="info-item__text">
+                            <div class="info-item__date"><i class="far fa-calendar-alt"></i> @stocks.DateTime.ToShortDateString()</div>
+                            <h3 class="info-item__title">@stocks.Title</h3>
+                            <p class="info-item__excerpt">@Html.Raw(stocks.Text)</p>
+                            <a href="/stocks/@stocks.Id" class="info-link__read-more">@Resources.Resource.stocks_more</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</main>

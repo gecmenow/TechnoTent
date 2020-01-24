@@ -1,0 +1,138 @@
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".RemoveLink").click(function () {
+            var id = $(this).attr("data-id");
+            url = "@Url.Action("RemoveStocks", "AdminStocks")?id=" + id;
+            $('#result').load(url);
+        });
+    })
+</script>
+
+@model IEnumerable<TechnoTent.Models.ViewModel.Admin.AdminStocksVM>
+
+@section AdminHeader
+{
+    <header class="admin-header">
+        <a href="/" class="admin-header__logo">
+            <span class="logo-lg"><b>Админ</b> панель</span>
+        </a>
+        <nav class="navbar-header-top">
+            <a href="#" class="settings navbar-header__toggle"><i class="fa fa-cogs" aria-hidden="true"></i></a>
+            <ul class="navbar-header__list" style="display: none;">
+                <li class="navbar-header__item">
+                    <a href="/admin"><i class="fas fa-cog"><span>Настройки</span></i></a>
+                </li>
+                <li class="navbar-header__item">
+                    <a href="/admin/logout"><i class="fas fa-sign-out-alt"><span>Выйти</span></i></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+}
+<div id="result">
+    <main class="main-admin">
+        <aside class="admin-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar__list" data-widget="tree">
+                    <li class="sidebar__item" style="height: 37px;"></li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/mainImages">
+                            <i class="fas fa-images"></i>
+                            <span>Нстройки галереи</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/orders">
+                            <i class="fas fa-book-open"></i>
+                            <span>Заказы</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/categories">
+                            <i class="fas fa-list"></i>
+                            <span>Категории</span>
+                        </a>
+                    </li>
+                    @{
+                        Html.RenderAction("GetCategoriesAndSubCategoriesForAdmin", "Partial");
+                    }
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/add/item/">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить товар</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/news">
+                            <i class="far fa-newspaper"></i>
+                            <span>Статьи</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/news/add">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить статью</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/stocks">
+                            <i class="far fa-money-bill-alt"></i>
+                            <span>Акции</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/stocks/add">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить акцию</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/reviews">
+                            <i class="fas fa-comments"></i>
+                            <span>Отзывы</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+        <div class="admin-content-wrapper">
+            <section class="admin-content-header">
+                <h1 class="admin-page__title">
+                    Список акций
+                    <small></small>
+                </h1>
+            </section>
+            <section class="admin-content-main">
+                <div class="articles__list">
+                    @foreach (var news in Model)
+                    {
+                        <div class="articles__item">
+                            <a href="#" class="article__image">
+                                <img src="~/Content/images/stocks/@news.Image" title="@news.Title">
+                            </a>
+                            <div class="article__caption">
+                                <h3 class="article__title">
+                                    <a href="article-card.html">@news.Title</a>
+                                </h3>
+                                <div class="article__introtext">
+                                    <p>
+                                        @Html.Raw(news.Text)
+                                    </p>
+                                </div>
+                                <div class="article__date">
+                                    <i class="far fa-calendar-alt"></i> @news.DateTime.ToShortDateString()
+                                </div>
+                                <div class="admin-article__button">
+                                    <a href="/admin/stocks/edit/@news.Id" type="button" class="btn btn-warning">Редактировать</a>
+                                    <button type="button" class="btn btn-danger RemoveLink" data-id="@news.Id">Удалить</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+

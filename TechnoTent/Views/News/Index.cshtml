@@ -1,0 +1,41 @@
+﻿@model PagedList.IPagedList<TechnoTent.Models.ViewModel.NewsVM>
+@using PagedList.Mvc;
+
+<main>
+    <section class="articles">
+        <div class="wrapper">
+            <h2 class="page-title">@Resources.Resource.news_title</h2>
+            <div class="articles__list">
+                @foreach (var news in Model)
+                {
+                    <div class="articles__item">
+                        <a href="/news/@news.Id" class="article__image">
+                            @if (news.Image != null)
+                            {
+                                <img src="~/Content/images/news/@news.Image" title="@news.Title">
+                            }
+                            else
+                            {
+                                <img src="~/Content/images/no_image.svg" title="@news.Title">
+                            }
+                        </a>
+                        <div class="article__caption">
+                            <h3 class="article__title">
+                                <a href="/news/@news.Id">@news.Title</a>
+                            </h3>
+                            <div class="article__introtext">
+                                <p>
+                                    @Html.Raw(news.Text)
+                                </p>
+                            </div>
+                            <div class="article__date">
+                                <i class="far fa-calendar-alt"></i> @news.DateTime.ToShortDateString()
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</main>

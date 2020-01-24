@@ -1,0 +1,911 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="about_about" xml:space="preserve">
+    <value>Компания ООО "Техно тент" выполняет полный комплекс работ по  изготовлению автомобильных тентов, крыш, штор из качественного материала ПВХ с использованием фурнитуры высокого качества, возможно нанесение рекламы. Также производит обслуживание и ремонт тентов для автомобилей различных моделей и марок. Помимо этого, мы производим переделку автотентов,  замену отдельно боковин, крыши или торца и изменение высоты и длины тентов. Возможен как капитальный ремонт тента, так и устранение различных порезов, замена любых элементов (крыши, клапана, боковины) и любой фурнитуры (скоб, ремней, люверсов, крючков).</value>
+  </data>
+  <data name="about_org_address1" xml:space="preserve">
+    <value>Фактический адрес</value>
+  </data>
+  <data name="about_org_address2" xml:space="preserve">
+    <value>г.Киев, Новоконстантиновская 4а | г.Константиновка, Тельмана 1</value>
+  </data>
+  <data name="about_org_name1" xml:space="preserve">
+    <value>Наименование организации</value>
+  </data>
+  <data name="about_org_name2" xml:space="preserve">
+    <value>Общество с ограниченной ответственностью "Техно Тент"</value>
+  </data>
+  <data name="about_org_requisites" xml:space="preserve">
+    <value>Реквизиты</value>
+  </data>
+  <data name="about_org_requisites1" xml:space="preserve">
+    <value>Банковские реквизиты</value>
+  </data>
+  <data name="about_org_requisites2" xml:space="preserve">
+    <value>Банк ПАТ "ПРИВАТБАНК"</value>
+  </data>
+  <data name="about_org_requisites3" xml:space="preserve">
+    <value>П/р 26000053614553</value>
+  </data>
+  <data name="about_org_requisites4" xml:space="preserve">
+    <value>МФО 335548</value>
+  </data>
+  <data name="about_org_requisites5" xml:space="preserve">
+    <value>ЕГРПОУ</value>
+  </data>
+  <data name="about_org_requisites6" xml:space="preserve">
+    <value>ИНН</value>
+  </data>
+  <data name="about_org_requisites7" xml:space="preserve">
+    <value>Сайт</value>
+  </data>
+  <data name="about_org_tel" xml:space="preserve">
+    <value>Телефон организации, e-mail</value>
+  </data>
+  <data name="about_org_tel1" xml:space="preserve">
+    <value>Продажа ПВХ</value>
+  </data>
+  <data name="about_org_tel2" xml:space="preserve">
+    <value>Швейное производство</value>
+  </data>
+  <data name="about_org_tel3" xml:space="preserve">
+    <value>Менеджер ПВХ</value>
+  </data>
+  <data name="about_org_tel4" xml:space="preserve">
+    <value>Производство, г.Константиновка</value>
+  </data>
+  <data name="about_org_tel5" xml:space="preserve">
+    <value>Менеджер Viber</value>
+  </data>
+  <data name="about_title" xml:space="preserve">
+    <value>О нас</value>
+  </data>
+  <data name="auth_email_err" xml:space="preserve">
+    <value>Введите Email</value>
+  </data>
+  <data name="auth_enter" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="auth_name" xml:space="preserve">
+    <value>Ваше имя</value>
+  </data>
+  <data name="auth_name_err" xml:space="preserve">
+    <value>Введите имя</value>
+  </data>
+  <data name="auth_pass" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="auth_pass1" xml:space="preserve">
+    <value>Придумайте пароль</value>
+  </data>
+  <data name="auth_pass_err" xml:space="preserve">
+    <value>Введите пароль</value>
+  </data>
+  <data name="auth_pass_err1" xml:space="preserve">
+    <value>Введите пароль</value>
+  </data>
+  <data name="auth_repass" xml:space="preserve">
+    <value>Повторите пароль</value>
+  </data>
+  <data name="auth_repass_err" xml:space="preserve">
+    <value>Пароли не совпадают</value>
+  </data>
+  <data name="auth_signin" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="auth_signup" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="auth_signup1" xml:space="preserve">
+    <value>Зарегистрироваться</value>
+  </data>
+  <data name="auth_trouble" xml:space="preserve">
+    <value>Не можете войти?</value>
+  </data>
+  <data name="cart_checkout" xml:space="preserve">
+    <value>Оформить заказ</value>
+  </data>
+  <data name="cart_col1" xml:space="preserve">
+    <value>Продукт</value>
+  </data>
+  <data name="cart_col2" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="cart_col3" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="cart_col4" xml:space="preserve">
+    <value>Стоимость</value>
+  </data>
+  <data name="cart_empty" xml:space="preserve">
+    <value>Корзина пуста</value>
+  </data>
+  <data name="cart_total_price" xml:space="preserve">
+    <value>Общая стоимость заказа</value>
+  </data>
+  <data name="contacts" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="contacts_address" xml:space="preserve">
+    <value>Ул. Новоконстантиновская, 4 а</value>
+  </data>
+  <data name="contacts_address1" xml:space="preserve">
+    <value>Ул. Тельмана, 1</value>
+  </data>
+  <data name="contacts_backCall1" xml:space="preserve">
+    <value>не смогли дозвониться</value>
+  </data>
+  <data name="contacts_backCall2" xml:space="preserve">
+    <value>Закажите звонок</value>
+  </data>
+  <data name="contacts_city" xml:space="preserve">
+    <value>Константиновка</value>
+  </data>
+  <data name="contacts_city2" xml:space="preserve">
+    <value>Киев</value>
+  </data>
+  <data name="contacts_country" xml:space="preserve">
+    <value>Украина</value>
+  </data>
+  <data name="contacts_dates" xml:space="preserve">
+    <value>Пн-Пт 09:00-18:00</value>
+  </data>
+  <data name="contacts_feedback" xml:space="preserve">
+    <value>Обратная связь</value>
+  </data>
+  <data name="contacts_form_email" xml:space="preserve">
+    <value>Введите корректный адрес электронной почты</value>
+  </data>
+  <data name="contacts_form_msg" xml:space="preserve">
+    <value>Введите сообщение</value>
+  </data>
+  <data name="contacts_form_name" xml:space="preserve">
+    <value>Введите имя</value>
+  </data>
+  <data name="contacts_form_send" xml:space="preserve">
+    <value>Отправить сообщение</value>
+  </data>
+  <data name="contacts_manuf" xml:space="preserve">
+    <value>производство</value>
+  </data>
+  <data name="contacts_tel1" xml:space="preserve">
+    <value>продажа ПВХ</value>
+  </data>
+  <data name="contacts_tel2" xml:space="preserve">
+    <value>производство</value>
+  </data>
+  <data name="contacts_tel3" xml:space="preserve">
+    <value>тентовая и запорная фурнитура</value>
+  </data>
+  <data name="contacts_tel4" xml:space="preserve">
+    <value>менеджер Viber</value>
+  </data>
+  <data name="edit_acc" xml:space="preserve">
+    <value>Мой кабинет</value>
+  </data>
+  <data name="edit_cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="edit_email" xml:space="preserve">
+    <value>Электронная почтa</value>
+  </data>
+  <data name="edit_email_err" xml:space="preserve">
+    <value>Введите электронную почту</value>
+  </data>
+  <data name="edit_name" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="edit_name_err" xml:space="preserve">
+    <value>Введите имя и фамилию</value>
+  </data>
+  <data name="edit_newpass" xml:space="preserve">
+    <value>Придумайте новый пароль</value>
+  </data>
+  <data name="edit_newpass_err" xml:space="preserve">
+    <value>Введите  новый пароль</value>
+  </data>
+  <data name="edit_newpass_more" xml:space="preserve">
+    <value>Новый пароль еще раз</value>
+  </data>
+  <data name="edit_newpass_more_err" xml:space="preserve">
+    <value>Введите новый пароль еще раз</value>
+  </data>
+  <data name="edit_order_history" xml:space="preserve">
+    <value>История заказов</value>
+  </data>
+  <data name="edit_order_logout" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
+  <data name="edit_pass" xml:space="preserve">
+    <value>Введите старый пароль</value>
+  </data>
+  <data name="edit_pass_err" xml:space="preserve">
+    <value>Введите пароль</value>
+  </data>
+  <data name="edit_private" xml:space="preserve">
+    <value>Личные данные</value>
+  </data>
+  <data name="edit_submit" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="edit_tel" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="home_advantage1" xml:space="preserve">
+    <value>Реализуем любой объем продукции</value>
+  </data>
+  <data name="home_advantage1_alt" xml:space="preserve">
+    <value>Объем продукции</value>
+  </data>
+  <data name="home_advantage2" xml:space="preserve">
+    <value>Прямые поставки с завода производителя</value>
+  </data>
+  <data name="home_advantage2_alt" xml:space="preserve">
+    <value>Поставки с завода</value>
+  </data>
+  <data name="home_advantage3" xml:space="preserve">
+    <value>Качество гарантированно ISO 9001:2000</value>
+  </data>
+  <data name="home_advantage3_alt" xml:space="preserve">
+    <value>Качество гарантированно</value>
+  </data>
+  <data name="home_advantage4" xml:space="preserve">
+    <value>Широкий ассортимент</value>
+  </data>
+  <data name="home_advantage5" xml:space="preserve">
+    <value>Демонтаж, монтаж-оперативно, аккуратно</value>
+  </data>
+  <data name="home_advantage5_alt" xml:space="preserve">
+    <value>Демонтаж, монтаж</value>
+  </data>
+  <data name="home_advantage_title" xml:space="preserve">
+    <value>почему с нами выгодно сотрудничать?</value>
+  </data>
+  <data name="home_feedback1" xml:space="preserve">
+    <value>Нужно что-то</value>
+  </data>
+  <data name="home_feedback2" xml:space="preserve">
+    <value>особенное</value>
+  </data>
+  <data name="home_feedback_desc" xml:space="preserve">
+    <value>Позвоните нам или оставьте свой номер телефона, и мы поможем</value>
+  </data>
+  <data name="home_feedback_desc2" xml:space="preserve">
+    <value>Вам выбрать то, что нужно</value>
+  </data>
+  <data name="home_feedback_submit" xml:space="preserve">
+    <value>оставить заявку</value>
+  </data>
+  <data name="home_feedback_tel11" xml:space="preserve">
+    <value>Отдел продаж</value>
+  </data>
+  <data name="home_feedback_tel2" xml:space="preserve">
+    <value>Производство</value>
+  </data>
+  <data name="home_news" xml:space="preserve">
+    <value>Статьи и новости</value>
+  </data>
+  <data name="home_news_all" xml:space="preserve">
+    <value>читать все статьи</value>
+  </data>
+  <data name="home_partners" xml:space="preserve">
+    <value>наши партнеры</value>
+  </data>
+  <data name="home_production1" xml:space="preserve">
+    <value>Тентовые ткани ПВХ</value>
+  </data>
+  <data name="home_production1_alt" xml:space="preserve">
+    <value>Тентовые ткани</value>
+  </data>
+  <data name="home_production2" xml:space="preserve">
+    <value>Тенты</value>
+  </data>
+  <data name="home_production3" xml:space="preserve">
+    <value>Пошив</value>
+  </data>
+  <data name="home_production4" xml:space="preserve">
+    <value>Каркасные сооружения</value>
+  </data>
+  <data name="home_production5" xml:space="preserve">
+    <value>Высотные работы</value>
+  </data>
+  <data name="home_production6" xml:space="preserve">
+    <value>Фурнитура</value>
+  </data>
+  <data name="home_production_title" xml:space="preserve">
+    <value>основные виды продукции</value>
+  </data>
+  <data name="home_stocks" xml:space="preserve">
+    <value>Акции</value>
+  </data>
+  <data name="home_stocks_all" xml:space="preserve">
+    <value>читать все акции</value>
+  </data>
+  <data name="items_blue" xml:space="preserve">
+    <value>Синий</value>
+  </data>
+  <data name="items_brand" xml:space="preserve">
+    <value>Бренд</value>
+  </data>
+  <data name="items_checkout" xml:space="preserve">
+    <value>Оформить заказ</value>
+  </data>
+  <data name="items_color" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="items_cont_shopping" xml:space="preserve">
+    <value>Продолжить покупки</value>
+  </data>
+  <data name="items_price" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="items_red" xml:space="preserve">
+    <value>Красный</value>
+  </data>
+  <data name="items_route1" xml:space="preserve">
+    <value>Товары и услуги</value>
+  </data>
+  <data name="items_show" xml:space="preserve">
+    <value>показать товары</value>
+  </data>
+  <data name="items_sort" xml:space="preserve">
+    <value>Сортировка</value>
+  </data>
+  <data name="items_sort_1" xml:space="preserve">
+    <value>новинки</value>
+  </data>
+  <data name="items_sort_2" xml:space="preserve">
+    <value>популярные</value>
+  </data>
+  <data name="items_sort_3" xml:space="preserve">
+    <value>от дорогих к дешевым</value>
+  </data>
+  <data name="items_sort_4" xml:space="preserve">
+    <value>от дешевых к дорогим</value>
+  </data>
+  <data name="items_stock" xml:space="preserve">
+    <value>Акция</value>
+  </data>
+  <data name="items_to_cart" xml:space="preserve">
+    <value>В корзину</value>
+  </data>
+  <data name="items_to_cart_success" xml:space="preserve">
+    <value>Товар успешно добавлен в корзину</value>
+  </data>
+  <data name="items_vendoreCode" xml:space="preserve">
+    <value>Код товара</value>
+  </data>
+  <data name="items_white" xml:space="preserve">
+    <value>Белый</value>
+  </data>
+  <data name="item_about" xml:space="preserve">
+    <value>Характеристики</value>
+  </data>
+  <data name="item_add_to_cart" xml:space="preserve">
+    <value>Добавить в корзину</value>
+  </data>
+  <data name="item_adhesionStrength" xml:space="preserve">
+    <value>прочность при адгезии</value>
+  </data>
+  <data name="item_breakingStrength" xml:space="preserve">
+    <value>прочность на розрыв</value>
+  </data>
+  <data name="item_code" xml:space="preserve">
+    <value>Код товара</value>
+  </data>
+  <data name="item_color" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="item_count" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="item_countryOfOrigin" xml:space="preserve">
+    <value>Страна производителя</value>
+  </data>
+  <data name="item_cover" xml:space="preserve">
+    <value>Покрытие</value>
+  </data>
+  <data name="item_covering" xml:space="preserve">
+    <value>покрытие</value>
+  </data>
+  <data name="item_delivery" xml:space="preserve">
+    <value>Доставка</value>
+  </data>
+  <data name="item_dencity" xml:space="preserve">
+    <value>Плотность</value>
+  </data>
+  <data name="item_description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="item_down" xml:space="preserve">
+    <value>Уменьшить</value>
+  </data>
+  <data name="item_empty_product" xml:space="preserve">
+    <value>Товара нет в наличии</value>
+  </data>
+  <data name="item_empty_sry" xml:space="preserve">
+    <value>Извините</value>
+  </data>
+  <data name="item_height" xml:space="preserve">
+    <value>Высота</value>
+  </data>
+  <data name="item_manuf" xml:space="preserve">
+    <value>Производитель</value>
+  </data>
+  <data name="item_material" xml:space="preserve">
+    <value>Материал</value>
+  </data>
+  <data name="item_original" xml:space="preserve">
+    <value>Оригинал</value>
+  </data>
+  <data name="item_payment" xml:space="preserve">
+    <value>Оплата</value>
+  </data>
+  <data name="item_preparationTime" xml:space="preserve">
+    <value>Время изготовления</value>
+  </data>
+  <data name="item_price" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="item_route1" xml:space="preserve">
+    <value>Товары и услуги</value>
+  </data>
+  <data name="item_season" xml:space="preserve">
+    <value>Сезон</value>
+  </data>
+  <data name="item_similar" xml:space="preserve">
+    <value>Похожие товары</value>
+  </data>
+  <data name="item_size" xml:space="preserve">
+    <value>Размер</value>
+  </data>
+  <data name="item_sparesType" xml:space="preserve">
+    <value>Тип запчасти</value>
+  </data>
+  <data name="item_specification" xml:space="preserve">
+    <value>спецификация</value>
+  </data>
+  <data name="item_stock" xml:space="preserve">
+    <value>Акция</value>
+  </data>
+  <data name="item_stock_text" xml:space="preserve">
+    <value>Вы экономите</value>
+  </data>
+  <data name="item_strength" xml:space="preserve">
+    <value>прочность</value>
+  </data>
+  <data name="item_temperature" xml:space="preserve">
+    <value>температура</value>
+  </data>
+  <data name="item_textileProductType" xml:space="preserve">
+    <value>Вид текстильного изделия</value>
+  </data>
+  <data name="item_thread" xml:space="preserve">
+    <value>нить</value>
+  </data>
+  <data name="item_totalWeight" xml:space="preserve">
+    <value>общий вес</value>
+  </data>
+  <data name="item_to_cart" xml:space="preserve">
+    <value>В корзину</value>
+  </data>
+  <data name="item_type" xml:space="preserve">
+    <value>Тип запчасти</value>
+  </data>
+  <data name="item_up" xml:space="preserve">
+    <value>Увеличить</value>
+  </data>
+  <data name="item_warrantyPeriod" xml:space="preserve">
+    <value>Гарантийный срок</value>
+  </data>
+  <data name="item_width" xml:space="preserve">
+    <value>Ширина</value>
+  </data>
+  <data name="item_winding" xml:space="preserve">
+    <value>намотка</value>
+  </data>
+  <data name="layout_about_company" xml:space="preserve">
+    <value>Компания ООО "Техно тент" выполняет
+полный комплекс работ по изготовлению
+автомобильных тентов, крыш, штор из
+качественного материала ПВХ с
+использованием фурнитуры высокого
+качества, возможно нанесение рекламы.</value>
+  </data>
+  <data name="layout_about_company_title" xml:space="preserve">
+    <value>О компании</value>
+  </data>
+  <data name="layout_address1" xml:space="preserve">
+    <value>Украина, Киев</value>
+  </data>
+  <data name="layout_address2" xml:space="preserve">
+    <value>ул. Новоконстантиновская, 4 а</value>
+  </data>
+  <data name="layout_backCall" xml:space="preserve">
+    <value>Перезвонить Вам</value>
+  </data>
+  <data name="layout_backCall_name" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="layout_backCall_order" xml:space="preserve">
+    <value>Заказать обратный звонок!</value>
+  </data>
+  <data name="layout_backCall_submit" xml:space="preserve">
+    <value>Перезвонить мне</value>
+  </data>
+  <data name="layout_backCall_tel" xml:space="preserve">
+    <value>Мобильный телефон</value>
+  </data>
+  <data name="layout_backCall_tel_err" xml:space="preserve">
+    <value>Введите мобильный телефон</value>
+  </data>
+  <data name="layout_backCall_text" xml:space="preserve">
+    <value>Вопрос или комментарий</value>
+  </data>
+  <data name="layout_date1" xml:space="preserve">
+    <value>Пн-Пт: с 09:00 до 18:00</value>
+  </data>
+  <data name="layout_date2" xml:space="preserve">
+    <value>Сб-Вс - выходной</value>
+  </data>
+  <data name="layout_header" xml:space="preserve">
+    <value>ООО "ТЕХНО ТЕНТ" - Продажа ПВХ тканей, фурнитуры и производство тентовых изделий</value>
+  </data>
+  <data name="layout_manuf" xml:space="preserve">
+    <value>Производство</value>
+  </data>
+  <data name="layout_phone_order" xml:space="preserve">
+    <value>Заказ по телефону</value>
+  </data>
+  <data name="layout_subtitle" xml:space="preserve">
+    <value>Продажа ПВХ тканей,фурнитуры, производство тентовых изделий от ООО "ТехноТент"</value>
+  </data>
+  <data name="layout_work_time" xml:space="preserve">
+    <value>Время работы</value>
+  </data>
+  <data name="login_acc" xml:space="preserve">
+    <value>войдите в личный кабинет</value>
+  </data>
+  <data name="login_email_pass_err" xml:space="preserve">
+    <value>Логин или пароль неверный</value>
+  </data>
+  <data name="login_hello" xml:space="preserve">
+    <value>Здравствуйте</value>
+  </data>
+  <data name="news_more" xml:space="preserve">
+    <value>Читать далее</value>
+  </data>
+  <data name="news_title" xml:space="preserve">
+    <value>Новости</value>
+  </data>
+  <data name="oders_logout" xml:space="preserve">
+    <value>Вытйи</value>
+  </data>
+  <data name="oders_title" xml:space="preserve">
+    <value>История заказов</value>
+  </data>
+  <data name="orders_acc" xml:space="preserve">
+    <value>Мой кабинет</value>
+  </data>
+  <data name="orders_delivery" xml:space="preserve">
+    <value>Способ доставки</value>
+  </data>
+  <data name="orders_email" xml:space="preserve">
+    <value>Эл. почта</value>
+  </data>
+  <data name="orders_name" xml:space="preserve">
+    <value>Имя и фамилия</value>
+  </data>
+  <data name="orders_payment" xml:space="preserve">
+    <value>Способ оплаты</value>
+  </data>
+  <data name="orders_private" xml:space="preserve">
+    <value>Личные данные</value>
+  </data>
+  <data name="orders_tel" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="order_confirm" xml:space="preserve">
+    <value>Заказ подтверждаю</value>
+  </data>
+  <data name="order_edit_order" xml:space="preserve">
+    <value>Редактировать заказ</value>
+  </data>
+  <data name="order_form_cont" xml:space="preserve">
+    <value>Контактные данные</value>
+  </data>
+  <data name="order_form_delivery" xml:space="preserve">
+    <value>Способ доставки</value>
+  </data>
+  <data name="order_form_delivery1" xml:space="preserve">
+    <value>Самовывоз</value>
+  </data>
+  <data name="order_form_delivery2" xml:space="preserve">
+    <value>Новая почта</value>
+  </data>
+  <data name="order_form_delivery3" xml:space="preserve">
+    <value>Ин Тайм</value>
+  </data>
+  <data name="order_form_delivery_address" xml:space="preserve">
+    <value>Адрес доставки</value>
+  </data>
+  <data name="order_form_delivery_city" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="order_form_delivery_city_choose" xml:space="preserve">
+    <value>Выберите город</value>
+  </data>
+  <data name="order_form_delivery_title" xml:space="preserve">
+    <value>Выбор способов доставки и оплаты</value>
+  </data>
+  <data name="order_form_delivery_warehouse" xml:space="preserve">
+    <value>Номер склада</value>
+  </data>
+  <data name="order_form_delivery_warehouse_choose" xml:space="preserve">
+    <value>Выберите номер склада</value>
+  </data>
+  <data name="order_form_email" xml:space="preserve">
+    <value>Эл. почта</value>
+  </data>
+  <data name="order_form_email_err" xml:space="preserve">
+    <value>Введите корректный адрес электронной почты</value>
+  </data>
+  <data name="order_form_email_placeholder" xml:space="preserve">
+    <value>Ваш Email</value>
+  </data>
+  <data name="order_form_name" xml:space="preserve">
+    <value>Имя и фамилия</value>
+  </data>
+  <data name="order_form_name_err" xml:space="preserve">
+    <value>Введите имя и фамилию</value>
+  </data>
+  <data name="order_form_name_placeholder" xml:space="preserve">
+    <value>Ваше имя и фамилия</value>
+  </data>
+  <data name="order_form_payment" xml:space="preserve">
+    <value>Способ оплатиты</value>
+  </data>
+  <data name="order_form_payment1" xml:space="preserve">
+    <value>Безналичный расчет</value>
+  </data>
+  <data name="order_form_payment2" xml:space="preserve">
+    <value>Наложенный платеж</value>
+  </data>
+  <data name="order_form_tel" xml:space="preserve">
+    <value>Мобильный телефон</value>
+  </data>
+  <data name="order_form_tel_err" xml:space="preserve">
+    <value>Введите мобильный телефон</value>
+  </data>
+  <data name="order_form_tel_err1" xml:space="preserve">
+    <value>Введите корректный адрес электронной почты</value>
+  </data>
+  <data name="order_form_tel_placeholder" xml:space="preserve">
+    <value>Ваш телефон</value>
+  </data>
+  <data name="order_success_ty" xml:space="preserve">
+    <value>Спасибо</value>
+  </data>
+  <data name="order_success_ty_1" xml:space="preserve">
+    <value>Ваш заказ успешно оформлен. Мы свяжемся с вами в ближайшее время</value>
+  </data>
+  <data name="order_title" xml:space="preserve">
+    <value>Оформление заказа</value>
+  </data>
+  <data name="order_total" xml:space="preserve">
+    <value>Итого</value>
+  </data>
+  <data name="order_to_paymnet" xml:space="preserve">
+    <value>К оплате</value>
+  </data>
+  <data name="partial_articles_more" xml:space="preserve">
+    <value>Читать далее</value>
+  </data>
+  <data name="partial_cat_menu1" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="partial_cat_menu2" xml:space="preserve">
+    <value>Отзывы</value>
+  </data>
+  <data name="partial_cat_menu3" xml:space="preserve">
+    <value>Акции</value>
+  </data>
+  <data name="partial_cat_menu4" xml:space="preserve">
+    <value>Новости</value>
+  </data>
+  <data name="partial_cat_menu5" xml:space="preserve">
+    <value>О компании</value>
+  </data>
+  <data name="partial_cat_menu6" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="partial_cat_title" xml:space="preserve">
+    <value>Товары и услуги</value>
+  </data>
+  <data name="partial_cat_title1" xml:space="preserve">
+    <value>Товары</value>
+  </data>
+  <data name="registration_email_err" xml:space="preserve">
+    <value>Пользователь с таким email уже существует</value>
+  </data>
+  <data name="restorePassMsg_link1" xml:space="preserve">
+    <value>Назад на</value>
+  </data>
+  <data name="restorePassMsg_link2" xml:space="preserve">
+    <value>главную страницу</value>
+  </data>
+  <data name="restorePassMsg_msg" xml:space="preserve">
+    <value>Мы только что отправили пароль на ваш</value>
+  </data>
+  <data name="restore_title" xml:space="preserve">
+    <value>Восстановление пароля</value>
+  </data>
+  <data name="restorre_email" xml:space="preserve">
+    <value>Введите Email</value>
+  </data>
+  <data name="rest_pass_msg" xml:space="preserve">
+    <value>Пользователь не найден</value>
+  </data>
+  <data name="rest_pass_msg_email" xml:space="preserve">
+    <value>Введите email</value>
+  </data>
+  <data name="revew_post_msg" xml:space="preserve">
+    <value>Введите сообщение</value>
+  </data>
+  <data name="revew_post_send" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
+  <data name="revew_post_text" xml:space="preserve">
+    <value>Что Вам понравилось?</value>
+  </data>
+  <data name="reviews_title" xml:space="preserve">
+    <value>Отзывы</value>
+  </data>
+  <data name="review_author" xml:space="preserve">
+    <value>Представитель компании "ТехноТент"</value>
+  </data>
+  <data name="review_autorize" xml:space="preserve">
+    <value>Войдите, чтобы оставить отзыв</value>
+  </data>
+  <data name="review_post_anonym" xml:space="preserve">
+    <value>Анонимный отзыв</value>
+  </data>
+  <data name="review_post_title" xml:space="preserve">
+    <value>Заголовок отзыва</value>
+  </data>
+  <data name="review_post_ur_review" xml:space="preserve">
+    <value>Оставить свой отзыв</value>
+  </data>
+  <data name="stocks_more" xml:space="preserve">
+    <value>Читать далее</value>
+  </data>
+  <data name="stocks_title" xml:space="preserve">
+    <value>Акции</value>
+  </data>
+  <data name="vallet" xml:space="preserve">
+    <value>грн</value>
+  </data>
+  <data name="vallet_item_type" xml:space="preserve">
+    <value>шт</value>
+  </data>
+  <data name="vallet_to_meter" xml:space="preserve">
+    <value>грн/м2</value>
+  </data>
+</root>

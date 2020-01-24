@@ -1,0 +1,909 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="about_about" xml:space="preserve">
+    <value>The company Tekhno Awning LLC carries out a full range of works on the manufacture of automobile awnings, roofs, curtains made of high-quality PVC material using high-quality fittings, it is possible to print ads. It also makes maintenance and repair of awnings for cars of various models and brands. In addition, we carry out alterations of car covers, replacement of sidewalls, roofs or butt ends separately and change of height and length of tents. Overhaul of the awning is possible, as well as elimination of various cuts, replacement of any elements (roof, valve, sidewall) and any accessories (brackets, belts, eyelets, hooks).</value>
+  </data>
+  <data name="about_org_address1" xml:space="preserve">
+    <value>The actual address</value>
+  </data>
+  <data name="about_org_address2" xml:space="preserve">
+    <value>Kiev, Novokonstantinovskaya 4a | Konstantinovka city, Telman 1</value>
+  </data>
+  <data name="about_org_name1" xml:space="preserve">
+    <value>Name of company</value>
+  </data>
+  <data name="about_org_name2" xml:space="preserve">
+    <value>Limited Liability Company "Techno Tent"</value>
+  </data>
+  <data name="about_org_requisites" xml:space="preserve">
+    <value>Requisites</value>
+  </data>
+  <data name="about_org_requisites1" xml:space="preserve">
+    <value>Bank details</value>
+  </data>
+  <data name="about_org_requisites2" xml:space="preserve">
+    <value>Bank PAT "PRIVATBANK"</value>
+  </data>
+  <data name="about_org_requisites3" xml:space="preserve">
+    <value>P / R 26000053614553</value>
+  </data>
+  <data name="about_org_requisites4" xml:space="preserve">
+    <value>MFI 335548</value>
+  </data>
+  <data name="about_org_requisites5" xml:space="preserve">
+    <value>EDRPOU</value>
+  </data>
+  <data name="about_org_requisites6" xml:space="preserve">
+    <value>TIN</value>
+  </data>
+  <data name="about_org_requisites7" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="about_org_tel" xml:space="preserve">
+    <value>Organization phone number, Email</value>
+  </data>
+  <data name="about_org_tel1" xml:space="preserve">
+    <value>PVC sale</value>
+  </data>
+  <data name="about_org_tel2" xml:space="preserve">
+    <value>clothing industry</value>
+  </data>
+  <data name="about_org_tel3" xml:space="preserve">
+    <value>PVC Manager</value>
+  </data>
+  <data name="about_org_tel4" xml:space="preserve">
+    <value>Production, Konstantinovka</value>
+  </data>
+  <data name="about_org_tel5" xml:space="preserve">
+    <value>Viber Manager</value>
+  </data>
+  <data name="about_title" xml:space="preserve">
+    <value>About us</value>
+  </data>
+  <data name="auth_email_err" xml:space="preserve">
+    <value>Enter Email</value>
+  </data>
+  <data name="auth_enter" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="auth_name" xml:space="preserve">
+    <value>Your name</value>
+  </data>
+  <data name="auth_name_err" xml:space="preserve">
+    <value>Enter your name</value>
+  </data>
+  <data name="auth_pass" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="auth_pass1" xml:space="preserve">
+    <value>Create a password</value>
+  </data>
+  <data name="auth_pass_err" xml:space="preserve">
+    <value>Enter password</value>
+  </data>
+  <data name="auth_pass_err1" xml:space="preserve">
+    <value>Enter password</value>
+  </data>
+  <data name="auth_repass" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="auth_repass_err" xml:space="preserve">
+    <value>Passwords do not match</value>
+  </data>
+  <data name="auth_signin" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="auth_signup" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="auth_signup1" xml:space="preserve">
+    <value>Sign up</value>
+  </data>
+  <data name="auth_trouble" xml:space="preserve">
+    <value>You can not enter?</value>
+  </data>
+  <data name="cart_checkout" xml:space="preserve">
+    <value>Checkout</value>
+  </data>
+  <data name="cart_col1" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="cart_col2" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="cart_col3" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="cart_col4" xml:space="preserve">
+    <value>Cost</value>
+  </data>
+  <data name="cart_empty" xml:space="preserve">
+    <value>Cart is empty</value>
+  </data>
+  <data name="cart_total_price" xml:space="preserve">
+    <value>Total order value</value>
+  </data>
+  <data name="contacts" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="contacts_address" xml:space="preserve">
+    <value>St. Novokonstantinovskaya, 4 a</value>
+  </data>
+  <data name="contacts_address1" xml:space="preserve">
+    <value>St. Telman 1</value>
+  </data>
+  <data name="contacts_backCall1" xml:space="preserve">
+    <value>could not get through</value>
+  </data>
+  <data name="contacts_backCall2" xml:space="preserve">
+    <value>Order a call</value>
+  </data>
+  <data name="contacts_city" xml:space="preserve">
+    <value>Konstantinovka</value>
+  </data>
+  <data name="contacts_city2" xml:space="preserve">
+    <value>Kyiv</value>
+  </data>
+  <data name="contacts_country" xml:space="preserve">
+    <value>Ukraine</value>
+  </data>
+  <data name="contacts_dates" xml:space="preserve">
+    <value>Mon-Fri 09: 00 AM - 6: 00 PM</value>
+  </data>
+  <data name="contacts_feedback" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="contacts_form_email" xml:space="preserve">
+    <value>Please enter a valid Email</value>
+  </data>
+  <data name="contacts_form_msg" xml:space="preserve">
+    <value>Enter your message</value>
+  </data>
+  <data name="contacts_form_name" xml:space="preserve">
+    <value>Enter your name</value>
+  </data>
+  <data name="contacts_form_send" xml:space="preserve">
+    <value>Send a message</value>
+  </data>
+  <data name="contacts_manuf" xml:space="preserve">
+    <value>production</value>
+  </data>
+  <data name="contacts_tel1" xml:space="preserve">
+    <value>PVC sale</value>
+  </data>
+  <data name="contacts_tel2" xml:space="preserve">
+    <value>production</value>
+  </data>
+  <data name="contacts_tel3" xml:space="preserve">
+    <value>awning and locking fittings</value>
+  </data>
+  <data name="contacts_tel4" xml:space="preserve">
+    <value>manager Viber</value>
+  </data>
+  <data name="edit_acc" xml:space="preserve">
+    <value>My account</value>
+  </data>
+  <data name="edit_cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="edit_email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="edit_email_err" xml:space="preserve">
+    <value>Enter Email</value>
+  </data>
+  <data name="edit_name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="edit_name_err" xml:space="preserve">
+    <value>Enter first and last name</value>
+  </data>
+  <data name="edit_newpass" xml:space="preserve">
+    <value>Create a new password</value>
+  </data>
+  <data name="edit_newpass_err" xml:space="preserve">
+    <value>Enter a new password</value>
+  </data>
+  <data name="edit_newpass_more" xml:space="preserve">
+    <value>New password again</value>
+  </data>
+  <data name="edit_newpass_more_err" xml:space="preserve">
+    <value>Enter new password again</value>
+  </data>
+  <data name="edit_order_history" xml:space="preserve">
+    <value>Order history</value>
+  </data>
+  <data name="edit_order_logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="edit_pass" xml:space="preserve">
+    <value>Enter old password</value>
+  </data>
+  <data name="edit_pass_err" xml:space="preserve">
+    <value>Enter password</value>
+  </data>
+  <data name="edit_private" xml:space="preserve">
+    <value>Personal data</value>
+  </data>
+  <data name="edit_submit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="edit_tel" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="home_advantage1" xml:space="preserve">
+    <value>We sell any volume of products</value>
+  </data>
+  <data name="home_advantage1_alt" xml:space="preserve">
+    <value>Production volume</value>
+  </data>
+  <data name="home_advantage2" xml:space="preserve">
+    <value>Direct deliveries from the manufacturer</value>
+  </data>
+  <data name="home_advantage2_alt" xml:space="preserve">
+    <value>Shipped from the factory</value>
+  </data>
+  <data name="home_advantage3" xml:space="preserve">
+    <value>Quality guaranteed by ISO 9001: 2000</value>
+  </data>
+  <data name="home_advantage3_alt" xml:space="preserve">
+    <value>Quality guaranteed</value>
+  </data>
+  <data name="home_advantage4" xml:space="preserve">
+    <value>A wide range of</value>
+  </data>
+  <data name="home_advantage5" xml:space="preserve">
+    <value>Dismantling, installation-promptly, accurately</value>
+  </data>
+  <data name="home_advantage5_alt" xml:space="preserve">
+    <value>Dismantling, installation</value>
+  </data>
+  <data name="home_advantage_title" xml:space="preserve">
+    <value>Why is it beneficial to cooperate with us?</value>
+  </data>
+  <data name="home_feedback1" xml:space="preserve">
+    <value>Need something</value>
+  </data>
+  <data name="home_feedback2" xml:space="preserve">
+    <value>special</value>
+  </data>
+  <data name="home_feedback_desc" xml:space="preserve">
+    <value>Call us or leave your phone number and we will help</value>
+  </data>
+  <data name="home_feedback_desc2" xml:space="preserve">
+    <value>You choose what you need</value>
+  </data>
+  <data name="home_feedback_submit" xml:space="preserve">
+    <value>leave a request</value>
+  </data>
+  <data name="home_feedback_tel11" xml:space="preserve">
+    <value>Sales department</value>
+  </data>
+  <data name="home_feedback_tel2" xml:space="preserve">
+    <value>Production</value>
+  </data>
+  <data name="home_news" xml:space="preserve">
+    <value>Articles and news</value>
+  </data>
+  <data name="home_news_all" xml:space="preserve">
+    <value>read all articles</value>
+  </data>
+  <data name="home_partners" xml:space="preserve">
+    <value>our partners</value>
+  </data>
+  <data name="home_production1" xml:space="preserve">
+    <value>PVC awning fabrics</value>
+  </data>
+  <data name="home_production1_alt" xml:space="preserve">
+    <value>Awning fabric</value>
+  </data>
+  <data name="home_production2" xml:space="preserve">
+    <value>Awnings</value>
+  </data>
+  <data name="home_production3" xml:space="preserve">
+    <value>Sewing</value>
+  </data>
+  <data name="home_production4" xml:space="preserve">
+    <value>Frame constructions</value>
+  </data>
+  <data name="home_production5" xml:space="preserve">
+    <value>High-altitude work</value>
+  </data>
+  <data name="home_production6" xml:space="preserve">
+    <value>Hardware</value>
+  </data>
+  <data name="home_production_title" xml:space="preserve">
+    <value>main products</value>
+  </data>
+  <data name="home_stocks" xml:space="preserve">
+    <value>stocks</value>
+  </data>
+  <data name="home_stocks_all" xml:space="preserve">
+    <value>read all stocks</value>
+  </data>
+  <data name="items_blue" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="items_brand" xml:space="preserve">
+    <value>The brand</value>
+  </data>
+  <data name="items_checkout" xml:space="preserve">
+    <value>Checkout</value>
+  </data>
+  <data name="items_color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="items_cont_shopping" xml:space="preserve">
+    <value>Continue shopping</value>
+  </data>
+  <data name="items_price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="items_red" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="items_route1" xml:space="preserve">
+    <value>Products and service</value>
+  </data>
+  <data name="items_show" xml:space="preserve">
+    <value>show products</value>
+  </data>
+  <data name="items_sort" xml:space="preserve">
+    <value>Sorting</value>
+  </data>
+  <data name="items_sort_1" xml:space="preserve">
+    <value>novelty</value>
+  </data>
+  <data name="items_sort_2" xml:space="preserve">
+    <value>popular</value>
+  </data>
+  <data name="items_sort_3" xml:space="preserve">
+    <value>from expensive to cheap</value>
+  </data>
+  <data name="items_sort_4" xml:space="preserve">
+    <value>from cheap to expensive</value>
+  </data>
+  <data name="items_stock" xml:space="preserve">
+    <value>Stock</value>
+  </data>
+  <data name="items_to_cart" xml:space="preserve">
+    <value>To cart</value>
+  </data>
+  <data name="items_to_cart_success" xml:space="preserve">
+    <value>This product was successfully added to the cart</value>
+  </data>
+  <data name="items_vendoreCode" xml:space="preserve">
+    <value>Product code</value>
+  </data>
+  <data name="items_white" xml:space="preserve">
+    <value>White</value>
+  </data>
+  <data name="item_about" xml:space="preserve">
+    <value>Characteristics</value>
+  </data>
+  <data name="item_add_to_cart" xml:space="preserve">
+    <value>Add to shopping cart</value>
+  </data>
+  <data name="item_adhesionStrength" xml:space="preserve">
+    <value>Adhesion strength</value>
+  </data>
+  <data name="item_breakingStrength" xml:space="preserve">
+    <value>Tear strength</value>
+  </data>
+  <data name="item_code" xml:space="preserve">
+    <value>Product code</value>
+  </data>
+  <data name="item_color" xml:space="preserve">
+    <value>Colour</value>
+  </data>
+  <data name="item_count" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="item_countryOfOrigin" xml:space="preserve">
+    <value>Country of origin</value>
+  </data>
+  <data name="item_cover" xml:space="preserve">
+    <value>Coating</value>
+  </data>
+  <data name="item_covering" xml:space="preserve">
+    <value>Coating</value>
+  </data>
+  <data name="item_delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+  <data name="item_dencity" xml:space="preserve">
+    <value>Density</value>
+  </data>
+  <data name="item_description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="item_down" xml:space="preserve">
+    <value>Reduce</value>
+  </data>
+  <data name="item_empty_product" xml:space="preserve">
+    <value>The product is out of stock.</value>
+  </data>
+  <data name="item_empty_sry" xml:space="preserve">
+    <value>Sorry</value>
+  </data>
+  <data name="item_height" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="item_manuf" xml:space="preserve">
+    <value>Manufacturer</value>
+  </data>
+  <data name="item_material" xml:space="preserve">
+    <value>Material</value>
+  </data>
+  <data name="item_original" xml:space="preserve">
+    <value>Original</value>
+  </data>
+  <data name="item_payment" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="item_preparationTime" xml:space="preserve">
+    <value>Preparation time</value>
+  </data>
+  <data name="item_price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="item_route1" xml:space="preserve">
+    <value>Products and service</value>
+  </data>
+  <data name="item_season" xml:space="preserve">
+    <value>Season</value>
+  </data>
+  <data name="item_similar" xml:space="preserve">
+    <value>Related products</value>
+  </data>
+  <data name="item_size" xml:space="preserve">
+    <value>The size</value>
+  </data>
+  <data name="item_sparesType" xml:space="preserve">
+    <value>Type of spare part</value>
+  </data>
+  <data name="item_specification" xml:space="preserve">
+    <value>Specification</value>
+  </data>
+  <data name="item_stock" xml:space="preserve">
+    <value>Stock</value>
+  </data>
+  <data name="item_stock_text" xml:space="preserve">
+    <value>You save</value>
+  </data>
+  <data name="item_strength" xml:space="preserve">
+    <value>Strength</value>
+  </data>
+  <data name="item_temperature" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="item_textileProductType" xml:space="preserve">
+    <value>Type of textile product</value>
+  </data>
+  <data name="item_thread" xml:space="preserve">
+    <value>A thread</value>
+  </data>
+  <data name="item_totalWeight" xml:space="preserve">
+    <value>Total weight</value>
+  </data>
+  <data name="item_to_cart" xml:space="preserve">
+    <value>To cart</value>
+  </data>
+  <data name="item_type" xml:space="preserve">
+    <value>Type of spare part</value>
+  </data>
+  <data name="item_up" xml:space="preserve">
+    <value>Increase</value>
+  </data>
+  <data name="item_warrantyPeriod" xml:space="preserve">
+    <value>Warranty period</value>
+  </data>
+  <data name="item_width" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="item_winding" xml:space="preserve">
+    <value>Winding</value>
+  </data>
+  <data name="layout_about_company" xml:space="preserve">
+    <value>Company LLC "Techno tent" performs full range of manufacturing
+ automobile awnings, roofs, curtains from
+ quality PVC material with
+ using high fittings quality, advertising is possible.</value>
+  </data>
+  <data name="layout_about_company_title" xml:space="preserve">
+    <value>About company</value>
+  </data>
+  <data name="layout_address1" xml:space="preserve">
+    <value>Ukraine, Kiev</value>
+  </data>
+  <data name="layout_address2" xml:space="preserve">
+    <value>st. Novokonstantinovskaya, 4 a</value>
+  </data>
+  <data name="layout_backCall" xml:space="preserve">
+    <value>Call You back</value>
+  </data>
+  <data name="layout_backCall_name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="layout_backCall_order" xml:space="preserve">
+    <value>Request a call back!</value>
+  </data>
+  <data name="layout_backCall_submit" xml:space="preserve">
+    <value>Call me back</value>
+  </data>
+  <data name="layout_backCall_tel" xml:space="preserve">
+    <value>Mobile phone</value>
+  </data>
+  <data name="layout_backCall_tel_err" xml:space="preserve">
+    <value>Enter mobile phone</value>
+  </data>
+  <data name="layout_backCall_text" xml:space="preserve">
+    <value>Question or comment</value>
+  </data>
+  <data name="layout_date1" xml:space="preserve">
+    <value>Mon-Fri: from 09: 00 AM to 6: 00 PM</value>
+  </data>
+  <data name="layout_date2" xml:space="preserve">
+    <value>Sat-Sun - day off</value>
+  </data>
+  <data name="layout_header" xml:space="preserve">
+    <value>LLC "TECHNO TENT" - Sale of PVC fabrics, fittings and production of awnings products</value>
+  </data>
+  <data name="layout_manuf" xml:space="preserve">
+    <value>Production</value>
+  </data>
+  <data name="layout_phone_order" xml:space="preserve">
+    <value>Order by phone</value>
+  </data>
+  <data name="layout_subtitle" xml:space="preserve">
+    <value>Sale of PVC fabrics, accessories, production of awnings products from LLC  "TekhnoTent"</value>
+  </data>
+  <data name="layout_work_time" xml:space="preserve">
+    <value>Working hours</value>
+  </data>
+  <data name="login_acc" xml:space="preserve">
+    <value>log in to your account</value>
+  </data>
+  <data name="login_email_pass_err" xml:space="preserve">
+    <value>Login or password is incorrect</value>
+  </data>
+  <data name="login_hello" xml:space="preserve">
+    <value>Hello</value>
+  </data>
+  <data name="news_more" xml:space="preserve">
+    <value>Read more</value>
+  </data>
+  <data name="news_title" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="oders_logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="oders_title" xml:space="preserve">
+    <value>Order history</value>
+  </data>
+  <data name="orders_acc" xml:space="preserve">
+    <value>My account</value>
+  </data>
+  <data name="orders_delivery" xml:space="preserve">
+    <value>Delivery method</value>
+  </data>
+  <data name="orders_email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="orders_name" xml:space="preserve">
+    <value>First and last name</value>
+  </data>
+  <data name="orders_payment" xml:space="preserve">
+    <value>Payment method</value>
+  </data>
+  <data name="orders_private" xml:space="preserve">
+    <value>Personal data</value>
+  </data>
+  <data name="orders_tel" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="order_confirm" xml:space="preserve">
+    <value>The order is confirmed</value>
+  </data>
+  <data name="order_edit_order" xml:space="preserve">
+    <value>Edit order</value>
+  </data>
+  <data name="order_form_cont" xml:space="preserve">
+    <value>Contact details</value>
+  </data>
+  <data name="order_form_delivery" xml:space="preserve">
+    <value>Delivery method</value>
+  </data>
+  <data name="order_form_delivery1" xml:space="preserve">
+    <value>Pickup</value>
+  </data>
+  <data name="order_form_delivery2" xml:space="preserve">
+    <value>New Mail</value>
+  </data>
+  <data name="order_form_delivery3" xml:space="preserve">
+    <value>In Time</value>
+  </data>
+  <data name="order_form_delivery_address" xml:space="preserve">
+    <value>Delivery address</value>
+  </data>
+  <data name="order_form_delivery_city" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="order_form_delivery_city_choose" xml:space="preserve">
+    <value>Choose a city</value>
+  </data>
+  <data name="order_form_delivery_title" xml:space="preserve">
+    <value>The choice of delivery and payment methods</value>
+  </data>
+  <data name="order_form_delivery_warehouse" xml:space="preserve">
+    <value>Warehouse number</value>
+  </data>
+  <data name="order_form_delivery_warehouse_choose" xml:space="preserve">
+    <value>Choose stock number</value>
+  </data>
+  <data name="order_form_email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="order_form_email_err" xml:space="preserve">
+    <value>Please enter a valid Email</value>
+  </data>
+  <data name="order_form_email_err1" xml:space="preserve">
+    <value>Please enter a valid Email</value>
+  </data>
+  <data name="order_form_email_placeholder" xml:space="preserve">
+    <value>Your Email</value>
+  </data>
+  <data name="order_form_name" xml:space="preserve">
+    <value>First and last name</value>
+  </data>
+  <data name="order_form_name_err" xml:space="preserve">
+    <value>Enter first and last name</value>
+  </data>
+  <data name="order_form_name_placeholder" xml:space="preserve">
+    <value>Your first and last name</value>
+  </data>
+  <data name="order_form_payment" xml:space="preserve">
+    <value>Method of payment</value>
+  </data>
+  <data name="order_form_payment1" xml:space="preserve">
+    <value>Cashless payments</value>
+  </data>
+  <data name="order_form_payment2" xml:space="preserve">
+    <value>Cash on delivery</value>
+  </data>
+  <data name="order_form_tel" xml:space="preserve">
+    <value>Mobile phone</value>
+  </data>
+  <data name="order_form_tel_err" xml:space="preserve">
+    <value>Enter mobile phone</value>
+  </data>
+  <data name="order_form_tel_placeholder" xml:space="preserve">
+    <value>Your phone number</value>
+  </data>
+  <data name="order_success_ty" xml:space="preserve">
+    <value>Thank you</value>
+  </data>
+  <data name="order_success_ty_1" xml:space="preserve">
+    <value>Your order has been successfully placed. We will contact you shortly</value>
+  </data>
+  <data name="order_title" xml:space="preserve">
+    <value>Checkout</value>
+  </data>
+  <data name="order_total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="order_to_paymnet" xml:space="preserve">
+    <value>To pay</value>
+  </data>
+  <data name="partial_articles_more" xml:space="preserve">
+    <value>Read more</value>
+  </data>
+  <data name="partial_cat_menu1" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="partial_cat_menu2" xml:space="preserve">
+    <value>Reviews</value>
+  </data>
+  <data name="partial_cat_menu3" xml:space="preserve">
+    <value>Stocks</value>
+  </data>
+  <data name="partial_cat_menu4" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="partial_cat_menu5" xml:space="preserve">
+    <value>About company</value>
+  </data>
+  <data name="partial_cat_menu6" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="partial_cat_title" xml:space="preserve">
+    <value>Products and service</value>
+  </data>
+  <data name="partial_cat_title1" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="registration_email_err" xml:space="preserve">
+    <value>User with such email already exists</value>
+  </data>
+  <data name="restorePassMsg_link1" xml:space="preserve">
+    <value>Back to</value>
+  </data>
+  <data name="restorePassMsg_link2" xml:space="preserve">
+    <value>home page</value>
+  </data>
+  <data name="restorePassMsg_msg" xml:space="preserve">
+    <value>We just sent a password to your</value>
+  </data>
+  <data name="restore_title" xml:space="preserve">
+    <value>Password recovery</value>
+  </data>
+  <data name="restorre_email" xml:space="preserve">
+    <value>Enter Email</value>
+  </data>
+  <data name="rest_pass_msg" xml:space="preserve">
+    <value>User not found</value>
+  </data>
+  <data name="rest_pass_msg_email" xml:space="preserve">
+    <value>Enter the email</value>
+  </data>
+  <data name="revew_post_msg" xml:space="preserve">
+    <value>Enter your message</value>
+  </data>
+  <data name="revew_post_send" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="revew_post_text" xml:space="preserve">
+    <value>What did You like?</value>
+  </data>
+  <data name="reviews_title" xml:space="preserve">
+    <value>Reviews</value>
+  </data>
+  <data name="review_author" xml:space="preserve">
+    <value>Representative of the company "TechnoTent"</value>
+  </data>
+  <data name="review_autorize" xml:space="preserve">
+    <value>Login to post a review</value>
+  </data>
+  <data name="review_post_anonym" xml:space="preserve">
+    <value>Anonymous review</value>
+  </data>
+  <data name="review_post_title" xml:space="preserve">
+    <value>Review title</value>
+  </data>
+  <data name="review_post_ur_review" xml:space="preserve">
+    <value>Leave your review</value>
+  </data>
+  <data name="stocks_more" xml:space="preserve">
+    <value>Read more</value>
+  </data>
+  <data name="stocks_title" xml:space="preserve">
+    <value>Stocks</value>
+  </data>
+  <data name="vallet" xml:space="preserve">
+    <value>uah</value>
+  </data>
+  <data name="vallet_item_type" xml:space="preserve">
+    <value>pc</value>
+  </data>
+  <data name="vallet_to_meter" xml:space="preserve">
+    <value>hrn/m2</value>
+  </data>
+</root>

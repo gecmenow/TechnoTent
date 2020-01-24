@@ -1,0 +1,110 @@
+﻿@model List<TechnoTent.Models.ViewModel.OrderVM>
+
+<main>
+    <section class="profile">
+        <div class="wrapper">
+            <h2 class="page-title">
+                @Resources.Resource.oders_title
+            </h2>
+            <div class="profile-content-wrapper">
+                <nav class="profile-nav">
+                    <ul class="profile-nav__list">
+                        <span class="profile-nav__title">@Resources.Resource.orders_acc</span>
+                        <li class="profile-nav__item"><a href="/myaccount">@Resources.Resource.orders_private</a></li>
+                        <li class="profile-nav__item profile-nav__active"><a href="/userOrder">@Resources.Resource.oders_title</a></li>
+                        <li class="profile-nav__item"><a href="/userLogout">@Resources.Resource.oders_logout</a></li>
+                    </ul>
+                </nav>
+                <div class="order-history__list">
+                    @foreach (var order in Model)
+                    {
+                        <div class="order-history__item">
+                            <div class="order-history__details">
+                                <div class="order-history__details-inner">
+                                    <div class="order-history__id">@order.OrderNumber</div>
+                                    <div class="order-history__date">@order.Date.ToShortDateString()</div>
+                                    <div class="order-history__quantity">@order.TotalItemsCount на @order.TotalPrice</div>
+                                </div>
+                                <div class="order-history__details-inner order-history-products__list" style="display: none;">
+                                    <!-- style="display: none;" -->
+                                    @foreach (var item in order.Items)
+                                    {
+                                        <div class="order-history-products__item">
+                                            <img src="~/Content/images/items/@item.ItemImages" alt="@item.ItemName" class="order-history-products__img">
+                                            <div class="order-history-products__title">
+                                                <a href="" class="order-history-products__title-link">@item.ItemName</a>
+                                                <span class="order-history-products__code">@item.ItemVendorCode</span>
+                                                <div class="order-history-products__price">@item.ItemPrice</div>
+                                            </div>
+                                            @if (item.ProductBuyTypeMeter)
+                                            {
+                                                <div class="order-history-products__quantity">
+                                                    @item.ItemCount @Resources.Resource.vallet_to_meter
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="order-history-products__quantity">
+                                                    @item.ItemCount @Resources.Resource.vallet_item_type
+                                                </div>
+                                            }
+
+                                            <div class="order-history-products__cost">
+                                                @item.ItemCount @Resources.Resource.vallet
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="order-history__status">
+                                <div class="order-history__status-inner status__name status__success">@order.OrderStatus</div>
+                                <div class="order-history__status-inner profile-order-info__list" style="display: none;">
+                                    <div class="profile-order-info__item">
+                                        <div class="profile-order-info-title">
+                                            @Resources.Resource.orders_name
+                                        </div>
+                                        <div class="profile-order-info-field">
+                                            @order.UserName
+                                        </div>
+                                    </div>
+                                    <div class="profile-order-info__item">
+                                        <div class="profile-order-info-title">
+                                            @Resources.Resource.orders_tel
+                                        </div>
+                                        <div class="profile-order-info-field">
+                                            @order.UserPhone
+                                        </div>
+                                    </div>
+                                    <div class="profile-order-info__item">
+                                        <div class="profile-order-info-title">
+                                            @Resources.Resource.orders_email
+                                        </div>
+                                        <div class="profile-order-info-field">
+                                            @order.UserEmail
+                                        </div>
+                                    </div>
+                                    <div class="profile-order-info__item">
+                                        <div class="profile-order-info-title">
+                                            @Resources.Resource.orders_delivery
+                                        </div>
+                                        <div class="profile-order-info-field">
+                                            @order.DeliveryMethod
+                                        </div>
+                                    </div>
+                                    <div class="profile-order-info__item">
+                                        <div class="profile-order-info-title">
+                                            @Resources.Resource.orders_payment
+                                        </div>
+                                        <div class="profile-order-info-field">
+                                            @order.PaymentMethod
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,85 @@
+﻿@model TechnoTent.Models.UserModels.EditUser
+
+<main>
+    <section class="profile">
+        <div class="wrapper">
+            <h2 class="page-title">
+                Личные данные
+            </h2>
+            <div class="profile-content-wrapper">
+                <nav class="profile-nav">
+                    <ul class="profile-nav__list">
+                        <span class="profile-nav__title">@Resources.Resource.edit_acc</span>
+                        <li class="profile-nav__item profile-nav__active"><a href="/myaccount">@Resources.Resource.edit_private</a></li>
+                        <li class="profile-nav__item"><a href="/userOrder">@Resources.Resource.edit_order_history</a></li>
+                        <li class="profile-nav__item"><a href="/userLogout">@Resources.Resource.edit_order_logout</a></li>
+                    </ul>
+                </nav>
+                <div class="profile-edit">
+                    @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { @class = "prof-edit-pers-info" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <div class="pers-info__item">
+                            <div class="form-input__title">@Resources.Resource.edit_name</div>
+                            <div class="form-input-wrapper">
+                                @Html.TextBoxFor(m => m.Name , Model.Name, new { @class = "form-input form-input__name" })
+                                <div class="form-input__underlined"></div>
+                                <i class="form-input__icon fas fa-user"></i>
+                                <div class="error-message name__error-message" style="display: none;">@Resources.Resource.edit_name_err</div>
+                            </div>
+                        </div>
+                        <div class="pers-info__item">
+                            <div class="form-input__title">@Resources.Resource.edit_email</div>
+                            <div class="form-input-wrapper">
+                                @Html.TextBoxFor(m => m.Email, Model.Email, new { @class = "form-input form-input__email" })
+                                <div class="form-input__underlined"></div>
+                                <i class="form-input__icon fas fa-envelope"></i>
+                                <div class="error-message email__error-message" style="display: none;">@Resources.Resource.edit_email_err.</div>
+                            </div>
+                        </div>
+                        <div class="pers-info__item">
+                            <div class="form-input__title">@Resources.Resource.edit_tel</div>
+                            <div class="form-input-wrapper">
+                                @Html.TextBoxFor(m => m.Phone, Model.Phone, new { @class = "form-input form-input__tel" })
+                                <div class="form-input__underlined"></div>
+                                <i class="form-input__icon fas fa-phone"></i>
+                            </div>
+                        </div>
+                        <div class="pers-info__item">
+                            <div class="form-input__title">@Resources.Resource.edit_pass</div>
+                            <div class="form-input-wrapper">
+                                @Html.PasswordFor(m => m.OldPassword, new { @class = "form-input form-input__password" })
+                                <div class="form-input__underlined"></div>
+                                <i class="form-input__icon form-input__icon-password fas fa-lock"></i>
+                                <div class="error-message password__error-message" style="display: none;">@Resources.Resource.edit_pass_err.</div>
+                            </div>
+                        </div>
+                        <div class="pers-info__item">
+                            <div class="form-input__title">@Resources.Resource.edit_newpass</div>
+                            <div class="form-input-wrapper">
+                                @Html.PasswordFor(m => m.NewPassword, new { @class = "form-input form-input__password" })
+                                <div class="form-input__underlined"></div>
+                                <i class="form-input__icon form-input__icon-password fas fa-lock"></i>
+                                <div class="error-message password__error-message" style="display: none;">@Resources.Resource.edit_newpass_err.</div>
+                            </div>
+                        </div>
+                        <div class="pers-info__item">
+                            <div class="form-input__title">@Resources.Resource.edit_newpass_more</div>
+                            <div class="form-input-wrapper">
+                                @Html.PasswordFor(m => m.NewPasswordConfirm, new { @class = "form-input form-input__password" })
+                                <div class="form-input__underlined"></div>
+                                <i class="form-input__icon form-input__icon-password fas fa-lock"></i>
+                                <div class="error-message password__error-message" style="display: none;">@Resources.Resource.edit_newpass_more_err.</div>
+                            </div>
+                        </div>
+                        <div class="edit-pers-info__button">
+                            <button class="profile-save" type="submit">@Resources.Resource.edit_submit</button>
+                            <button class="profile-cancel" onclick="location.reload()">@Resources.Resource.edit_cancel</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

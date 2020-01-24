@@ -1,0 +1,22 @@
+﻿@model TechnoTent.Models.ViewModel.ItemsVM
+
+@section PartialHeader
+{
+
+}
+
+@if (Model.ItemsCount != 0)
+{
+    <button type="submit" class=""><span>Показать</span> (@Model.ItemsCount)</button>
+    <i class="fas fa-times filter-counter__close"></i>
+}
+else
+{
+    <button type="button" class=""><span>Показать</span> (@Model.ItemsCount)</button>
+    <i class="fas fa-times filter-counter__close"></i>
+}
+
+@section PartialFooter
+{
+
+}

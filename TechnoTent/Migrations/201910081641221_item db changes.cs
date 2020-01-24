@@ -1,0 +1,18 @@
+namespace TechnoTent.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class itemdbchanges : DbMigration
+    {
+        public override void Up()
+        {
+            AddColumn("dbo.DbItems", "StockPrice", c => c.Double(nullable: false));
+        }
+        
+        public override void Down()
+        {
+            DropColumn("dbo.DbItems", "StockPrice");
+        }
+    }
+}

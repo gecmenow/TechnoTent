@@ -1,0 +1,28 @@
+﻿@model TechnoTent.Models.ViewModel.OrderVM
+
+@{
+    Layout = null;
+}
+<ul class="city__list">
+    @foreach (var city in Model.NovaPoshtaCities)
+    {
+        <li class="city__item" data-city="@city.Key">@city.Value</li>
+    }
+</ul>
+
+<script>
+    $(".city__item").click(function(){
+        $(".form-input__city").val($(this).html());
+        $(".form-input__city").attr("data-city", $(this).attr("data-city"));        
+        $(".city__list").remove();
+    });
+    if ($(".main").find(".checkout").length == 1) {
+        $(document).click(function (e) {
+            if ($("#city").find(".city__list").length == 1) {
+                if (!$("form-input__city").is(e.target) && !$(".city__list").is(e.target)) {
+                    $(".city__list").remove();
+                }
+            }
+        });
+    }
+</script>

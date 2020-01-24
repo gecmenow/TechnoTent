@@ -1,0 +1,154 @@
+﻿@model TechnoTent.Models.ViewModel.Admin.AdminStocksVM
+
+@section AdminHeader
+{
+    <header class="admin-header">
+        <a href="/" class="admin-header__logo">
+            <span class="logo-lg"><b>Админ</b> панель</span>
+        </a>
+        <nav class="navbar-header-top">
+            <a href="#" class="settings navbar-header__toggle"><i class="fa fa-cogs" aria-hidden="true"></i></a>
+            <ul class="navbar-header__list" style="display: none;">
+                <li class="navbar-header__item">
+                    <a href="/admin"><i class="fas fa-cog"><span>Настройки</span></i></a>
+                </li>
+                <li class="navbar-header__item">
+                    <a href="/admin/logout"><i class="fas fa-sign-out-alt"><span>Выйти</span></i></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+}
+<main class="main-admin">
+    <aside class="admin-sidebar">
+        <section class="sidebar">
+            <ul class="sidebar__list" data-widget="tree">
+                <li class="sidebar__item" style="height: 37px;"></li>
+                <li class="sidebar__item">
+                    <a class="sidebar__item-link" href="/admin/mainImages">
+                        <i class="fas fa-images"></i>
+                        <span>Нстройки галереи</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a class="sidebar__item-link" href="/admin/orders">
+                        <i class="fas fa-book-open"></i>
+                        <span>Заказы</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a class="sidebar__item-link" href="/admin/categories">
+                        <i class="fas fa-list"></i>
+                        <span>Категории</span>
+                    </a>
+                </li>
+                @{
+                    Html.RenderAction("GetCategoriesAndSubCategoriesForAdmin", "Partial");
+                }
+                <li class="sidebar__item">
+                    <a class="sidebar__item-link" href="/admin/add/item/">
+                        <i class="fas fa-plus"></i>
+                        <span>Добавить товар</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a class="sidebar__item-link" href="/admin/news">
+                        <i class="far fa-newspaper"></i>
+                        <span>Статьи</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a class="sidebar__item-link" href="/admin/news/add">
+                        <i class="fas fa-plus"></i>
+                        <span>Добавить статью</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a class="sidebar__item-link" href="/admin/stocks">
+                        <i class="far fa-money-bill-alt"></i>
+                        <span>Акции</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a class="sidebar__item-link" href="/admin/stocks/add">
+                        <i class="fas fa-plus"></i>
+                        <span>Добавить акцию</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a class="sidebar__item-link" href="/admin/reviews">
+                        <i class="fas fa-comments"></i>
+                        <span>Отзывы</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </aside>
+    <div class="admin-content-wrapper">
+        <section class="admin-content-header">
+            <h1 class="admin-page__title">
+                Редактирование новости
+                <small></small>
+            </h1>
+        </section>
+        <section class="admin-content-main">
+            @using (Html.BeginForm("EditStocks", "AdminStocks", FormMethod.Post, new { @class = "articles-form", enctype = "multipart/form-data" }))
+            {
+                <div class="articles-form-group tab-button__list">
+                    <button type="button" class="tab-button__item btn btn-info">Русский</button>
+                    <button type="button" class="tab-button__item btn btn-light">Украинский</button>
+                    <button type="button" class="tab-button__item btn btn-light">Английский</button>
+                </div>
+                @Html.HiddenFor(m => m.Id)
+                <div class="articles-form-group-row">
+                    <div class="form-input-wrapper articles-form-group-column upload__img-wrapper">
+                        <label for="upload__img"><img class="articles-form__img" src="~/Content/images/news/@Model.Image"></label>
+                        <input class="upload__img" id="upload__img" type="file" name="upload">
+                    </div>
+                    <div class="form-input-wrapper input-wrapper__height">
+                        <div class="tab-element" style="position: static">
+                            <textarea class="form-textarea form-textarea__title" name="TitleRu" placeholder="Текст заголовка" required>@Model.TitleRu</textarea>
+                            <div class="form-input__underlined"></div>
+                            <i class="form-textarea__icon fas fa-comment"></i>
+                        </div>
+                        <div class="tab-element" style="position: absolute; visibility: hidden">
+                            <textarea class="form-textarea form-textarea__title" name="TitleUa" placeholder="Текст заголовка" required>@Model.TitleUa</textarea>
+                            <div class="form-input__underlined"></div>
+                            <i class="form-textarea__icon fas fa-comment"></i>
+                        </div>
+                        <div class="tab-element" style="position: absolute; visibility: hidden">
+                            <textarea class="form-textarea form-textarea__title" name="TitleEn" placeholder="Текст заголовка" required>@Model.TitleEn</textarea>
+                            <div class="form-input__underlined"></div>
+                            <i class="form-textarea__icon fas fa-comment"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="articles-form-group">
+                    <div class="tab-element" style="position: static">
+                        @Html.TextArea("TextRu", Model.Text, new { @class = "articles-form-textarea" })
+                        <div id="editor-container__one" class="editor-container">
+
+                        </div>
+                    </div>
+                    <div class="tab-element" style="position: absolute; visibility: hidden">
+                        @Html.TextArea("TextUa", Model.Text, new { @class = "articles-form-textarea" })
+                        <div id="editor-container__two" class="editor-container">
+
+                        </div>
+                    </div>
+                    <div class="tab-element" style="position: absolute; visibility: hidden">
+                        @Html.TextArea("TextEn", Model.Text, new { @class = "articles-form-textarea" })
+                        <div id="editor-container__three" class="editor-container">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-article__button">
+                    <button type="submit" class="btn btn-success">Сохранить статью</button>
+                    <a href="/admin/news" class="btn btn-secondary">Отмена<a>
+                </div>
+            }
+        </section>
+    </div>
+</main>
+<script src='~/Content/libs/quill/quill.js'></script>

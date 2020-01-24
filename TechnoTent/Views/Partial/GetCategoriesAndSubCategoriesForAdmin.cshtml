@@ -1,0 +1,24 @@
+﻿@model List<TechnoTent.Models.ViewModel.CategoriesVM>
+
+<li class="sidebar__item">
+    <div class="sidebar__item-link sidebar-link__current">
+        <i class="fas fa-box-open"></i>
+        <span>@Resources.Resource.partial_cat_title1</span>
+        <i class="fas fa-angle-down"></i>
+    </div>
+    <ul class="sidebar__item-dropdown" style="display: none;">
+        @foreach (var category in Model)
+        {
+            <li class="sidebar__item">
+                <a class="sidebar__item-link" href="/admin/items/@category.CategoryUrl">
+                    <i class="fas fa-circle"></i>@category.CategoryName
+                </a>
+            </li>
+        }
+        <li class="sidebar__item">
+            <a class="sidebar__item-link" href="/admin/items">
+                <i class="fas fa-circle"></i>Все товары
+            </a>
+        </li>
+    </ul>
+</li>

@@ -1,0 +1,150 @@
+﻿@model TechnoTent.Models.ViewModel.CartVM
+
+<script type="text/javascript" src="~/Content/libs/jquery/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        let focusoutQuantityInput = false;
+
+        $(".quantity-plus").click(function () {
+            let thisPlus = $(this);
+
+            ChangeQuantityClick(thisPlus);
+
+            totalCost(thisPlus);
+        });
+
+        $(".quantity-minus").click(function () {
+            let thisMinus = $(this);
+
+            ChangeQuantityClick(thisMinus);
+
+            totalCost(thisMinus);
+        });
+        $(".input_quantity-value").focusout(function () {              
+            let thisInput = $(this);
+
+            ChangeQuantityFocusout(thisInput);
+
+            totalCost(thisInput);
+        });
+
+        function totalCost(thisVal){
+            let productPrice = parseFloat(thisVal.parent().siblings(".cart-product-price").text());
+            console.log(productPrice);
+            let productQuantity;
+            let vendorCode;
+            let count;
+            if(thisVal.attr("class") == "input_quantity-value"){
+                productQuantity = thisVal.val();
+                vendorCode = thisVal.attr('data-id');
+            }
+            else{
+                productQuantity = parseFloat(thisVal.siblings(".input_quantity-value").val());
+                vendorCode = thisVal.siblings('.input_quantity-value').attr('data-id');
+            }
+            count = productQuantity;
+            
+            url = "@Url.Action("EditItemCount", "Cart")?vendorCode=" + vendorCode + "&count=" + count;
+            $('.decoy').load(url);
+
+            thisVal.parent().siblings(".cart-product-total-price").children(".price").html((productPrice*productQuantity).toFixed(2));
+            let priceArrya = $(".price").map(function(){return $(this).text();}).get();
+            let totalPrice = priceArrya.reduce(function(a, b) { return  (parseFloat(a) +  parseFloat(b)).toFixed(2); }, 0);
+            $(".total__price span").first().html(totalPrice);
+        }
+
+        $(".remove__product").click(function () {
+            var vendoreCode = $(this).attr("data-id");
+
+            url = "@Url.Action("RemoveFromCart", "Cart")?vendorCode=" + vendoreCode;
+
+            let count = parseFloat($('.header-cart__counter').text());
+
+            if (count == 1) {
+                $('.header-cart__counter').html(0);
+            }
+            else {
+                $('.header-cart__counter').html(count - 1);
+            }
+
+             $('#result').load(url);
+        });
+
+    })
+</script>
+<div id="result">
+    <main>
+        <section class="cart">
+            <div class="wrapper">
+                @if (Model.CartItems != null)
+                {
+                    <div class="cart-content">
+                        <div class="cart__list">
+                            <div class="cart__header">
+                                <div class="col-lg-6 col-md-6 col-sm-12">@Resources.Resource.cart_col1</div>
+                                <div class="col-lg-2 col-md-2 col-sm-12">@Resources.Resource.cart_col2</div>
+                                <div class="col-lg-2 col-md-2 col-sm-12">@Resources.Resource.cart_col3</div>
+                                <div class="col-lg-2 col-md-2 col-sm-12">@Resources.Resource.cart_col4</div>
+                            </div><!-- col-lg-6 col-md-6 col-xs-12 col-sm-12 -->
+                            @foreach (var cartItem in Model.CartItems)
+                            {
+                                <div class="cart__item">
+                                    <p class="col-lg-6 col-md-6 col-sm-12">
+                                        @if (cartItem.Image != null && cartItem.Image != "")
+                                        {
+                                            <a href="/product/@cartItem.NameUrl/@cartItem.VendorCode" class="cart__item-link"><img src="~/Content/images/items/@cartItem.Image" alt="@cartItem.Name" class="cart__item-image">@cartItem.Name</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="/product/@cartItem.NameUrl/@cartItem.VendorCode" class="cart__item-link"><img src="~/Content/images/no_image.svg" alt="@cartItem.Name" class="cart__item-image">@cartItem.Name</a>
+                                        }
+                                    </p>
+                                    <p class="col-lg-2 col-md-2 col-sm-12 cart-product-price">@cartItem.ItemPrice <span>@Resources.Resource.vallet.</span></p>
+                                    @if (cartItem.IndividualOrder)
+                                    {
+                                        <p class="col-lg-2 col-md-2 col-sm-12 cart-count">
+                                    
+                                            <span class="individual-item" data-id="@cartItem.VendorCode">@cartItem.ItemCount</span> <!-- тип: piece - поштучно / area - м2    || value зависит от типа товара-->
+                                    
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p class="col-lg-2 col-md-2 col-sm-12 cart-count">
+                                            <button type="button" class="change-quantity quantity-minus" title="@Resources.Resource.item_down">
+                                                <svg width="10" height="15.53" viewBox="0 0 10 15.53">
+                                                    <path class="btn-in__path" d="M0.16,7.31L7.31,0.16A0.49,0.49,0,0,1,7.77,0a1.09,1.09,0,0,1,.46.15L9.85,1.78a0.82,0.82,0,0,1,.15.46,1.09,1.09,0,0,1-.15.46L4.7,7.85l5.15,5a1.09,1.09,0,0,1,.15.46,1.09,1.09,0,0,1-.15.46L8.23,15.38a1.09,1.09,0,0,1-.46.15,1.09,1.09,0,0,1-.46-0.15L0.16,8.23A0.49,0.49,0,0,1,0,7.77,1.09,1.09,0,0,1,.16,7.31Z"></path>
+                                                </svg>
+                                            </button>
+                                            <input type="text" name="quantity" class="input_quantity-value" value="@cartItem.ItemCount" data-type="area" data-width="@cartItem.MinOrderQuantity.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)" data-id="@cartItem.VendorCode"> <!-- тип: piece - поштучно / area - м2    || value зависит от типа товара-->
+                                            <button type="button" class="change-quantity quantity-plus" title="@Resources.Resource.item_up">
+                                                <svg class="btn-in__icon" width="10" height="15.53" viewBox="0 0 10 15.53">
+                                                    <path class="btn-in__path" d="M9.84,8.22L2.69,15.37a0.49,0.49,0,0,1-.46.15,1.09,1.09,0,0,1-.46-0.15L0.15,13.76A0.82,0.82,0,0,1,0,13.3a1.09,1.09,0,0,1,.15-0.46L5.3,7.69l-5.15-5A1.09,1.09,0,0,1,0,2.23,1.09,1.09,0,0,1,.15,1.77L1.77,0.15A1.09,1.09,0,0,1,2.23,0a1.09,1.09,0,0,1,.46.15L9.84,7.3a0.49,0.49,0,0,1,.15.46A1.09,1.09,0,0,1,9.84,8.22Z"></path>
+                                                </svg>
+                                            </button>
+                                        </p>
+                                    }
+                                    <p class="col-lg-2 col-md-2 col-sm-12 cart-product-total-price ">
+                                        <span class="price">@cartItem.ItemTotalPrice</span> <span>@Resources.Resource.vallet.</span>
+                                        <button class="remove__product" data-id="@cartItem.VendorCode"><i class="fas fa-trash"></i></button>
+                                    </p>
+                                </div>
+                            }
+                        </div>
+                        <h3 class="total__price">@Resources.Resource.cart_total_price: <span>@Model.TotalCost</span> <span>@Resources.Resource.vallet.</span></h3>
+                        <a href="/order" class="order__button">@Resources.Resource.cart_checkout</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="cart__empty">
+                        <!-- для пустой корзины -->
+                        <img src="~/Content/images/cart.svg" alt="Корзина" title="Корзина магазина Техно Тент">
+                        @Resources.Resource.cart_empty
+                    </div>
+                }
+            </div>
+        </section>
+    </main>
+    <div class="decoy" style="display:none"></div>
+</div>

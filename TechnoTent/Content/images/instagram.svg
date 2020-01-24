@@ -1,0 +1,52 @@
+<svg width="551.034" height="551.034" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient y2="0.007767" x2="0.5" y1="0.997089" x1="0.5" id="SVGID_1_">
+   <stop stop-color="#E09B3D" offset="0"/>
+   <stop stop-color="#C74C4D" offset="0.3"/>
+   <stop stop-color="#C21975" offset="0.6"/>
+   <stop stop-color="#7024C4" offset="1"/>
+  </linearGradient>
+  <linearGradient y2="-0.451597" x2="0.5" y1="1.460989" x1="0.5" id="SVGID_2_">
+   <stop stop-color="#E09B3D" offset="0"/>
+   <stop stop-color="#C74C4D" offset="0.3"/>
+   <stop stop-color="#C21975" offset="0.6"/>
+   <stop stop-color="#7024C4" offset="1"/>
+  </linearGradient>
+  <linearGradient y2="-1.400293" x2="0.5" y1="6.581405" x1="0.5" id="SVGID_3_">
+   <stop stop-color="#E09B3D" offset="0"/>
+   <stop stop-color="#C74C4D" offset="0.3"/>
+   <stop stop-color="#C21975" offset="0.6"/>
+   <stop stop-color="#7024C4" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect id="svg_22" height="60" width="416" y="445.954498" x="65.016998" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#ffffff"/>
+  <rect id="svg_21" height="62" width="404" y="33.954498" x="73.016998" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#ffffff"/>
+  <rect stroke="#000" id="svg_20" height="378.000005" width="463.999997" y="87.95449" x="51.017" stroke-width="0" fill="#ffffff"/>
+  <g id="svg_1">
+   <path id="svg_2" fill="url(#SVGID_1_)" d="m386.878,0l-222.722,0c-90.516,0 -164.156,73.64 -164.156,164.156l0,222.722c0,90.516 73.64,164.156 164.156,164.156l222.722,0c90.516,0 164.156,-73.64 164.156,-164.156l0,-222.722c-0.001,-90.516 -73.641,-164.156 -164.156,-164.156zm108.722,386.878c0,60.045 -48.677,108.722 -108.722,108.722l-222.722,0c-60.045,0 -108.722,-48.677 -108.722,-108.722l0,-222.722c0,-60.046 48.677,-108.722 108.722,-108.722l222.722,0c60.045,0 108.722,48.676 108.722,108.722l0,222.722l0,0z"/>
+   <path id="svg_3" fill="url(#SVGID_2_)" d="m275.517,133c-78.584,0 -142.517,63.933 -142.517,142.516s63.933,142.517 142.517,142.517s142.517,-63.933 142.517,-142.517s-63.933,-142.516 -142.517,-142.516zm0,229.6c-48.095,0 -87.083,-38.988 -87.083,-87.083s38.989,-87.083 87.083,-87.083c48.095,0 87.083,38.988 87.083,87.083c0,48.094 -38.989,87.083 -87.083,87.083z"/>
+   <circle id="svg_4" fill="url(#SVGID_3_)" r="34.15" cy="134.07" cx="418.31"/>
+  </g>
+  <g id="svg_5"/>
+  <g id="svg_6"/>
+  <g id="svg_7"/>
+  <g id="svg_8"/>
+  <g id="svg_9"/>
+  <g id="svg_10"/>
+  <g id="svg_11"/>
+  <g id="svg_12"/>
+  <g id="svg_13"/>
+  <g id="svg_14"/>
+  <g id="svg_15"/>
+  <g id="svg_16"/>
+  <g id="svg_17"/>
+  <g id="svg_18"/>
+  <g id="svg_19"/>
+ </g>
+</svg>

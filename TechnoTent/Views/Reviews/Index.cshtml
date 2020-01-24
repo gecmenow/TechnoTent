@@ -1,0 +1,84 @@
+﻿@model PagedList.IPagedList<TechnoTent.Models.ViewModel.ReviewVM>
+@using PagedList.Mvc;
+
+<main>
+    <section class="reviews">
+        <div class="wrapper reviews-wrapper">
+            <h2 class="page-title">@Resources.Resource.reviews_title</h2>
+            <div class="reviews-content">
+                <div class="reviews__list">
+                    <div class="reviews__item">
+                        @foreach (var review in Model)
+                        {
+                            <div class="reviews__item-wraper">
+                                <div class="review__q">
+                                </div>
+                                <div class="review review-listed">
+                                    <div class="review__header">
+                                        <div class="review__date"><i class="far fa-calendar-alt"></i>@review.DateTime.ToShortDateString()</div>
+                                        @if (review.Anonymous != true)
+                                        {<div class="review__author">@review.UserName</div>}
+                                        <div class="review__name">@review.Title</div>
+                                    </div>
+                                    <p class="review__content text">@review.Text</p>
+                                </div>
+                            </div>
+                            if (review.Answer != null)
+                            {
+                                <div class="reviews__reply">
+                                    <div class="reviews__reply-img">
+                                    </div>
+                                    <div class="review-listed">
+                                        <div class="review__header">
+                                            <div class="review__date"><i class="far fa-calendar-alt"></i>@review.AnswerDateTime.ToShortDateString()</div>
+                                            <div class="review__author">@Resources.Resource.review_author</div>
+                                        </div>
+                                        <p class="review__content text">@review.Answer</p>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                @if (Context.User.Identity.IsAuthenticated)
+                {
+                    <h2 class="page-title">@Resources.Resource.review_post_ur_review</h2>
+                    using (Html.BeginForm("Index", "Reviews", FormMethod.Post, new { @class = "reviews-form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <div class="form-header">
+                            <div class="form-left">
+                                <div class="form-input-wrapper">
+                                    <input class="form-input form-input__title" type="text" name="Title" placeholder="Заголовок отзыва" autocomplete="off">
+                                    <div class="form-input__underlined"></div>
+                                    <i class="form-input__icon fas fa-quote-left"></i>
+                                </div>
+                                <div class="form-input-wrapper checkbox-wrapper">
+                                    <input type="checkbox" class="form-input__checkbox" id="form-input__checkbox" name="Anonymous" value="true">
+                                    <label for="form-input__checkbox">@Resources.Resource.review_post_anonym</label>
+                                </div>
+                            </div>
+                            <div class="form-right">
+                                <div class="form-input-wrapper input-wrapper__height">
+                                    <textarea class="form-textarea form-textarea__message" name="Text" placeholder="Что Вам понравилось?"></textarea>
+                                    <div class="form-input__underlined"></div>
+                                    <i class="form-textarea__icon fas fa-comment"></i>
+                                    <div class="error-message message__error-message" style="display: none;">@Resources.Resource.revew_post_msg.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="form-button" type="submit">@Resources.Resource.revew_post_send</button>
+                    }
+                }
+                else
+                {
+                    <div class="reviews__subtitle">
+                        @Resources.Resource.review_autorize
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</main>

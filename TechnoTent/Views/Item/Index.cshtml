@@ -1,0 +1,498 @@
+﻿@model TechnoTent.Models.ViewModel.ItemsVM
+
+<script type="text/javascript" src="~/Content/libs/jquery/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.add-to-cart, .product__add-to-cart').click(function () {
+            var vendorCode = $(this).attr("data-id");
+            let count;
+
+            if ($('.input_quantity-value').length > 0) {
+                count = $('.input_quantity-value').val();
+            }
+            else
+                count = $('.input-width').val() + "," + $('.input-height').val();
+
+            
+            url = "@Url.Action("AddToCart", "Cart")?vendorCode=" + vendorCode + "&count=" + count;
+            $('.decoy').load(url);
+
+            setTimeout(function () {
+                let cartCounter = $('.header-cart__counter');
+                let cartValue = document.cookie.match(new RegExp("(?:^|; )" + "ic".replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+                if (cartValue !== null) {
+                    cartCounter.text(cartValue[1]);
+                }
+                else {
+                    cartCounter.text("0");
+                }
+            }, 250);
+        });
+    })
+</script>
+
+<main>
+    <section class="product-card">
+        <div class="wrapper">
+            <div class="breadcrumb-holder">
+                <ul class="basic-breadcrumbs">
+                    <li><span class="basic-breadcrumbs__link">@Resources.Resource.item_route1</span></li>
+                    <li><a href="/category/@Model.CategoryUrl" class="basic-breadcrumbs__link">@Model.CategoryName</a></li>
+                    <li><span class="basic-breadcrumbs__link">@Model.Name</span></li>
+                </ul>
+            </div>
+            <div class="product-card__title-wrapper">
+                <h2 class="product-card__title">@Model.Name</h2>
+                <div class="product-card__code">
+                    @Resources.Resource.item_code: &#8470 <span class="detail-code">@Model.VendorCode</span>
+                </div>
+            </div>
+            <div class="product-card-content">
+                <div class="col-lg-5 col-md-5 col-xs-12 col-sm-12">
+                    <div class="fotorama" data-allowfullscreen="native" data-stopautoplayontouch="true" data-arrows="true" data-click="true" data-nav="thumbs" data-loop="true" data-swipe="true" data-maxheight="350" data-maxwidth="350">
+                        <!--   data-autoplay="true"-->
+                        @if (Model.Image1 != null || Model.Image1 != "")
+                        {
+                            <img src="~/Content/images/items/@Model.Image1">
+                        }
+
+                        @if (Model.Image2 != null || Model.Image2 != "")
+                        {
+                            <img src="~/Content/images/items/@Model.Image2">
+                        }
+
+                        @if (Model.Image3 != null || Model.Image3 != "")
+                        {
+                            <img src="~/Content/images/items/@Model.Image3">
+                        }
+
+                        @if (Model.Image4 != null || Model.Image4 != "")
+                        {
+                            <img src="~/Content/images/items/@Model.Image4">
+                        }
+                    </div>
+                    @if (Model.IsStock == true)
+                    {
+                        <div class="auction__item">
+                            @Resources.Resource.item_stock
+                        </div>
+                    }
+                </div>
+                @if (Model.IndividualOrder)
+                {
+                    <div class="col-lg-4 col-md-5 col-xs-12 col-sm-12">
+                        <div class="product-price__wrapper">
+                            <div class="price__text">@Resources.Resource.item_price</div>
+                            <div class="price__content">
+                                @if (!Model.IsStock)
+                                {
+                                    <div class="product__price price__old" data-old-price="100">@Model.Price
+                                    <span>@Resources.Resource.vallet_item_type</span></div><!-- <span>грн./кв.м</span> -->
+                                }
+                                else
+                                {
+                                    <div class="product__price" data-price="30">@Model.StockPrice <span>@Resources.Resource.vallet_item_type</span></div>
+                                }
+                            </div>
+                        </div>
+                        <div class="product-price__discount">
+                            @Resources.Resource.item_stock_text: <span class="discount-value"></span><span>@Resources.Resource.vallet.</span>
+                        </div>
+                        <div class="product-count">
+                            <div class="product-count__title">@Resources.Resource.item_width:</div>
+                            <div class="product-count__content">
+                                <button type="button" class="change-size size-minus" title="@Resources.Resource.item_down">
+                                    <svg width="10" height="15.53" viewBox="0 0 10 15.53">
+                                        <path class="btn-in__path" d="M0.16,7.31L7.31,0.16A0.49,0.49,0,0,1,7.77,0a1.09,1.09,0,0,1,.46.15L9.85,1.78a0.82,0.82,0,0,1,.15.46,1.09,1.09,0,0,1-.15.46L4.7,7.85l5.15,5a1.09,1.09,0,0,1,.15.46,1.09,1.09,0,0,1-.15.46L8.23,15.38a1.09,1.09,0,0,1-.46.15,1.09,1.09,0,0,1-.46-0.15L0.16,8.23A0.49,0.49,0,0,1,0,7.77,1.09,1.09,0,0,1,.16,7.31Z"></path>
+                                    </svg>
+                                </button>
+                                <input type="text" name="size" class="input_size-value input-width" value="1">
+                                <button type="button" class="change-size size-plus" title="@Resources.Resource.item_up">
+                                    <svg class="btn-in__icon" width="10" height="15.53" viewBox="0 0 10 15.53">
+                                        <path class="btn-in__path" d="M9.84,8.22L2.69,15.37a0.49,0.49,0,0,1-.46.15,1.09,1.09,0,0,1-.46-0.15L0.15,13.76A0.82,0.82,0,0,1,0,13.3a1.09,1.09,0,0,1,.15-0.46L5.3,7.69l-5.15-5A1.09,1.09,0,0,1,0,2.23,1.09,1.09,0,0,1,.15,1.77L1.77,0.15A1.09,1.09,0,0,1,2.23,0a1.09,1.09,0,0,1,.46.15L9.84,7.3a0.49,0.49,0,0,1,.15.46A1.09,1.09,0,0,1,9.84,8.22Z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-count">
+                            <div class="product-count__title">@Resources.Resource.item_height:</div>
+                            <div class="product-count__content">
+                                <button type="button" class="change-size size-minus" title="@Resources.Resource.item_down">
+                                    <svg width="10" height="15.53" viewBox="0 0 10 15.53">
+                                        <path class="btn-in__path" d="M0.16,7.31L7.31,0.16A0.49,0.49,0,0,1,7.77,0a1.09,1.09,0,0,1,.46.15L9.85,1.78a0.82,0.82,0,0,1,.15.46,1.09,1.09,0,0,1-.15.46L4.7,7.85l5.15,5a1.09,1.09,0,0,1,.15.46,1.09,1.09,0,0,1-.15.46L8.23,15.38a1.09,1.09,0,0,1-.46.15,1.09,1.09,0,0,1-.46-0.15L0.16,8.23A0.49,0.49,0,0,1,0,7.77,1.09,1.09,0,0,1,.16,7.31Z"></path>
+                                    </svg>
+                                </button>
+                                <input type="text" name="size" class="input_size-value input-height" value="1">
+                                <button type="button" class="change-size size-plus" title="@Resources.Resource.item_up">
+                                    <svg class="btn-in__icon" width="10" height="15.53" viewBox="0 0 10 15.53">
+                                        <path class="btn-in__path" d="M9.84,8.22L2.69,15.37a0.49,0.49,0,0,1-.46.15,1.09,1.09,0,0,1-.46-0.15L0.15,13.76A0.82,0.82,0,0,1,0,13.3a1.09,1.09,0,0,1,.15-0.46L5.3,7.69l-5.15-5A1.09,1.09,0,0,1,0,2.23,1.09,1.09,0,0,1,.15,1.77L1.77,0.15A1.09,1.09,0,0,1,2.23,0a1.09,1.09,0,0,1,.46.15L9.84,7.3a0.49,0.49,0,0,1,.15.46A1.09,1.09,0,0,1,9.84,8.22Z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="product__add-to-cart" data-id="@Model.VendorCode" title=" @Resources.Resource.item_add_to_cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            @Resources.Resource.item_add_to_cart
+                        </button>
+                        <div class="product-buy-info__list">
+                            <button class="product-buy-info__item">
+                                <svg width="28" height="20.1" viewBox="0 0 28 20.1">
+                                    <path class="spl-item__path" d="M25.3,0H2.7C1.2,0,0,1.2,0,2.7v14.6c0,1.5,1.2,2.7,2.7,2.7h22.5c1.5,0,2.7-1.2,2.7-2.7V2.7C28,1.2,26.8,0,25.3,0z
+                                                                 M26.2,17.3c0,0.5-0.4,0.9-0.9,0.9H2.7c-0.5,0-0.9-0.4-0.9-0.9V9.1h24.3L26.2,17.3L26.2,17.3z M26.2,7.3H1.8V5.5h24.3L26.2,7.3
+                                                                L26.2,7.3z M26.2,3.7H1.8V2.7c0-0.5,0.4-0.9,0.9-0.9h22.5c0.5,0,0.9,0.4,0.9,0.9V3.7z"></path>
+                                    <path class="spl-item__path" d="M11.9,11H4.6c-0.5,0-0.9,0.4-0.9,0.9v3.7c0,0.5,0.4,0.9,0.9,0.9h7.3c0.5,0,0.9-0.4,0.9-0.9v-3.7
+                                                                C12.8,11.4,12.4,11,11.9,11z M11,14.6H5.5v-1.8H11V14.6z"></path>
+                                    <path class="spl-item__path" d="M23.5,11.8c-0.9-0.9-2.3-1-3.3-0.4c-0.4-0.2-0.9-0.4-1.4-0.4c-0.9,0-1.7,0.4-2.2,1.1c-0.5,0.7-0.7,1.6-0.4,2.5
+                                                                c0.3,0.8,0.9,1.5,1.8,1.8c0.3,0.1,0.6,0.1,0.8,0.1c0.5,0,1-0.1,1.4-0.4c0.7,0.4,1.5,0.5,2.2,0.2c0.8-0.3,1.5-0.9,1.7-1.7
+                                                                C24.5,13.6,24.3,12.5,23.5,11.8z M18.6,14.6c-0.3-0.1-0.5-0.3-0.6-0.6c-0.1-0.4,0-0.7,0.1-0.8c0.2-0.2,0.4-0.4,0.7-0.4
+                                                                c0,0,0.1,0,0.1,0c0,0,0,0,0,0c-0.2,0.6-0.2,1.2,0,1.8C18.9,14.6,18.7,14.6,18.6,14.6z M21.9,14.6c-0.5,0.2-0.8-0.1-1-0.2
+                                                                c-0.5-0.5-0.3-1.3,0.3-1.5c0.4-0.1,0.7,0,1,0.2C22.7,13.5,22.5,14.4,21.9,14.6z"></path>
+                                </svg>
+                                <div class="spl-item__text">@Resources.Resource.item_payment</div>
+                            </button>
+                            <button class="product-buy-info__item">
+                                <svg width="28" height="21.9" viewBox="0 0 28 21.9">
+                                    <path class="spl-item__path" d="M27.1,0H11.9C11.4,0,11,0.4,11,0.9v2.7c-0.9,0-5.4,0-6.4,0c-1.5,0-2.7,1.2-2.7,2.7c0,0.6,0,5.9,0,6.5
+                                                        C0.8,13.3,0,14.3,0,15.5v3.7c0,0.5,0.4,0.9,0.9,0.9h2.6c0.4,1.1,1.4,1.8,2.6,1.8s2.2-0.8,2.6-1.8h11c0.4,1.1,1.4,1.8,2.6,1.8
+                                                        s2.2-0.8,2.6-1.8h2.3c0.5,0,0.9-0.4,0.9-0.9v-5.5V0.9C28,0.4,27.6,0,27.1,0z M3.7,6.4c0-0.5,0.4-0.9,0.9-0.9h2.7v3.7H3.7V6.4z
+                                                         M3.7,11h4.6c0.5,0,0.9-0.4,0.9-0.9V5.5H11v7.3H3.7V11z M6.1,20.1c-0.5,0-0.9-0.4-0.9-0.9c0-0.5,0.4-0.9,0.9-0.9S7,18.7,7,19.2
+                                                        S6.6,20.1,6.1,20.1z M11,18.3H8.7c-0.4-1.1-1.4-1.8-2.6-1.8s-2.2,0.8-2.6,1.8H1.8v-2.7c0-0.5,0.4-0.9,0.9-0.9H11V18.3z M22.2,20.1
+                                                        c-0.5,0-0.9-0.4-0.9-0.9c0,0,0,0,0,0s0,0,0,0c0-0.5,0.4-0.9,0.9-0.9c0.5,0,0.9,0.4,0.9,0.9S22.7,20.1,22.2,20.1z M26.2,18.3h-1.4
+                                                        c-0.4-1.1-1.4-1.8-2.6-1.8c-1.2,0-2.2,0.8-2.6,1.8h-6.9v-3.7h13.4L26.2,18.3L26.2,18.3z M26.2,12.8H12.8c0-0.6,0-10.3,0-11h13.4
+                                                        V12.8z"></path>
+                                    <path class="spl-item__path" d="M23.4,3.7H18c-0.5,0-0.9,0.4-0.9,0.9s0.4,0.9,0.9,0.9h5.5c0.5,0,0.9-0.4,0.9-0.9S23.9,3.7,23.4,3.7z"></path>
+                                    <path class="spl-item__path" d="M23.4,7.3h-3.7c-0.5,0-0.9,0.4-0.9,0.9c0,0.5,0.4,0.9,0.9,0.9h3.7c0.5,0,0.9-0.4,0.9-0.9C24.3,7.7,23.9,7.3,23.4,7.3z"></path>
+                                </svg>
+                                <div class="spl-item__text">@Resources.Resource.item_delivery</div>
+                            </button>
+                        </div>
+                    </div>
+                }
+                else
+                {
+            <div class="col-lg-4 col-md-5 col-xs-12 col-sm-12">
+                <div class="product-price__wrapper">
+                    <div class="price__text">@Resources.Resource.item_price</div>
+                    <div class="price__content">
+                        @if (Model.PriceUndefined != null)
+                        {
+                            <div class="product__price" data-price="@Model.PriceUndefined">@Model.PriceUndefined</div>
+                        }
+                        else
+                        {
+                            if (Model.IsStock == true)
+                            {
+                                <div class="product__price price__old" data-old-price="@Model.StockPrice">@Model.StockPrice <span>@Resources.Resource.vallet.</span></div><!-- <span>грн./кв.м</span> -->
+                            }
+                            else
+                            {
+                                <div class="product__price" data-price="@Model.Price">@Model.Price <span>@Resources.Resource.vallet.</span></div>
+                            }
+                        }
+                    </div>
+                </div>
+                @if (Model.IsStock == true)
+                {
+                    <div class="product-price__discount">
+                        @Resources.Resource.item_stock_text: <span class="discount-value"></span>@Model.Price<span>@Resources.Resource.vallet.</span>
+                    </div>
+                }
+                @if (Model.PriceUndefined == null)
+                {
+                    <div class="product-count">
+                        <div class="product-count__title">@Resources.Resource.item_count:</div>
+                        <div class="product-count__content">
+                            <button type="button" class="change-quantity quantity-minus" title="@Resources.Resource.item_down">
+                                <svg width="10" height="15.53" viewBox="0 0 10 15.53">
+                                    <path class="btn-in__path" d="M0.16,7.31L7.31,0.16A0.49,0.49,0,0,1,7.77,0a1.09,1.09,0,0,1,.46.15L9.85,1.78a0.82,0.82,0,0,1,.15.46,1.09,1.09,0,0,1-.15.46L4.7,7.85l5.15,5a1.09,1.09,0,0,1,.15.46,1.09,1.09,0,0,1-.15.46L8.23,15.38a1.09,1.09,0,0,1-.46.15,1.09,1.09,0,0,1-.46-0.15L0.16,8.23A0.49,0.49,0,0,1,0,7.77,1.09,1.09,0,0,1,.16,7.31Z"></path>
+                                </svg>
+                            </button>
+                            @if (Model.ProductBuyTypeMeter == false)
+                            {
+                                <input type="text" name="quantity" class="input_quantity-value" value="1" data-width="1" data-type="piece"> <!-- тип: piece - поштучно / area - м2    || value зависит от типа товара-->
+                            }
+                            else
+                            {
+                                <input type="text" name="quantity" class="input_quantity-value" value="@Model.Width" data-width="@Model.Width" data-type="area">
+                            }
+                            <button type="button" class="change-quantity quantity-plus" title="@Resources.Resource.item_up">
+                                <svg class="btn-in__icon" width="10" height="15.53" viewBox="0 0 10 15.53">
+                                    <path class="btn-in__path" d="M9.84,8.22L2.69,15.37a0.49,0.49,0,0,1-.46.15,1.09,1.09,0,0,1-.46-0.15L0.15,13.76A0.82,0.82,0,0,1,0,13.3a1.09,1.09,0,0,1,.15-0.46L5.3,7.69l-5.15-5A1.09,1.09,0,0,1,0,2.23,1.09,1.09,0,0,1,.15,1.77L1.77,0.15A1.09,1.09,0,0,1,2.23,0a1.09,1.09,0,0,1,.46.15L9.84,7.3a0.49,0.49,0,0,1,.15.46A1.09,1.09,0,0,1,9.84,8.22Z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                }
+                @if (Model.PriceUndefined == null)
+                {
+                    <button type="button" class="product__add-to-cart" data-id="@Model.VendorCode" title="@Resources.Resource.item_add_to_cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        @Resources.Resource.item_add_to_cart
+                    </button>
+                }
+                else
+                {
+                    <div class="header-backcall">
+                        <i title="Заказать обратный звонок" class="fas fa-headphones-alt backcall-toggle"></i>
+                        <p title="Заказать обратный звонок" class="backcall__text backcall-toggle">@Resources.Resource.layout_backCall?</p>
+                    </div>
+                }
+
+                <div class="product-buy-info__list">
+                    <button class="product-buy-info__item">
+                        <svg width="28" height="20.1" viewBox="0 0 28 20.1">
+                            <path class="spl-item__path" d="M25.3,0H2.7C1.2,0,0,1.2,0,2.7v14.6c0,1.5,1.2,2.7,2.7,2.7h22.5c1.5,0,2.7-1.2,2.7-2.7V2.7C28,1.2,26.8,0,25.3,0z
+                                                                 M26.2,17.3c0,0.5-0.4,0.9-0.9,0.9H2.7c-0.5,0-0.9-0.4-0.9-0.9V9.1h24.3L26.2,17.3L26.2,17.3z M26.2,7.3H1.8V5.5h24.3L26.2,7.3
+                                                                L26.2,7.3z M26.2,3.7H1.8V2.7c0-0.5,0.4-0.9,0.9-0.9h22.5c0.5,0,0.9,0.4,0.9,0.9V3.7z"></path>
+                            <path class="spl-item__path" d="M11.9,11H4.6c-0.5,0-0.9,0.4-0.9,0.9v3.7c0,0.5,0.4,0.9,0.9,0.9h7.3c0.5,0,0.9-0.4,0.9-0.9v-3.7
+                                                                C12.8,11.4,12.4,11,11.9,11z M11,14.6H5.5v-1.8H11V14.6z"></path>
+                            <path class="spl-item__path" d="M23.5,11.8c-0.9-0.9-2.3-1-3.3-0.4c-0.4-0.2-0.9-0.4-1.4-0.4c-0.9,0-1.7,0.4-2.2,1.1c-0.5,0.7-0.7,1.6-0.4,2.5
+                                                                c0.3,0.8,0.9,1.5,1.8,1.8c0.3,0.1,0.6,0.1,0.8,0.1c0.5,0,1-0.1,1.4-0.4c0.7,0.4,1.5,0.5,2.2,0.2c0.8-0.3,1.5-0.9,1.7-1.7
+                                                                C24.5,13.6,24.3,12.5,23.5,11.8z M18.6,14.6c-0.3-0.1-0.5-0.3-0.6-0.6c-0.1-0.4,0-0.7,0.1-0.8c0.2-0.2,0.4-0.4,0.7-0.4
+                                                                c0,0,0.1,0,0.1,0c0,0,0,0,0,0c-0.2,0.6-0.2,1.2,0,1.8C18.9,14.6,18.7,14.6,18.6,14.6z M21.9,14.6c-0.5,0.2-0.8-0.1-1-0.2
+                                                                c-0.5-0.5-0.3-1.3,0.3-1.5c0.4-0.1,0.7,0,1,0.2C22.7,13.5,22.5,14.4,21.9,14.6z"></path>
+                        </svg>
+                        <div class="spl-item__text">@Resources.Resource.item_payment</div>
+                    </button>
+                    <button class="product-buy-info__item">
+                        <svg width="28" height="21.9" viewBox="0 0 28 21.9">
+                            <path class="spl-item__path" d="M27.1,0H11.9C11.4,0,11,0.4,11,0.9v2.7c-0.9,0-5.4,0-6.4,0c-1.5,0-2.7,1.2-2.7,2.7c0,0.6,0,5.9,0,6.5
+                                                        C0.8,13.3,0,14.3,0,15.5v3.7c0,0.5,0.4,0.9,0.9,0.9h2.6c0.4,1.1,1.4,1.8,2.6,1.8s2.2-0.8,2.6-1.8h11c0.4,1.1,1.4,1.8,2.6,1.8
+                                                        s2.2-0.8,2.6-1.8h2.3c0.5,0,0.9-0.4,0.9-0.9v-5.5V0.9C28,0.4,27.6,0,27.1,0z M3.7,6.4c0-0.5,0.4-0.9,0.9-0.9h2.7v3.7H3.7V6.4z
+                                                         M3.7,11h4.6c0.5,0,0.9-0.4,0.9-0.9V5.5H11v7.3H3.7V11z M6.1,20.1c-0.5,0-0.9-0.4-0.9-0.9c0-0.5,0.4-0.9,0.9-0.9S7,18.7,7,19.2
+                                                        S6.6,20.1,6.1,20.1z M11,18.3H8.7c-0.4-1.1-1.4-1.8-2.6-1.8s-2.2,0.8-2.6,1.8H1.8v-2.7c0-0.5,0.4-0.9,0.9-0.9H11V18.3z M22.2,20.1
+                                                        c-0.5,0-0.9-0.4-0.9-0.9c0,0,0,0,0,0s0,0,0,0c0-0.5,0.4-0.9,0.9-0.9c0.5,0,0.9,0.4,0.9,0.9S22.7,20.1,22.2,20.1z M26.2,18.3h-1.4
+                                                        c-0.4-1.1-1.4-1.8-2.6-1.8c-1.2,0-2.2,0.8-2.6,1.8h-6.9v-3.7h13.4L26.2,18.3L26.2,18.3z M26.2,12.8H12.8c0-0.6,0-10.3,0-11h13.4
+                                                        V12.8z"></path>
+                            <path class="spl-item__path" d="M23.4,3.7H18c-0.5,0-0.9,0.4-0.9,0.9s0.4,0.9,0.9,0.9h5.5c0.5,0,0.9-0.4,0.9-0.9S23.9,3.7,23.4,3.7z"></path>
+                            <path class="spl-item__path" d="M23.4,7.3h-3.7c-0.5,0-0.9,0.4-0.9,0.9c0,0.5,0.4,0.9,0.9,0.9h3.7c0.5,0,0.9-0.4,0.9-0.9C24.3,7.7,23.9,7.3,23.4,7.3z"></path>
+                        </svg>
+                        <div class="spl-item__text">@Resources.Resource.item_delivery</div>
+                    </button>
+                </div>
+            </div>
+                }
+            </div>
+            <div class="product-card-desc">
+                <h2 class="product-card__title">@Resources.Resource.item_about</h2>
+                <ul class="product-card-desc__list">
+                    @if (@Model.Manufacturer != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_manuf</div></div>
+                            <div class="desc__value">@Model.Manufacturer</div>
+                        </li>
+                    }
+                    @if (@Model.TextileProductType != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_type</div></div>
+                            <div class="desc__value">@Model.TextileProductType</div>
+                        </li>
+                    }
+                    @if (@Model.Thread != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_thread</div></div>
+                            <div class="desc__value">@Model.Thread</div>
+                        </li>
+                    }
+                    @if (@Model.Specification != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_specification</div></div>
+                            <div class="desc__value">@Model.Specification</div>
+                        </li>
+                    }
+                    @if (@Model.TotalWeight != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_totalWeight</div></div>
+                            <div class="desc__value">@Model.TotalWeight</div>
+                        </li>
+                    }
+                    @if (@Model.Width != 0)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_width</div></div>
+                            <div class="desc__value">@Model.Width</div>
+                        </li>
+                    }
+                    @if (@Model.Winding != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_winding</div></div>
+                            <div class="desc__value">@Model.Winding</div>
+                        </li>
+                    }
+                    @if (@Model.Strength != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_strength</div></div>
+                            <div class="desc__value">@Model.Strength</div>
+                        </li>
+                    }
+                    @if (@Model.BreakingStrength != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_breakingStrength</div></div>
+                            <div class="desc__value">@Model.BreakingStrength</div>
+                        </li>
+                    }
+                    @if (@Model.AdhesionStrength != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_adhesionStrength</div></div>
+                            <div class="desc__value">@Model.AdhesionStrength</div>
+                        </li>
+                    }
+                    @if (@Model.Temperature != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_temperature</div></div>
+                            <div class="desc__value">@Model.Temperature</div>
+                        </li>
+                    }
+                    @if (@Model.Color != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_color</div></div>
+                            <div class="desc__value">@Model.Color</div>
+                        </li>
+                    }
+                    @if (@Model.CountryOfOrigin != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_countryOfOrigin</div></div>
+                            <div class="desc__value">@Model.CountryOfOrigin</div>
+                        </li>
+                    }
+                    @if (@Model.Season != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_season</div></div>
+                            <div class="desc__value">@Model.Manufacturer</div>
+                        </li>
+                    }
+                    @if (@Model.Material != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_material</div></div>
+                            <div class="desc__value">@Model.Material</div>
+                        </li>
+                    }
+                    @if (@Model.Density != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_dencity</div></div>
+                            <div class="desc__value">@Model.Density</div>
+                        </li>
+                    }
+                    @if (@Model.Size != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_size</div></div>
+                            <div class="desc__value">@Model.Size</div>
+                        </li>
+                    }
+                    @if (@Model.WarrantyPeriod != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_warrantyPeriod</div></div>
+                            <div class="desc__value">@Model.WarrantyPeriod</div>
+                        </li>
+                    }
+                    @if (@Model.PreparationTime != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_preparationTime</div></div>
+                            <div class="desc__value">@Model.PreparationTime</div>
+                        </li>
+                    }
+                    @if (@Model.SparesType != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_sparesType</div></div>
+                            <div class="desc__value">@Model.SparesType</div>
+                        </li>
+                    }
+                    @if (@Model.TextileProductType != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_textileProductType</div></div>
+                            <div class="desc__value">@Model.TextileProductType</div>
+                        </li>
+                    }
+                    @if (@Model.Description != null)
+                    {
+                        <li class="product-card-desc__item">
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_description</div></div>
+                            <div class="desc__value">@Model.Description</div>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="similar-product">
+                <h2 class="product-card__title">@Resources.Resource.item_similar</h2>
+                <ul class="catalog__list">
+                    @foreach (var items in Model.SimilarItems)
+                    {
+                        <li class="col-xs-12 col-sm-6 col-md-6 col-lg-3 ">
+                            <div class="catalog__item">
+                                <div class="catalog__item-wrapper">
+                                    <a class="catalog__item-link" href="/">
+                                        <img class="catalog__item-img" src="~/Content/images/items/@items.Image1">
+                                        <h3 class="catalog__item-title">@items.Name</h3>
+                                        <span class="catalog__item-price-wrapper">
+                                            @if (items.PriceUndefined == null)
+                                            {
+                                                <span class="catalog__item-price">@items.Price @Resources.Resource.vallet_to_meter</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="catalog__item-price">@items.PriceUndefined</span>
+                                            }
+                                            @if (items.IsStock != false)
+                                            {
+                                                <span class="catalog__item-price price__old">@items.StockPrice @Resources.Resource.vallet_to_meter</span>
+                                            }
+                                        </span>
+                                    </a>
+                                    @if (items.PriceUndefined == null)
+                                    {
+                                        <button class="add-to-cart" data-id="@items.VendorCode"><i class="fas fa-shopping-cart"></i>@Resources.Resource.item_to_cart</button>
+                                    }
+                                    else
+                                    {
+                                        <div class="header-backcall">
+                                            <i title="Заказать обратный звонок" class="fas fa-headphones-alt backcall-toggle"></i>
+                                            <p title="Заказать обратный звонок" class="backcall__text backcall-toggle">@Resources.Resource.layout_backCall?</p>
+                                        </div>
+                                    }
+
+                                    @if (items.IsStock != false)
+                                    {
+                                        <div class="auction__item">
+                                            @Resources.Resource.item_stock
+                                        </div>
+                                    }
+                                    <div class="catalog__item-extra-info-wrapper">
+                                        <div class="catalog__item-extra-info">
+                                            <div class="catalog__item-attr">
+                                                @Resources.Resource.item_code: @items.VendorCode
+                                            </div>
+                                            <div class="catalog__item-descr">
+                                                @Resources.Resource.item_description @items.Description
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+<div class="decoy"></div>

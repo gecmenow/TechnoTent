@@ -1,0 +1,197 @@
+﻿@model TechnoTent.Models.ViewModel.OrderVM
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        let cityKeydown;
+        let cityKeyup;
+
+        $(".form-input__city").on("input", function () {
+            if (this.value.match(/[^A-zА-яЁё]/g)) {
+                this.value = this.value.replace(/[^A-zА-яЁё]/g, '');
+            }
+        }).keydown(function () {
+            cityKeydown = this.value;
+        }).keyup(function () {
+            cityKeyup = this.value;
+            if (this.value.match(/[A-zА-яЁё]/g) && cityKeydown != cityKeyup) {
+                var city = $(this).val();
+                if ($(".form-input__delivery:checked").val() == "nova_pochta") {
+                    url = "@Url.Action("GetNPCities", "Order")?city=" + city;
+                    $('#city').load(url);
+                }
+                else if ($(".form-input__delivery:checked").val() == "in_time") {
+                    url = "@Url.Action("GetInTimeCities", "Order")?city=" + city;
+                    $('#city').load(url);
+                }
+
+                if (cityKeydown > cityKeyup) {
+                    $(".form-input__city").removeAttr("data-city");
+                    $("div .form-input__address").html("&#10240");
+                    $(".form-input__address").val("");
+                }
+            }
+            else if ($(this).val().length < 1) {
+                $(".city__list").remove();
+            }
+        });
+
+        $("#in_time").click(function () {
+            url = "@Url.Action("GetInTimeCities", "Order")?city=" + "";
+            $('#city').load(url);
+            $(".loader").show();
+            loadingBar();
+        });
+
+        function loadingBar() {
+            if ($("#city").find(".city__list").length == 1) {
+                $(".loader").hide();
+            } else {
+                setTimeout(loadingBar, 1000);
+            }
+        }
+
+        $("div.form-input__address").click(function(){
+            if($(".form-input__city").attr("data-city") !== undefined && $(".form-input__city").attr("data-city").length >= 1)
+            {
+                var cityId = $(".form-input__city").attr("data-city");
+                console.log(cityId);
+                if ($(".form-input__delivery:checked").val() == "nova_pochta") {
+                    url = "@Url.Action("GetNPCityPostOffice", "Order")?cityId=" + cityId;
+                    $('#postOffice').load(url);
+                }
+                else if ($(".form-input__delivery:checked").val() == "in_time") {
+                    url = "@Url.Action("GetInTimeCityPostOffice", "Order")?cityId=" + cityId;
+                    $('#postOffice').load(url);
+                }
+            }
+        });
+    })
+</script>
+
+
+<main class="main">
+    <section class="checkout">
+        <div class="wrapper">
+            <h2 class="page-title">@Resources.Resource.order_title</h2>
+            <div class="checkout-content">
+                @using (Html.BeginForm("Index", "Order", FormMethod.Post, new { @class = "checkout-form", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <h3 class="checkout-step__title"><span>1</span> </h3>
+                    <div class="form-section">
+                        <label>@Resources.Resource.order_form_name</label>
+                        <div class="form-input-wrapper">
+                            @Html.TextBoxFor(m => m.UserName, new { placeholder = @Resources.Resource.order_form_name_placeholder, @class = "form-input form-input__name", @type = "text" })
+                            <div class="form-input__underlined"></div>
+                            <i class="form-input__icon fas fa-user"></i>
+                            <div class="error-message name__error-message" style="display: none;">order_form_name_err</div>
+                        </div>
+                        <label>@Resources.Resource.order_form_tel</label>
+                        <div class="form-input-wrapper">
+                            @Html.TextBoxFor(m => m.UserPhone, new { placeholder = @Resources.Resource.order_form_tel_placeholder, @class = "form-input form-input__tel", @type = "tel" })
+                            <div class="form-input__underlined"></div>
+                            <i class="form-input__icon fas fa-phone"></i>
+                            <div class="error-message tel__error-message" style="display: none;">@Resources.Resource.order_form_tel_err</div>
+                        </div>
+                        <label>@Resources.Resource.order_form_email</label>
+                        <div class="form-input-wrapper">
+                            @Html.TextBoxFor(m => m.UserEmail, new { placeholder = @Resources.Resource.order_form_email_placeholder, @class = "form-input form-input__email", @type = "tel" })
+                            <div class="form-input__underlined"></div>
+                            <i class="form-input__icon fas fa-envelope"></i>
+                            <div class="error-message email__error-message" style="display: none;">@Resources.Resource.order_form_email_err.</div>
+                        </div>
+                    </div>
+                    <h3 class="checkout-step__title"><span>2</span>@Resources.Resource.order_form_delivery_title</h3>
+                    <div class="form-section">
+                        <label>@Resources.Resource.order_form_delivery:</label>
+                        <ul class="form-radio-button__list">
+                            <li class="form-radio-button__item">
+                                <input class="radio-input form-input__delivery" id="samovyvoz" type="radio" name="DeliveryMethod" value="samovyvoz" checked>
+                                <label class="radio-input-name" for="samovyvoz">@Resources.Resource.order_form_delivery1</label>
+                                <label class="radio-button--check" for="samovyvoz"></label>
+                            </li>
+                            <li class="form-radio-button__item">
+                                <input class="radio-input form-input__delivery" id="nova_pochta" type="radio" name="DeliveryMethod" value="nova_pochta">
+                                <label class="radio-input-name" for="nova_pochta">@Resources.Resource.order_form_delivery2</label>
+                                <label class="radio-button--check" for="nova_pochta"></label>
+                            </li>
+                            <li class="form-radio-button__item">
+                                <input class="radio-input form-input__delivery" id="in_time" type="radio" name="DeliveryMethod" value="in_time">
+                                <label class="radio-input-name" for="in_time">@Resources.Resource.order_form_delivery3</label>
+                                <label class="radio-button--check" for="in_time"></label>
+                            </li>
+                        </ul>
+                        <label>@Resources.Resource.order_form_payment:</label>
+                        <ul class="form-radio-button__list">
+                            <li class="form-radio-button__item">
+                                <input class="radio-input form-input__payment" id="no_cash" type="radio" name="PaymentMethod" value="no_cash" checked>
+                                <label class="radio-input-name" for="no_cash">@Resources.Resource.order_form_payment1</label>
+                                <label class="radio-button--check" for="no_cash"></label>
+                            </li>
+                            <li class="form-radio-button__item">
+                                <input class="radio-input form-input__payment" id="cash" type="radio" name="PaymentMethod" value="cash">
+                                <label class="radio-input-name" for="cash">@Resources.Resource.order_form_payment2</label>
+                                <label class="radio-button--check" for="cash"></label>
+                            </li>
+                        </ul>
+                    </div>
+                    <h3 class="checkout-step__title city" style="text-decoration: line-through;"><span>3</span>@Resources.Resource.order_form_delivery_address</h3>
+                    <div class="form-section city" style="display: none;">
+                        <label>@Resources.Resource.order_form_delivery_city</label>
+                        <div class="form-input-wrapper">
+                            <input class="form-input form-input__city" type="text" name="DeliveryCity" disabled autocomplete="off">
+                            <div class="form-input__underlined"></div>
+                            <i class="form-input__icon fas fa-city"></i>
+                            <div class="error-message city__error-message" style="display: none;">@Resources.Resource.order_form_delivery_city_choose</div>
+                            <div id="city" style="position:absolute; width:100%;"></div>
+                        </div>
+                        <label>@Resources.Resource.order_form_delivery_warehouse</label>
+                        <div class="form-input-wrapper">
+                            <input class="form-input form-input__address" type="text" name="DeliveryOffice" disabled autocomplete="off">
+                            <div class="form-input form-input__address">&#10240</div>
+                            <div class="form-input__underlined"></div>
+                            <i class="form-input__icon fas fa-store-alt"></i>
+                            <div class="error-message address__error-message" style="display: none;">@Resources.Resource.order_form_delivery_warehouse_choose</div>
+                            <div id="postOffice" style="position:absolute; width:100%;"></div>
+                        </div>
+                    </div>
+                }
+                <div class="bill">
+                    <div class="totall-bill">
+                        <h3 class="checkout-step__title">@Resources.Resource.order_total</h3>
+                        <div class="totall-bill-top">
+                            <div class="totall-bill-top__title">@Resources.Resource.order_to_paymnet</div>
+                            <div class="totall-bill-top__field">@Model.TotalPrice <span>@Resources.Resource.vallet</span></div>
+                        </div>
+                        <div class="confirmation">
+                            <button class="confirmation__button">@Resources.Resource.order_confirm</button>
+                        </div>
+                        <a href="/cart" class="check-edit-order">@Resources.Resource.order_edit_order</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<div class="loader" style="display: none;">
+    <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+    <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+        s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+        c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z" />
+
+    <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+        C22.32,8.481,24.301,9.057,26.013,10.047z">
+    <animateTransform attributeType="xml"
+                      attributeName="transform"
+                      type="rotate"
+                      from="0 20 20"
+                      to="360 20 20"
+                      dur="0.5s"
+                      repeatCount="indefinite" />
+
+        </path>
+      </svg>
+</div>

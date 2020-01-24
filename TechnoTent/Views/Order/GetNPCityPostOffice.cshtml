@@ -1,0 +1,30 @@
+﻿@model TechnoTent.Models.ViewModel.OrderVM
+
+@{
+    Layout = null;
+}
+<ul class="address__list">
+    @foreach (var postOffice in Model.NovaPoshtaCitiePostOffice)
+    {
+        <li class="address__item" data-address="@postOffice">@postOffice</li>
+    }
+</ul>
+
+<script>
+    $(".address__item").click(function(){
+        $("div.form-input__address").html($(this).html());
+        $(".form-input__address").val($(this).html());
+        $(".address__error-message").fadeOut(1000);
+        $(".form-input__address").attr("data-address", $(this).attr("data-address"));             
+        $(".address__list").remove();
+    });
+    if ($(".main").find(".checkout").length == 1) {
+        $(document).click(function (e) {
+            if ($("#postOffice").find(".address__list").length == 1) {
+                if (!$("form-input__address").is(e.target) && !$(".address__list").is(e.target)) {
+                    $(".address__list").remove();
+                }
+            }
+        });
+    }
+</script>

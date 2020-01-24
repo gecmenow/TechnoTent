@@ -1,0 +1,107 @@
+﻿
+@model TechnoTent.Models.ViewModel.FeedbackVM
+
+<section class="contacts">
+    <div class="wrapper">
+        <h2 class="page-title">@Resources.Resource.contacts</h2>
+        <div class="contacts-container">
+            <iframe class="map__point" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d754.829207132125!2d30.49256824632568!3d50.47959664266066!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf4f6c1b447d72280!2z0J7QntCeICLQotC10YXQvdC-INCi0LXQvdGCIiwgS2lldixVa3JhaW5l!5e0!3m2!1sru!2sua!4v1565478846233!5m2!1sru!2sua"></iframe>
+            <div class="contacts__list contacts__list--right" itemscope itemprop="address" itemtype="http://schema.org/PostalAddress">
+                <div class="contacts__item contacts-address">
+                    <i class="fas fa-map-marker-alt"></i><p>@Resources.Resource.contacts_country,  <span itemprop="addressLocality">@Resources.Resource.contacts_city2 </span> <span itemprop="streetAddress"> @Resources.Resource.contacts_address.</span></p>
+                </div>
+                <div class="contacts__item contacts-phones">
+                    <i class="fas fa-phone"></i>
+                    <ul class="contacts-phones__list">
+                        <li class="contacts-phones__item">
+                            <a href="tel:+380503388348" itemprop="telephone"><span>+38(050)338-83-48</span> - @Resources.Resource.contacts_tel1</a>
+                        </li>
+                        <li class="contacts-phones__item">
+                            <a href="tel:+380675761081" itemprop="telephone"><span>+38(067)576-10-81</span> - @Resources.Resource.contacts_tel1</a>
+                        </li>
+                        <li class="contacts-phones__item">
+                            <a href="tel:+380675761081" itemprop="telephone"><span>+38(067)353-40-87 </span> - @Resources.Resource.contacts_tel1</a>
+                        </li>
+                        <li class="contacts-phones__item">
+                            <a href="tel:+380503377327" itemprop="telephone"><span>+38(050)337-73-27</span> - @Resources.Resource.contacts_tel2</a>
+                        </li>
+                        <li class="contacts-phones__item" itemprop="telephone">
+                            <a href="tel:+380503377327"><span>+38(050)337-73-27</span> - @Resources.Resource.contacts_tel3</a>
+                        </li>
+                        <p title="Заказать обратный звонок" class="backcall-toggle">@Resources.Resource.contacts_backCall1 ? <span>@Resources.Resource.contacts_backCall2 !</span></p>
+                    </ul>
+                </div>
+                <div class="contacts__item contacts-phones__ite">
+                    <i class="fab fa-viber"></i>
+                    <a title="Viber" href="viber://add?number=0941402802" itemprop="telephone"><span>+38(094)140-28-02</span> - @Resources.Resource.contacts_tel4</a>
+                </div>
+                <div class="contacts__item working-time">
+                    <i class="far fa-clock"></i>
+                    <p>@Resources.Resource.contacts_dates</p>
+                </div>
+            </div>
+        </div>
+        <div class="contacts-container">
+            <div class="contacts__list contacts__list--left" itemscope itemprop="address" itemtype="http://schema.org/PostalAddress">
+                <div class="contacts__item contacts-address">
+                    <i class="fas fa-map-marker-alt"></i><p>@Resources.Resource.contacts_country,  <span itemprop="addressLocality">@Resources.Resource.contacts_city </span> <span itemprop="streetAddress"> @Resources.Resource.contacts_address1.</span></p>
+                </div>
+                <div class="contacts__item contacts-phones">
+                    <i class="fas fa-phone"></i>
+                    <ul class="contacts-phones__list">
+                        <li class="contacts-phones__item">
+                            <a href="tel:+3800954246215" itemprop="telephone"><span>+38(095)424-62-15</span> @Resources.Resource.contacts_tel2</a>
+                        </li>
+                        <p title="Заказать обратный звонок" class="backcall-toggle">@Resources.Resource.contacts_backCall1 ? <span>@Resources.Resource.contacts_backCall2 !</span></p>
+                    </ul>
+                </div>
+                <div class="contacts__item contacts-phones__ite">
+                    <i class="fab fa-viber"></i>
+                    <a title="Viber" href="viber://add?number=0941402802" itemprop="telephone"><span>+38(094)140-28-02</span> - @Resources.Resource.contacts_tel4</a>
+                </div>
+                <div class="contacts__item working-time">
+                    <i class="far fa-clock"></i>
+                    <p>@Resources.Resource.contacts_dates</p>
+                </div>
+            </div>
+            <iframe class="map__point" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2642.8928880321455!2d37.747761315245555!3d48.51611797925533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDMwJzU4LjAiTiAzN8KwNDQnNTkuOCJF!5e0!3m2!1sru!2sru!4v1497431788753"></iframe>
+        </div>
+        <h2 class="page-title">@Resources.Resource.contacts_feedback</h2>
+        @using (Html.BeginForm("Index", "Contacts", FormMethod.Post, new { @class = "feedback-form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="form-header">
+                <div class="form-input-wrapper">
+                    @Html.TextBoxFor(m => m.Name, new {  placeholder = @Resources.Resource.edit_name, @class = "form-input form-input__name", @type = "text" })
+                    @*<input class="form-input form-input__name" type="text" name="name" placeholder="Ваше имя и фамилия" autocomplete="off">*@
+                    <div class="form-input__underlined"></div>
+                    <i class="form-input__icon fas fa-user"></i>
+                    <div class="error-message name__error-message" style="display: none;">@Resources.Resource.contacts_form_name.</div>
+                </div>
+                <div class="form-input-wrapper">
+                    @Html.TextBoxFor(m => m.Email, new { placeholder = @Resources.Resource.edit_email, @class = "form-input form-input__email", @type = "email" })
+                    @*<input class="form-input form-input__email" type="email" name="email" placeholder="Ваша почта">*@
+                    <div class="form-input__underlined"></div>
+                    <i class="form-input__icon fas fa-envelope-open"></i>
+                    <div class="error-message email__error-message" style="display: none;">@Resources.Resource.contacts_form_email.</div>
+                </div>
+                <div class="form-input-wrapper">
+                    @Html.TextBoxFor(m => m.Tel, new { placeholder = @Resources.Resource.edit_tel, @class = "form-input form-input__tel", @type = "tel" })
+                    @*<input class="form-input form-input__tel" type="tel" name="tel" placeholder="Ваш номер телефона" autocomplete="off">*@
+                    <div class="form-input__underlined"></div>
+                    <i class="form-input__icon fas fa-phone"></i>
+                </div>
+                <div class="form-input-wrapper input-wrapper__height">
+                    @Html.TextAreaFor(m => m.Message, new { placeholder = @Resources.Resource.revew_post_msg, @class = "form-textarea form-textarea__message" })
+                    @*<textarea class="form-textarea form-textarea__message" name="message" placeholder="Текст сообщения"></textarea>*@
+                    <div class="form-input__underlined"></div>
+                    <i class="form-textarea__icon fas fa-comment"></i>
+                    <div class="error-message message__error-message" style="display: none;">@Resources.Resource.contacts_form_msg.</div>
+                </div>
+            </div>
+            <button class="form-button" type="submit">@Resources.Resource.contacts_form_send</button>
+        }
+    </div>
+</section>
+

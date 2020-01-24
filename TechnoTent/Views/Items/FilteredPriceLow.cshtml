@@ -1,0 +1,311 @@
+﻿@model PagedList.IPagedList<TechnoTent.Models.ViewModel.ItemsVM>
+@using PagedList.Mvc;
+
+<script type="text/javascript" src="~/Content/libs/jquery/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.add-to-cart').click(function () {
+            var vendorCode = $(this).attr("data-id");
+            var count = 1;
+            url = "@Url.Action("AddToCart", "Cart")?vendorCode=" + vendorCode + "&count=" + count;
+            $('.decoy').load(url);
+
+            setTimeout(function () {
+                let cartCounter = $('.header-cart__counter');
+                let cartValue = document.cookie.match(new RegExp("(?:^|; )" + "ic".replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+                if (cartValue !== null) {
+                    cartCounter.text(cartValue[1]);
+                }
+                else {
+                    cartCounter.text("0");
+                }
+            }, 250);
+        });
+
+        $(".filter-inp__item").click(function(){
+            setTimeout(function() {
+                var selectedCheckBoxesColor = document.querySelectorAll('.filter__item:nth-child(2) .form-input__checkbox:checked');
+                var selectedCheckBoxesBrand = document.querySelectorAll('.filter__item:nth-child(3) .form-input__checkbox:checked');
+                var checkedColor = Array.from(selectedCheckBoxesColor).map(cb => cb.value);
+                var checkedBrand = Array.from(selectedCheckBoxesBrand).map(cb => cb.value);
+                let category = location.pathname.split('/');
+                console.log(category);
+                category = category[2];
+                url = "@Url.Action("GetItemsCount", "Items")?category=" + category + "&filters=" + "" + "&subCategory=" + checkedBrand + "&colors=" + checkedColor;
+                $('.counter-js').load(url);
+            }, 0);
+        });
+
+
+        $(".header-backcall").click(function () {
+            backcallShow();
+        });
+
+    })
+</script>
+
+<main class="main">
+    @if (Model != null)
+    {
+        if (Model.Count != 0)
+        {
+            <section class="catalog">
+                <div class="wrapper">
+                    <div class="breadcrumb-holder">
+                        <ul class="basic-breadcrumbs">
+                            <li><span class="basic-breadcrumbs__link">@Resources.Resource.items_route1</span></li>
+                            @foreach (var category in Model)
+                            {
+                                <li><span class="basic-breadcrumbs__link">@category.CategoryName</span></li>
+                                break;
+                            }
+                        </ul>
+                    </div>
+                    <div class="catalog-contentainer">
+                        <h2 class="catalog__title">
+                            @foreach (var category in Model)
+                            {
+                                @category.CategoryName
+                                break;
+                            }
+                        </h2>
+                        <div class='sort-dropdown'>
+                            <span>@Resources.Resource.items_sort    </span>
+                            <div class='sort-toggle'>@Resources.Resource.items_sort_1</div>
+                            <ul class="sort__list">
+                                @foreach (var item in Model)
+                                {
+                                    <li class="sort__item sort__item-selected"><a href="/category/@item.CategoryUrl">@Resources.Resource.items_sort_1</a></li>
+                                    <li class="sort__item"><a href="/category/popular/@item.CategoryUrl"> @Resources.Resource.items_sort_2</a></li>
+                                    <li class="sort__item"><a href="/category/price-high/@item.CategoryUrl">@Resources.Resource.items_sort_3</a></li>
+                                    <li class="sort__item"><a href="/category/price-low/@item.CategoryUrl">@Resources.Resource.items_sort_4</a></li>
+                                    break;
+                                }
+                            </ul>
+                        </div>
+                        <div class="catalog-wrapper">
+                            @using (Html.BeginForm("Index", "Items", FormMethod.Post, new { @class = "filter-form" }))
+                            {
+                                <div class="filter__item">
+                                    <span class="item-filter__title opened">@Resources.Resource.items_price:</span>
+                                    <ul class="filter-inp__list">
+                                        <div class="filter-price-inp">
+                                            <input type="number" class="filter-price__from" value="@ViewBag.PriceMin" name="minPrice">
+                                            <input type="number" class="filter-price__to" value="@ViewBag.PriceMax" name="maxPrice">
+                                        </div>
+                                        <input type="text" class="js-range-slider" name="my_range" value="" data-min-price="@ViewBag.PriceMin" data-max-price="@ViewBag.PriceMax">
+                                    </ul>
+                                </div>
+                                if (ViewBag.Colors != null)
+                                {
+                                    foreach (var colorsWrapper in ViewBag.Colors)
+                                    {
+                                        if (colorsWrapper != null)
+                                        {
+                                            <div class="filter__item">
+                                                <span class="item-filter__title opened">@Resources.Resource.items_color:</span>
+                                                <ul class="filter-inp__list">
+                                                    @foreach (var colors in ViewBag.Colors)
+                                                    {
+                                                        foreach (var filter in ViewBag.Filters)
+                                                        {
+                                                            if (filter.Colors != null && filter.Colors.Contains(colors) == true)
+                                                            {
+                                                                <li class="filter-inp__item">
+                                                                    <input class="form-input__checkbox" type="checkbox" value="@colors" name="colors" checked>
+                                                                    <span>@colors</span>
+                                                                </li>
+                                                            }
+                                                            else
+                                                            {
+                                                                <li class="filter-inp__item">
+                                                                    <input class="form-input__checkbox" type="checkbox" name="colors" value="@colors">
+                                                                    <span>@colors</span>
+                                                                </li>
+                                                            }
+                                                        }
+                                                    }
+                                                </ul>
+                                            </div>
+                                        }
+                                        break;
+                                    }
+                                }
+                                if (ViewBag.Filters != null)
+                                {
+                                    foreach (var filterWrap in ViewBag.Filters)
+                                    {
+                                        if (filterWrap.BrandsForFilters.Count != 0)
+                                        {
+                                            <div class="filter__item">
+                                                <span class="item-filter__title">@Resources.Resource.items_brand:</span>
+                                                <ul class="filter-inp__list" style="display: none;">
+                                                    @foreach (var filter in ViewBag.Filters)
+                                                    {
+                                                        <input class="form-input__checkbox" type="hidden" name="category" value="@filter.CategoryName">
+                                                        if (filter.BrandsForFilters != null)
+                                                        {
+                                                            foreach (var brand in filter.BrandsForFilters)
+                                                            {
+                                                                if (filter.Brands.Count != 0)
+                                                                {
+                                                                    foreach (var selectedBrand in filter.Brands)
+                                                                    {
+                                                                        if (brand == selectedBrand)
+                                                                        {
+                                                                            <li class="filter-inp__item">
+                                                                                <input class="form-input__checkbox" type="checkbox" name="subCategory" value="@brand" checked> @brand
+                                                                            </li>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <li class="filter-inp__item">
+                                                                                <input class="form-input__checkbox" name="subCategory" type="checkbox" value="@brand"> @brand
+                                                                            </li>
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    <li class="filter-inp__item">
+                                                                        <input class="form-input__checkbox" name="subCategory" type="checkbox" value="@brand"> @brand
+                                                                    </li>
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                </ul>
+                                            </div>
+                                        }
+                                        break;
+                                    }
+                                }
+                                <div class="filter__item">
+                                    <button type="submit" class="submite-filter">
+                                        <svg width="22" height="24" viewBox="0 0 22 24">
+                                            <path d="M0,0l9,15.1V21l4,3v-8.9L22,0H0z M18.5,2l-3,5h-9l-3-5H18.5z"></path>
+                                        </svg>
+                                        <span>@Resources.Resource.items_show</span>
+                                    </button>
+                                </div>
+                                <div class="filter-counter-wrapper counter-js" style="display: none;">
+
+                                </div>
+                            }
+                            <ul class="catalog__list">
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        if (item.Id != 0)
+                                        {
+                                            <li class="col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
+                                                <div class="catalog__item">
+                                                    <div class="catalog__item-wrapper">
+                                                        @if (item.SubCategoryName != null)
+                                                        {
+                                                            <a class="catalog__item-link" href="/product/@item.NameUrl/@item.VendorCode">
+                                                                <img class="catalog__item-img" src="~/Content/images/items/@item.Image1" alt="@item.Name">
+                                                                <h3 class="catalog__item-title">@item.NameRu</h3>
+                                                                <span class="catalog__item-price-wrapper">
+                                                                    @if (item.IsStock == false)
+                                                                    {
+                                                                        <span class="catalog__item-price">@item.Price @Resources.Resource.vallet</span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet</span>
+                                                                    }
+                                                                    @if (item.IsStock == true)
+                                                                    {
+                                                                        <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet</span>
+                                                                    }
+                                                                </span>
+                                                            </a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a class="catalog__item-link" href="/product/@item.NameUrl/@item.VendorCode">
+                                                                <img class="catalog__item-img" src="~/Content/images/items/@item.Image1" alt="@item.Name">
+                                                                <h3 class="catalog__item-title">@item.NameRu</h3>
+                                                                <span class="catalog__item-price-wrapper">
+                                                                    @if (item.IsStock == false)
+                                                                    {
+                                                                        if (item.ProductBuyTypeMeter == false)
+                                                                        {
+                                                                            <span class="catalog__item-price">@item.Price @Resources.Resource.vallet</span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span class="catalog__item-price">@item.Price @Resources.Resource.vallet_to_meter</span>
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (item.ProductBuyTypeMeter == false)
+                                                                        {
+                                                                            <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet</span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet_to_meter</span>
+                                                                        }
+                                                                    }
+                                                                    @if (item.IsStock == true)
+                                                                    {
+                                                                        if (item.ProductBuyTypeMeter == false)
+                                                                        {
+                                                                            <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet</span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet_to_meter</span>
+                                                                        }
+
+                                                                    }
+                                                                </span>
+                                                            </a>
+                                                        }
+                                                        @if (item.PriceUndefined == null)
+                                                        {
+                                                            <button class="add-to-cart" data-id="@item.VendorCode"><i class="fas fa-shopping-cart"></i>@Resources.Resource.item_to_cart</button>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="header-backcall">
+                                                                <i title="Заказать обратный звонок" class="fas fa-headphones-alt backcall-toggle"></i>
+                                                                <p title="Заказать обратный звонок" class="backcall__text backcall-toggle">@Resources.Resource.layout_backCall?</p>
+                                                            </div>
+                                                        }
+                                                        @if (item.IsStock == true)
+                                                        {
+                                                            <div class="auction__item">
+                                                                @Resources.Resource.items_stock
+                                                            </div>
+                                                        }
+                                                        <div class="catalog__item-extra-info-wrapper">
+                                                            <div class="catalog__item-extra-info">
+                                                                <div class="catalog__item-attr">
+                                                                    @Resources.Resource.items_vendoreCode: @item.VendorCode
+                                                                </div>
+                                                                <div class="catalog__item-descr">
+                                                                    @item.DescriptionItem
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            @Html.PagedListPager(Model, page => Url.Action("FilteredPriceLow", new { page }))
+        }
+    }
+</main>
+<div class="decoy" style="display:none"></div>

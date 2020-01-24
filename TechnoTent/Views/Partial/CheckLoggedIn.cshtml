@@ -1,0 +1,15 @@
+﻿@model TechnoTent.Models.UserModels.UserModel
+
+    <div class="account__button ">
+        @Resources.Resource.login_hello,
+        @if (Model.Name == "" || Model.Name == null)
+        {
+            <i class="fas fa-user account__button-icon"></i>
+            <a href="/authentication" class="account__button-text">@Resources.Resource.login_acc</a>
+        }
+        else
+        {
+            <a href="/myaccount" class="account__button-text">@Model.Name !</a>
+        }
+
+    </div>

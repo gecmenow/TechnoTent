@@ -1,0 +1,820 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6B308077-E027-4A2E-9266-EF5C6EDC0136}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TechnoTent</RootNamespace>
+    <AssemblyName>TechnoTent</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44358</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FoolproofValidation, Version=0.9.5851.39121, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FoolproofValidation.0.9.4518\lib\net45\FoolproofValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminCategoryController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminItemsController.cs" />
+    <Compile Include="Controllers\AdminMainImagesController.cs" />
+    <Compile Include="Controllers\AdminNewsController.cs" />
+    <Compile Include="Controllers\AdminOrderController.cs" />
+    <Compile Include="Controllers\AdminReviewsController.cs" />
+    <Compile Include="Controllers\AdminStocksController.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
+    <Compile Include="Controllers\ItemsController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\PartialController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
+    <Compile Include="Controllers\StocksController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Cookies\AdminCookie.cs" />
+    <Compile Include="Cookies\CartCookie.cs" />
+    <Compile Include="Cookies\Cookie.cs" />
+    <Compile Include="Cookies\OrderCookie.cs" />
+    <Compile Include="Cookies\UserCookie.cs" />
+    <Compile Include="Filters\AdminAuthAttribute.cs" />
+    <Compile Include="Filters\CultureAttribute.cs" />
+    <Compile Include="Mailing\BackCall.cs" />
+    <Compile Include="Migrations\201908311114450_item changed db.cs" />
+    <Compile Include="Migrations\201908311114450_item changed db.Designer.cs">
+      <DependentUpon>201908311114450_item changed db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\MyAuthAttribute.cs" />
+    <Compile Include="Filters\DefaultCookie.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Hashing\Hash.cs" />
+    <Compile Include="Mailing\FeedbackMail.cs" />
+    <Compile Include="Mailing\UserMail.cs" />
+    <Compile Include="Migrations\201907311316350_add admin db.cs" />
+    <Compile Include="Migrations\201907311316350_add admin db.Designer.cs">
+      <DependentUpon>201907311316350_add admin db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908081046146_added user db.cs" />
+    <Compile Include="Migrations\201908081046146_added user db.Designer.cs">
+      <DependentUpon>201908081046146_added user db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908162049182_added feedback db.cs" />
+    <Compile Include="Migrations\201908162049182_added feedback db.Designer.cs">
+      <DependentUpon>201908162049182_added feedback db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908162051476_updated feedback db.cs" />
+    <Compile Include="Migrations\201908162051476_updated feedback db.Designer.cs">
+      <DependentUpon>201908162051476_updated feedback db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908172011578_updateted field of Dbs.cs" />
+    <Compile Include="Migrations\201908172011578_updateted field of Dbs.Designer.cs">
+      <DependentUpon>201908172011578_updateted field of Dbs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908172015253_updateted field of feedbackdb.cs" />
+    <Compile Include="Migrations\201908172015253_updateted field of feedbackdb.Designer.cs">
+      <DependentUpon>201908172015253_updateted field of feedbackdb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908181959591_feedback db changed.cs" />
+    <Compile Include="Migrations\201908181959591_feedback db changed.Designer.cs">
+      <DependentUpon>201908181959591_feedback db changed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908201521399_news db added.cs" />
+    <Compile Include="Migrations\201908201521399_news db added.Designer.cs">
+      <DependentUpon>201908201521399_news db added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908201732073_added stocks db.cs" />
+    <Compile Include="Migrations\201908201732073_added stocks db.Designer.cs">
+      <DependentUpon>201908201732073_added stocks db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908221242313_items db.cs" />
+    <Compile Include="Migrations\201908221242313_items db.Designer.cs">
+      <DependentUpon>201908221242313_items db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908231615201_cart db added.cs" />
+    <Compile Include="Migrations\201908231615201_cart db added.Designer.cs">
+      <DependentUpon>201908231615201_cart db added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908231925399_change.cs" />
+    <Compile Include="Migrations\201908231925399_change.Designer.cs">
+      <DependentUpon>201908231925399_change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908271821196_MissingXXX.cs" />
+    <Compile Include="Migrations\201908271821196_MissingXXX.Designer.cs">
+      <DependentUpon>201908271821196_MissingXXX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908271823451_change 1.cs" />
+    <Compile Include="Migrations\201908271823451_change 1.Designer.cs">
+      <DependentUpon>201908271823451_change 1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908271827216_change 2.cs" />
+    <Compile Include="Migrations\201908271827216_change 2.Designer.cs">
+      <DependentUpon>201908271827216_change 2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908271827474_change 3.cs" />
+    <Compile Include="Migrations\201908271827474_change 3.Designer.cs">
+      <DependentUpon>201908271827474_change 3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908291911079_updated item db.cs" />
+    <Compile Include="Migrations\201908291911079_updated item db.Designer.cs">
+      <DependentUpon>201908291911079_updated item db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909031841306_edited items db.cs" />
+    <Compile Include="Migrations\201909031841306_edited items db.Designer.cs">
+      <DependentUpon>201909031841306_edited items db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909041011361_added mainImagesDB.cs" />
+    <Compile Include="Migrations\201909041011361_added mainImagesDB.Designer.cs">
+      <DependentUpon>201909041011361_added mainImagesDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909121025302_itemsdb change4.cs" />
+    <Compile Include="Migrations\201909121025302_itemsdb change4.Designer.cs">
+      <DependentUpon>201909121025302_itemsdb change4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909121803371_update_db_1.cs" />
+    <Compile Include="Migrations\201909121803371_update_db_1.Designer.cs">
+      <DependentUpon>201909121803371_update_db_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909180907221_add categoryId in itemsDb.cs" />
+    <Compile Include="Migrations\201909180907221_add categoryId in itemsDb.Designer.cs">
+      <DependentUpon>201909180907221_add categoryId in itemsDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909181821501_changed feedbackdb fieald names.cs" />
+    <Compile Include="Migrations\201909181821501_changed feedbackdb fieald names.Designer.cs">
+      <DependentUpon>201909181821501_changed feedbackdb fieald names.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909210959099_orderdb added to dbcontext.cs" />
+    <Compile Include="Migrations\201909210959099_orderdb added to dbcontext.Designer.cs">
+      <DependentUpon>201909210959099_orderdb added to dbcontext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909211026139_cahnge3.cs" />
+    <Compile Include="Migrations\201909211026139_cahnge3.Designer.cs">
+      <DependentUpon>201909211026139_cahnge3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909211938294_db changed.cs" />
+    <Compile Include="Migrations\201909211938294_db changed.Designer.cs">
+      <DependentUpon>201909211938294_db changed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909230939093_cartdb changed.cs" />
+    <Compile Include="Migrations\201909230939093_cartdb changed.Designer.cs">
+      <DependentUpon>201909230939093_cartdb changed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909231108210_order changed.cs" />
+    <Compile Include="Migrations\201909231108210_order changed.Designer.cs">
+      <DependentUpon>201909231108210_order changed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909232145577_item db changed.cs" />
+    <Compile Include="Migrations\201909232145577_item db changed.Designer.cs">
+      <DependentUpon>201909232145577_item db changed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909250949380_cahnge 4.cs" />
+    <Compile Include="Migrations\201909250949380_cahnge 4.Designer.cs">
+      <DependentUpon>201909250949380_cahnge 4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909282128284_test.cs" />
+    <Compile Include="Migrations\201909282128284_test.Designer.cs">
+      <DependentUpon>201909282128284_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909300851132_order db changed.cs" />
+    <Compile Include="Migrations\201909300851132_order db changed.Designer.cs">
+      <DependentUpon>201909300851132_order db changed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910011654477_update order db.cs" />
+    <Compile Include="Migrations\201910011654477_update order db.Designer.cs">
+      <DependentUpon>201910011654477_update order db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910050933505_changes 6.cs" />
+    <Compile Include="Migrations\201910050933505_changes 6.Designer.cs">
+      <DependentUpon>201910050933505_changes 6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910070735481_orderdb changes.cs" />
+    <Compile Include="Migrations\201910070735481_orderdb changes.Designer.cs">
+      <DependentUpon>201910070735481_orderdb changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910081641221_item db changes.cs" />
+    <Compile Include="Migrations\201910081641221_item db changes.Designer.cs">
+      <DependentUpon>201910081641221_item db changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910091801132_change 6.cs" />
+    <Compile Include="Migrations\201910091801132_change 6.Designer.cs">
+      <DependentUpon>201910091801132_change 6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910101807158_change 7.cs" />
+    <Compile Include="Migrations\201910101807158_change 7.Designer.cs">
+      <DependentUpon>201910101807158_change 7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910122032021_change 8.cs" />
+    <Compile Include="Migrations\201910122032021_change 8.Designer.cs">
+      <DependentUpon>201910122032021_change 8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910141143266_item db change product buy type.cs" />
+    <Compile Include="Migrations\201910141143266_item db change product buy type.Designer.cs">
+      <DependentUpon>201910141143266_item db change product buy type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910251350538_updated news and stocks db.cs" />
+    <Compile Include="Migrations\201910251350538_updated news and stocks db.Designer.cs">
+      <DependentUpon>201910251350538_updated news and stocks db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911132014580_categoryDB and subCategoryDB.cs" />
+    <Compile Include="Migrations\201911132014580_categoryDB and subCategoryDB.Designer.cs">
+      <DependentUpon>201911132014580_categoryDB and subCategoryDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911152147210_itemDb update.cs" />
+    <Compile Include="Migrations\201911152147210_itemDb update.Designer.cs">
+      <DependentUpon>201911152147210_itemDb update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911191848163_uodate itemdb.cs" />
+    <Compile Include="Migrations\201911191848163_uodate itemdb.Designer.cs">
+      <DependentUpon>201911191848163_uodate itemdb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911222001129_update itemsdb.cs" />
+    <Compile Include="Migrations\201911222001129_update itemsdb.Designer.cs">
+      <DependentUpon>201911222001129_update itemsdb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911262216265_itemsdb change.cs" />
+    <Compile Include="Migrations\201911262216265_itemsdb change.Designer.cs">
+      <DependentUpon>201911262216265_itemsdb change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912010432060_updated items db.cs" />
+    <Compile Include="Migrations\201912010432060_updated items db.Designer.cs">
+      <DependentUpon>201912010432060_updated items db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912012020325_edited itemdb.cs" />
+    <Compile Include="Migrations\201912012020325_edited itemdb.Designer.cs">
+      <DependentUpon>201912012020325_edited itemdb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912101842061_item db change 7.cs" />
+    <Compile Include="Migrations\201912101842061_item db change 7.Designer.cs">
+      <DependentUpon>201912101842061_item db change 7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\AdminCategoryAndSub.cs" />
+    <Compile Include="Models\AdminFeedback.cs" />
+    <Compile Include="Models\AdminItems.cs" />
+    <Compile Include="Models\AdminMainImages.cs" />
+    <Compile Include="Models\AdminNews.cs" />
+    <Compile Include="Models\AdminOrders.cs" />
+    <Compile Include="Models\AdminReviews.cs" />
+    <Compile Include="Models\AdminStocks.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\DataBase\DbCart.cs" />
+    <Compile Include="Models\DataBase\DataBaseContext.cs" />
+    <Compile Include="Models\DataBase\DbAdmin.cs" />
+    <Compile Include="Models\DataBase\DbCategory.cs" />
+    <Compile Include="Models\DataBase\DbFeedback.cs" />
+    <Compile Include="Models\DataBase\DbItems.cs" />
+    <Compile Include="Models\DataBase\DbMainImages.cs" />
+    <Compile Include="Models\DataBase\DbNews.cs" />
+    <Compile Include="Models\DataBase\DbOrder.cs" />
+    <Compile Include="Models\DataBase\DbReview.cs" />
+    <Compile Include="Models\DataBase\DbStocks.cs" />
+    <Compile Include="Models\DataBase\DbSubCategory.cs" />
+    <Compile Include="Models\DataBase\DbUser.cs" />
+    <Compile Include="Models\Feedback.cs" />
+    <Compile Include="Models\Home.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\InTimeAPI\InTimeCity.cs" />
+    <Compile Include="Models\InTimeAPI\InTimeCityModel.cs" />
+    <Compile Include="Models\InTimeAPI\InTimeGetOnePostOffice.cs" />
+    <Compile Include="Models\InTimeAPI\InTimePostOffice.cs" />
+    <Compile Include="Models\InTimeAPI\InTimePostOfficeModel.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Loging.cs" />
+    <Compile Include="Models\News.cs" />
+    <Compile Include="Models\NovaPoshtaAPI\NovaPoshraCityKeyModel.cs" />
+    <Compile Include="Models\NovaPoshtaAPI\NovaPoshtaCityModel.cs" />
+    <Compile Include="Models\NovaPoshtaAPI\NovaPoshtaCity.cs" />
+    <Compile Include="Models\NovaPoshtaAPI\NovaPoshtaPostOfficeModel.cs" />
+    <Compile Include="Models\NovaPoshtaAPI\NovaPoshtaPostOffice.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\Stocks.cs" />
+    <Compile Include="Models\UrlHelper.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserModels\EditUser.cs" />
+    <Compile Include="Models\UserModels\Login.cs" />
+    <Compile Include="Models\UserModels\Registration.cs" />
+    <Compile Include="Models\UserModels\RestorePassword.cs" />
+    <Compile Include="Models\UserModels\UserModel.cs" />
+    <Compile Include="Models\ViewModel\Admin\AdminCategorySubCategoryVM.cs" />
+    <Compile Include="Models\ViewModel\Admin\AdminCategoryVM.cs" />
+    <Compile Include="Models\ViewModel\Admin\AdminEditVM.cs" />
+    <Compile Include="Models\ViewModel\Admin\AdminItemVM.cs" />
+    <Compile Include="Models\ViewModel\Admin\AdminNewsVM.cs" />
+    <Compile Include="Models\ViewModel\Admin\AdminOrdersVM.cs" />
+    <Compile Include="Models\ViewModel\Admin\AdminStocksVM.cs" />
+    <Compile Include="Models\UserModels\Authentication.cs" />
+    <Compile Include="Models\ViewModel\Admin\AdminSubCategoryVM.cs" />
+    <Compile Include="Models\ViewModel\BackCallVM.cs" />
+    <Compile Include="Models\ViewModel\CartItemVM.cs" />
+    <Compile Include="Models\ViewModel\CartVM.cs" />
+    <Compile Include="Models\ViewModel\CategoryItems.cs" />
+    <Compile Include="Models\ViewModel\FeedbackVM.cs" />
+    <Compile Include="Models\Items.cs" />
+    <Compile Include="Models\ViewModel\CategoriesVM.cs" />
+    <Compile Include="Models\ViewModel\FiltersVM.cs" />
+    <Compile Include="Models\ViewModel\HomeVM.cs" />
+    <Compile Include="Models\ViewModel\ItemsCountVM.cs" />
+    <Compile Include="Models\ViewModel\ItemsVM.cs" />
+    <Compile Include="Models\ViewModel\ItemsOutputVM.cs" />
+    <Compile Include="Models\ViewModel\MainImagesVM.cs" />
+    <Compile Include="Models\ViewModel\NewsVM.cs" />
+    <Compile Include="Models\ViewModel\OrderItemsVM.cs" />
+    <Compile Include="Models\ViewModel\OrderVM.cs" />
+    <Compile Include="Models\ViewModel\ReviewVM.cs" />
+    <Compile Include="Models\ViewModel\StocksVM.cs" />
+    <Compile Include="Models\ViewModel\SubCategoryVM.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Resource.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Resource.uk.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.uk.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Client Scripts\mvcfoolproof.unobtrusive.js" />
+    <Content Include="Client Scripts\mvcfoolproof.unobtrusive.min.js" />
+    <Content Include="Client Scripts\MvcFoolproofJQueryValidation.js" />
+    <Content Include="Client Scripts\MvcFoolproofJQueryValidation.min.js" />
+    <Content Include="Client Scripts\MvcFoolproofValidation.js" />
+    <Content Include="Client Scripts\MvcFoolproofValidation.min.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
+    <Content Include="Views\Reviews\Index.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\AdminNews\AddNews.cshtml" />
+    <Content Include="Views\User\RestorePassword.cshtml" />
+    <Content Include="Views\AdminItems\AddItem.cshtml" />
+    <Content Include="Views\AdminItems\Index.cshtml" />
+    <Content Include="Views\AdminItems\EditItem.cshtml" />
+    <Content Include="Views\AdminItems\DeleteImage.cshtml" />
+    <Content Include="Views\AdminItems\DeleteItem.cshtml" />
+    <Content Include="Views\Items\Index.cshtml" />
+    <Content Include="Views\Items\Popular.cshtml" />
+    <Content Include="Views\Items\PriceLow.cshtml" />
+    <Content Include="Views\AdminMainImages\AddImages.cshtml" />
+    <Content Include="Views\AdminMainImages\Index.cshtml" />
+    <Content Include="Views\AdminMainImages\MovePositionUp.cshtml" />
+    <Content Include="Views\AdminMainImages\MovePositionDown.cshtml" />
+    <Content Include="Views\AdminMainImages\DeleteImage.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\GetNPCities.cshtml" />
+    <Content Include="Views\Order\GetNPCityPostOffice.cshtml" />
+    <Content Include="Views\Order\GetInTimeCities.cshtml" />
+    <Content Include="Views\Order\GetInTimeCityPostOffice.cshtml" />
+    <Content Include="Views\Items\PriceHigh.cshtml" />
+    <Content Include="Views\News\GetNewsById.cshtml" />
+    <Content Include="Views\Stocks\Index.cshtml" />
+    <Content Include="Views\Stocks\GetStocksById.cshtml" />
+    <Content Include="Views\User\Authentication.cshtml" />
+    <Content Include="Views\User\RestorePasswordMessage.cshtml" />
+    <Content Include="Views\Partial\GetCategoriesAndSubCategories.cshtml" />
+    <Content Include="Views\Items\FilteredIndex.cshtml" />
+    <Content Include="Views\User\Orders.cshtml" />
+    <Content Include="Views\Partial\GetItemsCount.cshtml" />
+    <Content Include="Views\Cart\Decoy.cshtml" />
+    <Content Include="Views\Cart\RemoveFromCart.cshtml" />
+    <Content Include="Views\Cart\ItemCount.cshtml" />
+    <Content Include="Views\AdminOrder\Index.cshtml" />
+    <Content Include="Views\AdminOrder\EditOrder.cshtml" />
+    <Content Include="Views\Item\Index.cshtml" />
+    <Content Include="Views\AdminNews\Index.cshtml" />
+    <Content Include="Views\AdminNews\EditNews.cshtml" />
+    <Content Include="Views\AdminNews\RemoveNews.cshtml" />
+    <Content Include="Views\AdminItems\decoy.cshtml" />
+    <Content Include="Views\AdminStocks\Index.cshtml" />
+    <Content Include="Views\AdminStocks\AddStocks.cshtml" />
+    <Content Include="Views\AdminStocks\EditStocks.cshtml" />
+    <Content Include="Views\AdminOrder\DelteOrderItem.cshtml" />
+    <Content Include="Views\AdminOrder\AddItemToOrder.cshtml" />
+    <Content Include="Views\AdminOrder\RemoveOrder.cshtml" />
+    <Content Include="Views\AdminReviews\Index.cshtml" />
+    <Content Include="Views\AdminReviews\DeleteReview.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Registration.cshtml" />
+    <Content Include="Views\Partial\GetStocks.cshtml" />
+    <Content Include="Views\Partial\GetNews.cshtml" />
+    <Content Include="Views\Partial\CheckLoggedIn.cshtml" />
+    <Content Include="Views\Partial\GetCategoriesAndSubCategoriesForAdmin.cshtml" />
+    <Content Include="Views\Items\FilteredPopular.cshtml" />
+    <Content Include="Views\Items\FilteredPriceLow.cshtml" />
+    <Content Include="Views\Items\FilteredPriceHigh.cshtml" />
+    <Content Include="Views\Items\GetItemsCount.cshtml" />
+    <Content Include="Views\AdminCategory\Index.cshtml" />
+    <Content Include="Views\AdminCategory\AddCategory.cshtml" />
+    <Content Include="Views\AdminCategory\AddSubCategory.cshtml" />
+    <Content Include="Views\AdminCategory\RemoveCategory.cshtml" />
+    <Content Include="Views\AdminCategory\RemoveSubCategory.cshtml" />
+    <Content Include="Views\AdminCategory\EditCategory.cshtml" />
+    <Content Include="Views\AdminCategory\EditSubCategory.cshtml" />
+    <Content Include="Views\AdminItems\GetItemsByCategory.cshtml" />
+    <Content Include="Views\Partial\GetCategories.cshtml" />
+    <Content Include="Views\AdminStocks\RemoveStocks.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\css\" />
+    <Folder Include="Content\images\category\" />
+    <Folder Include="Content\images\items\" />
+    <Folder Include="Content\images\news\" />
+    <Folder Include="Content\images\stocks\" />
+    <Folder Include="Views\Category\" />
+    <Folder Include="Views\Language\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907311316350_add admin db.resx">
+      <DependentUpon>201907311316350_add admin db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908081046146_added user db.resx">
+      <DependentUpon>201908081046146_added user db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908162049182_added feedback db.resx">
+      <DependentUpon>201908162049182_added feedback db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908162051476_updated feedback db.resx">
+      <DependentUpon>201908162051476_updated feedback db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908172011578_updateted field of Dbs.resx">
+      <DependentUpon>201908172011578_updateted field of Dbs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908172015253_updateted field of feedbackdb.resx">
+      <DependentUpon>201908172015253_updateted field of feedbackdb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908181959591_feedback db changed.resx">
+      <DependentUpon>201908181959591_feedback db changed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908201521399_news db added.resx">
+      <DependentUpon>201908201521399_news db added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908201732073_added stocks db.resx">
+      <DependentUpon>201908201732073_added stocks db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908221242313_items db.resx">
+      <DependentUpon>201908221242313_items db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908231615201_cart db added.resx">
+      <DependentUpon>201908231615201_cart db added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908231925399_change.resx">
+      <DependentUpon>201908231925399_change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908271821196_MissingXXX.resx">
+      <DependentUpon>201908271821196_MissingXXX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908271823451_change 1.resx">
+      <DependentUpon>201908271823451_change 1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908271827216_change 2.resx">
+      <DependentUpon>201908271827216_change 2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908271827474_change 3.resx">
+      <DependentUpon>201908271827474_change 3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908291911079_updated item db.resx">
+      <DependentUpon>201908291911079_updated item db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908311114450_item changed db.resx">
+      <DependentUpon>201908311114450_item changed db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909031841306_edited items db.resx">
+      <DependentUpon>201909031841306_edited items db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909041011361_added mainImagesDB.resx">
+      <DependentUpon>201909041011361_added mainImagesDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909121025302_itemsdb change4.resx">
+      <DependentUpon>201909121025302_itemsdb change4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909121803371_update_db_1.resx">
+      <DependentUpon>201909121803371_update_db_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909180907221_add categoryId in itemsDb.resx">
+      <DependentUpon>201909180907221_add categoryId in itemsDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909181821501_changed feedbackdb fieald names.resx">
+      <DependentUpon>201909181821501_changed feedbackdb fieald names.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909210959099_orderdb added to dbcontext.resx">
+      <DependentUpon>201909210959099_orderdb added to dbcontext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909211026139_cahnge3.resx">
+      <DependentUpon>201909211026139_cahnge3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909211938294_db changed.resx">
+      <DependentUpon>201909211938294_db changed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909230939093_cartdb changed.resx">
+      <DependentUpon>201909230939093_cartdb changed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909231108210_order changed.resx">
+      <DependentUpon>201909231108210_order changed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909232145577_item db changed.resx">
+      <DependentUpon>201909232145577_item db changed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909250949380_cahnge 4.resx">
+      <DependentUpon>201909250949380_cahnge 4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909282128284_test.resx">
+      <DependentUpon>201909282128284_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909300851132_order db changed.resx">
+      <DependentUpon>201909300851132_order db changed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910011654477_update order db.resx">
+      <DependentUpon>201910011654477_update order db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910050933505_changes 6.resx">
+      <DependentUpon>201910050933505_changes 6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910070735481_orderdb changes.resx">
+      <DependentUpon>201910070735481_orderdb changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910081641221_item db changes.resx">
+      <DependentUpon>201910081641221_item db changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910091801132_change 6.resx">
+      <DependentUpon>201910091801132_change 6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910101807158_change 7.resx">
+      <DependentUpon>201910101807158_change 7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910122032021_change 8.resx">
+      <DependentUpon>201910122032021_change 8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910141143266_item db change product buy type.resx">
+      <DependentUpon>201910141143266_item db change product buy type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910251350538_updated news and stocks db.resx">
+      <DependentUpon>201910251350538_updated news and stocks db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911132014580_categoryDB and subCategoryDB.resx">
+      <DependentUpon>201911132014580_categoryDB and subCategoryDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911152147210_itemDb update.resx">
+      <DependentUpon>201911152147210_itemDb update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911191848163_uodate itemdb.resx">
+      <DependentUpon>201911191848163_uodate itemdb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911222001129_update itemsdb.resx">
+      <DependentUpon>201911222001129_update itemsdb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911262216265_itemsdb change.resx">
+      <DependentUpon>201911262216265_itemsdb change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912010432060_updated items db.resx">
+      <DependentUpon>201912010432060_updated items db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912012020325_edited itemdb.resx">
+      <DependentUpon>201912012020325_edited itemdb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912101842061_item db change 7.resx">
+      <DependentUpon>201912101842061_item db change 7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resource.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resource.uk.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.uk.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52919</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44358/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,53 @@
+﻿@model List<TechnoTent.Models.ViewModel.StocksVM>
+
+<div class="swiper-container info">
+    <div class="swiper-wrapper">
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            <div class="swiper-slide">
+                <!-- цикл слайдов -->
+                <div class="info__list">
+                    <!-- цикл елементов в слайде -->
+                    <div class="info__item bg-gray">
+                        @if (Model[i].Image != "" && Model[i].Image != null)
+                        {
+                            <img src="~/Content/images/stocks/@Model[i].Image" alt="@Model[i].Title" class="info-item__img">
+                        }
+                        else
+                        {
+                            <img src="~/Content/images/no_image.svg" alt="@Model[i].Title" class="info-item__img">
+                        }
+                        <div class="info-item__text">
+                            <div class="info-item__date"><i class="far fa-calendar-alt"></i> @Model[i].DateTime.ToShortDateString()</div>
+                            <h3 class="info-item__title">@Model[i].Title</h3>
+                            <p class="info-item__excerpt">@Html.Raw(Model[i].Text)</p>
+                            <a href="/stocks/@Model[i].Id" class="info-link__read-more">@Resources.Resource.partial_articles_more</a>
+                        </div>
+                    </div>
+                    @if (i < Model.Count() - 1)
+                    {
+                        <div class="info__item bg-gray">
+                            @if (Model[i].Image != "" && Model[i].Image != null)
+                            {
+                                <img src="~/Content/images/stocks/@Model[i].Image" alt="@Model[i].Title" class="info-item__img">
+                            }
+                            else
+                            {
+                                <img src="~/Content/images/no_image.svg" alt="@Model[i].Title" class="info-item__img">
+                            }
+                            <div class="info-item__text">
+                                <div class="info-item__date"><i class="far fa-calendar-alt"></i> @Model[i + 1].DateTime.ToShortDateString()</div>
+                                <h3 class="info-item__title">@Model[i + 1].Title</h3>
+                                <p class="info-item__excerpt">@Html.Raw(Model[i + 1].Text)</p>
+                                <a href="/stocks/@Model[i + 1].Id" class="info-link__read-more">@Resources.Resource.partial_articles_more</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>

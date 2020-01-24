@@ -1,0 +1,22 @@
+﻿@model TechnoTent.Models.ViewModel.OrderVM
+
+@{
+    Layout = null;
+}
+<ul class="address__list">
+    @foreach (var postOffice in Model.InTimeCitiePostOffice)
+    {
+        <li class="address__item" data-address="@postOffice">@postOffice</li>
+    }
+</ul>
+
+<script>
+    $(".address__item").click(function(){
+        $("div.form-input__address").html($(this).html());
+        $(".form-input__address").val($(this).html());
+
+        $(".form-input__address").attr("data-address", $(this).attr("data-address"));
+        $(".address__list").remove();
+    });
+</script>
+

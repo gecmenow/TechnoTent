@@ -1,0 +1,239 @@
+﻿@model TechnoTent.Models.ViewModel.Admin.AdminItemVM
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".remove__img").click(function () {
+            var vendorCode = $(this).attr("data-id");
+            var imageName = $(this).attr("data-name");
+            url = "@Url.Action("DeleteImage", "AdminItems")?vendorCode=" + vendorCode + "&imageName=" + imageName;
+            console.log(url);
+            $('.result').load(url);
+        });
+    })
+</script>
+
+@{
+    ViewBag.Title = "EditItem";
+}
+
+@section AdminHeader
+{
+    <header class="admin-header">
+        <a href="/" class="admin-header__logo">
+            <span class="logo-lg"><b>Админ</b> панель</span>
+        </a>
+        <nav class="navbar-header-top">
+            <a href="#" class="settings navbar-header__toggle"><i class="fa fa-cogs" aria-hidden="true"></i></a>
+            <ul class="navbar-header__list" style="display: none;">
+                <li class="navbar-header__item">
+                    <a href="/admin"><i class="fas fa-cog"><span>Настройки</span></i></a>
+                </li>
+                <li class="navbar-header__item">
+                    <a href="/admin/logout"><i class="fas fa-sign-out-alt"><span>Выйти</span></i></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+}
+<div class="result">
+    <main class="main-admin">
+        <aside class="admin-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar__list" data-widget="tree">
+                    <li class="sidebar__item" style="height: 37px;"></li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/mainImages">
+                            <i class="fas fa-images"></i>
+                            <span>Нстройки галереи</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/orders">
+                            <i class="fas fa-book-open"></i>
+                            <span>Заказы</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/categories">
+                            <i class="fas fa-list"></i>
+                            <span>Категории</span>
+                        </a>
+                    </li>
+                    @{
+                        Html.RenderAction("GetCategoriesAndSubCategoriesForAdmin", "Partial");
+                    }
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/add/item/">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить товар</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/news">
+                            <i class="far fa-newspaper"></i>
+                            <span>Статьи</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/news/add">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить статью</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/stocks">
+                            <i class="far fa-money-bill-alt"></i>
+                            <span>Акции</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/stocks/add">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить акцию</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/reviews">
+                            <i class="fas fa-comments"></i>
+                            <span>Отзывы</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+        <div class="admin-content-wrapper">
+            <section class="admin-content-header">
+                <h1 class="admin-page__title">
+                    Редактирование товара №
+                    <small>@Model.VendorCode</small>
+                </h1>
+            </section>
+            <section class="admin-content-main">
+                @using (Html.BeginForm("EditItem", "AdminItems", FormMethod.Post, new { @class = "product-edit", enctype = "multipart/form-data" }))
+                {
+                    @Html.HiddenFor(m => m.Id)
+                    <div class="product-edit__wrapper">
+                        <label class="edit__title">Статус</label>
+                        <select class="product-status" name="inStock">
+                            <option class="product-status__item" value="true">В наличии</option>
+                            <option class="product-status__item" value="false">Нет в наличии</option>
+                        </select>
+                        <div class="status-dropdown">
+                            @if (Model.inStock != false)
+                            {
+                                <div class="status-toggle btn btn-success">В наличии</div>
+                            }
+                            else
+                            {
+                                <div class="status-toggle btn btn-warning">Нет в наличии</div>
+                            }
+                            <ul class="status__list" style="display: none;">
+                                <li class="status__item btn btn-success" value="1">В наличии</li>
+                                <li class="status__item btn btn-warning" value="2">Нет в наличии</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="product-edit__wrapper">
+                        <label class="edit__title">Категория</label><br>
+                        <select class="product-category-list" name="CategoryNameRu">
+                            @foreach (var category in Model.CategoriesList)
+                            {
+                                if (Model.CategoryNameRu == category)
+                                {
+                                    <option class="product-category__item" value="@category" selected>@category</option>
+                                }
+                                else
+                                {
+                                    <option class="product-category__item" value="@category">@category</option>
+                                }
+                            }
+                        </select><br>
+                    </div>
+                    <label class="edit__title">Основная информация</label>
+                    <div class="product-edit__wrapper tab-button__list">
+                        <button type="button" class="tab-button__item btn btn-info">Русский</button>
+                        <button type="button" class="tab-button__item btn btn-light">Украинский</button>
+                        <button type="button" class="tab-button__item btn btn-light">Английский</button>
+                    </div>
+                    <div class="product-tab" style="position: static">
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Название</label><input type="text" name="NameRu" class="input-product-edit" required value="@Model.NameRu">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Покрытие</label><input type="text" name="CoveringRu" class="input-product-edit" required value="@Model.CoveringRu">
+                        </div>
+                    </div>
+                    <div class="product-tab" style="position: absolute; visibility: hidden;">
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Название</label><input type="text" name="NameUa" class="input-product-edit" required value="@Model.NameUa">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Покрытие</label><input type="text" name="CoveringUa" class="input-product-edit" required value="@Model.CoveringUa">
+                        </div>
+                    </div>
+                    <div class="product-tab" style="position: absolute; visibility: hidden;">
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Название</label><input type="text" name="NameEn" class="input-product-edit" required value="@Model.NameEn">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Покрытие</label><input type="text" name="CoveringEn" class="input-product-edit" required value="@Model.CoveringEn">
+                        </div>
+                    </div>
+                    <div class="product-edit__wrapper">
+                        <label class="edit__title">Цена</label><input type="text" name="PriceUa" class="input-product-edit product-edit__price" required value="@Model.PriceUa"><label class="edit__text">грн.</label>
+                    </div>
+                    <div class="product-edit__wrapper">
+                        <label class="edit__title">Цена</label><input type="text" name="PriceEn" class="input-product-edit product-edit__price" required value="@Model.PriceEn"><label class="edit__text">$</label>
+                    </div>
+                    <label class="edit__title">Изображения</label>
+                    <div class="product-edit__wrapper upload__img-wrapper">
+                        <div class="upload__img-item">
+                            <label for="upload__img1"><img src="~/Content/images/items/@Model.Image1"></label>
+                            <input class="upload__img" id="upload__img1" type="file" name="uploads">
+                            <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image1"></i>
+                        </div>
+                        <div class="upload__img-item">
+                            <label for="upload__img2"><img src="~/Content/images/items/@Model.Image2"></label>
+                            <input class="upload__img" id="upload__img2" type="file" name="uploads">
+                            <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image2"></i>
+                        </div>
+                        <div class="upload__img-item">
+                            <label for="upload__img3"><img src="~/Content/images/items/@Model.Image3"></label>
+                            <input class="upload__img" id="upload__img3" type="file" name="uploads">
+                            <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image3"></i>
+                        </div>
+                        <div class="upload__img-item">
+                            <label for="upload__img4"><img src="~/Content/images/items/@Model.Image4"></label>
+                            <input class="upload__img" id="upload__img4" type="file" name="uploads">
+                            <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image4"></i>
+                        </div>
+                    </div>
+                    <label class="edit__title">Акция</label>
+                    <div class="product-edit__wrapper">
+                        @if (Model.IsStock)
+                        {
+                            <label class="edit__title edit-stock__toggle"><input type="checkbox" name="IsStock" class="product-edit__stock" value="true" checked>Сделать акционным</label>
+                        }
+                        else
+                        {
+                            <label class="edit__title edit-stock__toggle"><input type="checkbox" name="IsStock" class="product-edit__stock" value="true">Сделать акционным</label>
+                        }
+                    </div>
+                    <div class="product-edit-stock" style="display: none;">
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Цена</label><input type="text" name="StockPriceUa" class="input-product-edit product-edit__price" required disabled><label class="edit__text">ГРН.</label>
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Цена</label><input type="text" name="StockPriceEn" class="input-product-edit product-edit__price" required disabled><label class="edit__text">USD.</label>
+                        </div>
+                    </div>
+                    <div class="product-edit__wrapper">
+                        <button type="submit" class="btn btn-success">Сохранить</button>
+                        <a href="/admin/items" class="btn btn-secondary">Отмена</a>
+                    </div>
+                }
+            </section>
+        </div>
+    </main>
+</div>

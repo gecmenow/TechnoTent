@@ -1,0 +1,220 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@model TechnoTent.Models.ViewModel.HomeVM
+
+    <main>
+        <section class="slider">
+            <div class="wrapper">
+                <div class="swiper-container main-slider">
+                    <div class="swiper-wrapper">
+                        @foreach (var img in Model.mainImages)
+                        {
+                            if (img.Image == "no_image.svg")
+                            {
+                                <div class="swiper-slide"><img src="~/Content/images/@img.Image"></div>
+                            }
+                            else
+                            {
+                                <div class="swiper-slide"><img src="~/Content/images/main/@img.Image"></div>
+                            }
+                        }
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </section>
+        <section class="advantages">
+            <div class="wrapper">
+                <div class="advantages-container">
+                    <h2 class="section-title color__yellow">@Resources.Resource.home_advantage_title</h2>
+                    <ul class="advantages__list">
+                        <li class="advantages__item" data-aos="fade-right" data-aos-delay="500">
+                            <img src="~/Content/images/cube.svg" alt="@Resources.Resource.home_advantage1_alt" class="advantages__item--img">
+                            <h3 class="advantages__item--subtitle">@Resources.Resource.home_advantage1</h3>
+                        </li>
+                        <li class="advantages__item" data-aos="fade-right">
+                            <img src="~/Content/images/logistic.svg" alt="@Resources.Resource.home_advantage2_alt" class="advantages__item--img">
+                            <h3 class="advantages__item--subtitle">@Resources.Resource.home_advantage2</h3>
+                        </li>
+                        <li class="advantages__item" data-aos="flip-up">
+                            <img src="~/Content/images/shield.svg" alt="@Resources.Resource.home_advantage3_alt" class="advantages__item--img">
+                            <h3 class="advantages__item--subtitle">@Resources.Resource.home_advantage3</h3>
+                        </li>
+                        <li class="advantages__item" data-aos="fade-left">
+                            <img src="~/Content/images/cargo.svg" alt="@Resources.Resource.home_advantage4" class="advantages__item--img">
+                            <h3 class="advantages__item--subtitle">@Resources.Resource.home_advantage4</h3>
+                        </li>
+                        <li class="advantages__item" data-aos="fade-left" data-aos-delay="500">
+                            <img src="~/Content/images/screwdriver.svg" alt="@Resources.Resource.home_advantage5_alt" class="advantages__item--img">
+                            <h3 class="advantages__item--subtitle">@Resources.Resource.home_advantage5</h3>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+        @{
+            Html.RenderAction("GetCategories", "Partial");
+        }
+        @*<section class="production">
+            <div class="wrapper">
+                <div class="production-container">
+                    <h2 class="section-title color__blue">@Resources.Resource.home_production_title</h2>
+                    <ul class="production__list" data-aos="zoom-in">
+                        <li class="production__item">
+                            <a href="#" class="production__link">
+                                <img src="~/Content/images/tent-pvh.webp" alt="@Resources.Resource.home_production1_alt" class="production__item--img">
+                                <span class="subtitle__bg"></span>
+                                <h3 class="production__item--subtitle">@Resources.Resource.home_production1</h3>
+                            </a>
+                        </li>
+                        <li class="production__item">
+                            <a href="#" class="production__link">
+                                <img src="~/Content/images/autopokrivalo.webp" alt="@Resources.Resource.home_production2" class="production__item--img">
+                                <span class="subtitle__bg"></span>
+                                <h3 class="production__item--subtitle">@Resources.Resource.home_production2</h3>
+                            </a>
+                        </li>
+                        <li class="production__item">
+                            <a href="#" class="production__link">
+                                <img src="~/Content/images/shvejnoe-proizvodstvo.webp" alt="@Resources.Resource.home_production3" class="production__item--img">
+                                <span class="subtitle__bg"></span>
+                                <h3 class="production__item--subtitle">@Resources.Resource.home_production3</h3>
+                            </a>
+                        </li>
+                        <li class="production__item">
+                            <a href="#" class="production__link">
+                                <img src="~/Content/images/naves1.webp" alt="@Resources.Resource.home_production4" class="production__item--img">
+                                <span class="subtitle__bg"></span>
+                                <h3 class="production__item--subtitle">@Resources.Resource.home_production4</h3>
+                            </a>
+                        </li>
+                        <li class="production__item">
+                            <a href="#" class="production__link">
+                                <img src="~/Content/images/montazh.webp" alt="@Resources.Resource.home_production5" class="production__item--img">
+                                <span class="subtitle__bg"></span>
+                                <h3 class="production__item--subtitle">@Resources.Resource.home_production5</h3>
+                            </a>
+                        </li>
+                        <li class="production__item">
+                            <a href="#" class="production__link">
+                                <img src="~/Content/images/furnitura.webp" alt="@Resources.Resource.home_production6" class="production__item--img">
+                                <span class="subtitle__bg"></span>
+                                <h3 class="production__item--subtitle">@Resources.Resource.home_production6</h3>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>*@
+        <section class="feedback">
+            <div class="wrapper">
+                <div class="feedback-container">
+                    <h2 class="section-title color__yellow">@Resources.Resource.home_feedback1 &nbsp; <span>@Resources.Resource.home_feedback2?</span></h2>
+                    <p class="section-desc">@Resources.Resource.home_feedback_desc <br>@Resources.Resource.home_feedback_desc2.</p>
+                    <div class="feedback-phone">
+                        <div class="feedback-phone__list">
+                            <div class="feedback-phone__item">@Resources.Resource.home_feedback_tel11 <a href="tel:+380503388348"><span>(050)</span> 338 - 83 - 48</a></div>
+                            <div class="feedback-phone__item">@Resources.Resource.home_feedback_tel2 <a href="tel:+380505120351"><span>(050)</span> 512 - 03 - 51</a></div>
+                        </div>
+                        <button class="feedback-button">@Resources.Resource.home_feedback_submit</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="partners">
+            <div class="wrapper">
+                <div class="partners-container">
+                    <h2 class="section-title color__blue">@Resources.Resource.home_partners</h2>
+                    <div class="partners__list">
+                        <img src="~/Content/images/logo_branda.jpg" alt="" class="partners__item">
+                        <img src="~/Content/images/logo_branda2.jpg" alt="" class="partners__item">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="info">
+            <div class="info-wrapper-left">
+                <div class="info-left" data-aos="zoom-out-right">
+                    <div class="info-title-container">
+                        <h2 class="section-title info-title">@Resources.Resource.home_stocks</h2>
+                        <a href="stocks" class="all-info-link">@Resources.Resource.home_stocks_all</a>
+                    </div>
+                    @{
+                        Html.RenderAction("GetStocks", "Partial");
+                    }
+                </div>
+            </div>
+            <div class="info-wrapper-right">
+                <div class="info-right" data-aos="zoom-out-left">
+                    <div class="info-title-container">
+                        <h2 class="section-title info-title">@Resources.Resource.home_news</h2>
+                        <a href="news" class="all-info-link">@Resources.Resource.home_news_all</a>
+                    </div>
+                    @{
+                        Html.RenderAction("GetNews", "Partial");
+                    }
+                </div>
+            </div>
+        </section>
+    </main>
+@section Main
+{
+    <script type="text/javascript">
+            if(window.innerWidth >= 992){
+                $(".nav__list").addClass("block");
+            }
+            var mySwiper = new Swiper ('.swiper-container.main-slider', {
+                navigation: {
+                    nextEl: '.main-slider .swiper-button-next',
+                    prevEl: '.main-slider .swiper-button-prev',
+                },
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                },
+            })
+            var swiper = new Swiper('.swiper-container.info', {
+                pagination: {
+                    el: '.info .swiper-pagination',
+                },
+                navigation: {
+                    nextEl: '.info .swiper-button-next',
+                    prevEl: '.info .swiper-button-prev',
+                },
+                loop: true,
+            });
+            AOS.init();
+            AOS.init({
+                // Global settings:
+                disable: 'phone', // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+                startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
+                initClassName: 'aos-init', // class applied after initialization
+                animatedClassName: 'aos-animate', // class applied on animation
+                useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+                disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+                debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+                throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+
+
+                // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+                offset: 30, // offset (in px) from the original trigger point
+                delay: 300, // values from 0 to 3000, with step 50ms
+                duration: 700, // values from 0 to 3000, with step 50ms
+                easing: 'ease', // default easing for AOS animations
+                once: false, // whether animation should happen only once - while scrolling down
+                mirror: false, // whether elements should animate out while scrolling past them
+                anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+            });
+
+            let successfulOrder = document.cookie.match(new RegExp("(?:^|; )" + "successfulOrder".replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+            if (successfulOrder !== null) {
+                $(".popup__bg").show();
+                $('<div class="successful-buy-wraper"> <h2 class="successful-buy__title">Спасибо!</h2> <img src="Content/images/box.jpg" alt="коробка" class="successful-buy__img"> <p class="successful-buy__text">Ваш заказ успешно оформлен. Мы свяжемся с вами в ближайшее время</p> <i class="fas fa-times popup-close__button"></i> </div>').appendTo('.popup__bg');
+                document.cookie = "successfulOrder=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            }
+    </script>
+}

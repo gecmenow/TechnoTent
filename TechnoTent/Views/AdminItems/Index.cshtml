@@ -1,0 +1,177 @@
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".RemoveLink").click(function () {
+            var id = $(this).attr("data-id");
+            url = "@Url.Action("DeleteItem", "AdminItems")?id=" + id;
+            $('#result').load(url);
+        });
+
+        $(".status__item").click(function () {
+            var id = $(this).attr("data-id");
+            var status = $(this).attr("data-in-stock");
+            url = "@Url.Action("ChangeItemStatus", "AdminItems")?id=" + id + "&status=" + status;
+            $('.decoy').load(url);
+        });
+
+        $(".stock").click(function () {
+            var id = $(this).attr("data-id");
+            var status = false;
+            url = "@Url.Action("ChangeItemStockStatus", "AdminItems")?id=" + id + "&status=" + status;
+            $('.decoy').load(url);
+        });
+    })
+</script>
+
+@model PagedList.IPagedList<TechnoTent.Models.ViewModel.Admin.AdminItemVM>
+@using PagedList.Mvc;
+
+@section AdminHeader
+{
+    <header class="admin-header">
+        <a href="/" class="admin-header__logo">
+            <span class="logo-lg"><b>Админ</b> панель</span>
+        </a>
+        <nav class="navbar-header-top">
+            <a href="#" class="settings navbar-header__toggle"><i class="fa fa-cogs" aria-hidden="true"></i></a>
+            <ul class="navbar-header__list" style="display: none;">
+                <li class="navbar-header__item">
+                    <a href="/admin"><i class="fas fa-cog"><span>Настройки</span></i></a>
+                </li>
+                <li class="navbar-header__item">
+                    <a href="/admin/logout"><i class="fas fa-sign-out-alt"><span>Выйти</span></i></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+}
+<div id="result">
+    <main class="main-admin">
+        <aside class="admin-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar__list" data-widget="tree">
+                    <li class="sidebar__item" style="height: 37px;"></li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/mainImages">
+                            <i class="fas fa-images"></i>
+                            <span>Нстройки галереи</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/orders">
+                            <i class="fas fa-book-open"></i>
+                            <span>Заказы</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/categories">
+                            <i class="fas fa-list"></i>
+                            <span>Категории</span>
+                        </a>
+                    </li>
+                    @{
+                        Html.RenderAction("GetCategoriesAndSubCategoriesForAdmin", "Partial");
+                    }
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/add/item/">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить товар</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/news">
+                            <i class="far fa-newspaper"></i>
+                            <span>Статьи</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/news/add">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить статью</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/stocks">
+                            <i class="far fa-money-bill-alt"></i>
+                            <span>Акции</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/stocks/add">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить акцию</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/reviews">
+                            <i class="fas fa-comments"></i>
+                            <span>Отзывы</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+        <div class="admin-content-wrapper">
+            <section class="admin-content-header">
+                <h1 class="admin-page__title">
+                    Список товаров
+                    <small></small>
+                </h1>
+            </section>
+            <section class="admin-content-main">
+                <table class="products-table">
+                    <thead>
+                        <tr>
+                            <th>Опции</th>
+                            <th>ID</th>
+                            <th>Статус</th>
+                            <th>Категория</th>
+                            <th>Название</th>
+                            <th>Цена</th>
+                            <th>Акция</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th>
+                                    <a href="/admin/edit/item/@item.VendorCode" class="btn btn-warning" data-title="Редактировать товар"><i class="fas fa-edit"></i></a><br>
+                                    <button type="button" class="btn btn-danger RemoveLink" data-id="@item.Id" data-title="Удалить товар"><i class="fas fa-trash-alt"></i></button>
+                                </th>
+                                <th>@item.VendorCode</th>
+                                <th>
+                                    <div class="status-dropdown">
+                                        @if (item.inStock != false)
+                                        {
+                                            <div class="status-toggle btn btn-success">В наличии</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="status-toggle btn btn-warning">Нет в наличии</div>
+                                        }
+                                        <ul class="status__list" style="display: none;">
+                                            <li class="status__item btn btn-success" data-in-stock="true" data-id="@item.Id">В наличии</li>
+                                            <li class="status__item btn btn-warning" data-in-stock="false" data-id="@item.Id">Нет в наличии</li>
+                                        </ul>
+                                    </div>
+                                </th>
+                                <th>@item.CategoryNameRu</th>
+                                <th>@item.NameRu</th>
+                                <th>@item.PriceUa грн.</th>
+                                <th>
+                                    @if (item.IsStock != false)
+                                    {
+                                        <button type="button" class="stock btn btn-danger" data-id="@item.Id"><i class="fas fa-percent"></i></button>
+                                    }
+                                </th>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    </main>
+</div>
+<div class="decoy" style="display: none"></div>

@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" type="text/css" href="~/Content/libs/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/PagedList.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,400i,500,500i,700&display=swap&subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/libs/swiper/swiper.min.css">
+    <link rel="stylesheet" href="~/Content/libs/aos/aos.css">
+    <title>@Resources.Resource.layout_header</title>
+
+    <!--//-->
+    <link rel="apple-touch-icon" sizes="144x144" href="~/Content/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Content/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="~/Content/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="~/Content/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <!--//-->
+    <meta name="description" content="Компания «Техно тент» - являемся импортером широкого ассортимента тканей ПВХ и фурнитуры европейских производителей. А также мы специализируемся на изготовлении металлоконструкций каркасного типа и тентовых покрытий из ткани ПВХ.">
+    <meta name="keywords" content="тентовая ткань, купить тентовую ткань, купить тент, пвх ткань купить, тенты автомобильные, каркасы автомобильные, павильоны, палатки для выставок, палатки торговые, шатры, навесы, маркизы, баннера рекламные, ремонт и обслуживание тентов, монтаж тентов, демонтаж тентов, Украина, заказать">
+    <meta name="google-site-verification" content="bniSxQk8eln8FqP0qqvr2QVym1H83mG5HQmy_XFbM_o" />
+    <!--facebook-->
+    <meta property="og:page_url" content="https://tehnotent.prom.ua/"> <!--ПОПРАВИТЬ-->
+    <meta property="og:title" content="Продажа ПВХ тканей,фурнитуры, производство тентовых изделий от ООО &quot;ТехноТент&quot;">
+    <meta property="og:description" content="Купить Тент ПВХ в Киеве - цены, товары и услуги компании  &quot;ООО  &quot;ТЕХНО ТЕНТ &quot; &quot;: +380 (50) 338-83-48 +38067 5761081 продажа ПВХ, г. Киев">
+    <meta property="og:image" content="~/Content/images/promo__tehno-tent.jpg">
+    <meta property="og:type" content="website">
+    <!--//facebook-->
+</head>
+<body>
+    @if (IsSectionDefined("AdminHeader"))
+    {
+        @RenderSection("AdminHeader")
+    }
+    else if (IsSectionDefined("PartialHeader"))
+    {
+        @RenderSection("PartialHeader")
+    }
+    else
+    {
+        <header>
+            <div class="header-top">
+                <div class="wrapper header-bar">
+                    <div class="lang-switch">
+                        <a href="/language/ru/" class="lang-switch__item">ru</a>
+                        <a href="/language/uk/" class="lang-switch__item">ua</a>
+                        <a href="/language/en/" class="lang-switch__item">eng</a>
+                    </div>
+                    @{
+                        Html.RenderAction("CheckLoggedIn", "Partial");
+                    }
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="header-middle">
+                    <a class="header-logo__link" href="/"><img src="~/Content/images/logo.png" alt="Техно Тент" title="Техно Тент" class="header-logo"></a>
+                    <div class="header-phones">
+                        <ul class="header-phones__list">
+                            <span class="header-phones-title">@Resources.Resource.layout_phone_order</span>
+                            <li class="header-phones__item">
+                                <span class="header-phones__item-title">@Resources.Resource.contacts_tel1</span>
+                                <a href="tel:+380 (50) 338-83-48 " class="header-phones__number">+380 (95) 42-46-215</a>
+                            </li>
+                            <li class="header-phones__item">
+                                <span class="header-phones__item-title">@Resources.Resource.layout_manuf</span>
+                                <a href="tel:+380 (50) 338-83-48 " class="header-phones__number">+380 (50) 33-88-348</a>
+                            </li>
+                            <i class="fa fa-angle-down down__phone"></i>
+                        </ul>
+                    </div>
+                    <div class="work-time">
+                        <p class="work-time__text">
+                            @Resources.Resource.layout_work_time:
+                            <i class="fas fa-clock"></i>
+                        </p>
+                        <p class="work-time__inner">@Resources.Resource.layout_date1</p>
+                        <p class="work-time__inner">@Resources.Resource.layout_date2    </p>
+                    </div>
+                    <div class="header-backcall">
+                        <i title="Заказать обратный звонок" class="fas fa-headphones-alt backcall-toggle"></i>
+                        <p title="Заказать обратный звонок" class="backcall__text backcall-toggle">@Resources.Resource.layout_backCall?</p>
+                    </div>
+                    @{
+                        Html.RenderAction("GetItemsCount", "Partial");
+                    }
+                </div>
+            </div>
+            @{
+                Html.RenderAction("GetCategoriesAndSubCategories", "Partial");
+            }
+        </header>
+    }
+    @RenderBody()
+    @if (IsSectionDefined("AdminFooter"))
+    {
+        @RenderSection("AdminFooter")
+    }
+    else if (IsSectionDefined("PartialFooter"))
+    {
+        @RenderSection("PartialFooter")
+    }
+    else
+    {
+        <footer class="footer">
+            <div class="wrapper">
+                <div class="footer-container">
+                    <div class="footer-left">
+                        <a class="footer__logo" href="#">
+                            <img src="~/Content/images/logo.png" alt="Lazer-Svit Лазерная резка и гравировка" title="Дизайнерская студия  LS">
+                        </a>
+                        <h3 class="footer-logo__subtitle">@Resources.Resource.layout_subtitle</h3>
+                        <div class="footer-social__icons">
+                            <a class="footer-social__link" href="https://www.instagram.com/tehnotent_ua/"><img src="~/Content/images/instagram.svg" alt="Instagram"></a>
+                            <a class="footer-social__link" href="https://www.facebook.com/%D0%A2%D0%B5%D1%85%D0%BD%D0%BE-%D0%A2%D0%B5%D0%BD%D1%82-273874863534960/?__tn__=kC-R&eid=ARDYFHkLsFd_fe3CCg65gaO9ImVPhEgZ9AalAXn3I65wTNJJbITGsb6QCPc0G2VG4xMZZl4ChHQcNmFL&hc_ref=ARS_Q14rTDoXHoKqQ9uraSf6MRDC_4jYp62f1mf7APGNfE29I65ViE61dZWnRXMu0YI&fref=nf&__xts__[0]=68.ARBA1MOL8qwEedNokMe2vBA9YWwkOuwMl6IkAiL68pkYKXQYKs8mE-WjOe6BRTercUpzBYaLFUbv4l_FSnLH7hhEnphLltPCx_pRNbxjof3_sWORpr-7_DiLMTMKVdOc2iu3VlJNBecigVkaXoVec-CcmX_aXxdUQPL6DtpRPw2pZ6cpX5iMMjwpEK06vm4xUqCmoHgfFCjgBMAj9mp9lt-UT_YbccZgQa5_6Qhm2kDJu6UE1aWTIrcjkKao9LjzHoeC7WIhylMflcoujfJdcPu-JJ1CjXadLglf4MD95znUF3DD89rOZwgYW69AmBV_rUA3uTd9WY6HV_lijLfWyro"><img src="~/Content/images/facebook.svg" alt="Facebook"></a>
+                        </div>
+                    </div>
+                    <div class="footer-middle">
+                        <ul class="footer-contact__list">
+                            <li class="footer-contact__item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <p class="footer__addres">@Resources.Resource.layout_address1<br>@Resources.Resource.layout_address2</p>
+                            </li>
+                            <li class="footer-contact__item">
+                                <i class="fas fa-phone"></i>
+                                <div class="footer__phone">
+                                    <a href="tel:+380503388348"> +38 (050) 338-83-48 </a><br>
+                                    <a href="tel:+380505120351"> +38 (050) 512-03-51 </a>
+                                </div>
+                            </li>
+                            <li class="footer-contact__item">
+                                <i class="fas fa-envelope"></i>
+                                <p class="footer__email"><a href="mailto:Tehnotentdn@gmail.com">Tehnotentdn@gmail.com</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-right">
+                        <p class="footer__about-company">
+                            <span> <b>@Resources.Resource.layout_about_company_title</b></span>
+                            @Resources.Resource.layout_about_company
+                        </p>
+
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p class="footer-copy-text">Copyright © 2019 «TehnoTent» All Right Reserved</p>
+                </div>
+            </div>
+        </footer>
+    }
+    <div class="popup__bg" style="display: none;">
+        <div class="backcall-wrapper" style="display: none;">
+            <h2 class="backcall__title">
+                @Resources.Resource.layout_backCall_order!
+            </h2>
+            @using (Html.BeginForm("BackCall", "Home", FormMethod.Post, new { @class = "form-backcall" }))
+            {
+                <label>@Resources.Resource.layout_backCall_name</label>
+                <div class="form-input-wrapper">
+                    <input class="form-input form-input__name" type="text" name="name">
+                    <div class="form-input__underlined"></div>
+                    <i class="form-input__icon fas fa-user"></i>
+                </div>
+                <label>@Resources.Resource.layout_backCall_tel</label>
+                <div class="form-input-wrapper">
+                    <input class="form-input form-input__tel" type="tel" name="tel">
+                    <div class="form-input__underlined"></div>
+                    <i class="form-input__icon fas fa-phone"></i>
+                    <div class="error-message tel__error-message" style="display: none;">@Resources.Resource.layout_backCall_tel_err</div>
+                </div>
+                <label>@Resources.Resource.layout_backCall_text</label>
+                <div class="form-input-wrapper">
+                    <textarea class="form-input form-input__message" type="text" name="message"></textarea>
+                    <div class="form-input__underlined"></div>
+                    <i class="form-input__icon fas fa-envelope-open"></i>
+                </div>
+                <button class="form-button" type="submit">@Resources.Resource.layout_backCall_submit</button>
+            }
+            <i class="fas fa-times popup-close__button"></i>
+        </div>
+        <div class="popup-cart-wrapper" style="display:none">
+            <div class="popup-cart__title">
+                @Resources.Resource.items_to_cart_success
+            </div>
+            <div class="popup-cart__button">
+                <a href="/checkout" class="popup-cart-btn-link">@Resources.Resource.items_checkout</a>
+                <button class="popup-cart-btn-link">@Resources.Resource.items_cont_shopping</button>
+            </div>
+            <i class="fas fa-times popup-close__button"></i>
+        </div>
+    </div>
+    <script type="text/javascript" src="~/Content/libs/jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="~/Content/libs/swiper/swiper.min.js"></script>
+    <script type="text/javascript" src="~/Content/libs/aos/aos.js"></script>
+    <script type="text/javascript" src="~/Content/libs/ion/ion.rangeSlider.min.js"></script>
+    <script type="text/javascript" src="~/Content/libs/fotorama/fotorama.dev.js"></script>
+    <script type="text/javascript" src="~/Content/script/script.js"></script>
+    @RenderSection("Main", required: false)
+</body>
+</html>

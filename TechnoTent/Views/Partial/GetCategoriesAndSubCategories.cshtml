@@ -1,0 +1,48 @@
+﻿@model List<TechnoTent.Models.ViewModel.CategoriesVM>
+
+<div class="header-bottom">
+    <div class="wrapper header-menu">
+        <button class="header-menu__toggle">
+            <span></span>
+        </button>
+        <nav class="header-nav">
+            <div class="catalog__toggle">@Resources.Resource.partial_cat_title</div>
+            <i class="far fa-folder-open catalog__img"></i>
+            <ul class="nav__list">
+                @foreach (var category in Model)
+                {
+                    <li class="nav__item">
+                        @if(category.SubCategory.Any(u=>u.CategoryId == category.CategoryId) == true)
+                        {
+                            <a class="nav__link" href="/category/@category.CategoryUrl">@category.CategoryName <i class="fas fa-angle-right"></i></a>
+                        }
+                        else
+                        {
+                            <a class="nav__link" href="/category/@category.CategoryUrl">@category.CategoryName</a>
+                        }
+
+                        <ul class="nav__item nav__drop-down">
+                            @foreach (var subCategory in category.SubCategory)
+                            {
+                                if (subCategory.CategoryId == category.CategoryId)
+                                {
+                                    <li class="nav__item">
+                                        <a class="nav__link" href="/category/@category.CategoryUrl/@subCategory.SubCategoryName">@subCategory.SubCategoryName</a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                }
+            </ul>
+        </nav>
+        <ul class="header-menu__list">
+            <li class="header-menu__item"><a class="header-menu__link" href="/">@Resources.Resource.partial_cat_menu1</a></li>
+            <li class="header-menu__item"><a class="header-menu__link" href="/reviews">@Resources.Resource.partial_cat_menu2</a></li>
+            <li class="header-menu__item"><a class="header-menu__link" href="/stocks">@Resources.Resource.partial_cat_menu3</a></li>
+            <li class="header-menu__item"><a class="header-menu__link" href="/news">@Resources.Resource.partial_cat_menu4</a></li>
+            <li class="header-menu__item"><a class="header-menu__link" href="/about">@Resources.Resource.partial_cat_menu5</a></li>
+            <li class="header-menu__item"><a class="header-menu__link" href="/contacts">@Resources.Resource.partial_cat_menu6</a></li>
+        </ul>
+    </div>
+</div>

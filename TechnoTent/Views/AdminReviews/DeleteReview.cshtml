@@ -1,0 +1,159 @@
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".RemoveLink").click(function () {
+            var id = $(this).attr("data-id");
+            url = "@Url.Action("DeleteReview", "AdminReviews")?id=" + id;
+            $('#result').load(url);
+        });
+    })
+</script>
+
+@model PagedList.IPagedList<TechnoTent.Models.ViewModel.ReviewVM>
+@using PagedList.Mvc;
+
+<div id="result">
+    <main class="main-admin">
+        <aside class="admin-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar__list" data-widget="tree">
+                    <li class="sidebar__item" style="height: 37px;"></li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/mainImages">
+                            <i class="fas fa-images"></i>
+                            <span>Нстройки галереи</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/orders">
+                            <i class="fas fa-book-open"></i>
+                            <span>Заказы</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/categories">
+                            <i class="fas fa-list"></i>
+                            <span>Категории</span>
+                        </a>
+                    </li>
+                    @{
+                        Html.RenderAction("GetCategoriesAndSubCategoriesForAdmin", "Partial");
+                    }
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/add/item/">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить товар</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/news">
+                            <i class="far fa-newspaper"></i>
+                            <span>Статьи</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/news/add">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить статью</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/stocks">
+                            <i class="far fa-money-bill-alt"></i>
+                            <span>Акции</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/stocks/add">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить акцию</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/reviews">
+                            <i class="fas fa-comments"></i>
+                            <span>Отзывы</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+        <div class="admin-content-wrapper">
+            <section class="admin-content-header">
+                <h1 class="admin-page__title">
+                    Отзывы
+                    <small></small>
+                </h1>
+            </section>
+            <section class="admin-content-main">
+                <div class="reviews__list">
+                    @if (Model.Count() != 0)
+                    {
+                        foreach (var review in Model)
+                        {
+                            <div class="reviews__item">
+                                <div class="reviews__item-wraper">
+                                    <div class="review__q">
+                                    </div>
+                                    <div class="review review-listed">
+                                        <div class="review__header">
+                                            <div class="review__date"><i class="far fa-calendar-alt"></i>@review.DateTime.ToShortDateString()</div>
+                                            <div class="review__author">@review.UserName</div>
+                                            <div class="review__name">@review.Title</div>
+                                        </div>
+                                        <p class="review__content text">@review.Text</p>
+                                        <div class="admin-review__button">
+                                            @if (review.Answer == null)
+                                            {
+                                                <button class="btn btn-success">Оставить отзыв</button>
+                                            }
+                                            <button class="btn btn-danger RemoveLink" data-id="@review.Id">Удалить отзыв</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                @if (review.Answer == null)
+                                {
+                                    <div class="reviews__reply" style="display: none;">
+                                        <div class="reviews__reply-img">
+                                        </div>
+                                        <div class="review-listed">
+                                            @using (Html.BeginForm("Index", "AdminReviews", FormMethod.Post, new { @class = "admin-form-reply" }))
+                                            {
+                                                @Html.Hidden("Id", review.Id)
+                                                <div class="form-input-wrapper">
+                                                    <textarea class="form-textarea form-textarea__message" name="Answer" placeholder="Текст отзыв" required=""></textarea>
+                                                    <div class="form-input__underlined"></div>
+                                                    <i class="form-textarea__icon fas fa-comment"></i>
+                                                    <div class="error-message message__error-message" style="display: none;">Введите отзыв.</div>
+                                                </div>
+                                                <div class="admin-review__button">
+                                                    <button type="submit" class="btn btn-success">Оставить отзыв</button>
+                                                    <button type="button" class="btn btn-secondary" onclick="location.reload()">Отмена</button>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="reviews__reply">
+                                        <div class="reviews__reply-img">
+                                        </div>
+                                        <div class="review-listed">
+                                            <div class="review__header">
+                                                <div class="review__date"><i class="far fa-calendar-alt"></i>@review.AnswerDateTime</div>
+                                                <div class="review__author">Представитель компании "ТехноТент"</div>
+                                            </div>
+                                            <p class="review__content text">@review.Answer</p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    }
+                </div>
+            </section>
+        </div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    </main>
+</div>

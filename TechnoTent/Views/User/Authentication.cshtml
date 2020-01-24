@@ -1,0 +1,76 @@
+﻿@model TechnoTent.Models.UserModels.Authentication
+
+<main>
+    <section class="auth">
+        <div class="wrapper">
+            <div class="auth-container">
+                <nav class="auth-navigation">
+                    <ul class="auth-tabs__list">
+                        <li class="auth-tabs__item active" data-form="sign-in">@Resources.Resource.auth_signin</li>
+                        <li class="auth-tabs__item" data-form="sign-up">@Resources.Resource.auth_signup</li>
+                    </ul>
+                </nav>
+                <div class="auth-tabs__content">
+                    <div class="auth-tabs__wrapper sign-in auth-tabs--active">
+                        @using (Html.BeginForm("Login", "User", FormMethod.Post, new { @class = "auth-form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <div class="form-input-wrapper">
+                                @Html.TextBoxFor(m => m.Login.Email, new { @type = "text", @placeholder = "Email", @class = "form-input form-input__login" })
+                                <div class="form-input__underlined"></div>
+                                <i class="form-input__icon fas fa-user"></i>
+                                <div class="error-message login__error-message" style="display: none;">@Resources.Resource.auth_email_err.</div>
+                            </div>
+                            <div class="form-input-wrapper">
+                                @Html.PasswordFor(m => m.Login.Password, new { @type = "password", @placeholder = @Resources.Resource.auth_pass, @class = "form-input form-input__password" })
+                                <div class="form-input__underlined"></div>
+                                <i class="form-input__icon form-input__icon-password fas fa-lock"></i>
+                                <div class="error-message password__error-message" style="display: none;">@Resources.Resource.auth_pass_err.</div>
+                            </div>
+                            <div class="form-input-wrapper checkbox-wrapper">
+                                @Html.CheckBoxFor(m => m.Login.RememberMe, new { @class = "form-input__checkbox", @id = "form-input__checkbox" })<label for="form-input__checkbox">Запомнить меня</label>
+                            </div>
+                            <div class="lost-password">
+                                <a href="/restorePassword" class="restore-password">@Resources.Resource.auth_trouble</a>
+                            </div>
+                            <input class="auth-form__button" type="submit" value="@Resources.Resource.auth_enter">
+                        }
+                    </div>
+                    <div class="auth-tabs__wrapper sign-up">
+                        @using (Html.BeginForm("Registration", "User", FormMethod.Post, new { @class = "auth-form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <div class="form-input-wrapper">
+                                @Html.TextBoxFor(m => m.Registration.Name, new { @type = "text", @placeholder = @Resources.Resource.auth_name, @class = "form-input form-input__name" })
+                                <div class="form-input__underlined"></div>
+                                <i class="form-input__icon fas fa-user"></i>
+                                <div class="error-message name__error-message" style="display: none;">@Resources.Resource.auth_name_err</div>
+                            </div>
+                            <div class="form-input-wrapper">
+                                @Html.TextBoxFor(m => m.Registration.Email, new { @type = "email", @placeholder = "Email", @class = "form-input form-input__login" })
+                                <div class="form-input__underlined"></div>
+                                <i class="form-input__icon fas fas fa-envelope"></i>
+                                <div class="error-message login__error-message" style="display: none;">Email.</div>
+                            </div>
+                            <div class="form-input-wrapper">
+                                @Html.PasswordFor(m => m.Registration.Password, new { @type = "password", @placeholder = @Resources.Resource.auth_pass, @class = "form-input form-input__password" })
+                                <div class="form-input__underlined"></div>
+                                <i class="form-input__icon form-input__icon-password fas fa-lock"></i>
+                                <div class="error-message password__error-message" style="display: none;">@Resources.Resource.auth_pass_err.</div>
+                            </div>
+                            <div class="form-input-wrapper">
+                                @Html.PasswordFor(m => m.Registration.PasswordConfirm, new { @type = "password", @placeholder = @Resources.Resource.auth_repass, @class = "form-input form-input__password" })
+                                <div class="form-input__underlined"></div>
+                                <i class="form-input__icon form-input__icon-password fas fa-lock"></i>
+                                <div class="error-message password__error-message" style="display: none;">@Resources.Resource.auth_repass_err.</div>
+                            </div>
+                            <input class="auth-form__button" type="submit" value="@Resources.Resource.auth_signup">
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
