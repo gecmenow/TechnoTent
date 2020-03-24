@@ -124,7 +124,7 @@
     <value>Фактична адреса</value>
   </data>
   <data name="about_org_address2" xml:space="preserve">
-    <value>м.Київ, Новокостянтинівська 4а | м.Костянтинівка, Тельмана 1</value>
+    <value>м.Київ, Новокостянтинівська 4а | м.Костянтинівка, вул. Мірошніченко 7.</value>
   </data>
   <data name="about_org_name1" xml:space="preserve">
     <value>Найменування організації</value>
@@ -142,10 +142,10 @@
     <value>Банк ПАТ "ПРИВАТБАНК"</value>
   </data>
   <data name="about_org_requisites3" xml:space="preserve">
-    <value>Р / р 26000053614553</value>
+    <value>Р / р</value>
   </data>
   <data name="about_org_requisites4" xml:space="preserve">
-    <value>МФО 335548</value>
+    <value>МФО</value>
   </data>
   <data name="about_org_requisites5" xml:space="preserve">
     <value>ЄДРПОУ</value>
@@ -173,6 +173,9 @@
   </data>
   <data name="about_org_tel5" xml:space="preserve">
     <value>Менеджер Viber</value>
+  </data>
+  <data name="about_org_tel6" xml:space="preserve">
+    <value>Гол. Бухгалтер</value>
   </data>
   <data name="about_title" xml:space="preserve">
     <value>Про нас</value>
@@ -247,7 +250,7 @@
     <value>Вул. Новокостянтинівська, 4 а</value>
   </data>
   <data name="contacts_address1" xml:space="preserve">
-    <value>Вул. Тельмана, 1</value>
+    <value>Вул. Мірошніченко , 7</value>
   </data>
   <data name="contacts_backCall1" xml:space="preserve">
     <value>не змогли додзвонитися</value>
@@ -622,7 +625,7 @@
     <value>Намотування</value>
   </data>
   <data name="layout_about_company" xml:space="preserve">
-    <value>Компанія ТОВ "Техно тент" виконує повний комплекс робіт з виготовлення
+    <value>Компанія ТОВ "Техно Тент" виконує повний комплекс робіт з виготовлення
 автомобільних тентів, дахів, штор з
  якісного матеріалу ПВХ з
  використанням фурнітури високої
@@ -674,7 +677,7 @@
     <value>Замовлення за телефоном</value>
   </data>
   <data name="layout_subtitle" xml:space="preserve">
-    <value>Продаж ПВХ тканин, фурнітури, виробництво тентових виробів від ТОВ "ТехноТент"</value>
+    <value>Продаж ПВХ тканин, фурнітури, виробництво тентових виробів від ТОВ "Техно Тент"</value>
   </data>
   <data name="layout_work_time" xml:space="preserve">
     <value>Час роботи</value>
@@ -878,7 +881,7 @@
     <value>Відгуки</value>
   </data>
   <data name="review_author" xml:space="preserve">
-    <value>Представник компанії "ТехноТент"</value>
+    <value>Представник компанії "Техно Тент"</value>
   </data>
   <data name="review_autorize" xml:space="preserve">
     <value>Увійдіть для того, щоб залишити відгук</value>

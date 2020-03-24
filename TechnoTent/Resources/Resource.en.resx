@@ -124,7 +124,7 @@
     <value>The actual address</value>
   </data>
   <data name="about_org_address2" xml:space="preserve">
-    <value>Kiev, Novokonstantinovskaya 4a | Konstantinovka city, Telman 1</value>
+    <value>Kiev, Novokonstantinovskaya 4a | Konstantinovka city, Miroshnichenko 7</value>
   </data>
   <data name="about_org_name1" xml:space="preserve">
     <value>Name of company</value>
@@ -142,10 +142,10 @@
     <value>Bank PAT "PRIVATBANK"</value>
   </data>
   <data name="about_org_requisites3" xml:space="preserve">
-    <value>P / R 26000053614553</value>
+    <value>P / R </value>
   </data>
   <data name="about_org_requisites4" xml:space="preserve">
-    <value>MFI 335548</value>
+    <value>MFI</value>
   </data>
   <data name="about_org_requisites5" xml:space="preserve">
     <value>EDRPOU</value>
@@ -173,6 +173,9 @@
   </data>
   <data name="about_org_tel5" xml:space="preserve">
     <value>Viber Manager</value>
+  </data>
+  <data name="about_org_tel6" xml:space="preserve">
+    <value>Main Bookkeeper</value>
   </data>
   <data name="about_title" xml:space="preserve">
     <value>About us</value>
@@ -247,7 +250,7 @@
     <value>St. Novokonstantinovskaya, 4 a</value>
   </data>
   <data name="contacts_address1" xml:space="preserve">
-    <value>St. Telman 1</value>
+    <value>St. Miroshichenko 1</value>
   </data>
   <data name="contacts_backCall1" xml:space="preserve">
     <value>could not get through</value>
@@ -622,7 +625,7 @@
     <value>Winding</value>
   </data>
   <data name="layout_about_company" xml:space="preserve">
-    <value>Company LLC "Techno tent" performs full range of manufacturing
+    <value>Company LLC "Techno Tent" performs full range of manufacturing
  automobile awnings, roofs, curtains from
  quality PVC material with
  using high fittings quality, advertising is possible.</value>
@@ -673,7 +676,7 @@
     <value>Order by phone</value>
   </data>
   <data name="layout_subtitle" xml:space="preserve">
-    <value>Sale of PVC fabrics, accessories, production of awnings products from LLC  "TekhnoTent"</value>
+    <value>Sale of PVC fabrics, accessories, production of awnings products from LLC  "Tekhno Tent"</value>
   </data>
   <data name="layout_work_time" xml:space="preserve">
     <value>Working hours</value>
@@ -877,7 +880,7 @@
     <value>Reviews</value>
   </data>
   <data name="review_author" xml:space="preserve">
-    <value>Representative of the company "TechnoTent"</value>
+    <value>Representative of the company "Techno Tent"</value>
   </data>
   <data name="review_autorize" xml:space="preserve">
     <value>Login to post a review</value>

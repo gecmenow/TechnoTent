@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="about_about" xml:space="preserve">
-    <value>Компания ООО "Техно тент" выполняет полный комплекс работ по  изготовлению автомобильных тентов, крыш, штор из качественного материала ПВХ с использованием фурнитуры высокого качества, возможно нанесение рекламы. Также производит обслуживание и ремонт тентов для автомобилей различных моделей и марок. Помимо этого, мы производим переделку автотентов,  замену отдельно боковин, крыши или торца и изменение высоты и длины тентов. Возможен как капитальный ремонт тента, так и устранение различных порезов, замена любых элементов (крыши, клапана, боковины) и любой фурнитуры (скоб, ремней, люверсов, крючков).</value>
+    <value>Компания ООО "Техно Тент" выполняет полный комплекс работ по  изготовлению автомобильных тентов, крыш, штор из качественного материала ПВХ с использованием фурнитуры высокого качества, возможно нанесение рекламы. Также производит обслуживание и ремонт тентов для автомобилей различных моделей и марок. Помимо этого, мы производим переделку автотентов,  замену отдельно боковин, крыши или торца и изменение высоты и длины тентов. Возможен как капитальный ремонт тента, так и устранение различных порезов, замена любых элементов (крыши, клапана, боковины) и любой фурнитуры (скоб, ремней, люверсов, крючков).</value>
   </data>
   <data name="about_org_address1" xml:space="preserve">
     <value>Фактический адрес</value>
   </data>
   <data name="about_org_address2" xml:space="preserve">
-    <value>г.Киев, Новоконстантиновская 4а | г.Константиновка, Тельмана 1</value>
+    <value>г.Киев, Новоконстантиновская 4а | г.Константиновка, ул. Мирошниченко 7</value>
   </data>
   <data name="about_org_name1" xml:space="preserve">
     <value>Наименование организации</value>
@@ -142,10 +142,10 @@
     <value>Банк ПАТ "ПРИВАТБАНК"</value>
   </data>
   <data name="about_org_requisites3" xml:space="preserve">
-    <value>П/р 26000053614553</value>
+    <value>П/р</value>
   </data>
   <data name="about_org_requisites4" xml:space="preserve">
-    <value>МФО 335548</value>
+    <value>МФО</value>
   </data>
   <data name="about_org_requisites5" xml:space="preserve">
     <value>ЕГРПОУ</value>
@@ -173,6 +173,9 @@
   </data>
   <data name="about_org_tel5" xml:space="preserve">
     <value>Менеджер Viber</value>
+  </data>
+  <data name="about_org_tel6" xml:space="preserve">
+    <value>Гл. бухгалтер</value>
   </data>
   <data name="about_title" xml:space="preserve">
     <value>О нас</value>
@@ -247,7 +250,7 @@
     <value>Ул. Новоконстантиновская, 4 а</value>
   </data>
   <data name="contacts_address1" xml:space="preserve">
-    <value>Ул. Тельмана, 1</value>
+    <value>Ул. Мирошниченко, 7</value>
   </data>
   <data name="contacts_backCall1" xml:space="preserve">
     <value>не смогли дозвониться</value>
@@ -675,7 +678,7 @@
     <value>Заказ по телефону</value>
   </data>
   <data name="layout_subtitle" xml:space="preserve">
-    <value>Продажа ПВХ тканей,фурнитуры, производство тентовых изделий от ООО "ТехноТент"</value>
+    <value>Продажа ПВХ тканей,фурнитуры, производство тентовых изделий от ООО "Техно Тент"</value>
   </data>
   <data name="layout_work_time" xml:space="preserve">
     <value>Время работы</value>
@@ -879,7 +882,7 @@
     <value>Отзывы</value>
   </data>
   <data name="review_author" xml:space="preserve">
-    <value>Представитель компании "ТехноТент"</value>
+    <value>Представитель компании "Техно Тент"</value>
   </data>
   <data name="review_autorize" xml:space="preserve">
     <value>Войдите, чтобы оставить отзыв</value>
