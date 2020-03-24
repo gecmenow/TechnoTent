@@ -12,8 +12,7 @@ namespace TechnoTent.Models.NovaPoshtaAPI
     {
         static List<string> GetPostOffices(string cityId)
         {
-
-            string key = "c81cd4ee656ee2674b68343187869707";
+            string key = Admin.GetAdminData().NovaPoshtaKey;
 
             string json = @"{
                 ""modelName"": ""AddressGeneral"",

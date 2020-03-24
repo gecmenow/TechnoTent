@@ -74,7 +74,8 @@ namespace TechnoTent.Models
 
         public static void AddCategory(AdminCategoryVM adminCategoryVM, HttpPostedFileBase item)
         {
-            adminCategoryVM.CategoryImage = Image.UploadNewCategoryImage(item);
+            if (item != null)
+                adminCategoryVM.CategoryImage = Image.UploadNewCategoryImage(item);
 
             using (DataBaseContext db = new DataBaseContext())
             {
@@ -92,7 +93,8 @@ namespace TechnoTent.Models
 
         public static void EditCategory(AdminCategoryVM adminCategoryVM, HttpPostedFileBase item)
         {
-            adminCategoryVM.CategoryImage = Image.UploadNewCategoryImage(item);
+            if (item != null)
+                adminCategoryVM.CategoryImage = Image.UploadNewCategoryImage(item);
 
             using (DataBaseContext db = new DataBaseContext())
             {
@@ -167,7 +169,12 @@ namespace TechnoTent.Models
             {
                 var categories = db.CategoryDb.Where(u => u.Id == categoryId).FirstOrDefault();
 
+                var subcategory = db.SubCategoryDb.Where(u => u.CategoryId == categoryId).FirstOrDefault();
+
                 db.CategoryDb.Remove(categories);
+
+                if (subcategory != null)
+                    db.SubCategoryDb.Remove(subcategory);
 
                 db.SaveChanges();
             }

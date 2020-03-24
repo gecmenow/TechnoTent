@@ -137,9 +137,6 @@ namespace TechnoTent.Models.ViewModel.Admin
         public string SparesTypeUa { get; set; }
         public string SparesTypeRu { get; set; }
         public string SparesTypeEn { get; set; }
-        public string SpecificationeUa { get; set; }
-        public string SpecificationeRu { get; set; }
-        public string SpecificationeEn { get; set; }
         public string TextileProductTypeRu { get; set; }
         public string TextileProductTypeUa { get; set; }
         public string TextileProductTypeEn { get; set; }

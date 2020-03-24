@@ -75,7 +75,7 @@ namespace TechnoTent.Controllers
             if (adminCookie.IsAdmin())
                 adminCookie.UnsetAdminCookie();
 
-            return View();
+            return Redirect(Url.Content("~/"));
         }
 
     }

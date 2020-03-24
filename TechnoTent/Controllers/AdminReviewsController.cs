@@ -29,7 +29,7 @@ namespace TechnoTent.Controllers
         {
             AdminReviews.AnswerReview(review);
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         public ActionResult DeleteReview(int id)

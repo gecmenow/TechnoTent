@@ -174,7 +174,7 @@
                 </div>
                 <div class="product-edit__wrapper additional-information__more">
                     <div class="product-edit__wrapper">
-                        <label class="edit__title">Прочность при адгезии</label><input type="text" name="AdhesionStrengthEn" class="input-product-edit" value="@Model.AdhesionStrength">
+                        <label class="edit__title">Прочность при адгезии</label><input type="text" name="AdhesionStrength" class="input-product-edit" value="@Model.AdhesionStrength">
                     </div>
                     <label class="edit__text">Н</label>
                 </div>
@@ -200,7 +200,7 @@
                         <label class="edit__title">Нить (рус)</label><input type="text" name="ThreadRu" class="input-product-edit" value="@Model.ThreadRu">
                     </div>
                     <div class="product-edit__wrapper">
-                        <label class="edit__title">Страна производитель (рус)</label><input type="text" name="CountryOfOriginUa" class="input-product-edit" value="@Model.CountryOfOriginUa">
+                        <label class="edit__title">Страна производитель (рус)</label><input type="text" name="CountryOfOriginRu" class="input-product-edit" value="@Model.CountryOfOriginRu">
                     </div>
                     <div class="product-edit__wrapper">
                         <label class="edit__title">Сезон (рус)</label><input type="text" name="SeasonRu" class="input-product-edit" value="@Model.SeasonRu">
@@ -209,7 +209,7 @@
                         <label class="edit__title">Материал (рус)</label><input type="text" name="MaterialRu" class="input-product-edit" value="@Model.MaterialRu">
                     </div>
                     <div class="product-edit__wrapper">
-                        <label class="edit__title">Тип запчасти (рус)</label><input type="text" name="SparesTypeRu" class="input-product-edit" value="@Model.SparesTypeUa">
+                        <label class="edit__title">Тип запчасти (рус)</label><input type="text" name="SparesTypeRu" class="input-product-edit" value="@Model.SparesTypeRu">
                     </div>
                     <div class="product-edit__wrapper">
                         <label class="edit__title">Вид текстильного изделия (рус)</label><input type="text" name="TextileProductTypeRu" class="input-product-edit" value="@Model.TextileProductTypeRu">
@@ -222,9 +222,6 @@
                     </div>
                     <div class="product-edit__wrapper">
                         <label class="edit__title">Плотность (рус)</label><input type="text" name="DensityRu" class="input-product-edit" value="@Model.DensityRu">
-                    </div>
-                    <div class="product-edit__wrapper">
-                        <label class="edit__title">Описание (рус)</label><textarea name="DescriptionRu" class="input-product-edit"></textarea>
                     </div>
                 </div>
                 <div class="tab-element" style="position: absolute; visibility: hidden;">
@@ -251,6 +248,9 @@
                     </div>
                     <div class="product-edit__wrapper">
                         <label class="edit__title">Материал (укр)</label><input type="text" name="MaterialUa" class="input-product-edit" value="@Model.MaterialUa">
+                    </div>
+                    <div class="product-edit__wrapper">
+                        <label class="edit__title">Тип запчасти (укр)</label><input type="text" name="SparesTypeUa" class="input-product-edit" value="@Model.SparesTypeUa">
                     </div>
                     <div class="product-edit__wrapper">
                         <label class="edit__title">Вид текстильного изделия (укр)</label><input type="text" name="TextileProductTypeUa" class="input-product-edit" value="@Model.TextileProductTypeUa">
@@ -291,6 +291,9 @@
                         <label class="edit__title">Материал (англ)</label><input type="text" name="MaterialEn" class="input-product-edit" value="@Model.MaterialEn">
                     </div>
                     <div class="product-edit__wrapper">
+                        <label class="edit__title">Тип запчасти (англ)</label><input type="text" name="SparesTypeEn" class="input-product-edit" value="@Model.SparesTypeEn">
+                    </div>
+                    <div class="product-edit__wrapper">
                         <label class="edit__title">Вид текстильного изделия (англ)</label><input type="text" name="TextileProductTypeEn" class="input-product-edit" value="@Model.TextileProductTypeEn">
                     </div>
                     <div class="product-edit__wrapper">
@@ -301,9 +304,6 @@
                     </div>
                     <div class="product-edit__wrapper">
                         <label class="edit__title">Плотность (англ)</label><input type="text" name="DensityEn" class="input-product-edit" value="@Model.DensityEn">
-                    </div>
-                    <div class="product-edit__wrapper">
-                        <label class="edit__title">Описание (англ)</label><textarea name="DescriptionEn" class="input-product-edit"></textarea>
                     </div>
                 </div>
                 <label class="edit__title additional-information">Дополнительная информация <i class="fas fa-angle-down"></i></label>
@@ -332,7 +332,7 @@
                         <label class="edit__title">Вид текстильного изделия (рус)</label><input type="text" name="TextileProductTypeRu" class="input-product-edit" value="@Model.TextileProductTypeRu">
                     </div>
                     <div class="product-edit__wrapper">
-                        <label class="edit__title">Спецификация (рус)</label><input type="text" name="SpecificationeRu" class="input-product-edit" value="@Model.SpecificationeRu">
+                        <label class="edit__title">Спецификация (рус)</label><input type="text" name="SpecificationeRu" class="input-product-edit" value="@Model.SpecificationRu">
                     </div>
                     <div class="product-edit__wrapper">
                         <label class="edit__title">Тип запчасти (рус)</label><input type="text" name="SparesTypeRu" class="input-product-edit" value="@Model.SparesTypeRu">
@@ -346,7 +346,7 @@
                         <label class="edit__title">Вид текстильного изделия (укр)</label><input type="text" name="TextileProductTypeUa" class="input-product-edit" value="@Model.TextileProductTypeUa">
                     </div>
                     <div class="product-edit__wrapper">
-                        <label class="edit__title">Спецификация (укр)</label><input type="text" name="SpecificationeUa" class="input-product-edit" value="@Model.SpecificationeUa">
+                        <label class="edit__title">Спецификация (укр)</label><input type="text" name="SpecificationeUa" class="input-product-edit" value="@Model.SpecificationUa">
                     </div>
                     <div class="product-edit__wrapper">
                         <label class="edit__title">Тип запчасти (укр)</label><input type="text" name="SparesTypeUa" class="input-product-edit" value="@Model.SparesTypeUa">
@@ -360,7 +360,7 @@
                         <label class="edit__title">Вид текстильного изделия (англ)</label><input type="text" name="TextileProductTypeEn" class="input-product-edit" value="@Model.TextileProductTypeEn">
                     </div>
                     <div class="product-edit__wrapper">
-                        <label class="edit__title">Спецификация (англ)</label><input type="text" name="SpecificationeEn" class="input-product-edit" value="@Model.SpecificationeEn">
+                        <label class="edit__title">Спецификация (англ)</label><input type="text" name="SpecificationeEn" class="input-product-edit" value="@Model.SpecificationEn">
                     </div>
                     <div class="product-edit__wrapper">
                         <label class="edit__title">Тип запчасти (англ)</label><input type="text" name="SparesTypeEn" class="input-product-edit" value="@Model.SparesTypeEn">

@@ -192,6 +192,37 @@ namespace TechnoTent.Models
                          IsStock = entry.IsStock,
                          StockPriceEn = entry.StockPriceEn,
                          StockPriceUa = entry.StockPriceUa,
+                         ManufacturerEn = entry.ManufacturerEn,
+                         ManufacturerRu = entry.ManufacturerRu,
+                         ManufacturerUa = entry.ManufacturerUa,
+                         CountryOfOriginEn = entry.CountryOfOriginEn,
+                         CountryOfOriginRu = entry.CountryOfOriginRu,
+                         CountryOfOriginUa = entry.CountryOfOriginUa,
+                         SeasonEn = entry.SeasonEn,
+                         SeasonRu = entry.SeasonRu,
+                         SeasonUa = entry.SeasonUa,
+                         MaterialEn = entry.MaterialEn,
+                         MaterialRu = entry.MaterialRu,
+                         MaterialUa = entry.MaterialUa,
+                         DensityEn = entry.DensityEn,
+                         DensityRu = entry.DensityRu,
+                         DensityUa = entry.DensityUa,
+                         SizeEn = entry.SizeEn,
+                         SizeRu = entry.SizeRu,
+                         SizeUa = entry.SizeUa,
+                         WarrantyPeriod = entry.WarrantyPeriod,
+                         PreparationTime = entry.PreparationTime,
+                         SparesTypeEn = entry.SparesTypeEn,
+                         SparesTypeRu = entry.SparesTypeRu,
+                         SparesTypeUa = entry.SparesTypeUa,
+                         TextileProductTypeEn = entry.TextileProductTypeEn,
+                         TextileProductTypeRu = entry.TextileProductTypeRu,
+                         TextileProductTypeUa = entry.TextileProductTypeUa,
+                         DescriptionEn = entry.DescriptionEn,
+                         DescriptionRu = entry.DescriptionRu,
+                         DescriptionUa = entry.DescriptionUa,
+                         ItemStatus = entry.ItemStatus,
+                         ProductBuyTypeMeter = entry.ProductBuyTypeMeter
                      }).FirstOrDefault();
 
                 var categories = db.CategoryDb.Select(u => u.CategoryNameRu).ToList();
@@ -304,9 +335,6 @@ namespace TechnoTent.Models
                         SparesTypeRu = item.SparesTypeRu,
                         SparesTypeUa = item.SparesTypeUa,
                         SparesTypeEn = item.SparesTypeEn,
-                        SpecificationeRu = item.SpecificationeRu,
-                        SpecificationeUa = item.SpecificationeUa,
-                        SpecificationeEn = item.SpecificationeEn,
                         TextileProductTypeRu = item.TextileProductTypeRu,
                         TextileProductTypeUa = item.TextileProductTypeUa,
                         TextileProductTypeEn = item.TextileProductTypeEn,
@@ -491,12 +519,6 @@ namespace TechnoTent.Models
                     data.SparesTypeUa = item.SparesTypeUa;
                 if (data.SparesTypeEn != item.SparesTypeEn)
                     data.SparesTypeEn = item.SparesTypeEn;
-                if (data.SpecificationeUa != item.SpecificationeUa)
-                    data.SpecificationeUa = item.SpecificationeUa;
-                if (data.SpecificationeRu != item.SpecificationeRu)
-                    data.SpecificationeRu = item.SpecificationeRu;
-                if (data.SpecificationeEn != item.SpecificationeEn)
-                    data.SpecificationeEn = item.SpecificationeEn;
                 if (data.TextileProductTypeRu != item.TextileProductTypeRu)
                     data.TextileProductTypeRu = item.TextileProductTypeRu;
                 if (data.TextileProductTypeUa != item.TextileProductTypeUa)

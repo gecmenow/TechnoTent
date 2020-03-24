@@ -90,9 +90,6 @@ namespace TechnoTent.Models.DataBase
         public string ColorUa { get; set; }
         public string ColorRu { get; set; }
         public string ColorEn { get; set; }
-        public string SpecificationeUa { get; set; }
-        public string SpecificationeRu { get; set; }
-        public string SpecificationeEn { get; set; }
         public string Description { get; set; }
         public string ItemStatus { get; set; }
         public string DescriptionRu { get; set; }

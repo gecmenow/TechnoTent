@@ -898,7 +898,7 @@
     <value>Stocks</value>
   </data>
   <data name="vallet" xml:space="preserve">
-    <value>uah</value>
+    <value>$</value>
   </data>
   <data name="vallet_item_type" xml:space="preserve">
     <value>pc</value>

@@ -84,7 +84,7 @@
                             </ul>
                         </div>
                         <div class="catalog-wrapper">
-                            @using (Html.BeginForm("Index", "Items", FormMethod.Post, new { @class = "filter-form" }))
+                            @using (Html.BeginForm("Popular", "Items", FormMethod.Post, new { @class = "filter-form" }))
                             {
                                 <div class="filter__item">
                                     <span class="item-filter__title opened">@Resources.Resource.items_price:</span>
@@ -304,7 +304,7 @@
                     </div>
                 </div>
             </section>
-            @Html.PagedListPager(Model, page => Url.Action("FilteredPopular", new { page }))
+            @Html.PagedListPager(Model, page => Url.Action("Popular", new { page }))
         }
     }
 </main>

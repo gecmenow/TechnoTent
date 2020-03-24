@@ -30,7 +30,7 @@
                 var checkedBrand = Array.from(selectedCheckBoxesBrand).map(cb => cb.value);
                 let category = location.pathname.split('/');
                 console.log(category);
-                category = category[2];
+                category = category[3];
                 url = "@Url.Action("GetItemsCount", "Items")?category=" + category + "&filters=" + "" + "&subCategory=" + checkedBrand + "&colors=" + checkedColor;
                 $('.counter-js').load(url);
             }, 0);
@@ -84,7 +84,7 @@
                             </ul>
                         </div>
                         <div class="catalog-wrapper">
-                            @using (Html.BeginForm("Index", "Items", FormMethod.Post, new { @class = "filter-form" }))
+                            @using (Html.BeginForm("PriceHigh", "Items", FormMethod.Post, new { @class = "filter-form" }))
                             {
                                 <div class="filter__item">
                                     <span class="item-filter__title opened">@Resources.Resource.items_price:</span>
@@ -205,7 +205,14 @@
                                                         @if (item.SubCategoryName != null)
                                                         {
                                                             <a class="catalog__item-link" href="/product/@item.NameUrl/@item.VendorCode">
-                                                                <img class="catalog__item-img" src="~/Content/images/items/@item.Image1" alt="@item.Name">
+                                                                @if (item.Image1 != null)
+                                                                {
+                                                                    <img class="catalog__item-img" src="~/Content/images/items/@item.Image1" alt="@item.Name">
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img class="catalog__item-img" src="~/Content/images/no_image.svg" alt="@item.Name">
+                                                                }
                                                                 <h3 class="catalog__item-title">@item.NameRu</h3>
                                                                 <span class="catalog__item-price-wrapper">
                                                                     @if (item.IsStock == false)
@@ -216,53 +223,89 @@
                                                                     {
                                                                         <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet</span>
                                                                     }
-                                                                    @if (item.IsStock == true)
-                                                                    {
-                                                                        <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet</span>
-                                                                    }
+                                                                    @*@if (item.IsStock == true)
+                                                                        {
+                                                                            <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet</span>
+                                                                        }*@
                                                                 </span>
                                                             </a>
                                                         }
                                                         else
                                                         {
                                                             <a class="catalog__item-link" href="/product/@item.NameUrl/@item.VendorCode">
-                                                                <img class="catalog__item-img" src="~/Content/images/items/@item.Image1" alt="@item.Name">
+                                                                @if (item.Image1 != null)
+                                                                {
+                                                                    <img class="catalog__item-img" src="~/Content/images/items/@item.Image1" alt="@item.Name">
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img class="catalog__item-img" src="~/Content/images/no_image.svg" alt="@item.Name">
+                                                                }
                                                                 <h3 class="catalog__item-title">@item.NameRu</h3>
                                                                 <span class="catalog__item-price-wrapper">
                                                                     @if (item.IsStock == false)
                                                                     {
                                                                         if (item.ProductBuyTypeMeter == false)
                                                                         {
-                                                                            <span class="catalog__item-price">@item.Price @Resources.Resource.vallet</span>
+                                                                            if (item.PriceUndefined != null)
+                                                                            {
+                                                                                <span class="catalog__item-price">@item.PriceUndefined</span>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <span class="catalog__item-price">@item.Price @Resources.Resource.vallet</span>
+                                                                            }
+
                                                                         }
                                                                         else
                                                                         {
-                                                                            <span class="catalog__item-price">@item.Price @Resources.Resource.vallet_to_meter</span>
+                                                                            if (item.PriceUndefined != null)
+                                                                            {
+                                                                                <span class="catalog__item-price">@item.PriceUndefined</span>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <span class="catalog__item-price">@item.Price @Resources.Resource.vallet</span>
+                                                                            }
                                                                         }
                                                                     }
                                                                     else
                                                                     {
                                                                         if (item.ProductBuyTypeMeter == false)
                                                                         {
-                                                                            <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet</span>
+                                                                            if (item.PriceUndefined != null)
+                                                                            {
+                                                                                <span class="catalog__item-price">@item.PriceUndefined</span>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet</span>
+                                                                            }
                                                                         }
                                                                         else
                                                                         {
-                                                                            <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet_to_meter</span>
+                                                                            if (item.PriceUndefined != null)
+                                                                            {
+                                                                                <span class="catalog__item-price">@item.PriceUndefined</span>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet</span>
+                                                                            }
                                                                         }
                                                                     }
-                                                                    @if (item.IsStock == true)
-                                                                    {
-                                                                        if (item.ProductBuyTypeMeter == false)
+                                                                    @*@if (item.IsStock == true)
                                                                         {
-                                                                            <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet</span>
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet_to_meter</span>
-                                                                        }
+                                                                            if (item.ProductBuyTypeMeter == false)
+                                                                            {
+                                                                                <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet</span>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet_to_meter</span>
+                                                                            }
 
-                                                                    }
+                                                                        }*@
                                                                 </span>
                                                             </a>
                                                         }
@@ -306,6 +349,20 @@
             </section>
             @Html.PagedListPager(Model, page => Url.Action("PriceHigh", new { page }))
         }
+    }
+    else
+    {
+        <div class="wrapper">
+            <div class="catalog-empty">
+                <img src="~/Content/images/empty-catalog.png" alt="Каталог пуст" class="catalog-empty__img">
+                <p class="catalog-empty__text">
+                    @Resources.Resource.item_empty_sry!
+                </p>
+                <p class="catalog-empty__text">
+                    @Resources.Resource.item_empty_product.
+                </p>
+            </div>
+        </div>
     }
 </main>
 <div class="decoy" style="display:none"></div>

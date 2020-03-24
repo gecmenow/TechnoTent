@@ -80,20 +80,31 @@ namespace TechnoTent.Controllers.Items
 
             List<ItemsVM> products = new List<ItemsVM>();
 
-            foreach (var item in data)
+            if (data.Count != 0)
             {
-                ViewBag.Filters = item.Filters;
-                ViewBag.CategoryId = item.CategoryId;
-                ViewBag.CategoryName = item.CategoryName;
-                ViewBag.PriceMax = item.PriceMax;
-                ViewBag.PriceMin = item.PriceMin;
-                products = item.Items;
+                foreach (var item in data)
+                {
+                    ViewBag.Filters = item.Filters;
+                    ViewBag.CategoryId = item.CategoryId;
+                    ViewBag.CategoryName = item.CategoryName;
+                    ViewBag.PriceMax = item.PriceMax;
+                    ViewBag.PriceMin = item.PriceMin;
+                    ViewBag.Colors = item.Colors;
+                    products = item.Items;
+                }
             }
+            else
+                products = null;
 
             int pageSize = 12;
             int pageNumber = (page ?? 1);
 
-            return View(products.ToPagedList(pageNumber, pageSize));
+            if (products != null)
+            {
+                return View(products.ToPagedList(pageNumber, pageSize));
+            }
+            else
+                return View(products);
         }
 
         [HttpPost]
@@ -127,20 +138,31 @@ namespace TechnoTent.Controllers.Items
 
             List<ItemsVM> products = new List<ItemsVM>();
 
-            foreach (var item in data)
+            if (data.Count != 0)
             {
-                ViewBag.Filters = item.Filters;
-                ViewBag.CategoryId = item.CategoryId;
-                ViewBag.CategoryName = item.CategoryName;
-                ViewBag.PriceMax = item.PriceMax;
-                ViewBag.PriceMin = item.PriceMin;
-                products = item.Items;
+                foreach (var item in data)
+                {
+                    ViewBag.Filters = item.Filters;
+                    ViewBag.CategoryId = item.CategoryId;
+                    ViewBag.CategoryName = item.CategoryName;
+                    ViewBag.PriceMax = item.PriceMax;
+                    ViewBag.PriceMin = item.PriceMin;
+                    ViewBag.Colors = item.Colors;
+                    products = item.Items;
+                }
             }
+            else
+                products = null;
 
             int pageSize = 12;
             int pageNumber = (page ?? 1);
 
-            return View(products.ToPagedList(pageNumber, pageSize));
+            if (products != null)
+            {
+                return View(products.ToPagedList(pageNumber, pageSize));
+            }
+            else
+                return View(products);
         }
 
         [HttpPost]
@@ -174,20 +196,31 @@ namespace TechnoTent.Controllers.Items
 
             List<ItemsVM> products = new List<ItemsVM>();
 
-            foreach (var item in data)
+            if (data.Count != 0)
             {
-                ViewBag.Filters = item.Filters;
-                ViewBag.CategoryId = item.CategoryId;
-                ViewBag.CategoryName = item.CategoryName;
-                ViewBag.PriceMax = item.PriceMax;
-                ViewBag.PriceMin = item.PriceMin;
-                products = item.Items;
+                foreach (var item in data)
+                {
+                    ViewBag.Filters = item.Filters;
+                    ViewBag.CategoryId = item.CategoryId;
+                    ViewBag.CategoryName = item.CategoryName;
+                    ViewBag.PriceMax = item.PriceMax;
+                    ViewBag.PriceMin = item.PriceMin;
+                    ViewBag.Colors = item.Colors;
+                    products = item.Items;
+                }
             }
+            else
+                products = null;
 
             int pageSize = 12;
             int pageNumber = (page ?? 1);
 
-            return View(products.ToPagedList(pageNumber, pageSize));
+            if (products != null)
+            {
+                return View(products.ToPagedList(pageNumber, pageSize));
+            }
+            else
+                return View(products);
         }
 
         [HttpPost]

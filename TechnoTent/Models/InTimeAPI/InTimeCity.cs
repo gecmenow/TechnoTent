@@ -20,7 +20,7 @@ namespace TechnoTent.Models.InTimeAPI
 
             if (cities.Count() == 0)
             {
-                string key = "45261991830004134645";
+                string key = Admin.GetAdminData().InTimeKey;
 
                 string json = @"{
                     ""Body"": {
