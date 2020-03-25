@@ -8,7 +8,7 @@
                 @foreach (var category in Model)
                 {
                     <li class="production__item">
-                        <a href="#" class="production__link">
+                        <a href="/category/@category.CategoryUrl" class="production__link">
                             @if (category.CategoryImage == null)
                             {
                                 <img src="~/Content/images/no_image.svg" alt="@category.CategoryName" class="production__item--img">
@@ -17,7 +17,6 @@
                             {
                                 <img src="~/Content/images/category/@category.CategoryImage" alt="@category.CategoryName" class="production__item--img">
                             }
-
                             <span class="subtitle__bg"></span>
                             <h3 class="production__item--subtitle">@category.CategoryName</h3>
                         </a>

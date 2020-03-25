@@ -23,5 +23,6 @@ namespace TechnoTent.Models.DataBase
         public DbSet<DbCategory> CategoryDb { get; set; }
         public DbSet<DbSubCategory> SubCategoryDb { get; set; }
         public DbSet<DbOrder> OrderDb { get; set; }
+        public DbSet<DbCompany> CompanyDb { get; set; }
     }
 }

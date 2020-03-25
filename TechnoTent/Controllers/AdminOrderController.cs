@@ -50,6 +50,15 @@ namespace TechnoTent.Controllers
             return View(data);
         }
 
+        public ActionResult ChangeItemStatus(int id, string status)
+        {
+            AdminOrders.ChangeItemStatus(id, status);
+
+            //var data = AdminItems.GetAllItems();
+
+            return PartialView("decoy");
+        }
+
         public ActionResult DelteOrderItem(int orderId, string vendorCode)
         {
             AdminOrders.DelteOrderItem(orderId, vendorCode);

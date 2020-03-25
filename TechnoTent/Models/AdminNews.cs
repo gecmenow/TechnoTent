@@ -131,6 +131,9 @@ namespace TechnoTent.Models
         {
             var image = UploadNewImages(upload);
 
+            if (image == "")
+                image = null;
+
             using (DataBaseContext db = new DataBaseContext())
             {
                 var oldNews = db.NewsDb.Where(m => m.Id == news.Id).FirstOrDefault();

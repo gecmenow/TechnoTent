@@ -203,122 +203,141 @@
                                                     <div class="catalog__item-wrapper">
                                                         @if (item.SubCategoryName != null)
                                                         {
-                                                        <a class="catalog__item-link" href="/product/@item.NameUrl/@item.VendorCode">
-                                                            @if (item.Image1 != null)
+                                                            <a class="catalog__item-link" href="/product/@item.NameUrl/@item.VendorCode">
+                                                                @if (item.Image1 != null)
+                                                                {
+                                                                    <img class="catalog__item-img" src="~/Content/images/items/@item.Image1" alt="@item.Name">
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img class="catalog__item-img" src="~/Content/images/no_image.svg" alt="@item.Name">
+                                                                }
+                                                                <h3 class="catalog__item-title">@item.Name</h3>
+                                                                <span class="catalog__item-price-wrapper">
+                                                                    @if (item.inStock == true)
+                                                                    {
+                                                                        if (item.IsStock == false)
+                                                                        {
+                                                                            <span class="catalog__item-price">@item.Price @Resources.Resource.vallet</span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet</span>
+                                                                        }
+                                                                        @*@if (item.IsStock == true)
+                        {
+                            <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet</span>
+                        }*@
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span class="catalog__item-price">Нет в наличии</span>
+                                                                    }
+
+                                                                </span>
+                                                            </a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a class="catalog__item-link" href="/product/@item.NameUrl/@item.VendorCode">
+                                                                @if (item.Image1 != null)
+                                                                {
+                                                                    <img class="catalog__item-img" src="~/Content/images/items/@item.Image1" alt="@item.Name">
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img class="catalog__item-img" src="~/Content/images/no_image.svg" alt="@item.Name">
+                                                                }
+                                                                <h3 class="catalog__item-title">@item.NameRu</h3>
+                                                                <span class="catalog__item-price-wrapper">
+                                                                    @if (item.inStock == true)
+                                                                    {
+                                                                        if (item.IsStock == false)
+                                                                        {
+                                                                            if (item.ProductBuyTypeMeter == false)
+                                                                            {
+                                                                                if (item.PriceUndefined != null)
+                                                                                {
+                                                                                    <span class="catalog__item-price">@item.PriceUndefined</span>
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <span class="catalog__item-price">@item.Price @Resources.Resource.vallet</span>
+                                                                                }
+
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (item.PriceUndefined != null)
+                                                                                {
+                                                                                    <span class="catalog__item-price">@item.PriceUndefined</span>
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <span class="catalog__item-price">@item.Price @Resources.Resource.vallet</span>
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (item.ProductBuyTypeMeter == false)
+                                                                            {
+                                                                                if (item.PriceUndefined != null)
+                                                                                {
+                                                                                    <span class="catalog__item-price">@item.PriceUndefined</span>
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet</span>
+                                                                                }
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (item.PriceUndefined != null)
+                                                                                {
+                                                                                    <span class="catalog__item-price">@item.PriceUndefined</span>
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet</span>
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span class="catalog__item-price">нет в наличии</span>
+                                                                    }
+                                                                    @*@if (item.IsStock == true)
+                    {
+                        if (item.ProductBuyTypeMeter == false)
+                        {
+                            <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet</span>
+                        }
+                        else
+                        {
+                            <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet_to_meter</span>
+                        }
+
+                    }*@
+                                                                </span>
+                                                            </a>
+                                                        }
+                                                        @if (item.inStock)
+                                                        {
+                                                            if (item.PriceUndefined == null)
                                                             {
-                                                                <img class="catalog__item-img" src="~/Content/images/items/@item.Image1" alt="@item.Name">
+                                                                <button class="add-to-cart" data-id="@item.VendorCode"><i class="fas fa-shopping-cart"></i>@Resources.Resource.item_to_cart</button>
                                                             }
                                                             else
                                                             {
-                                                                <img class="catalog__item-img" src="~/Content/images/no_image.svg" alt="@item.Name">
+                                                                <div class="header-backcall">
+                                                                    <i title="Заказать обратный звонок" class="fas fa-headphones-alt backcall-toggle"></i>
+                                                                    <p title="Заказать обратный звонок" class="backcall__text backcall-toggle">@Resources.Resource.layout_backCall?</p>
+                                                                </div>
                                                             }
-                                                            <h3 class="catalog__item-title">@item.NameRu</h3>
-                                                            <span class="catalog__item-price-wrapper">
-                                                                @if (item.IsStock == false)
-                                                                {
-                                                                    <span class="catalog__item-price">@item.Price @Resources.Resource.vallet</span>
-                                                                }
-                                                                else
-                                                                {
-                                                                    <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet</span>
-                                                                }
-                                                                @*@if (item.IsStock == true)
-                                                                {
-                                                                    <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet</span>
-                                                                }*@
-                                                            </span>
-                                                        </a>
                                                         }
-                                                        else
-                                                        {
-                                                    <a class="catalog__item-link" href="/product/@item.NameUrl/@item.VendorCode">
-                                                        @if (item.Image1 != null)
-                                                        {
-                                                            <img class="catalog__item-img" src="~/Content/images/items/@item.Image1" alt="@item.Name">
-                                                        }
-                                                        else
-                                                        {
-                                                            <img class="catalog__item-img" src="~/Content/images/no_image.svg" alt="@item.Name">
-                                                        }
-                                                        <h3 class="catalog__item-title">@item.NameRu</h3>
-                                                        <span class="catalog__item-price-wrapper">
-                                                            @if (item.IsStock == false)
-                                                            {
-                                                                if (item.ProductBuyTypeMeter == false)
-                                                                {
-                                                                    if (item.PriceUndefined != null)
-                                                                    {
-                                                                        <span class="catalog__item-price">@item.PriceUndefined</span>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <span class="catalog__item-price">@item.Price @Resources.Resource.vallet</span>
-                                                                    }
 
-                                                                }
-                                                                else
-                                                                {
-                                                                    if (item.PriceUndefined != null)
-                                                                    {
-                                                                        <span class="catalog__item-price">@item.PriceUndefined</span>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <span class="catalog__item-price">@item.Price @Resources.Resource.vallet</span>
-                                                                    }
-                                                                }
-                                                            }
-                                                            else
-                                                            {
-                                                                if (item.ProductBuyTypeMeter == false)
-                                                                {
-                                                                    if (item.PriceUndefined != null)
-                                                                    {
-                                                                        <span class="catalog__item-price">@item.PriceUndefined</span>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet</span>
-                                                                    }
-                                                                }
-                                                                else
-                                                                {
-                                                                    if (item.PriceUndefined != null)
-                                                                    {
-                                                                        <span class="catalog__item-price">@item.PriceUndefined</span>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet</span>
-                                                                    }
-                                                                }
-                                                            }
-                                                            @*@if (item.IsStock == true)
-        {
-            if (item.ProductBuyTypeMeter == false)
-            {
-                <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet</span>
-            }
-            else
-            {
-                <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet_to_meter</span>
-            }
-
-        }*@
-                                                        </span>
-                                                    </a>
-                                                        }
-                                                        @if (item.PriceUndefined == null)
-                                                        {
-                                                            <button class="add-to-cart" data-id="@item.VendorCode"><i class="fas fa-shopping-cart"></i>@Resources.Resource.item_to_cart</button>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="header-backcall">
-                                                                <i title="Заказать обратный звонок" class="fas fa-headphones-alt backcall-toggle"></i>
-                                                                <p title="Заказать обратный звонок" class="backcall__text backcall-toggle">@Resources.Resource.layout_backCall?</p>
-                                                            </div>
-                                                        }
                                                         @if (item.IsStock == true)
                                                         {
                                                             <div class="auction__item">

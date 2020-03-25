@@ -377,9 +377,26 @@
     <Compile Include="Migrations\202003241555560_removed fake fiealds.Designer.cs">
       <DependentUpon>202003241555560_removed fake fiealds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003251834372_compnay of db added.cs" />
+    <Compile Include="Migrations\202003251834372_compnay of db added.Designer.cs">
+      <DependentUpon>202003251834372_compnay of db added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003251935534_company db field added.cs" />
+    <Compile Include="Migrations\202003251935534_company db field added.Designer.cs">
+      <DependentUpon>202003251935534_company db field added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003252236178_changes.cs" />
+    <Compile Include="Migrations\202003252236178_changes.Designer.cs">
+      <DependentUpon>202003252236178_changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003252304407_company db change1.cs" />
+    <Compile Include="Migrations\202003252304407_company db change1.Designer.cs">
+      <DependentUpon>202003252304407_company db change1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\AdminCategoryAndSub.cs" />
+    <Compile Include="Models\AdminCompany.cs" />
     <Compile Include="Models\AdminFeedback.cs" />
     <Compile Include="Models\AdminItems.cs" />
     <Compile Include="Models\AdminMainImages.cs" />
@@ -389,10 +406,12 @@
     <Compile Include="Models\AdminStocks.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Company.cs" />
     <Compile Include="Models\DataBase\DbCart.cs" />
     <Compile Include="Models\DataBase\DataBaseContext.cs" />
     <Compile Include="Models\DataBase\DbAdmin.cs" />
     <Compile Include="Models\DataBase\DbCategory.cs" />
+    <Compile Include="Models\DataBase\DbCompany.cs" />
     <Compile Include="Models\DataBase\DbFeedback.cs" />
     <Compile Include="Models\DataBase\DbItems.cs" />
     <Compile Include="Models\DataBase\DbMainImages.cs" />
@@ -430,6 +449,7 @@
     <Compile Include="Models\UserModels\UserModel.cs" />
     <Compile Include="Models\ViewModel\Admin\AdminCategorySubCategoryVM.cs" />
     <Compile Include="Models\ViewModel\Admin\AdminCategoryVM.cs" />
+    <Compile Include="Models\ViewModel\Admin\AdminCompanyVM.cs" />
     <Compile Include="Models\ViewModel\Admin\AdminEditVM.cs" />
     <Compile Include="Models\ViewModel\Admin\AdminItemVM.cs" />
     <Compile Include="Models\ViewModel\Admin\AdminNewsVM.cs" />
@@ -441,6 +461,7 @@
     <Compile Include="Models\ViewModel\CartItemVM.cs" />
     <Compile Include="Models\ViewModel\CartVM.cs" />
     <Compile Include="Models\ViewModel\CategoryItems.cs" />
+    <Compile Include="Models\ViewModel\CompanyVM.cs" />
     <Compile Include="Models\ViewModel\FeedbackVM.cs" />
     <Compile Include="Models\Items.cs" />
     <Compile Include="Models\ViewModel\CategoriesVM.cs" />
@@ -590,6 +611,7 @@
     <Content Include="Views\AdminItems\GetItemsByCategory.cshtml" />
     <Content Include="Views\Partial\GetCategories.cshtml" />
     <Content Include="Views\AdminStocks\RemoveStocks.cshtml" />
+    <Content Include="Views\AdminOrder\decoy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -767,6 +789,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003241555560_removed fake fiealds.resx">
       <DependentUpon>202003241555560_removed fake fiealds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003251834372_compnay of db added.resx">
+      <DependentUpon>202003251834372_compnay of db added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003251935534_company db field added.resx">
+      <DependentUpon>202003251935534_company db field added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003252236178_changes.resx">
+      <DependentUpon>202003252236178_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003252304407_company db change1.resx">
+      <DependentUpon>202003252304407_company db change1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

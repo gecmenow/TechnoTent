@@ -23,6 +23,7 @@ namespace TechnoTent.Models
             {
                 images =
                     (from entry in db.MainImagesDb
+                     orderby entry.OrderNumber
                      select new MainImagesVM
                      {
                          Image = entry.Image

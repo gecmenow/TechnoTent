@@ -62,6 +62,7 @@ namespace TechnoTent.Models
             {
                 adminCategory = db.CategoryDb.Where(u => u.Id == categoryId).Select(u => new AdminCategoryVM
                 {
+                    CategoryId = u.Id,
                     CategoryNameEn = u.CategoryNameEn,
                     CategoryNameRu = u.CategoryNameRu,
                     CategoryNameUa = u.CategoryNameUa,

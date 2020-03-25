@@ -25,7 +25,7 @@ namespace TechnoTent.Models
                         {
                             Id = u.Id,
                             VendorCode = u.VendorCode,
-                            inStock = u.IsStock,
+                            inStock = u.inStock,
                             CategoryId = u.CategoryId,
                             CategoryUrl = UrlHelper.GenerateSeoFriendlyURL(u.CategoryNameEn),
                             CategoryName = u.CategoryNameUa,
@@ -62,7 +62,7 @@ namespace TechnoTent.Models
                         var similar = db.ItemsDb.Where(u => u.CategoryNameUa == item.CategoryName && u.Id != item.Id).Select(u => new ItemsVM
                         {
                             VendorCode = u.VendorCode,
-                            inStock = u.IsStock,
+                            inStock = u.inStock,
                             CategoryId = u.CategoryId,
                             CategoryName = u.CategoryNameUa,
                             CategoryNameEn = u.CategoryNameEn,
@@ -101,7 +101,7 @@ namespace TechnoTent.Models
                         {
                             Id = u.Id,
                             VendorCode = u.VendorCode,
-                            inStock = u.IsStock,
+                            inStock = u.inStock,
                             CategoryId = u.CategoryId,
                             CategoryUrl = UrlHelper.GenerateSeoFriendlyURL(u.CategoryNameEn),
                             CategoryName = u.CategoryNameEn,
@@ -138,7 +138,7 @@ namespace TechnoTent.Models
                         var similar = db.ItemsDb.Where(u => u.CategoryNameEn == item.CategoryName && u.Id != item.Id).Select(u => new ItemsVM
                         {
                             VendorCode = u.VendorCode,
-                            inStock = u.IsStock,
+                            inStock = u.inStock,
                             CategoryId = u.CategoryId,
                             CategoryName = u.CategoryNameEn,
                             CategoryNameEn = u.CategoryNameEn,
@@ -177,7 +177,7 @@ namespace TechnoTent.Models
                         {
                             Id = u.Id,
                             VendorCode = u.VendorCode,
-                            inStock = u.IsStock,
+                            inStock = u.inStock,
                             CategoryId = u.CategoryId,
                             CategoryUrl = UrlHelper.GenerateSeoFriendlyURL(u.CategoryNameEn),
                             CategoryName = u.CategoryNameRu,
@@ -214,7 +214,7 @@ namespace TechnoTent.Models
                         var similar = db.ItemsDb.Where(u => u.CategoryNameRu == item.CategoryName && u.Id != item.Id).Select(u => new ItemsVM
                         {
                             VendorCode = u.VendorCode,
-                            inStock = u.IsStock,
+                            inStock = u.inStock,
                             CategoryId = u.CategoryId,
                             CategoryName = u.SubCategoryNameRu,
                             CategoryNameEn = u.CategoryNameEn,

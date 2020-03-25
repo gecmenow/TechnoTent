@@ -94,6 +94,7 @@ namespace TechnoTent.Models
                     DeliveryOffice = u.DeliveryOffice,
                     DeliveryMethod = u.DeliveryMethod,
                     PaymentMethod = u.PaymentMethod,
+                    PaymentStatus = u.PaymentStatus,
                     TotalPrice = u.TotalPrice,
                     TotalItemsCount = u.TotalitemsCount,
                     ItemsCount = u.ItemsCount,
@@ -206,6 +207,7 @@ namespace TechnoTent.Models
                 data.DeliveryMethod = order.DeliveryMethod;
                 data.PaymentMethod = order.PaymentMethod;
                 data.OrderStatus = order.OrderStatus;
+                data.PaymentStatus = order.PaymentStatus;
                 data.Date = DateTime.Now;
 
                 data.ItemsCount = "";
@@ -231,6 +233,21 @@ namespace TechnoTent.Models
                 var totalItemsCount = data.ItemsCount.Split('/').Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
 
                 data.TotalitemsCount = totalItemsCount.Count();
+
+                db.SaveChanges();
+            }
+        }
+
+        public static void ChangeItemStatus(int id, string status)
+        {
+            using (DataBaseContext db = new DataBaseContext())
+            {
+                var data =
+                     (from entry in db.OrderDb
+                      where entry.Id == id
+                      select entry).FirstOrDefault();
+
+                data.OrderStatus = status;
 
                 db.SaveChanges();
             }
@@ -275,6 +292,5 @@ namespace TechnoTent.Models
                 db.SaveChanges();
             }
         }
-
     }
 }

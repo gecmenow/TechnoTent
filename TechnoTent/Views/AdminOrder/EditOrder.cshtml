@@ -115,16 +115,33 @@
                 @using (Html.BeginForm("EditOrder", "AdminOrder", FormMethod.Post, new { @class = "order-edit", enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.Id)
                     <div class="order-edit__wrapper">
                         <label class="edit__title">Статус заказа</label>
                         <select class="order-status" id="order-status" name="OrderStatus">
-                            <option class="order-status__item" value="in processing">В обработке</option>
-                            <option class="order-status__item" value="in progress">Выполняется</option>
-                            <option class="order-status__item" value="completed">Выполнен</option>
-                            <option class="order-status__item" value="fail">Отказ</option>
+                            <option class="order-status__item" value="В обработке">В обработке</option>
+                            <option class="order-status__item" value="Выполняется">Выполняется</option>
+                            <option class="order-status__item" value="Выполнен">Выполнен</option>
+                            <option class="order-status__item" value="Отказ">Отказ</option>
                         </select>
                         <div class="status-dropdown">
-                            <div class="status-toggle btn btn-warning">@Model.OrderStatus</div>
+                            @if (Model.OrderStatus == "В обработке")
+                            {
+                                <div class="status-toggle btn btn-warning">@Model.OrderStatus</div>
+                            }
+                            else if (Model.OrderStatus == "Выполняется")
+                            {
+                                <div class="status-toggle btn btn-primary">@Model.OrderStatus</div>
+                            }
+                            else if (Model.OrderStatus == "Выполнен")
+                            {
+                                <div class="status-toggle btn btn-success">@Model.OrderStatus</div>
+                            }
+                            else
+                            {
+                                <div class="status-toggle btn btn-danger">@Model.OrderStatus</div>
+                            }
+                            @*<div class="status-toggle btn btn-warning">@Model.OrderStatus</div>*@
                             <ul class="status__list" style="display: none;">
                                 <li class="status__item btn btn-warning" value="1">В обработке</li>
                                 <li class="status__item btn btn-primary" value="2">Выполняется</li>
@@ -135,24 +152,56 @@
                     </div>
                     <div class="order-edit__wrapper">
                         <label class="edit__title">Статус оплаты</label><br>
-                        <select class="payment-status" name="">
-                            <option class="payment-status__item" value="paid">Не оплачено</option>
-                            <option class="payment-status__item" value="not_paid">Оплачено</option>
+                        <select class="payment-status" name="PaymentStatus">
+                            @if (Model.PaymentStatus == "Оплачено")
+                            {
+                                <option class="payment-status__item" value="Оплачено" selected>Оплачено</option>
+                                <option class="payment-status__item" value="Не оплачено">Не оплачено</option>
+                            }
+                            else
+                            {
+                                <option class="payment-status__item" value="Оплачено">Оплачено</option>
+                                <option class="payment-status__item" value="Не оплачено" selected>Не оплачено</option>
+                            }
                         </select><br>
                     </div>
                     <div class="order-edit__wrapper">
                         <label class="edit__title">Способ оплаты</label><br>
                         <select class="payment-method" name="PaymentMethod">
-                            <option class="payment-method__item" value="cashless">На карту Приват банка</option>
-                            <option class="payment-method__item" value="in_cash">Оплата при получении</option>
+                            @if (Model.PaymentMethod == "На карту Приват банка")
+                            {
+                                <option class="payment-method__item" value="На карту Приват банка" selected>На карту Приват банка</option>
+                                <option class="payment-method__item" value="Оплата при получении">Оплата при получении</option>
+                            }
+                            else
+                            {
+                                <option class="payment-method__item" value="На карту Приват банка" >На карту Приват банка</option>
+                                <option class="payment-method__item" value="Оплата при получении" selected>Оплата при получении</option>
+                            }
+                            
                         </select>
                     </div>
                     <div class="order-edit__wrapper">
-                        <label class="edit__title">Срособ доставки</label><br>
+                        <label class="edit__title">Способ доставки</label><br>
                         <select class="delivery-status" name="DeliveryMethod">
-                            <option class="delivery-method__item" value="pickup">Самовывоз</option>
-                            <option class="delivery-method__item" value="nova_poshta">Новая почта</option>
-                            <option class="delivery-method__item" value="intime">Ин тайм</option>
+                            @if (Model.DeliveryMethod == "Самовывоз")
+                            {
+                                <option class="delivery-method__item" value="Самовывоз" selected>Самовывоз</option>
+                                <option class="delivery-method__item" value="Новая почта">Новая почта</option>
+                                <option class="delivery-method__item" value="intime">Ин тайм</option>
+                            }
+                            else if (Model.DeliveryMethod == "Новая почта")
+                            {
+                                <option class="delivery-method__item" value="Самовывоз">Самовывоз</option>
+                                <option class="delivery-method__item" value="Новая почта" selected>Новая почта</option>
+                                <option class="delivery-method__item" value="intime">Ин тайм</option>
+                            }
+                            else
+                            {
+                                <option class="delivery-method__item" value="Самовывоз">Самовывоз</option>
+                                <option class="delivery-method__item" value="Новая почта">Новая почта</option>
+                                <option class="delivery-method__item" value="intime" selected>Ин тайм</option>
+                            }
                         </select><br>
                     </div>
                     <label class="edit__title">Информация для доставки</label>

@@ -89,7 +89,7 @@
             </h1>
         </section>
         <section class="admin-content-main">
-            @using (Html.BeginForm("AddCategory", "AdminCategory", FormMethod.Post, new { @class = "category-form", enctype = "multipart/form-data"  }))
+            @using (Html.BeginForm("AddCategory", "AdminCategory", FormMethod.Post, new { @class = "category-form", enctype = "multipart/form-data" }))
             {
                 <div class="category-edit__wrapper">
                     <label class="edit__title">Категория (рус)</label><input type="text" name="CategoryNameRu" class="input-category-edit" required>
@@ -100,13 +100,15 @@
                 <div class="category-edit__wrapper">
                     <label class="edit__title">Категория (eng)</label><input type="text" name="CategoryNameEn" class="input-category-edit" required>
                 </div>
-                <div class="form-input-wrapper articles-form-group-column upload__img-wrapper">
-                    <label for="upload__img"><img class="articles-form__img" src="~/Content/images/no_img.svg"></label>
+                <div class="category-edit__wrapper upload__img-wrapper">
+
+                </div>
+                <div class="category-edit__wrapper">
                     <input class="upload__img" id="upload__img" type="file" name="upload">
                 </div>
                 <div class="category-edit__wrapper">
                     <button type="submit" class="btn btn-success">Сохранить</button>
-                    <a href="/admin" class="btn btn-secondary">Отмена<a>
+                    <a href="/admin" class="btn btn-secondary">Отмена</a>
                 </div>
             }
         </section>

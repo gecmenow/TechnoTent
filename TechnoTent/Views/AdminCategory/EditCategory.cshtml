@@ -87,11 +87,11 @@
     <div class="admin-content-wrapper">
         <section class="admin-content-header">
             <h1 class="admin-page__title">
-                Добавить категорию
+                Редактировать категорию
             </h1>
         </section>
         <section class="admin-content-main">
-            @using (Html.BeginForm("EditCategory", "AdminCategory", FormMethod.Post, new { @class = "category-form", enctype = "multipart/form-data"  }))
+            @using (Html.BeginForm("EditCategory", "AdminCategory", FormMethod.Post, new { @class = "category-form", enctype = "multipart/form-data" }))
             {
                 <div class="category-edit__wrapper">
                     <label class="edit__title">Категория (рус)</label><input type="text" name="CategoryNameRu" class="input-category-edit" value="@Model.CategoryNameRu" required>
@@ -102,13 +102,27 @@
                 <div class="category-edit__wrapper">
                     <label class="edit__title">Категория (eng)</label><input type="text" name="CategoryNameEn" class="input-category-edit" value="@Model.CategoryNameEn" required>
                 </div>
-                <div class="form-input-wrapper articles-form-group-column upload__img-wrapper">
-                    <label for="upload__img"><img class="articles-form__img" src="~/Content/images/category/@Model.CategoryImage"></label>
-                    <input class="upload__img" id="upload__img" type="file" name="upload">
-                </div>
+                if (Model.CategoryImage != null)
+                {
+                    <div class="category-edit__wrapper upload__img-wrapper">
+                        <label for="upload__img"><img src="~/Content/images/category/@Model.CategoryImage"></label>
+                    </div>
+                    <div class="category-edit__wrapper">
+                        <input class="upload__img" id="upload__img" type="file" name="upload">
+                    </div>
+                }
+                else
+                {
+                    <div class="category-edit__wrapper upload__img-wrapper">
+                        <label for="upload__img"><img src="~/Content/images/category/no_image.svg"></label>
+                    </div>
+                    <div class="category-edit__wrapper">
+                        <input class="upload__img" id="upload__img" type="file" name="upload">
+                    </div>
+                }
                 <div class="category-edit__wrapper">
                     <button type="submit" class="btn btn-success">Сохранить</button>
-                    <a href="/admin" class="btn btn-secondary">Отмена<a>
+                    <a href="/admin" class="btn btn-secondary">Отмена</a>
                 </div>
             }
         </section>

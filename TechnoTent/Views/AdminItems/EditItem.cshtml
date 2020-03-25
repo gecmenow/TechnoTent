@@ -120,7 +120,14 @@
                             <option class="product-status__item" value="false">Нет в наличии</option>
                         </select>
                         <div class="status-dropdown">
-                            <div class="status-toggle btn btn-success">В наличии</div>
+                            @if (Model.inStock == true)
+                            {
+                                <div class="status-toggle btn btn-success">В наличии</div>
+                            }
+                            else if (Model.inStock == false)
+                            {
+                                <div class="status-toggle btn btn-warning">Нет в наличии</div>
+                            }
                             <ul class="status__list" style="display: none;">
                                 <li class="status__item btn btn-success" value="1">В наличии</li>
                                 <li class="status__item btn btn-warning" value="2">Нет в наличии</li>
@@ -132,16 +139,30 @@
                         <select class="product-category-list" name="CategoryNameRu">
                             @foreach (var category in Model.CategoriesList)
                             {
-                                <option class="product-category__item" value="@category">@category</option>
+                                if(category == Model.CategoryNameRu)
+                                {
+                                    <option class="product-category__item" value="@category" selected>@category</option>
+                                }
+                                else
+                                {
+                                    <option class="product-category__item" value="@category">@category</option>
+                                }
                             }
                         </select><br>
                     </div>
-                    <div class="product-edit__wrapper product-edit-subcategory" style="display:none;">
+                    <div class="product-edit__wrapper">
                         <label class="edit__title">Подкатегория</label><br>
-                        <select class="product-subcategory-list" name="SubCategoryNameRu">
+                        <select class="product-category-list" name="SubCategoryNameRu">
                             @foreach (var subCategory in Model.SubCategoriesList)
                             {
-                                <option class="product-subcategory__item" value="@subCategory" disabled>@subCategory</option>
+                                if(subCategory == Model.SubCategoryNameRu)
+                                {
+                                    <option class="product-category__item" value="@subCategory" selected>@subCategory</option>
+                                }
+                                else
+                                {
+                                    <option class="product-category__item" value="@subCategory">@subCategory</option>
+                                }
                             }
                         </select><br>
                     </div>
@@ -390,9 +411,54 @@
                     </div>
                     <label class="edit__title">Изображения</label>
                     <div class="product-edit__wrapper upload__img-wrapper">
-                    </div>
-                    <div class="product-edit__wrapper">
-                        @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
+                        <div class="upload__img-item">
+                            @if (Model.Image1 != null)
+                            {
+                                <label for="upload__img1"><img src="~/Content/images/items/@Model.Image1"></label>
+                            }
+                            else
+                            {
+                                <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
+                            }
+                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
+                            <i class="fas fa-times remove__img"></i>
+                        </div>
+                        <div class="upload__img-item">
+                            @if (Model.Image2 != null)
+                            {
+                                <label for="upload__img1"><img src="~/Content/images/items/@Model.Image2"></label>
+                            }
+                            else
+                            {
+                                <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
+                            }
+                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
+                            <i class="fas fa-times remove__img"></i>
+                        </div>
+                        <div class="upload__img-item">
+                            @if (Model.Image3 != null)
+                            {
+                                <label for="upload__img1"><img src="~/Content/images/items/@Model.Image3"></label>
+                            }
+                            else
+                            {
+                                <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
+                            }
+                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
+                            <i class="fas fa-times remove__img"></i>
+                        </div>
+                        <div class="upload__img-item">
+                            @if (Model.Image4 != null)
+                            {
+                                <label for="upload__img1"><img src="~/Content/images/items/@Model.Image4"></label>
+                            }
+                            else
+                            {
+                                <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
+                            }
+                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
+                            <i class="fas fa-times remove__img"></i>
+                        </div>
                     </div>
                     <label class="edit__title">Акция</label>
                     <div class="product-edit__wrapper">

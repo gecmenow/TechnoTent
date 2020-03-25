@@ -761,7 +761,7 @@ $(document).ready(function () {
         }  
     }
 
-    $(".order-edit .status__item, .order-table .status__item, .products-table .status__item").click(function(e){        
+    $(".order-edit .status__item, .order-table .status__item, .products-table .status__item").click(function(e){
         let thisElement = $(this);
         statusValueToggle(thisElement);
     });
@@ -769,16 +769,16 @@ $(document).ready(function () {
         let value = thisElement.val(); 
         switch (value) {
             case 1:
-                $(".order-status")[0].value = "in processing";                
+                $(".order-status")[0].value = "В обработке";                
             break;
             case 2:
-                $(".order-status")[0].value = "in progress";              
+                $(".order-status")[0].value = "Выполняется";              
             break;
             case 3:
-                $(".order-status")[0].value = "completed";               
+                $(".order-status")[0].value = "Выполнен";               
             break;
             case 4:
-                $(".order-status")[0].value = "fail";              
+                $(".order-status")[0].value = "Отказ";              
             break;
         }           
         let classList = thisElement.parents(".status__list").siblings(".status-toggle").attr('class').split(/\s+/);
@@ -877,6 +877,7 @@ $(document).ready(function () {
                 [{ list: 'ordered' }, { list: 'bullet' }],
                 [{ 'color': [] }, { 'background': [] }],
                 [{ 'align': [] }],
+                ['image'],
                 ['clean'] 
                 ]
             },
@@ -921,7 +922,7 @@ $(document).ready(function () {
     //
 
     // upload img visual
-    $(".product-edit .upload__img-multiple").change(function(){
+    $(".product-edit .upload__img-multiple, .category-edit__wrapper .upload__img").change(function(){
         if (this.files.length <= 4 ) 
         {   
             $('.upload__img-wrapper label').remove();
