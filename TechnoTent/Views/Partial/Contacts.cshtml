@@ -1,0 +1,8 @@
+﻿@model TechnoTent.Models.ViewModel.ContactsInfoVM
+
+<div class="feedback-phone__list">
+    @foreach (var info in Model.Contacts)
+    {
+        <div class="feedback-phone__item">@info.Name <a href="tel:#">@info.Phone</a></div>
+    }
+</div>

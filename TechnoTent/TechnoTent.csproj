@@ -139,6 +139,7 @@
     <Compile Include="Controllers\AdminCategoryController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminItemsController.cs" />
+    <Compile Include="Controllers\AdminMainContactsController.cs" />
     <Compile Include="Controllers\AdminMainImagesController.cs" />
     <Compile Include="Controllers\AdminNewsController.cs" />
     <Compile Include="Controllers\AdminOrderController.cs" />
@@ -394,6 +395,10 @@
     <Compile Include="Migrations\202003252304407_company db change1.Designer.cs">
       <DependentUpon>202003252304407_company db change1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003262123138_contacts info.cs" />
+    <Compile Include="Migrations\202003262123138_contacts info.Designer.cs">
+      <DependentUpon>202003262123138_contacts info.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutInfo.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -413,9 +418,12 @@
     <Compile Include="Models\DataBase\DbAdmin.cs" />
     <Compile Include="Models\DataBase\DbCategory.cs" />
     <Compile Include="Models\DataBase\DbCompany.cs" />
+    <Compile Include="Models\DataBase\DbContacts.cs" />
     <Compile Include="Models\DataBase\DbFeedback.cs" />
+    <Compile Include="Models\DataBase\DbFooterInfo.cs" />
     <Compile Include="Models\DataBase\DbItems.cs" />
     <Compile Include="Models\DataBase\DbMainImages.cs" />
+    <Compile Include="Models\DataBase\DbHeaderInfo.cs" />
     <Compile Include="Models\DataBase\DbNews.cs" />
     <Compile Include="Models\DataBase\DbOrder.cs" />
     <Compile Include="Models\DataBase\DbReview.cs" />
@@ -432,6 +440,7 @@
     <Compile Include="Models\InTimeAPI\InTimePostOfficeModel.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Loging.cs" />
+    <Compile Include="Models\MainContacts.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NovaPoshtaAPI\NovaPoshraCityKeyModel.cs" />
     <Compile Include="Models\NovaPoshtaAPI\NovaPoshtaCityModel.cs" />
@@ -458,6 +467,10 @@
     <Compile Include="Models\ViewModel\Admin\AdminStocksVM.cs" />
     <Compile Include="Models\UserModels\Authentication.cs" />
     <Compile Include="Models\ViewModel\Admin\AdminSubCategoryVM.cs" />
+    <Compile Include="Models\ViewModel\ContactsInfoVM.cs" />
+    <Compile Include="Models\ViewModel\ContactsVM.cs" />
+    <Compile Include="Models\ViewModel\FooterInfoVM.cs" />
+    <Compile Include="Models\ViewModel\HeaderInfoVM.cs" />
     <Compile Include="Models\ViewModel\BackCallVM.cs" />
     <Compile Include="Models\ViewModel\CartItemVM.cs" />
     <Compile Include="Models\ViewModel\CartVM.cs" />
@@ -614,6 +627,10 @@
     <Content Include="Views\AdminStocks\RemoveStocks.cshtml" />
     <Content Include="Views\AdminOrder\decoy.cshtml" />
     <Content Include="Views\AdminAboutInfo\Index.cshtml" />
+    <Content Include="Views\AdminMainContacts\Index.cshtml" />
+    <Content Include="Views\Partial\Contacts.cshtml" />
+    <Content Include="Views\Partial\HeaderContacts.cshtml" />
+    <Content Include="Views\Partial\FooterContacts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -803,6 +820,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003252304407_company db change1.resx">
       <DependentUpon>202003252304407_company db change1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003262123138_contacts info.resx">
+      <DependentUpon>202003262123138_contacts info.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

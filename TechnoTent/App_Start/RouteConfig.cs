@@ -164,6 +164,12 @@ namespace TechnoTent
                url: "admin/about",
                defaults: new { controller = "AdminAboutInfo", action = "Index" }
            );
+
+            routes.MapRoute(
+               name: "adminContacts",
+               url: "admin/contacts",
+               defaults: new { controller = "AdminMainContacts", action = "Index" }
+           );
             //End of Admin Part
 
             routes.MapRoute(

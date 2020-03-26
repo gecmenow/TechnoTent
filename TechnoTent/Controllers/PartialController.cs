@@ -66,5 +66,29 @@ namespace TechnoTent.Controllers
 
             return PartialView(data);
         }
+
+        [ChildActionOnly] // action cannot be requested directly via URL
+        public ActionResult HeaderContacts()
+        {
+            var data = MainContacts.ShowInfo();
+
+            return PartialView(data);
+        }
+
+        [ChildActionOnly] // action cannot be requested directly via URL
+        public ActionResult FooterContacts()
+        {
+            var data = MainContacts.ShowInfo();
+
+            return PartialView(data);
+        }
+
+        [ChildActionOnly] // action cannot be requested directly via URL
+        public ActionResult Contacts()
+        {
+            var data = MainContacts.ShowInfo();
+
+            return PartialView(data);
+        }
     }
 }

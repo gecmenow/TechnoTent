@@ -1,0 +1,9 @@
+﻿@model TechnoTent.Models.ViewModel.ContactsInfoVM
+
+@foreach (var info in Model.HeaderInfo)
+{
+    <li class="header-phones__item">
+        <span class="header-phones__item-title">@info.Name</span>
+        <a href="tel:#" class="header-phones__number">@info.Phone</a>
+    </li>
+}

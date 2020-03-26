@@ -1,0 +1,17 @@
+﻿@model TechnoTent.Models.ViewModel.ContactsInfoVM
+
+<li class="footer-contact__item">
+    <i class="fas fa-map-marker-alt"></i>
+    <p class="footer__addres">@Resources.Resource.layout_address1<br>@Resources.Resource.layout_address2</p>
+</li>
+<li class="footer-contact__item">
+    <i class="fas fa-phone"></i>
+    <div class="footer__phone">
+        <a href="tel:#"> @Model.Footer.Phone1 </a><br>
+        <a href="tel:#"> @Model.Footer.Phone2 </a>
+    </div>
+</li>
+<li class="footer-contact__item">
+    <i class="fas fa-envelope"></i>
+    <p class="footer__email"><a href="mailto:" + @Model.Footer.Email>@Model.Footer.Email</a></p>
+</li>

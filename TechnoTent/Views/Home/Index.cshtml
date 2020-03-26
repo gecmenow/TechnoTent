@@ -116,10 +116,13 @@
                     <h2 class="section-title color__yellow">@Resources.Resource.home_feedback1 &nbsp; <span>@Resources.Resource.home_feedback2?</span></h2>
                     <p class="section-desc">@Resources.Resource.home_feedback_desc <br>@Resources.Resource.home_feedback_desc2.</p>
                     <div class="feedback-phone">
-                        <div class="feedback-phone__list">
+                        @{
+                            Html.RenderAction("Contacts", "Partial");
+                        }
+                        @*<div class="feedback-phone__list">
                             <div class="feedback-phone__item">@Resources.Resource.home_feedback_tel11 <a href="tel:+380503388348"><span>(050)</span> 338 - 83 - 48</a></div>
                             <div class="feedback-phone__item">@Resources.Resource.home_feedback_tel2 <a href="tel:+380954246215"><span>(095)</span>  42-46-215</a></div>
-                        </div>
+                        </div>*@
                         <button class="feedback-button">@Resources.Resource.home_feedback_submit</button>
                     </div>
                 </div>
