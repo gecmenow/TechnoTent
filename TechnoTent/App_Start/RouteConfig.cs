@@ -158,6 +158,12 @@ namespace TechnoTent
                url: "admin/reviews",
                defaults: new { controller = "AdminReviews", action = "Index" }
            );
+
+            routes.MapRoute(
+               name: "adminAboutCompany",
+               url: "admin/about",
+               defaults: new { controller = "AdminAboutInfo", action = "Index" }
+           );
             //End of Admin Part
 
             routes.MapRoute(

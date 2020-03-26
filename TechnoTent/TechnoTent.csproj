@@ -135,6 +135,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminAboutInfoController.cs" />
     <Compile Include="Controllers\AdminCategoryController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminItemsController.cs" />
@@ -394,9 +395,9 @@
       <DependentUpon>202003252304407_company db change1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AboutInfo.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\AdminCategoryAndSub.cs" />
-    <Compile Include="Models\AdminCompany.cs" />
     <Compile Include="Models\AdminFeedback.cs" />
     <Compile Include="Models\AdminItems.cs" />
     <Compile Include="Models\AdminMainImages.cs" />
@@ -612,6 +613,7 @@
     <Content Include="Views\Partial\GetCategories.cshtml" />
     <Content Include="Views\AdminStocks\RemoveStocks.cshtml" />
     <Content Include="Views\AdminOrder\decoy.cshtml" />
+    <Content Include="Views\AdminAboutInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

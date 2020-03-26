@@ -1,0 +1,253 @@
+﻿@model TechnoTent.Models.ViewModel.CompanyVM
+
+@section AdminHeader
+{
+    <header class="admin-header">
+        <a href="/" class="admin-header__logo">
+            <span class="logo-lg"><b>Админ</b> панель</span>
+        </a>
+        <nav class="navbar-header-top">
+            <a href="#" class="settings navbar-header__toggle"><i class="fa fa-cogs" aria-hidden="true"></i></a>
+            <ul class="navbar-header__list" style="display: none;">
+                <li class="navbar-header__item">
+                    <a href="/admin"><i class="fas fa-cog"><span>Настройки</span></i></a>
+                </li>
+                <li class="navbar-header__item">
+                    <a href="/admin/logout"><i class="fas fa-sign-out-alt"><span>Выйти</span></i></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+}
+<div id="result">
+    <main class="main-admin">
+        <aside class="admin-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar__list" data-widget="tree">
+                    <li class="sidebar__item" style="height: 37px;"></li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/mainImages">
+                            <i class="fas fa-images"></i>
+                            <span>Нстройки галереи</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/orders">
+                            <i class="fas fa-book-open"></i>
+                            <span>Заказы</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/categories">
+                            <i class="fas fa-list"></i>
+                            <span>Категории</span>
+                        </a>
+                    </li>
+                    @{
+                        Html.RenderAction("GetCategoriesAndSubCategoriesForAdmin", "Partial");
+                    }
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/add/item/">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить товар</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/news">
+                            <i class="far fa-newspaper"></i>
+                            <span>Статьи</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/news/add">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить статью</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/stocks">
+                            <i class="far fa-money-bill-alt"></i>
+                            <span>Акции</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/stocks/add">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить акцию</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/reviews">
+                            <i class="fas fa-comments"></i>
+                            <span>Отзывы</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/about">
+                            <i class="fas fa-id-card"></i>
+                            <span>Информация о компании</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+        <div class="admin-content-wrapper">
+            <section class="admin-content-header">
+                <h1 class="admin-page__title">
+                    Настройки
+                </h1>
+            </section>
+            <section class="admin-content-main">
+                @using (Html.BeginForm("EditInfo", "AdminAboutInfo", FormMethod.Post, new { @class = "setting-main-info-form" }))
+                {
+                    <label class="edit__title">О нас</label>
+                    <div class="settings-edit__wrapper">
+                        <label class="edit__title">Рус</label> <textarea class="input-main-info-edit" rows="7" name="AboutRu" required>@Model.AboutRu</textarea>
+                    </div>
+                    <div class="settings-edit__wrapper">
+                        <label class="edit__title">Укр</label> <textarea class="input-main-info-edit" rows="7" name="AboutUa" required>@Model.AboutUa</textarea>
+                    </div>
+                    <div class="settings-edit__wrapper">
+                        <label class="edit__title">Англ</label> <textarea class="input-main-info-edit" rows="7" name="AboutEn" required>@Model.AboutEn</textarea>
+                    </div>
+                    <label class="edit__title">Реквизиты</label>
+                    <div class="settings-edit__wrapper">
+                        <label class="edit__title">Наименование организации(Рус)</label><textarea class="input-main-info-edit" rows="3" name="OrgNameRu" required>@Model.OrgNameRu</textarea>
+                    </div>
+                    <div class="settings-edit__wrapper">
+                        <label class="edit__title">Наименование организации(Укр)</label><textarea class="input-main-info-edit" rows="3" name="OrgNameUa" required>@Model.OrgNameUa</textarea>
+                    </div>
+                    <div class="settings-edit__wrapper">
+                        <label class="edit__title">Наименование организации(Англ)</label><textarea class="input-main-info-edit" rows="3" name="OrgNameEn" required>@Model.OrgNameEn</textarea>
+                    </div>
+                    <div class="settings-edit__wrapper">
+                        <label class="edit__title">Фактический адрес(Рус)</label><textarea class="input-main-info-edit" rows="3" name="AddressRu" required>@Model.AddressRu</textarea>
+                    </div>
+                    <div class="settings-edit__wrapper">
+                        <label class="edit__title">Фактический адрес(Укр)</label><textarea class="input-main-info-edit" rows="3" name="AddressUa" required>@Model.AddressUa</textarea>
+                    </div>
+                    <div class="settings-edit__wrapper">
+                        <label class="edit__title">Фактический адрес(Англ)</label><textarea class="input-main-info-edit" rows="3" name="AddressEn" required>@Model.AddressEn</textarea>
+                    </div>
+                    for (int i = 0; i < Model.NameRu.Count(); i++)
+                    {
+                        @*<input type="text" name="Model.OrgModel["+i+"].Id" style="visibility: hidden;position: absolute;z-index: -1" value="@Model.OrgModel[i].Id">*@
+                        <label class="edit__title">Телефон организации, e-mail</label>
+                        <div class="edit-company-number__wrapper">
+                            <div class="edit-company-number">
+                                @*@Html.Hidden("OrgModel[" + i + "].Id", Model.OrgModel[i].Id)*@
+                                <input type="text" name="Id" style="visibility: hidden;position: absolute;z-index: -1" value="@Model.IdList[i]" >
+                                <div class="edit-company-number__item">
+                                    <label class="edit__title">Назначение(Рус)</label>
+                                    @*@Html.TextBox("OrgModel[" + i + "].NameRu", Model.OrgModel[i].NameRu, new { @class = "input-settings-edit" })*@
+                                    <input type="text" class="input-settings-edit" name="NameRu" value="@Model.NameRu[i]">
+                                </div>
+                                <div class="edit-company-number__item">
+                                    <label class="edit__title">Назначение(Укр)</label>
+                                    @*@Html.TextBox("OrgModel[" + i + "].NameUa", Model.OrgModel[i].NameUa, new { @class = "input-settings-edit" })*@
+                                    <input type="text" class="input-settings-edit" name="NameUa" value="@Model.NameUa[i]">
+                                </div>
+                                <div class="edit-company-number__item">
+                                    <label class="edit__title">Назначение(Англ)</label>
+                                    @*@Html.TextBox("OrgModel[" + i + "].NameEn", Model.OrgModel[i].NameEn, new { @class = "input-settings-edit" })*@
+                                    <input type="text" class="input-settings-edit" name="NameEn" value="@Model.NameEn[i]">
+                                </div>
+                                @for (int j = 0; j < Model.Phone[i].Count(); j++)
+                                {
+                                    <div class="edit-company-number__item edit-company-number__item_nymber">
+                                        <label class="edit__title">Номер телефона</label>
+                                        @*@Html.TextBox("OrgModel[" + i + "].Phone", Model.OrgModel[i].Phone, new { @class = "input-settings-edit" })*@
+                                        <input type="text" class="input-settings-edit" value="@Model.Phone[i][j]">
+                                        <button type="button" class="btn btn-danger remove-company-number">Удалить</button>
+                                    </div>
+                                }
+                                @for (int j = 0; j < Model.Email[i].Count(); j++)
+                                {
+                                    <div class="edit-company-number__item edit-company-number__item_email">
+                                        <label class="edit__title">e-mail</label>
+                                        @*@Html.TextBox("OrgModel[" + i + "].Email", Model.OrgModel[i].Email, new { @class = "input-settings-edit" })*@
+                                        <input type="text" class="input-settings-edit" value="@Model.Email[i][j]">
+                                        <button type="button" class="btn btn-danger remove-company-email">Удалить</button>
+                                    </div>
+                                }
+                                <i class="fas fa-times remove-company-number__item"></i>
+                                <button type="button" class="btn btn-info add-company-number__item"><i class="fas fa-plus"></i></button>
+                                <button type="button" class="btn btn-info add-company-number">Добавить номер</button>
+                                <button type="button" class="btn btn-info add-company-email">Добавить Email</button>
+                                @*@Html.TextBox("PhoneList["+i+"]", "", new { @class = "input-settings-edit company-number", style = "visibility: hidden;position: absolute;z-index: -1" })*@
+                                <input type="text" name="PhoneList" class="input-settings-edit company-number" style="visibility: hidden;position: absolute;z-index: -1">
+                                @*@Html.TextBox("EmailList["+i+"]","", new { @class = "input-settings-edit company-email", style = "visibility: hidden;position: absolute;z-index: -1" })*@
+                                <input type="text" name="EmailList" class="input-settings-edit company-email" style="visibility: hidden;position: absolute;z-index: -1">
+                            </div>
+                        </div>
+                    }
+                    <label class="edit__title">Банковские данные</label>
+                    <div class="settings-edit__wrapper">
+                        <label class="edit__title">Банковские реквизиты</label><textarea class="input-main-info-edit" rows="5" name="Banking" required>@Model.Banking</textarea>
+                    </div>
+                    <div class="settings-edit__wrapper">
+                        <label class="edit__title">ЕГРПОУ</label><input type="text" name="BankReq" class="input-settings-edit" value="@Model.BankReq" required>
+                    </div>
+                    <div class="settings-edit__wrapper">
+                        <label class="edit__title">ИНН</label><input type="text" name="INN" class="input-settings-edit" value="@Model.INN" required>
+                    </div>
+                    <button type="submit" class="btn btn-success setting-main-info-form__submit">Сохранить</button>
+                }
+            </section>
+        </div>
+    </main>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="script/script.js"></script>
+<script type="text/javascript">
+    $(".add-company-number__item").click(function(){
+        let defoltItem = ("<div class='edit-company-number'>                        <div class='edit-company-number__item'>                            <label class='edit__title'>Назначение(Рус)</label>                            <input type='text' class='input-settings-edit' name='NameRu'>                        </div>                        <div class='edit-company-number__item'>                            <label class='edit__title'>Назначение(Укр)</label>                            <input type='text' class='input-settings-edit' name='NameUa'>                        </div>                        <div class='edit-company-number__item'>                            <label class='edit__title'>Назначение(Англ)</label>                            <input type='text' class='input-settings-edit' name='NameEn'>                        </div>                        <div class='edit-company-number__item edit-company-number__item_nymber'>                            <label class='edit__title'>Номер телефона</label>                            <input type='text' class='input-settings-edit'>                            <button type='button' class='btn btn-danger remove-company-number'>Удалить</button>                                                    </div>                                                <div class='edit-company-number__item edit-company-number__item_email'>                            <label class='edit__title'>e-mail</label>                            <input type='text' class='input-settings-edit'>                            <button type='button' class='btn btn-danger remove-company-email'>Удалить</button>                                                    </div>                        <i class='fas fa-times remove-company-number__item'></i>                        <button type='button' class='btn btn-info add-company-number__item'><i class='fas fa-plus'></i></button>                        <button type='button' class='btn btn-info add-company-number'>Добавить номер</button>                        <button type='button' class='btn btn-info add-company-email'>Добавить Email</button>                        <input type='text' name='PhoneList' class='input-settings-edit company-number' style='visibility: hidden;position: absolute;z-index: -1'>                        <input type='text' name='EmailList' class='input-settings-edit company-email' style='visibility: hidden;position: absolute;z-index: -1'>                    </div>");
+        $(defoltItem).insertAfter($(this).parent());
+    })
+    $(".remove-company-number__item").click(function(){
+        if($(this).parent().siblings().length >=1){
+            $(this).parent().remove();
+        }
+    });
+    $(".remove-company-number").click(function(){
+        if($(this).parent().siblings(".edit-company-number__item_nymber").length >= 1){
+            $(this).parent().remove();
+        };
+    })
+    $(".add-company-number").click(function(){
+        let defoltItem = ("<div class='edit-company-number__item edit-company-number__item_nymber'>                            <label class='edit__title'>Номер телефона</label>                            <input type='text' class='input-settings-edit'>                            <button type='button' class='btn btn-danger remove-company-number'>Удалить</button></div>");
+        $(defoltItem).insertAfter($(this).siblings(".edit-company-number__item_nymber").eq($(this).siblings(".edit-company-number__item_nymber").length -1));
+    })
+    $(".remove-company-email").click(function(){
+        if($(this).parent().siblings(".edit-company-number__item_email").length >= 1){
+            $(this).parent().remove();
+        };
+    })
+    $(".add-company-email").click(function(){
+        let defoltItem = (" <div class='edit-company-number__item edit-company-number__item_email'>                            <label class='edit__title'>e-mail</label>                            <input type='text' class='input-settings-edit'>                            <button type='button' class='btn btn-danger remove-company-email'>Удалить</button>                                                    </div>");
+        $(defoltItem).insertAfter($(this).siblings(".edit-company-number__item_nymber").eq($(this).siblings(".edit-company-number__item_nymber").length -1));
+    })
+    $(".setting-main-info-form__submit").click(function(){
+
+        for(let i=0; $(".company-number").length > i; i++){
+            $(".company-number").eq(i).val("");
+            for(let j=0; $(".company-number").eq(i).siblings(".edit-company-number__item_nymber").length > j; j++){
+            $(".company-number").eq(i).val($(".company-number").eq(i).val() + $(".company-number").eq(i).siblings(".edit-company-number__item_nymber").eq(j).children(".input-settings-edit").val() + "|")
+
+            }
+            $(".company-number").eq(i).val($(".company-number").eq(i).val().substring(0, $(".company-number").eq(i).val().length - 1));
+        }
+
+        for(let i=0; $(".company-email").length > i; i++){
+            $(".company-email").eq(i).val("");
+            for(let j=0; $(".company-email").eq(i).siblings(".edit-company-number__item_email").length > j; j++){
+            $(".company-email").eq(i).val($(".company-email").eq(i).val() + $(".company-email").eq(i).siblings(".edit-company-number__item_email").eq(j).children(".input-settings-edit").val() + "|")
+
+            }
+            $(".company-email").eq(i).val($(".company-email").eq(i).val().substring(0, $(".company-email").eq(i).val().length - 1));
+        }
+
+        $(".setting-main-info-form").submit();
+    })
+</script>

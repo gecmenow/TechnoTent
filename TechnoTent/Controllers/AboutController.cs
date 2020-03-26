@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TechnoTent.Filters;
+using TechnoTent.Models;
 
 namespace TechnoTent.Controllers
 {
@@ -13,7 +14,9 @@ namespace TechnoTent.Controllers
         // GET: Adout
         public ActionResult Index()
         {
-            return View();
+            var data = Company.GetInfo();
+
+            return View(data);
         }
     }
 }

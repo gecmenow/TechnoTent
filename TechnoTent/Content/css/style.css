@@ -608,6 +608,13 @@ footer {
   font-size: 20px;
   margin-bottom: 20px;
 }
+.info-item__text p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: initial;
+}
 .info-item__excerpt {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -4903,7 +4910,7 @@ div.form-input__address {
   position: relative;
   min-width: 350px;
   background-color: #fff;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 .input-settings-edit:placeholder {
   color: #878787;
@@ -5068,6 +5075,91 @@ div.form-input__address {
 }
 .slider-edit__wrapper button:first-child {
   margin-right: 40px;
+}
+.setting-main-info-form {
+  padding: 20px;
+}
+.setting-main-info-form .settings-edit__wrapper button.btn-success {
+  margin-right: 20px;
+}
+.setting-main-info-form > .edit__title {
+  font-size: 18px;
+  font-weight: 500;
+  width: auto;
+  margin-bottom: 20px;
+  -ms-flex-item-align: center;
+      align-self: center;
+  text-transform: uppercase;
+  border-bottom: 3px solid #d2d6de;
+  display: block;
+  padding-bottom: 5px;
+  text-align: center;
+}
+.setting-main-info-form .input-main-info-edit {
+  width: 100%;
+  padding: 8px 25px 8px 10px;
+  border: 2px solid #aeaeae;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.3px;
+  position: relative;
+  background-color: #fff;
+}
+.setting-main-info-form .input-main-info-edit:placeholder {
+  color: #878787;
+  opacity: 0.6;
+}
+.setting-main-info-form .edit__title {
+  min-width: 250px;
+  margin-right: 20px;
+}
+.edit-company-number {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  border: 2px solid #d2d6de;
+  padding: 5px;
+}
+.edit-company-number:not(:last-child) {
+  margin-bottom: 20px;
+}
+.edit-company-number__item:not(:last-child) {
+  margin-bottom: 10px;
+}
+.remove-company-number__item {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+.remove-company-number__item:hover {
+  color: red;
+}
+.remove-company-number__item_nymber {
+  cursor: pointer;
+}
+.remove-company-number__item_nymber:hover {
+  color: red;
+}
+.add-company-number__item {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
+  padding: 1px 10px;
+  line-height: 1;
+}
+.edit-company-number__wrapper {
+  margin-bottom: 20px;
+}
+.add-company-number,
+.add-company-email {
+  margin-bottom: 10px;
 }
 .page-not-found {
   margin: 40px 0;
@@ -7952,4 +8044,3 @@ Build date: 2018-12-12 00:07:25
 .fotorama__wrap--fade .fotorama__stage:after {
   display: none;
 }
-/*# sourceMappingURL=style.css.map */

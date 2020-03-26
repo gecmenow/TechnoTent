@@ -21,13 +21,17 @@ namespace TechnoTent.Models.ViewModel.Admin
         public string AddressEn { get; set; }
         public string AddressUa { get; set; }
         public string Name { get; set; }
-        public string NameRu { get; set; }
-        public string NameEn { get; set; }
-        public string NameUa { get; set; }
+        public string[] NameRu { get; set; }
+        public string[] NameEn { get; set; }
+        public string[] NameUa { get; set; }
         public string Phone { get; set; }
+        public List<string> PhoneList { get; set; }
         public string Email { get; set; }
+        public List<string> EmailList { get; set; }
         public string Banking { get; set; }
         public string BankReq { get; set; }
         public string INN { get; set; }
+
+        //public List<OrganizationModel> OrgModel { get; set; }
     }
 }
