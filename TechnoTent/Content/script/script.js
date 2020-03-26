@@ -1106,7 +1106,7 @@ $(document).ready(function () {
     function showSubcategory(Value){
         let selectValue = Value;
         switch (selectValue) {  
-            case "Тенты ПВХ":                   
+            case "Тентовые ткани ПВХ":                   
                 $(".product-edit-subcategory").show();
                 $(".product-subcategory__item").removeAttr("disabled");
                 $(".product-edit__type").attr("disabled","");

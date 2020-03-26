@@ -11,7 +11,7 @@
             <div class="article__date">
                 <i class="far fa-calendar-alt"></i> @Model.DateTime.ToShortDateString()
             </div>
-            <div class="article">
+            <div class="article ql-snow">
                 @if (Model.Image != null)
                 {
                     <img class="article__image" src="~/Content/images/news/@Model.Image" title="@Model.Title">
@@ -21,32 +21,35 @@
                     <img src="~/Content/images/no_image.svg" alt="@Model.Title" class="info-item__img">
                 }
 
-                <div class="article__text">
+                <div class="article__text ql-editor">
                     @Html.Raw(Model.Text)
                 </div>
             </div>
-            <h2 class="page-title">@Resources.Resource.news_title</h2>
-            <div class="info__list">
-                @foreach (var news in Model.NewsList)
-                {
-                    <div class="info__item bg-gray">
-                        @if (news.Image != null)
-                        {
-                            <img src="~/Content/images/news/" alt="@news.Title" class="info-item__img">
-                        }
-                        else
-                        {
-                            <img src="~/Content/images/no_image.svg" alt="@news.Title" class="info-item__img">
-                        }
-                        <div class="info-item__text">
-                            <div class="info-item__date"><i class="far fa-calendar-alt"></i> @news.DateTime.ToShortDateString()</div>
-                            <h3 class="info-item__title">@news.Title</h3>
-                            <p class="info-item__excerpt">@Html.Raw(news.Text)</p>
-                            <a href="/news/@news.Id" class="info-link__read-more">@Resources.Resource.news_more</a>
+            @if (Model.NewsList.Count() != 0)
+            {
+                <h2 class="page-title">@Resources.Resource.news_title</h2>
+                <div class="info__list">
+                    @foreach (var news in Model.NewsList)
+                    {
+                        <div class="info__item bg-gray">
+                            @if (news.Image != null)
+                            {
+                                <img src="~/Content/images/news/" alt="@news.Title" class="info-item__img">
+                            }
+                            else
+                            {
+                                <img src="~/Content/images/no_image.svg" alt="@news.Title" class="info-item__img">
+                            }
+                            <div class="info-item__text">
+                                <div class="info-item__date"><i class="far fa-calendar-alt"></i> @news.DateTime.ToShortDateString()</div>
+                                <h3 class="info-item__title">@news.Title</h3>
+                                <p class="info-item__excerpt">@Html.Raw(news.Text)</p>
+                                <a href="/news/@news.Id" class="info-link__read-more">@Resources.Resource.news_more</a>
+                            </div>
                         </div>
-                    </div>
-                }
-            </div>
+                    }
+                </div>
+            }
         </div>
     </section>
 </main>

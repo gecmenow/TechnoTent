@@ -139,9 +139,9 @@ namespace TechnoTent.Models
                     }
                 }
 
-                else
+                else if (allInfo.Count() < info.NameRu.Count())
                 {
-                    for (int i = 0; i < allInfo.Count(); i++)
+                    for (int i = 0; i < info.NameRu.Count(); i++)
                     {
                         if (allInfo[i].NameRu != info.NameRu[i])
                             allInfo[i].NameRu = info.NameRu[i];
@@ -165,6 +165,23 @@ namespace TechnoTent.Models
                             Phone = info.PhoneList[i],
                             Email = info.EmailList[i],
                         });
+                    }
+                }
+
+                else
+                {
+                    List<int> idList = new List<int>();
+
+                    for (int i = 0; i < allInfo.Count(); i++)
+                        idList.Add(allInfo[i].Id);
+
+                    var differences = idList.Except(info.IdList);
+
+                    foreach(var dif in differences)
+                    {
+                        var temp = db.CompanyDb.Where(x => x.Id == dif).FirstOrDefault();
+
+                        db.CompanyDb.Remove(temp);
                     }
                 }
                 

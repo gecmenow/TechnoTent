@@ -2345,11 +2345,13 @@ footer {
   line-height: 18px;
   text-overflow: initial;
 }
+.article-card {
+  /* .article__text{		
+		line-height:19px;
+	} */
+}
 .article-card .article__date {
   padding-left: 10px;
-}
-.article-card .article__text {
-  line-height: 19px;
 }
 .article-card .info__list {
   display: -webkit-box;

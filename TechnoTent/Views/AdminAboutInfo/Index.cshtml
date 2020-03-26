@@ -129,14 +129,15 @@
                     <div class="settings-edit__wrapper">
                         <label class="edit__title">Фактический адрес(Англ)</label><textarea class="input-main-info-edit" rows="3" name="AddressEn" required>@Model.AddressEn</textarea>
                     </div>
-                    for (int i = 0; i < Model.NameRu.Count(); i++)
-                    {
-                        @*<input type="text" name="Model.OrgModel["+i+"].Id" style="visibility: hidden;position: absolute;z-index: -1" value="@Model.OrgModel[i].Id">*@
-                        <label class="edit__title">Телефон организации, e-mail</label>
-                        <div class="edit-company-number__wrapper">
+                    <label class="edit__title">Телефон организации, e-mail</label>
+                    <div class="edit-company-number__wrapper">
+                        @for (int i = 0; i < Model.NameRu.Count(); i++)
+                        {
+                            @*<input type="text" name="Model.OrgModel["+i+"].Id" style="visibility: hidden;position: absolute;z-index: -1" value="@Model.OrgModel[i].Id">*@
+
                             <div class="edit-company-number">
                                 @*@Html.Hidden("OrgModel[" + i + "].Id", Model.OrgModel[i].Id)*@
-                                <input type="text" name="Id" style="visibility: hidden;position: absolute;z-index: -1" value="@Model.IdList[i]" >
+                                <input type="text" name="IdList" style="visibility: hidden;position: absolute;z-index: -1" value="@Model.IdList[i]">
                                 <div class="edit-company-number__item">
                                     <label class="edit__title">Назначение(Рус)</label>
                                     @*@Html.TextBox("OrgModel[" + i + "].NameRu", Model.OrgModel[i].NameRu, new { @class = "input-settings-edit" })*@
@@ -179,19 +180,19 @@
                                 @*@Html.TextBox("EmailList["+i+"]","", new { @class = "input-settings-edit company-email", style = "visibility: hidden;position: absolute;z-index: -1" })*@
                                 <input type="text" name="EmailList" class="input-settings-edit company-email" style="visibility: hidden;position: absolute;z-index: -1">
                             </div>
-                        </div>
-                    }
-                    <label class="edit__title">Банковские данные</label>
-                    <div class="settings-edit__wrapper">
-                        <label class="edit__title">Банковские реквизиты</label><textarea class="input-main-info-edit" rows="5" name="Banking" required>@Model.Banking</textarea>
+                        }
                     </div>
-                    <div class="settings-edit__wrapper">
-                        <label class="edit__title">ЕГРПОУ</label><input type="text" name="BankReq" class="input-settings-edit" value="@Model.BankReq" required>
-                    </div>
-                    <div class="settings-edit__wrapper">
-                        <label class="edit__title">ИНН</label><input type="text" name="INN" class="input-settings-edit" value="@Model.INN" required>
-                    </div>
-                    <button type="submit" class="btn btn-success setting-main-info-form__submit">Сохранить</button>
+                <label class="edit__title">Банковские данные</label>
+                <div class="settings-edit__wrapper">
+                    <label class="edit__title">Банковские реквизиты</label><textarea class="input-main-info-edit" rows="5" name="Banking" required>@Model.Banking</textarea>
+                </div>
+                <div class="settings-edit__wrapper">
+                    <label class="edit__title">ЕГРПОУ</label><input type="text" name="BankReq" class="input-settings-edit" value="@Model.BankReq" required>
+                </div>
+                <div class="settings-edit__wrapper">
+                    <label class="edit__title">ИНН</label><input type="text" name="INN" class="input-settings-edit" value="@Model.INN" required>
+                </div>
+                <button type="submit" class="btn btn-success setting-main-info-form__submit">Сохранить</button>
                 }
             </section>
         </div>
@@ -199,7 +200,6 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="script/script.js"></script>
 <script type="text/javascript">
     $(".add-company-number__item").click(function(){
         let defoltItem = ("<div class='edit-company-number'>                        <div class='edit-company-number__item'>                            <label class='edit__title'>Назначение(Рус)</label>                            <input type='text' class='input-settings-edit' name='NameRu'>                        </div>                        <div class='edit-company-number__item'>                            <label class='edit__title'>Назначение(Укр)</label>                            <input type='text' class='input-settings-edit' name='NameUa'>                        </div>                        <div class='edit-company-number__item'>                            <label class='edit__title'>Назначение(Англ)</label>                            <input type='text' class='input-settings-edit' name='NameEn'>                        </div>                        <div class='edit-company-number__item edit-company-number__item_nymber'>                            <label class='edit__title'>Номер телефона</label>                            <input type='text' class='input-settings-edit'>                            <button type='button' class='btn btn-danger remove-company-number'>Удалить</button>                                                    </div>                                                <div class='edit-company-number__item edit-company-number__item_email'>                            <label class='edit__title'>e-mail</label>                            <input type='text' class='input-settings-edit'>                            <button type='button' class='btn btn-danger remove-company-email'>Удалить</button>                                                    </div>                        <i class='fas fa-times remove-company-number__item'></i>                        <button type='button' class='btn btn-info add-company-number__item'><i class='fas fa-plus'></i></button>                        <button type='button' class='btn btn-info add-company-number'>Добавить номер</button>                        <button type='button' class='btn btn-info add-company-email'>Добавить Email</button>                        <input type='text' name='PhoneList' class='input-settings-edit company-number' style='visibility: hidden;position: absolute;z-index: -1'>                        <input type='text' name='EmailList' class='input-settings-edit company-email' style='visibility: hidden;position: absolute;z-index: -1'>                    </div>");
@@ -208,7 +208,9 @@
     $(".remove-company-number__item").click(function(){
         if($(this).parent().siblings().length >=1){
             $(this).parent().remove();
+            
         }
+        console.log($(this).parent().siblings());
     });
     $(".remove-company-number").click(function(){
         if($(this).parent().siblings(".edit-company-number__item_nymber").length >= 1){

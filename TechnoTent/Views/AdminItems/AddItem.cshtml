@@ -127,12 +127,12 @@
                         }
                     </select><br>
                 </div>
-                <div class="product-edit__wrapper">
+                <div class="product-edit__wrapper product-edit-subcategory" style="display:none;">
                     <label class="edit__title">Подкатегория</label><br>
-                    <select class="product-category-list" name="SubCategoryNameRu">
+                    <select class="product-subcategory-list" name="SubCategoryNameRu">
                         @foreach (var subCategory in Model.SubCategoriesList)
                         {
-                            <option class="product-category__item" value="@subCategory">@subCategory</option>
+                            <option class="product-subcategory__item" value="@subCategory" disabled>@subCategory</option>
                         }
                     </select><br>
                 </div>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
@@ -253,8 +254,12 @@ namespace TechnoTent.Controllers.Items
             List<string> subCategoryList = new List<string>();
             List<string> colorsList = new List<string>();
 
+            subCategory = subCategory.Replace("_", " ");
+
             subCategoryList = subCategory.Split(',').Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
-            colorsList = colors.Split(',').Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
+
+            if(colors != "")
+                colorsList = colors.Split(',').Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
 
             var data = Models.ViewModel.Items.Item.GetFilteredItemsCount(category, filters, subCategoryList, colorsList, minPrice, maxPrice);
 

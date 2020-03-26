@@ -28,8 +28,9 @@
                 var selectedCheckBoxesBrand = document.querySelectorAll('.filter__item:nth-child(3) .form-input__checkbox:checked');
                 var checkedColor = Array.from(selectedCheckBoxesColor).map(cb => cb.value);
                 var checkedBrand = Array.from(selectedCheckBoxesBrand).map(cb => cb.value);
+                checkedBrand = checkedBrand.toString().replace(/\s/ig, '_');
+                console.log(checkedBrand);
                 let category = location.pathname.split('/');
-                console.log(category);
                 category = category[2];
                 url = "@Url.Action("GetItemsCount", "Items")?category=" + category + "&filters=" + "" + "&subCategory=" + checkedBrand + "&colors=" + checkedColor;
                 $('.counter-js').load(url);

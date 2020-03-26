@@ -12,7 +12,7 @@
             <div class="article__date">
                 <i class="far fa-calendar-alt"></i>@Model.DateTime.ToShortDateString()
             </div>
-            <div class="article">
+            <div class="article ql-snow">
                 @if (Model.Image != null)
                 {
                     <img class="article__image" src="~/Content/images/stocks/@Model.Image" title="@Model.Title">
@@ -21,7 +21,7 @@
                 {
                     <img src="~/Content/images/no_image.svg" alt="@Model.Title" class="info-item__img">
                 }
-                <div class="article__text">
+                <div class="article__text ql-editor">
                     @Html.Raw(Model.Text)
                 </div>
             </div>
