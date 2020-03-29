@@ -247,7 +247,7 @@ namespace TechnoTent.Models
 
                 var subCategory = db.SubCategoryDb.Where(u => u.SubCategoryNameRu == item.SubCategoryNameRu).FirstOrDefault();
 
-                if(subCategory != null)
+                if (subCategory != null)
                 {
                     item.SubCategoryNameEn = subCategory.SubCategoryNameEn;
                     item.SubCategoryNameUa = subCategory.SubCategoryNameUa;
@@ -366,6 +366,14 @@ namespace TechnoTent.Models
                 var categoryEn = (from entry in db.CategoryDb
                                   where entry.CategoryNameRu == item.CategoryNameRu
                                   select entry.CategoryNameEn).FirstOrDefault();
+
+                var subCategory = db.SubCategoryDb.Where(u => u.SubCategoryNameRu == item.SubCategoryNameRu).FirstOrDefault();
+
+                if (subCategory != null)
+                {
+                    item.SubCategoryNameEn = subCategory.SubCategoryNameEn;
+                    item.SubCategoryNameUa = subCategory.SubCategoryNameUa;
+                }
 
                 if (data.NameUa != item.NameUa)
                     data.NameUa = item.NameUa;
