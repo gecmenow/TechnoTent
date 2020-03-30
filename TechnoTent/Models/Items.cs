@@ -931,7 +931,7 @@ namespace TechnoTent.Models.ViewModel.Items
                     {
                         foreach (var item in items)
                         {
-                            if (item.SubCategoryName == brand)
+                            if (item.SubCategoryUrl == brand)
                                 filteredItems.Add(item);
                         }
                     }
