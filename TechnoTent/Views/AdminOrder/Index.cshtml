@@ -174,7 +174,7 @@
                                 <th>@order.Date</th>
                                 <th>@order.UserName</th>
                                 <th>@order.UserPhone</th>
-                                @if (order.OrderLanguage == "ru" || order.OrderLanguage == "ua")
+                                @if (order.OrderLanguage != "en")
                                 {
                                     <th>@order.TotalPrice грн</th>
                                 }

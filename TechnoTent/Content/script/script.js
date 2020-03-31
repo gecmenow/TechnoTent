@@ -1098,34 +1098,34 @@ $(document).ready(function () {
     // 
 
     //subcategoty
-    showSubcategory($(".product-category__item").eq(0).text());
-    $(".product-category-list").on("change", function(){
-        let selectValue = $(".product-category__item[value="+ "'" + $(this).val() + "'" +"]").text();       
-        showSubcategory(selectValue);
-    })
-    function showSubcategory(Value){
-        let selectValue = Value;
-        switch (selectValue) {  
-            case "Тентовые ткани ПВХ":                   
-                $(".product-edit-subcategory").show();
-                $(".product-subcategory__item").removeAttr("disabled");
-                $(".product-edit__type").attr("disabled","");
-                $(".product-edit__type-toggle").hide();
-                break; 
-            case "Швейное производство":
-                $(".product-subcategory__item").attr("disabled","");
-                $(".product-edit-subcategory").hide();
-                $(".product-edit__type-toggle").show();
-                $(".product-edit__type").removeAttr("disabled");
-                break;
-            default:
-                $(".product-subcategory__item").attr("disabled","");
-                $(".product-edit-subcategory").hide();
-                $(".product-edit__type").attr("disabled","");
-                $(".product-edit__type-toggle").hide();
-                break;
-        }
-    }
+    //showSubcategory($(".product-category__item").eq(0).text());
+    //$(".product-category-list").on("change", function(){
+    //    let selectValue = $(".product-category__item[value="+ "'" + $(this).val() + "'" +"]").text();       
+    //    showSubcategory(selectValue);
+    //})
+    //function showSubcategory(Value){
+    //    let selectValue = Value;
+    //    switch (selectValue) {  
+    //        case "Тентовые ткани ПВХ":                   
+    //            $(".product-edit-subcategory").show();
+    //            $(".product-subcategory__item").removeAttr("disabled");
+    //            $(".product-edit__type").attr("disabled","");
+    //            $(".product-edit__type-toggle").hide();
+    //            break; 
+    //        case "Швейное производство":
+    //            $(".product-subcategory__item").attr("disabled","");
+    //            $(".product-edit-subcategory").hide();
+    //            $(".product-edit__type-toggle").show();
+    //            $(".product-edit__type").removeAttr("disabled");
+    //            break;
+    //        default:
+    //            $(".product-subcategory__item").attr("disabled","");
+    //            $(".product-edit-subcategory").hide();
+    //            $(".product-edit__type").attr("disabled","");
+    //            $(".product-edit__type-toggle").hide();
+    //            break;
+    //    }
+    //}
     //
 
 

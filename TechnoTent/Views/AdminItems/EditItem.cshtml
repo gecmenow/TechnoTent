@@ -151,7 +151,7 @@
                         <select class="product-category-list" name="CategoryNameRu">
                             @foreach (var category in Model.CategoriesList)
                             {
-                                if(category == Model.CategoryNameRu)
+                                if (category == Model.CategoryNameRu)
                                 {
                                     <option class="product-category__item" value="@category" selected>@category</option>
                                 }
@@ -164,25 +164,36 @@
                     </div>
                     <div class="product-edit__wrapper">
                         <label class="edit__title">Подкатегория</label><br>
-                        <select class="product-category-list" name="SubCategoryNameRu">
+                        <select class="product-subcategory-list" name="SubCategoryNameRu">
                             @foreach (var subCategory in Model.SubCategoriesList)
                             {
-                                if(subCategory == Model.SubCategoryNameRu)
+                                if (subCategory == Model.SubCategoryNameRu)
                                 {
-                                    <option class="product-category__item" value="@subCategory" selected>@subCategory</option>
+                                    <option class="product-subcategory__item" value="@subCategory" selected>@subCategory</option>
                                 }
                                 else
                                 {
-                                    <option class="product-category__item" value="@subCategory">@subCategory</option>
+                                    <option class="product-subcategory__item" value="@subCategory">@subCategory</option>
                                 }
                             }
                         </select><br>
                     </div>
-                    <div class="product-edit__wrapper product-edit__type-toggle" style="display: none;">
-                        <label class="edit__title">
-                            <input type="checkbox" name="" class="product-edit__type" disabled>Индивидуальный заказ
-                        </label>
+                    <div class="product-edit__wrapper">
+                        @if (Model.ProductBuyTypeMeter)
+                        {
+                            <label class="edit__title"><input type="checkbox" name="ProductBuyTypeMeter" class="product-edit__stock" value="true">цена ГРН за М2</label>
+                        }
+                        else
+                        {
+                            <label class="edit__title"><input type="checkbox" name="ProductBuyTypeMeter" class="product-edit__stock" value="true">цена ГРН за М2</label>
+                        }
+
                     </div>
+                    @*<div class="product-edit__wrapper product-edit__type-toggle" style="display: none;">
+                <label class="edit__title">
+                    <input type="checkbox" name="" class="product-edit__type" disabled>Индивидуальный заказ
+                </label>
+            </div>*@
                     <label class="edit__title">Основная информация</label>
                     <div class="product-edit__wrapper additional-information__more">
                         <div class="product-edit__wrapper">
@@ -263,7 +274,7 @@
                             <label class="edit__title">Вид текстильного изделия (рус)</label><input type="text" name="TextileProductTypeRu" class="input-product-edit" value="@Model.TextileProductTypeRu">
                         </div>
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Описание (рус)</label><input type="text" name="DescriptionRu" class="input-product-edit" value="@Model.DescriptionRu">
+                            <label class="edit__title">Описание (рус)</label><textarea name="DescriptionUa" class="input-product-edit">@Model.DescriptionUa</textarea>
                         </div>
                         <div class="product-edit__wrapper">
                             <label class="edit__title">Цвет (рус)</label><input type="text" name="ColorRu" class="input-product-edit" value="@Model.ColorRu">
@@ -304,7 +315,7 @@
                             <label class="edit__title">Вид текстильного изделия (укр)</label><input type="text" name="TextileProductTypeUa" class="input-product-edit" value="@Model.TextileProductTypeUa">
                         </div>
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Описание (укр)</label><input type="text" name="DescriptionUa" class="input-product-edit" value="@Model.DescriptionUa">
+                            <label class="edit__title">Описание (укр)</label><textarea name="DescriptionUa" class="input-product-edit">@Model.DescriptionUa</textarea>
                         </div>
                         <div class="product-edit__wrapper">
                             <label class="edit__title">Цвет (укр)</label><input type="text" name="ColorUa" class="input-product-edit" value="@Model.ColorUa">
@@ -345,7 +356,7 @@
                             <label class="edit__title">Вид текстильного изделия (англ)</label><input type="text" name="TextileProductTypeEn" class="input-product-edit" value="@Model.TextileProductTypeEn">
                         </div>
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Описание (англ)</label><input type="text" name="DescriptionEn" class="input-product-edit" value="@Model.DescriptionEn">
+                            <label class="edit__title">Описание (англ)</label><textarea name="DescriptionEn" class="input-product-edit">@Model.DescriptionEn</textarea>
                         </div>
                         <div class="product-edit__wrapper">
                             <label class="edit__title">Цвет (англ)</label><input type="text" name="ColorEn" class="input-product-edit" value="@Model.ColorEn">

@@ -16,6 +16,6 @@ namespace TechnoTent.Models.ViewModel
         public string ItemCount { get; set; }
         public double ItemTotalPrice { get; set; }
         public double MinOrderQuantity { get; set; }
-        public bool IndividualOrder { get; set; }
+        public bool ProductBuyTypeMeter { get; set; }
     }
 }

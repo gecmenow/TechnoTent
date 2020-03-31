@@ -399,6 +399,10 @@
     <Compile Include="Migrations\202003262123138_contacts info.Designer.cs">
       <DependentUpon>202003262123138_contacts info.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003311601221_new db.cs" />
+    <Compile Include="Migrations\202003311601221_new db.Designer.cs">
+      <DependentUpon>202003311601221_new db.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutInfo.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -419,9 +423,11 @@
     <Compile Include="Models\DataBase\DbCategory.cs" />
     <Compile Include="Models\DataBase\DbCompany.cs" />
     <Compile Include="Models\DataBase\DbContacts.cs" />
+    <Compile Include="Models\DataBase\DbContactsKievInfo.cs" />
     <Compile Include="Models\DataBase\DbFeedback.cs" />
     <Compile Include="Models\DataBase\DbFooterInfo.cs" />
     <Compile Include="Models\DataBase\DbItems.cs" />
+    <Compile Include="Models\DataBase\DbKonstantinovkaContactsInfo.cs" />
     <Compile Include="Models\DataBase\DbMainImages.cs" />
     <Compile Include="Models\DataBase\DbHeaderInfo.cs" />
     <Compile Include="Models\DataBase\DbNews.cs" />
@@ -484,6 +490,7 @@
     <Compile Include="Models\ViewModel\ItemsCountVM.cs" />
     <Compile Include="Models\ViewModel\ItemsVM.cs" />
     <Compile Include="Models\ViewModel\ItemsOutputVM.cs" />
+    <Compile Include="Models\ViewModel\ContactsPageVM.cs" />
     <Compile Include="Models\ViewModel\MainImagesVM.cs" />
     <Compile Include="Models\ViewModel\NewsVM.cs" />
     <Compile Include="Models\ViewModel\OrderItemsVM.cs" />
@@ -823,6 +830,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003262123138_contacts info.resx">
       <DependentUpon>202003262123138_contacts info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003311601221_new db.resx">
+      <DependentUpon>202003311601221_new db.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

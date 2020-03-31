@@ -53,7 +53,7 @@ namespace TechnoTent.Models
                             AdhesionStrength = u.AdhesionStrength,
                             Temperature = u.Temperature,
                             Color = u.ColorUa,
-                            Description = u.Description,
+                            Description = u.DescriptionUa,
                             ItemStatus = u.ItemStatus,
                             ProductBuyTypeMeter = u.ProductBuyTypeMeter,
                             IndividualOrder = u.IndividualOrders,
@@ -85,7 +85,7 @@ namespace TechnoTent.Models
                             AdhesionStrength = u.AdhesionStrength,
                             Temperature = u.Temperature,
                             Color = u.ColorUa,
-                            Description = u.Description,
+                            Description = u.DescriptionUa,
                             ItemStatus = u.ItemStatus,
                             ProductBuyTypeMeter = u.ProductBuyTypeMeter,
                             IndividualOrder = u.IndividualOrders,
@@ -129,7 +129,7 @@ namespace TechnoTent.Models
                             AdhesionStrength = u.AdhesionStrength,
                             Temperature = u.Temperature,
                             Color = u.ColorEn,
-                            Description = u.Description,
+                            Description = u.DescriptionEn,
                             ItemStatus = u.ItemStatus,
                             ProductBuyTypeMeter = u.ProductBuyTypeMeter,
                             IndividualOrder = u.IndividualOrders,
@@ -161,7 +161,7 @@ namespace TechnoTent.Models
                             AdhesionStrength = u.AdhesionStrength,
                             Temperature = u.Temperature,
                             Color = u.ColorEn,
-                            Description = u.Description,
+                            Description = u.DescriptionEn,
                             ItemStatus = u.ItemStatus,
                             ProductBuyTypeMeter = u.ProductBuyTypeMeter,
                             IndividualOrder = u.IndividualOrders,
@@ -205,7 +205,7 @@ namespace TechnoTent.Models
                             AdhesionStrength = u.AdhesionStrength,
                             Temperature = u.Temperature,
                             Color = u.ColorRu,
-                            Description = u.Description,
+                            Description = u.DescriptionRu,
                             ItemStatus = u.ItemStatus,
                             ProductBuyTypeMeter = u.ProductBuyTypeMeter,
                             IndividualOrder = u.IndividualOrders,
@@ -237,7 +237,7 @@ namespace TechnoTent.Models
                             AdhesionStrength = u.AdhesionStrength,
                             Temperature = u.Temperature,
                             Color = u.ColorRu,
-                            Description = u.Description,
+                            Description = u.DescriptionRu,
                             ItemStatus = u.ItemStatus,
                             ProductBuyTypeMeter = u.ProductBuyTypeMeter,
                             IndividualOrder = u.IndividualOrders,
@@ -284,7 +284,6 @@ namespace TechnoTent.Models
                                     similar.Add(temp[index]);
                             }
 
-
                         foreach (var data in similar)
                             if (data.Image1 == null && data.Image2 == null && data.Image3 == null && data.Image4 == null)
                                 data.Image1 = Image.GetImageIfNull();
@@ -302,7 +301,6 @@ namespace TechnoTent.Models
             {
                 item.Image1 = Image.GetImageIfNull();
             }
-
 
             return item;
         }

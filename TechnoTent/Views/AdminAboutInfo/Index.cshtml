@@ -108,13 +108,38 @@
                 {
                     <label class="edit__title">О нас</label>
                     <div class="settings-edit__wrapper">
-                        <label class="edit__title">Рус</label> <textarea class="input-main-info-edit" rows="7" name="AboutRu" required>@Model.AboutRu</textarea>
+                        <label class="edit__title">Рус</label>
+                        <div>
+                            <textarea class="main-info-textarea" name="AboutRu" style="position: absolute;visibility: hidden;z-index: -1" required>@Model.AboutRu</textarea>
+                            @*@Html.TextArea("AboutRu", Model.AboutRu, new { @class = "main-info-textarea", style="position: absolute;visibility: hidden;z-index: -1"  })*@
+                            <div id="main-info-container__one" class="editor-container">
+                                <p>
+                                <p></p>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                     <div class="settings-edit__wrapper">
-                        <label class="edit__title">Укр</label> <textarea class="input-main-info-edit" rows="7" name="AboutUa" required>@Model.AboutUa</textarea>
+                        <label class="edit__title">Укр</label>
+                        <div>
+                            <textarea class="main-info-textarea" name="AboutUa" style="position: absolute;visibility: hidden;z-index: -1" required><p>@Model.AboutUa</p></textarea>
+                            <div id="main-info-container__two" class="editor-container">
+                                <p>
+                                <p></p>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                     <div class="settings-edit__wrapper">
-                        <label class="edit__title">Англ</label> <textarea class="input-main-info-edit" rows="7" name="AboutEn" required>@Model.AboutEn</textarea>
+                        <label class="edit__title">Англ</label>
+                        <div>
+                            <textarea class="main-info-textarea" name="AboutEn" style="position: absolute;visibility: hidden;z-index: -1" required><p>@Model.AboutEn</p></textarea>
+                            <div id="main-info-container__three" class="editor-container">
+                                <p>
+                                <p></p>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                     <label class="edit__title">Реквизиты</label>
                     <div class="settings-edit__wrapper">
@@ -188,17 +213,17 @@
                             </div>
                         }
                     </div>
-                <label class="edit__title">Банковские данные</label>
-                <div class="settings-edit__wrapper">
-                    <label class="edit__title">Банковские реквизиты</label><textarea class="input-main-info-edit" rows="5" name="Banking" required>@Model.Banking</textarea>
-                </div>
-                <div class="settings-edit__wrapper">
-                    <label class="edit__title">ЕГРПОУ</label><input type="text" name="BankReq" class="input-settings-edit" value="@Model.BankReq" required>
-                </div>
-                <div class="settings-edit__wrapper">
-                    <label class="edit__title">ИНН</label><input type="text" name="INN" class="input-settings-edit" value="@Model.INN" required>
-                </div>
-                <button type="submit" class="btn btn-success setting-main-info-form__submit">Сохранить</button>
+                    <label class="edit__title">Банковские данные</label>
+                    <div class="settings-edit__wrapper">
+                        <label class="edit__title">Банковские реквизиты</label><textarea class="input-main-info-edit" rows="5" name="Banking" required>@Model.Banking</textarea>
+                    </div>
+                    <div class="settings-edit__wrapper">
+                        <label class="edit__title">ЕГРПОУ</label><input type="text" name="BankReq" class="input-settings-edit" value="@Model.BankReq" required>
+                    </div>
+                    <div class="settings-edit__wrapper">
+                        <label class="edit__title">ИНН</label><input type="text" name="INN" class="input-settings-edit" value="@Model.INN" required>
+                    </div>
+                    <button type="submit" class="btn btn-success setting-main-info-form__submit">Сохранить</button>
                 }
             </section>
         </div>
@@ -206,6 +231,7 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src='~/Content/libs/quill/quill.js'></script>
 <script type="text/javascript">
     $(".add-company-number__item").click(function(){
         let defoltItem = ("<div class='edit-company-number'>                        <div class='edit-company-number__item'>                            <label class='edit__title'>Назначение(Рус)</label>                            <input type='text' class='input-settings-edit' name='NameRu'>                        </div>                        <div class='edit-company-number__item'>                            <label class='edit__title'>Назначение(Укр)</label>                            <input type='text' class='input-settings-edit' name='NameUa'>                        </div>                        <div class='edit-company-number__item'>                            <label class='edit__title'>Назначение(Англ)</label>                            <input type='text' class='input-settings-edit' name='NameEn'>                        </div>                        <div class='edit-company-number__item edit-company-number__item_nymber'>                            <label class='edit__title'>Номер телефона</label>                            <input type='text' class='input-settings-edit'>                            <button type='button' class='btn btn-danger remove-company-number'>Удалить</button>                                                    </div>                                                <div class='edit-company-number__item edit-company-number__item_email'>                            <label class='edit__title'>e-mail</label>                            <input type='text' class='input-settings-edit'>                            <button type='button' class='btn btn-danger remove-company-email'>Удалить</button>                                                    </div>                        <i class='fas fa-times remove-company-number__item'></i>                        <button type='button' class='btn btn-info add-company-number__item'><i class='fas fa-plus'></i></button>                        <button type='button' class='btn btn-info add-company-number'>Добавить номер</button>                        <button type='button' class='btn btn-info add-company-email'>Добавить Email</button>                        <input type='text' name='PhoneList' class='input-settings-edit company-number' style='visibility: hidden;position: absolute;z-index: -1'>                        <input type='text' name='EmailList' class='input-settings-edit company-email' style='visibility: hidden;position: absolute;z-index: -1'>                    </div>");
@@ -256,6 +282,65 @@
             $(".company-email").eq(i).val($(".company-email").eq(i).val().substring(0, $(".company-email").eq(i).val().length - 1));
         }
 
+        $(".main-info-textarea").each(function(){
+            $(this).val($(this).parents().eq(0).children(".editor-container").children(".ql-editor").html())  
+        });
+
         $(".setting-main-info-form").submit();
     })
+
+    var quill = new Quill('#main-info-container__one', {
+        modules: {
+            toolbar: [
+            [{ 'size': ['small', false, 'large', 'huge'] }],
+            [{ 'header': ['1','2','3','4'] }],
+            ['bold', 'italic','underline', 'strike'],
+            ['link', 'blockquote'],
+            [{ list: 'ordered' }, { list: 'bullet' }],
+            [{ 'color': [] }, { 'background': [] }],
+            [{ 'align': [] }],
+            ['image','video'],
+            ['clean'] 
+            ]
+        },
+        placeholder: 'Введдите текст',
+        theme: 'snow'
+    }); 
+    var quill = new Quill('#main-info-container__two', {
+        modules: {
+            toolbar: [
+            [{ 'size': ['small', false, 'large', 'huge'] }],
+            [{ 'header': ['1','2','3','4'] }],
+            ['bold', 'italic','underline', 'strike'],
+            ['link', 'blockquote'],
+            [{ list: 'ordered' }, { list: 'bullet' }],
+            [{ 'color': [] }, { 'background': [] }],
+            [{ 'align': [] }],
+            ['image','video'],
+            ['clean'] 
+            ]
+        },
+        placeholder: 'Введдите текст',
+        theme: 'snow'
+    }); 
+    var quill = new Quill('#main-info-container__three', {
+        modules: {
+            toolbar: [
+            [{ 'size': ['small', false, 'large', 'huge'] }],
+            [{ 'header': ['1','2','3','4'] }],
+            ['bold', 'italic','underline', 'strike'],
+            ['link', 'blockquote'],
+            [{ list: 'ordered' }, { list: 'bullet' }],
+            [{ 'color': [] }, { 'background': [] }],
+            [{ 'align': [] }],
+            ['image','video'],
+            ['clean'] 
+            ]
+        },
+        placeholder: 'Введдите текст',
+        theme: 'snow'
+    }); 
+    $(".ql-editor").each(function(){       
+        $(this).html($(this).parents().eq(1).children(".main-info-textarea").val());
+    });
 </script>

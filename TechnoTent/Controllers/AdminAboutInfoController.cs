@@ -18,7 +18,7 @@ namespace TechnoTent.Controllers
             return View(data);
         }
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult EditInfo(CompanyVM info)
         {
             AboutInfo.EditInfo(info);

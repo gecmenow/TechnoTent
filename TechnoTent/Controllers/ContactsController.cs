@@ -16,7 +16,11 @@ namespace TechnoTent.Controllers
         // GET: Contacts
         public ActionResult Index()
         {
-            return View();
+            FeedbackVM data = new FeedbackVM();
+
+            data = MainContacts.ShowContactInfo();
+
+            return View(data);
         }
 
         [HttpPost]

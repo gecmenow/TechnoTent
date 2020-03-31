@@ -38,5 +38,18 @@ namespace TechnoTent.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult EditContactsKievInfo(ContactsInfoVM info)
+        {
+            MainContacts.EditContactsKievInfo(info);
+
+            return RedirectToAction("Index");
+        }
+        public ActionResult EditContactsKonstantinovkaInfo(ContactsInfoVM info)
+        {
+            MainContacts.EditContactsKonstantinovkaInfo(info);
+
+            return RedirectToAction("Index");
+        }
     }
 }

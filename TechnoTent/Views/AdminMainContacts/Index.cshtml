@@ -108,12 +108,12 @@
                 {
                     <label class="edit__title">Контакты в шапке сайта</label>
                     <div class="edit-company-number__wrapper">
-                        @for(int i = 0; i < Model.HeaderInfo.Count(); i++)
+                        @for (int i = 0; i < Model.HeaderInfo.Count(); i++)
                         {
                             <div class="edit-company-number">
                                 <div class="edit-company-number__item">
                                     <label class="edit__title">Назначение(Рус)</label>
-                                    @Html.TextBox("HeaderInfo["+ i +"].NameRu", Model.HeaderInfo[i].NameRu, new { @class = "input-settings-edit" })
+                                    @Html.TextBox("HeaderInfo[" + i + "].NameRu", Model.HeaderInfo[i].NameRu, new { @class = "input-settings-edit" })
                                     @*<input type="text" class="input-settings-edit" name="HeaderInfo.NameRu" value="@info.NameRu">*@
                                 </div>
                                 <div class="edit-company-number__item">
@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="edit-company-number__item edit-company-number__item_nymber">
                                     <label class="edit__title">Номер телефона</label>
-                                    @Html.TextBox("HeaderInfo["+ i +"].Phone", Model.HeaderInfo[i].Phone, new { @class = "input-settings-edit" })
+                                    @Html.TextBox("HeaderInfo[" + i + "].Phone", Model.HeaderInfo[i].Phone, new { @class = "input-settings-edit" })
                                     @*<input type="text" class="input-settings-edit" name="HeaderInfo.Phone" value="@info.Phone">*@
                                 </div>
                             </div>
@@ -138,7 +138,7 @@
                 }
                 @using (Html.BeginForm("EditContactsInfo", "AdminMainContacts", FormMethod.Post, new { @class = "setting-main-info-form" }))
                 {
-                    <label class="edit__title">Контакты на главной</label>
+                    <label class="edit__title">Контакты в середине сайта (поле оставить заявку)</label>
                     <div class="edit-company-number__wrapper">
                         @for (int i = 0; i < Model.Contacts.Count(); i++)
                         {
@@ -164,7 +164,7 @@
                                     @*<input type="text" class="input-settings-edit" name="Phone" value="@Model.Contacts[i].Phone">*@
                                 </div>
                             </div>
-                         }
+                        }
                     </div>
                     <button type="submit" class="btn btn-success setting-main-info-form__submit">Сохранить</button>
                 }
@@ -211,7 +211,264 @@
                     </div>
                     <button type="submit" class="btn btn-success setting-main-info-form__submit">Сохранить</button>
                 }
+                @using (Html.BeginForm("EditContactsKievInfo", "AdminMainContacts", FormMethod.Post, new { @class = "setting-main-info-form" }))
+                {
+                    <label class="edit__title">Контакты Киевского отделения</label>
+                    <div class="edit-company-number__wrapper">
+                        <label class="edit__title">Адрес организации</label>
+                        <div class="edit-company-number">
+                            <div class="edit-company-number__item">
+                                <label class="edit__title">Адрес(Рус)</label>
+                                @Html.TextBox("KievContacts.AddressRu", Model.KievContacts.AddressRu, new { @class = "input-settings-edit" })
+                            </div>
+                            <div class="edit-company-number__item">
+                                <label class="edit__title">Адрес(Укр)</label>
+                                @Html.TextBox("KievContacts.AddressUa", Model.KievContacts.AddressUa, new { @class = "input-settings-edit" })
+                            </div>
+                            <div class="edit-company-number__item">
+                                <label class="edit__title">Адрес(Англ)</label>
+                                @Html.TextBox("KievContacts.AddressEn", Model.KievContacts.AddressEn, new { @class = "input-settings-edit" })
+                            </div>
+                        </div>
+                        <label class="edit__title">Телефон отделения</label>
+
+                        <div class="edit-company-number__wrapper">
+                            @for (int i = 0; i < Model.KievContacts.PhoneNameRu.Count(); i++)
+                            {
+                                if (Model.KievContacts.PhoneNameRu[i] != null)
+                                {
+                                    <input type="text" name="KievContacts.PhoneIdList[@i]" style="visibility: hidden;position: absolute;z-index: -1" value="@Model.KievContacts.PhoneIdList[i]">
+                                    <div class="edit-company-number phone-number">
+                                        <div class="edit-company-number__item">
+                                            <label class="edit__title">Назначение(Рус)</label>
+                                            <input type="text" class="input-settings-edit" name="KievContacts.PhoneNameRu" value="@Model.KievContacts.PhoneNameRu[i]">
+                                        </div>
+                                        <div class="edit-company-number__item">
+                                            <label class="edit__title">Назначение(Укр)</label>
+                                            <input type="text" class="input-settings-edit" name="KievContacts.PhoneNameUa" value="@Model.KievContacts.PhoneNameUa[i]">
+                                        </div>
+                                        <div class="edit-company-number__item">
+                                            <label class="edit__title">Назначение(Англ)</label>
+                                            <input type="text" class="input-settings-edit" name="KievContacts.PhoneNameEn" value="@Model.KievContacts.PhoneNameEn[i]">
+                                        </div>
+                                        @for (int j = 0; j < Model.KievContacts.PhoneNumbers[i].Count(); j++)
+                                        {
+                                            <div class="edit-company-number__item edit-company-number__item_nymber">
+                                                <label class="edit__title">Номер телефона</label>
+                                                <input type="text" class="input-settings-edit" value="@Model.KievContacts.PhoneNumbers[i][j]">
+                                                <button type="button" class="btn btn-danger remove-company-number">Удалить</button>
+                                            </div>
+                                        }
+                                        <i class="fas fa-times remove-company-number__item"></i>
+                                        <button type="button" class="btn btn-info add-company-number__item"><i class="fas fa-plus"></i></button>
+                                        <button type="button" class="btn btn-info add-company-number">Добавить номер</button>
+                                        <input type="text" name="KievContacts.PhoneList" class="input-settings-edit company-number" style="visibility: hidden;position: absolute;z-index: -1">
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <label class="edit__title">Viber отделения</label>
+                        <div class="edit-company-number__wrapper">
+                            @for (int i = 0; i < Model.KievContacts.ViberNameRu.Count(); i++)
+                            {
+                                if (Model.KievContacts.ViberNameRu[i] != null)
+                                {
+                                    <input type="text" name="KievContacts.ViberIdList[@i]" style="visibility: hidden;position: absolute;z-index: -1" value="@Model.KievContacts.ViberIdList[i]">
+                                    <div class="edit-company-number viber-number">
+                                        <div class="edit-company-number__item">
+                                            <label class="edit__title">Назначение(Рус)</label>
+                                            <input type="text" class="input-settings-edit" name="KievContacts.ViberNameRu" value="@Model.KievContacts.ViberNameRu[i]">
+                                        </div>
+                                        <div class="edit-company-number__item">
+                                            <label class="edit__title">Назначение(Укр)</label>
+                                            <input type="text" class="input-settings-edit" name="KievContacts.ViberNameUa" value="@Model.KievContacts.ViberNameUa[i]">
+                                        </div>
+                                        <div class="edit-company-number__item">
+                                            <label class="edit__title">Назначение(Англ)</label>
+                                            <input type="text" class="input-settings-edit" name="KievContacts.ViberNameEn" value="@Model.KievContacts.ViberNameEn[i]">
+                                        </div>
+                                        <div class="edit-company-number__item edit-company-number__item_nymber">
+                                            <label class="edit__title">Номер телефона</label>
+                                            <input type="text" class="input-settings-edit" name="KievContacts.ViberNumber" value="@Model.KievContacts.ViberNumber[i]">
+                                            <button type="button" class="btn btn-danger remove-company-number">Удалить</button>
+                                        </div>
+                                        <i class="fas fa-times remove-company-number__item"></i>
+                                        <button type="button" class="btn btn-info add-viber-company-number"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <label class="edit__title">Время работы отделдения</label>
+                        <div class="edit-company-number">
+                            <div class="edit-company-number__item">
+                                <label class="edit__title">Время работы (Рус)</label>
+                                <input type="text" class="input-settings-edit" name="KievContacts.WorkTimeRu" value="@Model.KievContacts.WorkTimeRu">
+                            </div>
+                            <div class="edit-company-number__item">
+                                <label class="edit__title">Время работы (Укр)</label>
+                                <input type="text" class="input-settings-edit" name="KievContacts.WorkTimeUa" value="@Model.KievContacts.WorkTimeUa">
+                            </div>
+                            <div class="edit-company-number__item">
+                                <label class="edit__title">Время работы (Англ)</label>
+                                <input type="text" class="input-settings-edit" name="KievContacts.WorkTimeEn" value="@Model.KievContacts.WorkTimeEn">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success setting-main-info-form__submit">Сохранить</button>
+                }
+                @using (Html.BeginForm("EditContactsKonstantinovkaInfo", "AdminMainContacts", FormMethod.Post, new { @class = "setting-main-info-form" }))
+                {
+                    <label class="edit__title">Контакты Константиновского отделения</label>
+                    <div class="edit-company-number__wrapper">
+                        <label class="edit__title">Адрес организации</label>
+                        <div class="edit-company-number">
+                            <div class="edit-company-number__item">
+                                <label class="edit__title">Адрес(Рус)</label>
+                                @Html.TextBox("KonstantinivkaContacts.AddressRu", Model.KonstantinivkaContacts.AddressRu, new { @class = "input-settings-edit" })
+                            </div>
+                            <div class="edit-company-number__item">
+                                <label class="edit__title">Адрес(Укр)</label>
+                                @Html.TextBox("KonstantinivkaContacts.AddressUa", Model.KonstantinivkaContacts.AddressUa, new { @class = "input-settings-edit" })
+                            </div>
+                            <div class="edit-company-number__item">
+                                <label class="edit__title">Адрес(Англ)</label>
+                                @Html.TextBox("KonstantinivkaContacts.AddressEn", Model.KonstantinivkaContacts.AddressEn, new { @class = "input-settings-edit" })
+                            </div>
+                        </div>
+                        <label class="edit__title">Телефон отделения</label>
+
+                        <div class="edit-company-number__wrapper">
+                            @for (int i = 0; i < Model.KonstantinivkaContacts.PhoneNameRu.Count(); i++)
+                            {
+                                if (Model.KonstantinivkaContacts.PhoneNameRu[i] != null)
+                                {
+                                    <input type="text" name="KonstantinivkaContacts.PhoneIdList[@i]" style="visibility: hidden;position: absolute;z-index: -1" value="@Model.KonstantinivkaContacts.PhoneIdList[i]">
+                                    <div class="edit-company-number phone-number">
+                                        <div class="edit-company-number__item">
+                                            <label class="edit__title">Назначение(Рус)</label>
+                                            <input type="text" class="input-settings-edit" name="KonstantinivkaContacts.PhoneNameRu" value="@Model.KonstantinivkaContacts.PhoneNameRu[i]">
+                                        </div>
+                                        <div class="edit-company-number__item">
+                                            <label class="edit__title">Назначение(Укр)</label>
+                                            <input type="text" class="input-settings-edit" name="KonstantinivkaContacts.PhoneNameUa" value="@Model.KonstantinivkaContacts.PhoneNameUa[i]">
+                                        </div>
+                                        <div class="edit-company-number__item">
+                                            <label class="edit__title">Назначение(Англ)</label>
+                                            <input type="text" class="input-settings-edit" name="KonstantinivkaContacts.PhoneNameEn" value="@Model.KonstantinivkaContacts.PhoneNameEn[i]">
+                                        </div>
+                                        @for (int j = 0; j < Model.KonstantinivkaContacts.PhoneNumbers[i].Count(); j++)
+                                        {
+                                            <div class="edit-company-number__item edit-company-number__item_nymber">
+                                                <label class="edit__title">Номер телефона</label>
+                                                <input type="text" class="input-settings-edit" value="@Model.KonstantinivkaContacts.PhoneNumbers[i][j]">
+                                                <button type="button" class="btn btn-danger remove-company-number">Удалить</button>
+                                            </div>
+                                        }
+                                        <i class="fas fa-times remove-company-number__item"></i>
+                                        <button type="button" class="btn btn-info add-company-number__item"><i class="fas fa-plus"></i></button>
+                                        <button type="button" class="btn btn-info add-company-number">Добавить номер</button>
+                                        <input type="text" name="KonstantinivkaContacts.PhoneList" class="input-settings-edit company-number" style="visibility: hidden;position: absolute;z-index: -1">
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <label class="edit__title">Viber отделения</label>
+                        <div class="edit-company-number__wrapper">
+                            @for (int i = 0; i < Model.KonstantinivkaContacts.ViberNameRu.Count(); i++)
+                            {
+                                if (Model.KonstantinivkaContacts.ViberNameRu[i] != null)
+                                {
+                                    <input type="text" name="KonstantinivkaContacts.ViberIdList[@i]" style="visibility: hidden;position: absolute;z-index: -1" value="@Model.KonstantinivkaContacts.ViberIdList[i]">
+                                    <div class="edit-company-number viber-number">
+                                        <div class="edit-company-number__item">
+                                            <label class="edit__title">Назначение(Рус)</label>
+                                            <input type="text" class="input-settings-edit" name="KonstantinivkaContacts.ViberNameRu" value="@Model.KonstantinivkaContacts.ViberNameRu[i]">
+                                        </div>
+                                        <div class="edit-company-number__item">
+                                            <label class="edit__title">Назначение(Укр)</label>
+                                            <input type="text" class="input-settings-edit" name="KonstantinivkaContacts.ViberNameUa" value="@Model.KonstantinivkaContacts.ViberNameUa[i]">
+                                        </div>
+                                        <div class="edit-company-number__item">
+                                            <label class="edit__title">Назначение(Англ)</label>
+                                            <input type="text" class="input-settings-edit" name="KonstantinivkaContacts.ViberNameEn" value="@Model.KonstantinivkaContacts.ViberNameEn[i]">
+                                        </div>
+                                        <div class="edit-company-number__item edit-company-number__item_nymber">
+                                            <label class="edit__title">Номер телефона</label>
+                                            <input type="text" class="input-settings-edit" name="KonstantinivkaContacts.ViberNumber" value="@Model.KonstantinivkaContacts.ViberNumber[i]">
+                                            <button type="button" class="btn btn-danger remove-company-number">Удалить</button>
+                                        </div>
+                                        <i class="fas fa-times remove-company-number__item"></i>
+                                        <button type="button" class="btn btn-info add-viber-company-number"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <label class="edit__title">Время работы отделдения</label>
+                        <div class="edit-company-number">
+                            <div class="edit-company-number__item">
+                                <label class="edit__title">Время работы (Рус)</label>
+                                <input type="text" class="input-settings-edit" name="KonstantinivkaContacts.WorkTimeRu" value="@Model.KonstantinivkaContacts.WorkTimeRu">
+                            </div>
+                            <div class="edit-company-number__item">
+                                <label class="edit__title">Время работы (Укр)</label>
+                                <input type="text" class="input-settings-edit" name="KonstantinivkaContacts.WorkTimeUa" value="@Model.KonstantinivkaContacts.WorkTimeUa">
+                            </div>
+                            <div class="edit-company-number__item">
+                                <label class="edit__title">Время работы (Англ)</label>
+                                <input type="text" class="input-settings-edit" name="KonstantinivkaContacts.WorkTimeEn" value="@Model.KonstantinivkaContacts.WorkTimeEn">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success setting-main-info-form__submit">Сохранить</button>
+                }
             </section>
         </div>
     </main>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(".add-company-number__item").click(function(){
+        let defoltItem = ("<div class='edit-company-number phone-number'> <div class='edit-company-number__item'> <label class='edit__title'>Назначение(Рус)</label> <input type='text' class='input-settings-edit' name='KievContacts.PhoneNameRu'> </div> <div class='edit-company-number__item'> <label class='edit__title'>Назначение(Укр)</label> <input type='text' class='input-settings-edit' name='KievContacts.PhoneNameUa'> </div> <div class='edit-company-number__item'> <label class='edit__title'>Назначение(Англ)</label> <input type='text' class='input-settings-edit' name='KievContacts.PhoneNameEn'> </div> <div class='edit-company-number__item edit-company-number__item_nymber'> <label class='edit__title'>Номер телефона</label> <input type='text' class='input-settings-edit'> <button type='button' class='btn btn-danger remove-company-number'>Удалить</button> </div> <i class='fas fa-times remove-company-number__item'></i> <button type='button' class='btn btn-info add-company-number__item'><i class='fas fa-plus'></i></button> <button type='button' class='btn btn-info add-company-number'>Добавить номер</button> <input type='text' name='KievContacts.PhoneList' class='input-settings-edit company-number' style='visibility: hidden;position: absolute;z-index: -1'> </div>");
+        $(defoltItem).insertAfter($(this).parent());
+    })
+    $(".add-viber-company-number").click(function(){
+        let defoltItem = ("<div class='edit-company-number viber-number'> <div class='edit-company-number__item'> <label class='edit__title'>Назначение(Рус)</label> <input type='text' class='input-settings-edit' name='KievContacts.ViberNameRu'> </div> <div class='edit-company-number__item'> <label class='edit__title'>Назначение(Укр)</label> <input type='text' class='input-settings-edit' name='KievContacts.ViberNameUa'> </div> <div class='edit-company-number__item'> <label class='edit__title'>Назначение(Англ)</label> <input type='text' class='input-settings-edit' name='KievContacts.ViberNameEn'> </div> <div class='edit-company-number__item edit-company-number__item_nymber'> <label class='edit__title'>Номер телефона</label> <input type='text' class='input-settings-edit' name='KievContacts.ViberNumber'> <button type='button' class='btn btn-danger remove-company-number'>Удалить</button> </div> <i class='fas fa-times remove-company-number__item'></i> <button type='button' class='btn btn-info add-viber-company-number'><i class='fas fa-plus'></i></button> </div>");
+        $(defoltItem).insertAfter($(this).parent());
+    })
+    $(".remove-company-number__item").click(function(){
+        if($(this).parent().siblings(".phone-number").length >=1){
+            $(this).parent().remove();
+        }
+    });
+    $(".remove-company-number__item").click(function () {
+        console.log($(this).parent().siblings(".viber-number"));
+        if($(this).parent().siblings(".viber-number").length >=1){
+            $(this).parent().remove();
+        }
+    });
+    $(".remove-company-number").click(function(){
+        if($(this).parent().siblings(".edit-company-number__item_nymber").length >= 1){
+            $(this).parent().remove();
+        };
+    })
+    $(".add-company-number").click(function(){
+        let defoltItem = ("<div class='edit-company-number__item edit-company-number__item_nymber'> <label class='edit__title'>Номер телефона</label> <input type='text' class='input-settings-edit'> <button type='button' class='btn btn-danger remove-company-number'>Удалить</button> </div>");
+        $(defoltItem).insertAfter($(this).siblings(".edit-company-number__item_nymber").eq($(this).siblings(".edit-company-number__item_nymber").length -1));
+    })
+    $(".setting-main-info-form__submit").click(function(){
+
+        for(let i=0; $(".company-number").length > i; i++){
+            $(".company-number").eq(i).val("");
+            for(let j=0; $(".company-number").eq(i).siblings(".edit-company-number__item_nymber").length > j; j++){
+                $(".company-number").eq(i).val($(".company-number").eq(i).val() + $(".company-number").eq(i).siblings(".edit-company-number__item_nymber").eq(j).children(".input-settings-edit").val() + "|")
+
+            }
+            $(".company-number").eq(i).val($(".company-number").eq(i).val().substring(0, $(".company-number").eq(i).val().length - 1));
+        }
+
+        
+        $(".setting-main-info-form").submit();
+    })
+
+</script>

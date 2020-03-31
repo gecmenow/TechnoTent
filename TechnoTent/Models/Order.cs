@@ -36,57 +36,57 @@ namespace TechnoTent.Models
             return order;
         }
 
-        public static void AddOrder(OrderVM order, string itemVendorCode)
-        {
-            string itemsCount = "1";
-            string itemsPrice = "";
-            int totalItemsCount = 1;
+        //public static void AddOrder(OrderVM order, string itemVendorCode)
+        //{
+        //    string itemsCount = "1";
+        //    string itemsPrice = "";
+        //    int totalItemsCount = 1;
 
-            var language = Cookie.CheckLanguageCookie();
+        //    var language = Cookie.CheckLanguageCookie();
 
-            using (DataBaseContext db = new DataBaseContext())
-            {
-                string orderNumber = "000001";
+        //    using (DataBaseContext db = new DataBaseContext())
+        //    {
+        //        string orderNumber = "000001";
 
-                try
-                {
-                    orderNumber = db.ItemsDb.OrderByDescending(u => u.VendorCode).First().VendorCode;
+        //        try
+        //        {
+        //            orderNumber = db.ItemsDb.OrderByDescending(u => u.VendorCode).First().VendorCode;
 
-                    int number = Convert.ToInt32(orderNumber) + 1;
+        //            int number = Convert.ToInt32(orderNumber) + 1;
 
-                    orderNumber = number.ToString();
+        //            orderNumber = number.ToString();
 
-                    for (int i = orderNumber.Length; i < 6; i++)
-                        orderNumber = orderNumber.PadLeft(orderNumber.Length + 1, '0');
-                }
-                catch (Exception)
-                { }
+        //            for (int i = orderNumber.Length; i < 6; i++)
+        //                orderNumber = orderNumber.PadLeft(orderNumber.Length + 1, '0');
+        //        }
+        //        catch (Exception)
+        //        { }
 
-                db.OrderDb.Add(
-                    new DbOrder
-                    {
-                        OrderNumber = orderNumber,
-                        DeliveryCity = order.DeliveryCity,
-                        DeliveryMethod = order.DeliveryMethod,
-                        DeliveryOffice = order.DeliveryOffice,
-                        OrderStatus = "В обработке",
-                        PaymentStatus = "Не оплачено",
-                        ItemsVendorCode = itemVendorCode,
-                        ItemsPrice = itemsPrice,
-                        TotalPrice = 0,
-                        TotalitemsCount = totalItemsCount,
-                        ItemsCount = itemsCount,
-                        UserEmail = order.UserEmail,
-                        UserId = order.UserId,
-                        UserName = order.UserName,
-                        UserPhone = order.UserPhone,
-                        OrderLanguage = language,
-                        Date = DateTime.Now,
-                    });
+        //        db.OrderDb.Add(
+        //            new DbOrder
+        //            {
+        //                OrderNumber = orderNumber,
+        //                DeliveryCity = order.DeliveryCity,
+        //                DeliveryMethod = order.DeliveryMethod,
+        //                DeliveryOffice = order.DeliveryOffice,
+        //                OrderStatus = "В обработке",
+        //                PaymentStatus = "Не оплачено",
+        //                ItemsVendorCode = itemVendorCode,
+        //                ItemsPrice = itemsPrice,
+        //                TotalPrice = 0,
+        //                TotalitemsCount = totalItemsCount,
+        //                ItemsCount = itemsCount,
+        //                UserEmail = order.UserEmail,
+        //                UserId = order.UserId,
+        //                UserName = order.UserName,
+        //                UserPhone = order.UserPhone,
+        //                OrderLanguage = language,
+        //                Date = DateTime.Now,
+        //            });
 
-                db.SaveChanges();
-            }
-        }
+        //        db.SaveChanges();
+        //    }
+        //}
 
         public static void AddOrder(OrderVM order)
         {

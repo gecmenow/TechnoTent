@@ -191,8 +191,8 @@ namespace TechnoTent.Models
                         {
                             var item = db.ItemsDb.Where(u => u.VendorCode == data.Key).FirstOrDefault();
 
-                            if(!item.IndividualOrders)
-                            {
+                            //if(!item.ProductBuyTypeMeter)
+                            //{
                                 switch (language)
                                 {
                                     case "uk":
@@ -203,11 +203,11 @@ namespace TechnoTent.Models
                                                 Name = item.NameUa,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionUa,
                                                 ItemPrice = item.StockPriceUa,
                                                 ItemCount = data.Value.ToString(),
                                                 ItemTotalPrice = item.StockPriceUa * data.Value,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
                                         else
                                             cartItemsList.Add(new CartItemVM
@@ -216,11 +216,11 @@ namespace TechnoTent.Models
                                                 Name = item.NameUa,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionUa,
                                                 ItemPrice = item.PriceUa,
                                                 ItemCount = data.Value.ToString(),
                                                 ItemTotalPrice = item.PriceUa * data.Value,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
 
                                         totalPrice = item.PriceUa * data.Value;
@@ -234,11 +234,11 @@ namespace TechnoTent.Models
                                                 Name = item.NameUa,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionEn,
                                                 ItemPrice = item.StockPriceEn,
                                                 ItemCount = data.Value.ToString(),
                                                 ItemTotalPrice = item.StockPriceEn * data.Value,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
 
                                             totalPrice = item.StockPriceEn * data.Value;
@@ -252,11 +252,11 @@ namespace TechnoTent.Models
                                                 Name = item.NameUa,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionEn,
                                                 ItemPrice = item.PriceEn,
                                                 ItemCount = data.Value.ToString(),
                                                 ItemTotalPrice = item.PriceEn * data.Value,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
 
                                             totalPrice = item.PriceEn * data.Value;
@@ -270,14 +270,14 @@ namespace TechnoTent.Models
                                             cartItemsList.Add(new CartItemVM
                                             {
                                                 VendorCode = item.VendorCode,
-                                                Name = item.NameUa,
+                                                Name = item.NameRu,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionRu,
                                                 ItemPrice = item.StockPriceUa,
                                                 ItemCount = data.Value.ToString(),
                                                 ItemTotalPrice = item.PriceUa * data.Value,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
 
                                             totalPrice = item.StockPriceUa * data.Value;
@@ -288,34 +288,34 @@ namespace TechnoTent.Models
                                             cartItemsList.Add(new CartItemVM
                                             {
                                                 VendorCode = item.VendorCode,
-                                                Name = item.NameUa,
+                                                Name = item.NameRu,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionRu,
                                                 ItemPrice = item.PriceUa,
                                                 ItemCount = data.Value.ToString(),
                                                 ItemTotalPrice = item.PriceUa * data.Value,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
 
                                             totalPrice = item.PriceUa * data.Value;
                                         }
                                         break;
                                 }
-                            }
-                            else
-                                cartItemsList.Add(new CartItemVM
-                                {
-                                    VendorCode = item.VendorCode,
-                                    Name = item.NameUa,
-                                    NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
-                                    Image = item.Image1,
-                                    Text = item.Description,
-                                    ItemPrice = item.StockPriceUa,
-                                    ItemCount = data.Value.ToString(),
-                                    MinOrderQuantity = item.Width,
-                                    IndividualOrder = item.IndividualOrders,
-                                });
+                            //}
+                            //else
+                            //    cartItemsList.Add(new CartItemVM
+                            //    {
+                            //        VendorCode = item.VendorCode,
+                            //        Name = item.NameUa,
+                            //        NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
+                            //        Image = item.Image1,
+                            //        Text = item.Description,
+                            //        ItemPrice = item.StockPriceUa,
+                            //        ItemCount = data.Value.ToString(),
+                            //        MinOrderQuantity = item.Width,
+                            //        ProductBuyTypeMeter = item.ProductBuyTypeMeter,
+                            //    });
 
                             cartVm.CartItems = cartItemsList;
                             cartVm.TotalCost += totalPrice;
@@ -406,8 +406,8 @@ namespace TechnoTent.Models
                                 {
                                     var item = db.ItemsDb.Where(u => u.VendorCode == data.VendorCode).FirstOrDefault();
                                     
-                                    if(!item.IndividualOrders)
-                                    {
+                                    //if(!item.IndividualOrders)
+                                    //{
                                         if (item.IsStock)
                                         {
                                             cartItems.Add(new CartItemVM
@@ -416,12 +416,12 @@ namespace TechnoTent.Models
                                                 Name = item.NameUa,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionUa,
                                                 ItemCount = data.ItemCount,
                                                 ItemPrice = item.PriceUa,
                                                 ItemTotalPrice = item.PriceUa * Convert.ToDouble(data.ItemCount),
                                                 MinOrderQuantity = item.Width,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
 
                                             totalPrice = item.PriceUa * Convert.ToDouble(data.ItemCount);
@@ -434,33 +434,33 @@ namespace TechnoTent.Models
                                                 Name = item.NameUa,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionUa,
                                                 ItemCount = data.ItemCount,
                                                 ItemPrice = item.PriceUa,
                                                 ItemTotalPrice = item.PriceUa * Convert.ToDouble(data.ItemCount),
                                                 MinOrderQuantity = item.Width,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
 
                                             totalPrice = item.PriceUa * Convert.ToDouble(data.ItemCount);
                                         }
-                                    }
+                                    //}
 
-                                    else
-                                    {
-                                        cartItems.Add(new CartItemVM
-                                        {
-                                            VendorCode = item.VendorCode,
-                                            Name = item.NameUa,
-                                            NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
-                                            Image = item.Image1,
-                                            Text = item.Description,
-                                            ItemCount = data.ItemCount,
-                                            ItemPrice = item.PriceUa,
-                                            MinOrderQuantity = item.Width,
-                                            IndividualOrder = item.IndividualOrders,
-                                        });
-                                    }
+                                    //else
+                                    //{
+                                    //    cartItems.Add(new CartItemVM
+                                    //    {
+                                    //        VendorCode = item.VendorCode,
+                                    //        Name = item.NameUa,
+                                    //        NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
+                                    //        Image = item.Image1,
+                                    //        Text = item.Description,
+                                    //        ItemCount = data.ItemCount,
+                                    //        ItemPrice = item.PriceUa,
+                                    //        MinOrderQuantity = item.Width,
+                                    //        ProductBuyTypeMeter = item.ProductBuyTypeMeter,
+                                    //    });
+                                    //}
 
                                     cartVm.CartItems = cartItems;
                                     cartVm.TotalCost += totalPrice;
@@ -471,8 +471,8 @@ namespace TechnoTent.Models
                                 {
                                     var item = db.ItemsDb.Where(u => u.VendorCode == data.VendorCode).FirstOrDefault();
 
-                                    if (!item.IndividualOrders)
-                                    {
+                                    //if (!item.IndividualOrders)
+                                    //{
                                         if (item.IsStock)
                                         {
                                             cartItems.Add(new CartItemVM
@@ -481,12 +481,12 @@ namespace TechnoTent.Models
                                                 Name = item.NameEn,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionEn,
                                                 ItemCount = data.ItemCount,
                                                 ItemPrice = item.PriceEn,
                                                 ItemTotalPrice = item.PriceEn * Convert.ToDouble(data.ItemCount),
                                                 MinOrderQuantity = item.Width,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
 
                                             totalPrice = item.PriceUa * Convert.ToDouble(data.ItemCount);
@@ -499,32 +499,32 @@ namespace TechnoTent.Models
                                                 Name = item.NameEn,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionEn,
                                                 ItemCount = data.ItemCount,
                                                 ItemPrice = item.PriceEn,
                                                 ItemTotalPrice = item.PriceEn * Convert.ToDouble(data.ItemCount),
                                                 MinOrderQuantity = item.Width,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
 
                                             totalPrice = item.PriceEn * Convert.ToDouble(data.ItemCount);
                                         }
-                                    }
-                                    else
-                                    {
-                                        cartItems.Add(new CartItemVM
-                                        {
-                                            VendorCode = item.VendorCode,
-                                            Name = item.NameUa,
-                                            NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
-                                            Image = item.Image1,
-                                            Text = item.Description,
-                                            ItemCount = data.ItemCount,
-                                            ItemPrice = item.PriceUa,
-                                            MinOrderQuantity = item.Width,
-                                            IndividualOrder = item.IndividualOrders,
-                                        });
-                                    }
+                                    //}
+                                    //else
+                                    //{
+                                    //    cartItems.Add(new CartItemVM
+                                    //    {
+                                    //        VendorCode = item.VendorCode,
+                                    //        Name = item.NameUa,
+                                    //        NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
+                                    //        Image = item.Image1,
+                                    //        Text = item.Description,
+                                    //        ItemCount = data.ItemCount,
+                                    //        ItemPrice = item.PriceUa,
+                                    //        MinOrderQuantity = item.Width,
+                                    //        ProductBuyTypeMeter = item.ProductBuyTypeMeter,
+                                    //    });
+                                    //}
 
                                     cartVm.CartItems = cartItems;
                                     cartVm.TotalCost += totalPrice;
@@ -535,8 +535,8 @@ namespace TechnoTent.Models
                                 {
                                     var item = db.ItemsDb.Where(u => u.VendorCode == data.VendorCode).FirstOrDefault();
 
-                                    if (!item.IndividualOrders)
-                                    {
+                                    //if (!item.IndividualOrders)
+                                    //{
                                         if (item.IsStock)
                                         {
                                             cartItems.Add(new CartItemVM
@@ -545,12 +545,12 @@ namespace TechnoTent.Models
                                                 Name = item.NameRu,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionRu,
                                                 ItemCount = data.ItemCount,
                                                 ItemPrice = item.PriceUa,
                                                 ItemTotalPrice = item.PriceUa * Convert.ToDouble(data.ItemCount),
                                                 MinOrderQuantity = item.Width,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
 
                                             totalPrice = item.PriceUa * Convert.ToDouble(data.ItemCount);
@@ -563,32 +563,32 @@ namespace TechnoTent.Models
                                                 Name = item.NameRu,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionRu,
                                                 ItemCount = data.ItemCount,
                                                 ItemPrice = item.PriceUa,
                                                 ItemTotalPrice = item.PriceUa * Convert.ToDouble(data.ItemCount),
                                                 MinOrderQuantity = item.Width,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
 
                                             totalPrice = item.PriceUa * Convert.ToDouble(data.ItemCount);
                                         }
-                                    }
-                                    else
-                                    {
-                                        cartItems.Add(new CartItemVM
-                                        {
-                                            VendorCode = item.VendorCode,
-                                            Name = item.NameUa,
-                                            NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
-                                            Image = item.Image1,
-                                            Text = item.Description,
-                                            ItemCount = data.ItemCount,
-                                            ItemPrice = item.PriceUa,
-                                            MinOrderQuantity = item.Width,
-                                            IndividualOrder = item.IndividualOrders,
-                                        });
-                                    }
+                                    //}
+                                    //else
+                                    //{
+                                    //    cartItems.Add(new CartItemVM
+                                    //    {
+                                    //        VendorCode = item.VendorCode,
+                                    //        Name = item.NameUa,
+                                    //        NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
+                                    //        Image = item.Image1,
+                                    //        Text = item.Description,
+                                    //        ItemCount = data.ItemCount,
+                                    //        ItemPrice = item.PriceUa,
+                                    //        MinOrderQuantity = item.Width,
+                                    //        ProductBuyTypeMeter = item.ProductBuyTypeMeter,
+                                    //    });
+                                    //}
 
                                     cartVm.CartItems = cartItems;
                                     cartVm.TotalCost += totalPrice;
@@ -635,8 +635,8 @@ namespace TechnoTent.Models
                         {
                             var item = db.ItemsDb.Where(u => u.VendorCode == data.Key).FirstOrDefault();
 
-                            if (!item.IndividualOrders)
-                            {
+                            //if (!item.IndividualOrders)
+                            //{
                                 var language = Cookie.CheckLanguageCookie();
 
                                 switch (language)
@@ -649,12 +649,12 @@ namespace TechnoTent.Models
                                                 Name = item.NameUa,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionUa,
                                                 ItemPrice = item.StockPriceUa,
                                                 ItemCount = data.Value,
                                                 ItemTotalPrice = item.StockPriceUa * Convert.ToDouble(data.Value),
                                                 MinOrderQuantity = item.Width,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
                                         else
                                             cartItems.Add(new CartItemVM
@@ -663,12 +663,12 @@ namespace TechnoTent.Models
                                                 Name = item.NameUa,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionUa,
                                                 ItemPrice = item.PriceUa,
                                                 ItemCount = data.Value,
                                                 ItemTotalPrice = item.PriceUa * Convert.ToDouble(data.Value),
                                                 MinOrderQuantity = item.Width,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
 
                                         totalPrice = item.PriceUa * Convert.ToDouble(data.Value);
@@ -682,12 +682,12 @@ namespace TechnoTent.Models
                                                 Name = item.NameUa,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionEn,
                                                 ItemPrice = item.StockPriceEn,
                                                 ItemCount = data.Value,
                                                 ItemTotalPrice = item.StockPriceEn * Convert.ToDouble(data.Value),
                                                 MinOrderQuantity = item.Width,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
 
                                             totalPrice = item.StockPriceEn * Convert.ToDouble(data.Value);
@@ -701,12 +701,12 @@ namespace TechnoTent.Models
                                                 Name = item.NameUa,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionEn,
                                                 ItemPrice = item.PriceEn,
                                                 ItemCount = data.Value,
                                                 ItemTotalPrice = item.PriceEn * Convert.ToDouble(data.Value),
                                                 MinOrderQuantity = item.Width,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
 
                                             totalPrice = item.PriceEn * Convert.ToDouble(data.Value);
@@ -723,12 +723,12 @@ namespace TechnoTent.Models
                                                 Name = item.NameUa,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionRu,
                                                 ItemPrice = item.StockPriceUa,
                                                 ItemCount = data.Value,
                                                 ItemTotalPrice = item.StockPriceUa * Convert.ToDouble(data.Value),
                                                 MinOrderQuantity = item.Width,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
 
                                             totalPrice = item.StockPriceUa * Convert.ToDouble(data.Value);
@@ -742,32 +742,32 @@ namespace TechnoTent.Models
                                                 Name = item.NameUa,
                                                 NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                                                 Image = item.Image1,
-                                                Text = item.Description,
+                                                Text = item.DescriptionRu,
                                                 ItemPrice = item.PriceUa,
                                                 ItemCount = data.Value,
                                                 ItemTotalPrice = item.PriceUa * Convert.ToDouble(data.Value),
                                                 MinOrderQuantity = item.Width,
-                                                IndividualOrder = item.IndividualOrders,
+                                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
                                             });
 
                                             totalPrice = item.PriceUa * Convert.ToDouble(data.Value);
                                         }
                                         break;
                                 }
-                            }
-                            else
-                                cartItems.Add(new CartItemVM
-                                {
-                                    VendorCode = item.VendorCode,
-                                    Name = item.NameUa,
-                                    NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
-                                    Image = item.Image1,
-                                    Text = item.Description,
-                                    ItemPrice = item.StockPriceUa,
-                                    ItemCount = data.Value,
-                                    MinOrderQuantity = item.Width,
-                                    IndividualOrder = item.IndividualOrders,
-                                });
+                            //}
+                            //else
+                            //    cartItems.Add(new CartItemVM
+                            //    {
+                            //        VendorCode = item.VendorCode,
+                            //        Name = item.NameUa,
+                            //        NameUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
+                            //        Image = item.Image1,
+                            //        Text = item.Description,
+                            //        ItemPrice = item.StockPriceUa,
+                            //        ItemCount = data.Value,
+                            //        MinOrderQuantity = item.Width,
+                            //        ProductBuyTypeMeter = item.ProductBuyTypeMeter,
+                            //    });
 
                             cartVm.CartItems = cartItems;
                             cartVm.TotalCost += totalPrice;

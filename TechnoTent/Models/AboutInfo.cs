@@ -40,9 +40,6 @@ namespace TechnoTent.Models
                 info.Phone = new List<List<string>>();
                 info.Email = new List<List<string>>();
 
-                List<string> phones = new List<string>();
-                List<string> email = new List<string>();
-
                 foreach (var data in orgInfo)
                 {
                     if (data.Phone != null)
@@ -141,7 +138,7 @@ namespace TechnoTent.Models
 
                 else if (allInfo.Count() < info.NameRu.Count())
                 {
-                    for (int i = 0; i < info.NameRu.Count(); i++)
+                    for (int i = 0; i < info.NameRu.Count() - 1; i++)
                     {
                         if (allInfo[i].NameRu != info.NameRu[i])
                             allInfo[i].NameRu = info.NameRu[i];

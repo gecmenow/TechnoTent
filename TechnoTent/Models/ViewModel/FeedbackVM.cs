@@ -15,5 +15,6 @@ namespace TechnoTent.Models.ViewModel
         public string Tel { get; set; }
         [Required]
         public string Message { get; set; }
+        public ContactsInfoVM Contacts { get; set; }
     }
 }
