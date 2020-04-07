@@ -286,19 +286,19 @@
     <value>Надіслати повідомлення</value>
   </data>
   <data name="contacts_manuf" xml:space="preserve">
-    <value>виробництво</value>
+    <value>Виробництво</value>
   </data>
   <data name="contacts_tel1" xml:space="preserve">
-    <value>продаж ПВХ</value>
+    <value>Продаж ПВХ</value>
   </data>
   <data name="contacts_tel2" xml:space="preserve">
-    <value>виробництво</value>
+    <value>Виробництво</value>
   </data>
   <data name="contacts_tel3" xml:space="preserve">
-    <value>тентова і запірна фурнітура</value>
+    <value>Тентова і запірна фурнітура</value>
   </data>
   <data name="contacts_tel4" xml:space="preserve">
-    <value>менеджер Viber</value>
+    <value>Менеджер Viber</value>
   </data>
   <data name="edit_acc" xml:space="preserve">
     <value>Мій кабінет</value>
@@ -379,13 +379,13 @@
     <value>Демонтаж, монтаж</value>
   </data>
   <data name="home_advantage_title" xml:space="preserve">
-    <value>чому з нами вигідно співпрацювати?</value>
+    <value>Чому з нами вигідно співпрацювати?</value>
   </data>
   <data name="home_feedback1" xml:space="preserve">
     <value>Потрібно щось</value>
   </data>
   <data name="home_feedback2" xml:space="preserve">
-    <value>особливе</value>
+    <value>Особливе</value>
   </data>
   <data name="home_feedback_desc" xml:space="preserve">
     <value>Зателефонуйте нам або залиште свій номер телефону, і ми допоможемо</value>
@@ -406,10 +406,10 @@
     <value>Статті та новини</value>
   </data>
   <data name="home_news_all" xml:space="preserve">
-    <value>читати усі статті</value>
+    <value>Читати усі статті</value>
   </data>
   <data name="home_partners" xml:space="preserve">
-    <value>наші партнери</value>
+    <value>Наші партнери</value>
   </data>
   <data name="home_production1" xml:space="preserve">
     <value>Тентові тканини ПВХ</value>
@@ -433,13 +433,13 @@
     <value>Фурнітура</value>
   </data>
   <data name="home_production_title" xml:space="preserve">
-    <value>основні види продукції</value>
+    <value>Основні види продукції</value>
   </data>
   <data name="home_stocks" xml:space="preserve">
-    <value>акції</value>
+    <value>Акції</value>
   </data>
   <data name="home_stocks_all" xml:space="preserve">
-    <value>читати усі акції</value>
+    <value>Читати усі акції</value>
   </data>
   <data name="items_blue" xml:space="preserve">
     <value>Синій</value>
@@ -472,16 +472,16 @@
     <value>Сортування</value>
   </data>
   <data name="items_sort_1" xml:space="preserve">
-    <value>новинки</value>
+    <value>Новинки</value>
   </data>
   <data name="items_sort_2" xml:space="preserve">
-    <value>популярні</value>
+    <value>Популярні</value>
   </data>
   <data name="items_sort_3" xml:space="preserve">
-    <value>від дорогих до дешевих</value>
+    <value>Від дорогих до дешевих</value>
   </data>
   <data name="items_sort_4" xml:space="preserve">
-    <value>від дешевих до дорогих</value>
+    <value>Від дешевих до дорогих</value>
   </data>
   <data name="items_stock" xml:space="preserve">
     <value>Акція</value>

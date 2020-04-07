@@ -30,7 +30,7 @@ namespace TechnoTent.Controllers
             {
                 Feedback.AddFeedback(feedbackVM);
 
-                //FeedbackMail.SendMail(feedbackVM);
+                FeedbackMail.SendMail(feedbackVM);
 
                 return RedirectToAction("Index");
             }

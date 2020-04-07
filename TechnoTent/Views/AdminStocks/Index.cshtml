@@ -121,7 +121,7 @@
                     @foreach (var stock in Model)
                     {
                         <div class="articles__item">
-                            <a href="#" class="article__image">
+                            <a href="/stocks/@stock.Id" class="article__image">
                                 @if (stock.Image != null)
                                 {
                                     <img src="~/Content/images/stocks/@stock.Image" title="@stock.Title">
@@ -133,7 +133,7 @@
                             </a>
                             <div class="article__caption">
                                 <h3 class="article__title">
-                                    <a href="article-card.html">@stock.Title</a>
+                                    <a href="/stocks/@stock.Id">@stock.Title</a>
                                 </h3>
                                 <div class="article__introtext">
                                     <p>

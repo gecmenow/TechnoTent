@@ -163,7 +163,7 @@
     <value>PVC sale</value>
   </data>
   <data name="about_org_tel2" xml:space="preserve">
-    <value>clothing industry</value>
+    <value>Clothing industry</value>
   </data>
   <data name="about_org_tel3" xml:space="preserve">
     <value>PVC Manager</value>
@@ -286,19 +286,19 @@
     <value>Send a message</value>
   </data>
   <data name="contacts_manuf" xml:space="preserve">
-    <value>production</value>
+    <value>Production</value>
   </data>
   <data name="contacts_tel1" xml:space="preserve">
     <value>PVC sale</value>
   </data>
   <data name="contacts_tel2" xml:space="preserve">
-    <value>production</value>
+    <value>Production</value>
   </data>
   <data name="contacts_tel3" xml:space="preserve">
-    <value>awning and locking fittings</value>
+    <value>Awning and locking fittings</value>
   </data>
   <data name="contacts_tel4" xml:space="preserve">
-    <value>manager Viber</value>
+    <value>Manager Viber</value>
   </data>
   <data name="edit_acc" xml:space="preserve">
     <value>My account</value>
@@ -409,7 +409,7 @@
     <value>read all articles</value>
   </data>
   <data name="home_partners" xml:space="preserve">
-    <value>our partners</value>
+    <value>Our partners</value>
   </data>
   <data name="home_production1" xml:space="preserve">
     <value>PVC awning fabrics</value>
@@ -433,13 +433,13 @@
     <value>Hardware</value>
   </data>
   <data name="home_production_title" xml:space="preserve">
-    <value>main products</value>
+    <value>Main products</value>
   </data>
   <data name="home_stocks" xml:space="preserve">
-    <value>stocks</value>
+    <value>Stocks</value>
   </data>
   <data name="home_stocks_all" xml:space="preserve">
-    <value>read all stocks</value>
+    <value>Read all stocks</value>
   </data>
   <data name="items_blue" xml:space="preserve">
     <value>Blue</value>
@@ -472,16 +472,16 @@
     <value>Sorting</value>
   </data>
   <data name="items_sort_1" xml:space="preserve">
-    <value>novelty</value>
+    <value>Novelty</value>
   </data>
   <data name="items_sort_2" xml:space="preserve">
-    <value>popular</value>
+    <value>Popular</value>
   </data>
   <data name="items_sort_3" xml:space="preserve">
-    <value>from expensive to cheap</value>
+    <value>From expensive to cheap</value>
   </data>
   <data name="items_sort_4" xml:space="preserve">
-    <value>from cheap to expensive</value>
+    <value>From cheap to expensive</value>
   </data>
   <data name="items_stock" xml:space="preserve">
     <value>Stock</value>

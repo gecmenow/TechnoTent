@@ -253,7 +253,7 @@
     <value>Ул. Мирошниченко, 7</value>
   </data>
   <data name="contacts_backCall1" xml:space="preserve">
-    <value>не смогли дозвониться</value>
+    <value>Не смогли дозвониться</value>
   </data>
   <data name="contacts_backCall2" xml:space="preserve">
     <value>Закажите звонок</value>
@@ -286,19 +286,19 @@
     <value>Отправить сообщение</value>
   </data>
   <data name="contacts_manuf" xml:space="preserve">
-    <value>производство</value>
+    <value>Производство</value>
   </data>
   <data name="contacts_tel1" xml:space="preserve">
-    <value>продажа ПВХ</value>
+    <value>Продажа ПВХ</value>
   </data>
   <data name="contacts_tel2" xml:space="preserve">
-    <value>производство</value>
+    <value>Производство</value>
   </data>
   <data name="contacts_tel3" xml:space="preserve">
-    <value>тентовая и запорная фурнитура</value>
+    <value>Тентовая и запорная фурнитура</value>
   </data>
   <data name="contacts_tel4" xml:space="preserve">
-    <value>менеджер Viber</value>
+    <value>Менеджер Viber</value>
   </data>
   <data name="edit_acc" xml:space="preserve">
     <value>Мой кабинет</value>
@@ -406,10 +406,10 @@
     <value>Статьи и новости</value>
   </data>
   <data name="home_news_all" xml:space="preserve">
-    <value>читать все статьи</value>
+    <value>Читать все статьи</value>
   </data>
   <data name="home_partners" xml:space="preserve">
-    <value>наши партнеры</value>
+    <value>Наши партнеры</value>
   </data>
   <data name="home_production1" xml:space="preserve">
     <value>Тентовые ткани ПВХ</value>
@@ -433,13 +433,13 @@
     <value>Фурнитура</value>
   </data>
   <data name="home_production_title" xml:space="preserve">
-    <value>основные виды продукции</value>
+    <value>Основные виды продукции</value>
   </data>
   <data name="home_stocks" xml:space="preserve">
     <value>Акции</value>
   </data>
   <data name="home_stocks_all" xml:space="preserve">
-    <value>читать все акции</value>
+    <value>Читать все акции</value>
   </data>
   <data name="items_blue" xml:space="preserve">
     <value>Синий</value>
@@ -466,22 +466,22 @@
     <value>Товары и услуги</value>
   </data>
   <data name="items_show" xml:space="preserve">
-    <value>показать товары</value>
+    <value>Показать товары</value>
   </data>
   <data name="items_sort" xml:space="preserve">
     <value>Сортировка</value>
   </data>
   <data name="items_sort_1" xml:space="preserve">
-    <value>новинки</value>
+    <value>Новинки</value>
   </data>
   <data name="items_sort_2" xml:space="preserve">
-    <value>популярные</value>
+    <value>Популярные</value>
   </data>
   <data name="items_sort_3" xml:space="preserve">
-    <value>от дорогих к дешевым</value>
+    <value>От дорогих к дешевым</value>
   </data>
   <data name="items_sort_4" xml:space="preserve">
-    <value>от дешевых к дорогим</value>
+    <value>От дешевых к дорогим</value>
   </data>
   <data name="items_stock" xml:space="preserve">
     <value>Акция</value>
@@ -505,10 +505,10 @@
     <value>Добавить в корзину</value>
   </data>
   <data name="item_adhesionStrength" xml:space="preserve">
-    <value>прочность при адгезии</value>
+    <value>Прочность при адгезии</value>
   </data>
   <data name="item_breakingStrength" xml:space="preserve">
-    <value>прочность на розрыв</value>
+    <value>Прочность на розрыв</value>
   </data>
   <data name="item_code" xml:space="preserve">
     <value>Код товара</value>
@@ -526,7 +526,7 @@
     <value>Покрытие</value>
   </data>
   <data name="item_covering" xml:space="preserve">
-    <value>покрытие</value>
+    <value>Покрытие</value>
   </data>
   <data name="item_delivery" xml:space="preserve">
     <value>Доставка</value>
@@ -535,7 +535,7 @@
     <value>Плотность</value>
   </data>
   <data name="item_description" xml:space="preserve">
-    <value>Description</value>
+    <value>Описание</value>
   </data>
   <data name="item_down" xml:space="preserve">
     <value>Уменьшить</value>
@@ -583,7 +583,7 @@
     <value>Тип запчасти</value>
   </data>
   <data name="item_specification" xml:space="preserve">
-    <value>спецификация</value>
+    <value>Спецификация</value>
   </data>
   <data name="item_stock" xml:space="preserve">
     <value>Акция</value>
@@ -592,19 +592,19 @@
     <value>Вы экономите</value>
   </data>
   <data name="item_strength" xml:space="preserve">
-    <value>прочность</value>
+    <value>Прочность</value>
   </data>
   <data name="item_temperature" xml:space="preserve">
-    <value>температура</value>
+    <value>Температура</value>
   </data>
   <data name="item_textileProductType" xml:space="preserve">
     <value>Вид текстильного изделия</value>
   </data>
   <data name="item_thread" xml:space="preserve">
-    <value>нить</value>
+    <value>Нить</value>
   </data>
   <data name="item_totalWeight" xml:space="preserve">
-    <value>общий вес</value>
+    <value>Общий вес</value>
   </data>
   <data name="item_to_cart" xml:space="preserve">
     <value>В корзину</value>
@@ -622,7 +622,7 @@
     <value>Ширина</value>
   </data>
   <data name="item_winding" xml:space="preserve">
-    <value>намотка</value>
+    <value>Намотка</value>
   </data>
   <data name="layout_about_company" xml:space="preserve">
     <value>Компания ООО "Техно тент" выполняет

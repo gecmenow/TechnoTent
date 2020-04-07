@@ -466,7 +466,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на не смогли дозвониться.
+        ///   Ищет локализованную строку, похожую на Не смогли дозвониться.
         /// </summary>
         public static string contacts_backCall1 {
             get {
@@ -565,7 +565,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на производство.
+        ///   Ищет локализованную строку, похожую на Производство.
         /// </summary>
         public static string contacts_manuf {
             get {
@@ -574,7 +574,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на продажа ПВХ.
+        ///   Ищет локализованную строку, похожую на Продажа ПВХ.
         /// </summary>
         public static string contacts_tel1 {
             get {
@@ -583,7 +583,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на производство.
+        ///   Ищет локализованную строку, похожую на Производство.
         /// </summary>
         public static string contacts_tel2 {
             get {
@@ -592,7 +592,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на тентовая и запорная фурнитура.
+        ///   Ищет локализованную строку, похожую на Тентовая и запорная фурнитура.
         /// </summary>
         public static string contacts_tel3 {
             get {
@@ -601,7 +601,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на менеджер Viber.
+        ///   Ищет локализованную строку, похожую на Менеджер Viber.
         /// </summary>
         public static string contacts_tel4 {
             get {
@@ -925,7 +925,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на читать все статьи.
+        ///   Ищет локализованную строку, похожую на Читать все статьи.
         /// </summary>
         public static string home_news_all {
             get {
@@ -934,7 +934,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на наши партнеры.
+        ///   Ищет локализованную строку, похожую на Наши партнеры.
         /// </summary>
         public static string home_partners {
             get {
@@ -943,7 +943,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на основные виды продукции.
+        ///   Ищет локализованную строку, похожую на Основные виды продукции.
         /// </summary>
         public static string home_production_title {
             get {
@@ -1024,7 +1024,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на читать все акции.
+        ///   Ищет локализованную строку, похожую на Читать все акции.
         /// </summary>
         public static string home_stocks_all {
             get {
@@ -1051,7 +1051,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на прочность при адгезии.
+        ///   Ищет локализованную строку, похожую на Прочность при адгезии.
         /// </summary>
         public static string item_adhesionStrength {
             get {
@@ -1060,7 +1060,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на прочность на розрыв.
+        ///   Ищет локализованную строку, похожую на Прочность на розрыв.
         /// </summary>
         public static string item_breakingStrength {
             get {
@@ -1114,7 +1114,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на покрытие.
+        ///   Ищет локализованную строку, похожую на Покрытие.
         /// </summary>
         public static string item_covering {
             get {
@@ -1141,7 +1141,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Description.
+        ///   Ищет локализованную строку, похожую на Описание.
         /// </summary>
         public static string item_description {
             get {
@@ -1285,7 +1285,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на спецификация.
+        ///   Ищет локализованную строку, похожую на Спецификация.
         /// </summary>
         public static string item_specification {
             get {
@@ -1312,7 +1312,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на прочность.
+        ///   Ищет локализованную строку, похожую на Прочность.
         /// </summary>
         public static string item_strength {
             get {
@@ -1321,7 +1321,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на температура.
+        ///   Ищет локализованную строку, похожую на Температура.
         /// </summary>
         public static string item_temperature {
             get {
@@ -1339,7 +1339,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на нить.
+        ///   Ищет локализованную строку, похожую на Нить.
         /// </summary>
         public static string item_thread {
             get {
@@ -1357,7 +1357,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на общий вес.
+        ///   Ищет локализованную строку, похожую на Общий вес.
         /// </summary>
         public static string item_totalWeight {
             get {
@@ -1402,7 +1402,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на намотка.
+        ///   Ищет локализованную строку, похожую на Намотка.
         /// </summary>
         public static string item_winding {
             get {
@@ -1483,7 +1483,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на показать товары.
+        ///   Ищет локализованную строку, похожую на Показать товары.
         /// </summary>
         public static string items_show {
             get {
@@ -1501,7 +1501,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на новинки.
+        ///   Ищет локализованную строку, похожую на Новинки.
         /// </summary>
         public static string items_sort_1 {
             get {
@@ -1510,7 +1510,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на популярные.
+        ///   Ищет локализованную строку, похожую на Популярные.
         /// </summary>
         public static string items_sort_2 {
             get {
@@ -1519,7 +1519,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на от дорогих к дешевым.
+        ///   Ищет локализованную строку, похожую на От дорогих к дешевым.
         /// </summary>
         public static string items_sort_3 {
             get {
@@ -1528,7 +1528,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на от дешевых к дорогим.
+        ///   Ищет локализованную строку, похожую на От дешевых к дорогим.
         /// </summary>
         public static string items_sort_4 {
             get {

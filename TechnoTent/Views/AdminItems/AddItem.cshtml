@@ -136,6 +136,7 @@
                 <div class="product-edit__wrapper product-edit-subcategory">
                     <label class="edit__title">Подкатегория</label><br>
                     <select class="product-subcategory-list" name="SubCategoryNameRu">
+                        <option class="product-subcategory__item">Без подкатегории</option>
                         @foreach (var subCategory in Model.SubCategoriesList)
                         {
                             <option class="product-subcategory__item" value="@subCategory">@subCategory</option>

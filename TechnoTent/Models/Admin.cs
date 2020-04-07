@@ -18,6 +18,11 @@ namespace TechnoTent.Models
             {
                 using (DataBaseContext db = new DataBaseContext())
                 {
+                    user = db.AdminDb.FirstOrDefault();
+
+                    //if (user.Login != admin.Login || user.Password != admin.Password)
+                    //    user = null;
+
                     user = db.AdminDb.Where(u => u.Login == admin.Login && u.Password == admin.Password).FirstOrDefault();
                 }
             }

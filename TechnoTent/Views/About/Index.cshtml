@@ -9,58 +9,58 @@
         <div class="wrapper">
             <h2 class="page-title">@Resources.Resource.about_title</h2>
             <p class="about-us__text">
-               @Model.About
-            </p>
-            <h3 class="about-us__subtitle">@Resources.Resource.about_org_requisites </h3>
-            <table class="about-us__requisites">
-                <tbody>
-                    <tr>
-                        <td>@Resources.Resource.about_org_name1</td>
-                        <td>@Model.OrgName</td>
-                    </tr>
-                    <tr>
-                        <td>@Resources.Resource.about_org_address1</td>
-                        <td>@Model.Address</td>
-                    </tr>
-                    <tr>
-                        <td>@Resources.Resource.about_org_tel</td>
-                        <td>
-                            @for (int i = 0; i < Model.Name.Count(); i++)
-                            {
-                                @Model.Name[i]<br>
-                                for (int j = 0; j < Model.Phone[i].Count(); j++)
-                                {
-                                    <a href="tel:+@Model.Phone[i][j]">+@Model.Phone[i][j]</a><br />
-                                }
-                                for (int j = 0; j < Model.Email[i].Count(); j++)
-                                {
-                                    <a href="mailto:@Model.Email[i][j]">@Model.Email[i][j]</a><br><br>
-                                }
-                            }
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>@Resources.Resource.about_org_requisites1 </td>
-                        <td>
-                            @Model.Banking, <br>
-                            @*@Resources.Resource.about_org_requisites3 UA293355480000026000053614553,<br>
-                            @Resources.Resource.about_org_requisites4 335548*@
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>@Resources.Resource.about_org_requisites5</td>
-                        <td>@Model.BankReq</td>
-                    </tr>
-                    <tr>
-                        <td>@Resources.Resource.about_org_requisites6</td>
-                        <td>@Model.INN</td>
-                    </tr>
-                    <tr>
-                        <td>@Resources.Resource.about_org_requisites7</td>
-                        <td><a href="/">www.tehnotent.com.ua</a></td>
-                    </tr>
+                @Html.Raw(Model.About)
+             </p>
+             <h3 class="about-us__subtitle">@Resources.Resource.about_org_requisites</h3>
+             <table class="about-us__requisites">
+                 <tbody>
+                     <tr>
+                         <td>@Resources.Resource.about_org_name1</td>
+                         <td>@Model.OrgName</td>
+                     </tr>
+                     <tr>
+                         <td>@Resources.Resource.about_org_address1</td>
+                         <td>@Model.Address</td>
+                     </tr>
+                     <tr>
+                         <td>@Resources.Resource.about_org_tel</td>
+                         <td>
+                             @for(int i = 0; i<Model.Name.Count(); i++)
+                             {
+                                 @Model.Name[i]<br>
+                                 for (int j = 0; j<Model.Phone[i].Count(); j++)
+                                 {
+                                     <a href = "tel:+@Model.Phone[i][j]" > +@Model.Phone[i][j] </a><br/>
+                                 }
+                                 for (int j = 0; j<Model.Email[i].Count(); j++)
+                                 {
+                                     <a href = "mailto:@Model.Email[i][j]" > @Model.Email[i][j] </a><br><br>
+                                 }
+                             }
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>@Resources.Resource.about_org_requisites1</td>
+                         <td>
+                             @Model.Banking, <br>
+            @*@Resources.Resource.about_org_requisites3 UA293355480000026000053614553,<br>
+    @Resources.Resource.about_org_requisites4 335548*@
+                </td>
+                </tr>
+                <tr>
+                    <td>@Resources.Resource.about_org_requisites5</td>
+                    <td>@Model.BankReq</td>
+                </tr>
+                <tr>
+                    <td>@Resources.Resource.about_org_requisites6</td>
+                    <td>@Model.INN</td>
+                </tr>
+                <tr>
+                    <td>@Resources.Resource.about_org_requisites7</td>
+                    <td><a href="/">www.tehnotent.com.ua</a></td>
+                </tr>
                 </tbody>
-            </table>
-        </div>
+                </table>
+</div>
     </section>
 </main>
