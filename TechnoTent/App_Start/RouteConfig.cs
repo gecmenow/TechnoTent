@@ -341,6 +341,12 @@ namespace TechnoTent
            );
 
             routes.MapRoute(
+                name: "delivery",
+                url: "delivery",
+                defaults: new { controller = "Delivery", action = "Index" }
+           );
+
+            routes.MapRoute(
                 name: "language",
                 url: "language/{lang}",
                 defaults: new { controller = "Language", action = "ChangeCulture", lang = UrlParameter.Optional }
