@@ -81,11 +81,11 @@ namespace TechnoTent
                defaults: new { controller = "AdminItems", action = "GetItemsByCategory" }
             );
 
-            routes.MapRoute(
-               name: "admin/items/deleteImage",
-               url: "admin/items/deleteImage",
-               defaults: new { controller = "AdminItems", action = "DeleteImage" }
-            );
+            //routes.MapRoute(
+            //   name: "admin/items/deleteImage",
+            //   url: "admin/items/deleteImage",
+            //   defaults: new { controller = "AdminItems", action = "DeleteImage" }
+            //);
 
             routes.MapRoute(
                name: "addItem",

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using TechnoTent.Models.DataBase;
 using TechnoTent.Models.ViewModel;
@@ -70,13 +71,38 @@ namespace TechnoTent.Models
 
                     string filePath = CheckItemImageForExisting(image.FileName);
 
+                    string path = Path.GetDirectoryName(filePath);
+
                     string fileNameOnly = Path.GetFileNameWithoutExtension(filePath);
+
+                    fileNameOnly = fileNameOnly.ToLower().Replace(" - ", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace("- ", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace(" -", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace("   ", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace("  ", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace("  ", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace(" ", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace("-", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace("_", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace(" _ ", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace("_ ", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace(" _", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace("—", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace(" — ", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace(" —", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace("— ", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace(" . ", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace(". ", "");
+                    fileNameOnly = fileNameOnly.ToLower().Replace(" .", "");
+
                     string extension = Path.GetExtension(filePath);
                     string newFileName = fileNameOnly + extension;
 
                     images.Add(newFileName);
 
-                    image.SaveAs(filePath);
+                    path = path + "\\" + newFileName;
+
+                    image.SaveAs(path);
 
                     counter++;
                 }
@@ -104,6 +130,8 @@ namespace TechnoTent.Models
                     string filePath = CheckMainImageForExisting(image.FileName);
 
                     string fileNameOnly = Path.GetFileNameWithoutExtension(filePath);
+
+
                     string extension = Path.GetExtension(filePath);
                     string newFileName = fileNameOnly + extension;
 
@@ -132,13 +160,38 @@ namespace TechnoTent.Models
                     {
                         string filePath = CheckItemImageForExisting(image.FileName);
 
+                        string path = Path.GetDirectoryName(filePath);
+
                         string fileNameOnly = Path.GetFileNameWithoutExtension(filePath);
+
+                        fileNameOnly = fileNameOnly.ToLower().Replace(" - ", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace("- ", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace(" -", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace("   ", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace("  ", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace("  ", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace(" ", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace("-", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace("_", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace(" _ ", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace("_ ", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace(" _", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace("—", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace(" — ", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace(" —", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace("— ", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace(" . ", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace(". ", "");
+                        fileNameOnly = fileNameOnly.ToLower().Replace(" .", "");
+
                         string extension = Path.GetExtension(filePath);
                         string newFileName = fileNameOnly + extension;
 
                         images.Add(newFileName);
 
-                        image.SaveAs(filePath);
+                        path = path + "\\" + newFileName; 
+
+                        image.SaveAs(path);
                     }
                     else
                         images.Add(null);

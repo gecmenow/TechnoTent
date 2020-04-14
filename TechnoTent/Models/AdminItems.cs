@@ -351,7 +351,7 @@ namespace TechnoTent.Models
 
         public static void EditItem(AdminItemVM item, IEnumerable<HttpPostedFileBase> uploads)
         {
-            List<string> newImagesName = Image.UploadNewImages(uploads);
+            List<string> newImagesName = Image.UploadNewImages(item.Images);
 
             using (DataBaseContext db = new DataBaseContext())
             {

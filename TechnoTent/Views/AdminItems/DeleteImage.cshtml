@@ -132,11 +132,11 @@
                             <option class="product-status__item" value="false">Нет в наличии</option>
                         </select>
                         <div class="status-dropdown">
-                            @if (Model.inStock != false)
+                            @if (Model.inStock == true)
                             {
                                 <div class="status-toggle btn btn-success">В наличии</div>
                             }
-                            else
+                            else if (Model.inStock == false)
                             {
                                 <div class="status-toggle btn btn-warning">Нет в наличии</div>
                             }
@@ -151,7 +151,7 @@
                         <select class="product-category-list" name="CategoryNameRu">
                             @foreach (var category in Model.CategoriesList)
                             {
-                                if (Model.CategoryNameRu == category)
+                                if (category == Model.CategoryNameRu)
                                 {
                                     <option class="product-category__item" value="@category" selected>@category</option>
                                 }
@@ -162,62 +162,325 @@
                             }
                         </select><br>
                     </div>
+                    <div class="product-edit__wrapper">
+                        <label class="edit__title">Подкатегория</label><br>
+                        <select class="product-subcategory-list" name="SubCategoryNameRu">
+                            <option class="product-subcategory__item">Без подкатегории</option>
+                            @foreach (var subCategory in Model.SubCategoriesList)
+                            {
+                                if (subCategory == Model.SubCategoryNameRu)
+                                {
+                                    <option class="product-subcategory__item" value="@subCategory" selected>@subCategory</option>
+                                }
+                                else
+                                {
+                                    <option class="product-subcategory__item" value="@subCategory">@subCategory</option>
+                                }
+                            }
+                        </select><br>
+                    </div>
+                    <div class="product-edit__wrapper">
+                        @if (Model.ProductBuyTypeMeter)
+                        {
+                            <label class="edit__title"><input type="checkbox" name="ProductBuyTypeMeter" class="product-edit__stock" value="true" checked>цена ГРН за М2</label>
+                        }
+                        else
+                        {
+                            <label class="edit__title"><input type="checkbox" name="ProductBuyTypeMeter" class="product-edit__stock" value="true">цена ГРН за М2</label>
+                        }
+
+                    </div>
+                    @*<div class="product-edit__wrapper product-edit__type-toggle" style="display: none;">
+                            <label class="edit__title">
+                                <input type="checkbox" name="" class="product-edit__type" disabled>Индивидуальный заказ
+                            </label>
+                        </div>*@
                     <label class="edit__title">Основная информация</label>
+                    <div class="product-edit__wrapper additional-information__more">
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Ширина</label><input type="text" name="Width" class="input-product-edit" value="@Model.Width">
+                            <label class="edit__text">м</label>
+                        </div>
+                    </div>
+                    <div class="product-edit__wrapper additional-information__more">
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Намотка</label><input type="text" name="Winding" class="input-product-edit" value="@Model.Winding">
+                            <label class="edit__text">м.п.</label>
+                        </div>
+                    </div>
+                    <div class="product-edit__wrapper additional-information__more">
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Прочность</label><input type="text" name="Strength" class="input-product-edit" value="@Model.Strength">
+                            <label class="edit__text">Н</label>
+                        </div>
+                    </div>
+                    <div class="product-edit__wrapper additional-information__more">
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Прочность на розрыв</label><input type="text" name="BreakingStrength" class="input-product-edit" value="@Model.BreakingStrength">
+                            <label class="edit__text">Н</label>
+                        </div>
+                    </div>
+                    <div class="product-edit__wrapper additional-information__more">
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Общий вес</label><input type="text" name="TotalWeight" class="input-product-edit" value="@Model.TotalWeight">
+                            <label class="edit__text">кг</label>
+                        </div>
+                    </div>
+                    <div class="product-edit__wrapper additional-information__more">
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Температура</label><input type="text" name="Temperature" class="input-product-edit" value="@Model.Temperature">
+                            <label class="edit__text">Ц</label>
+                        </div>
+                    </div>
+                    <div class="product-edit__wrapper additional-information__more">
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Прочность при адгезии</label><input type="text" name="AdhesionStrength" class="input-product-edit" value="@Model.AdhesionStrength">
+                        </div>
+                        <label class="edit__text">Н</label>
+                    </div>
                     <div class="product-edit__wrapper tab-button__list">
                         <button type="button" class="tab-button__item btn btn-info">Русский</button>
                         <button type="button" class="tab-button__item btn btn-light">Украинский</button>
                         <button type="button" class="tab-button__item btn btn-light">Английский</button>
                     </div>
-                    <div class="product-tab" style="position: static">
+                    <div class="tab-element" style="position: static">
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Название</label><input type="text" name="NameRu" class="input-product-edit" required value="@Model.NameRu">
+                            <label class="edit__title">Название (рус)</label><input type="text" name="NameRu" class="input-product-edit" value="@Model.NameRu" required>
                         </div>
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Покрытие</label><input type="text" name="CoveringRu" class="input-product-edit" required value="@Model.CoveringRu">
+                            <label class="edit__title">Покрытие (рус)</label><input type="text" name="CoveringRu" class="input-product-edit" value="@Model.CoveringRu">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Производитель (рус)</label><input type="text" name="ManufacturerRu" class="input-product-edit" value="@Model.ManufacturerRu">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Спецификация (рус)</label><input type="text" name="SpecificationRu" class="input-product-edit" value="@Model.SpecificationRu">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Нить (рус)</label><input type="text" name="ThreadRu" class="input-product-edit" value="@Model.ThreadRu">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Страна производитель (рус)</label><input type="text" name="CountryOfOriginRu" class="input-product-edit" value="@Model.CountryOfOriginRu">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Сезон (рус)</label><input type="text" name="SeasonRu" class="input-product-edit" value="@Model.SeasonRu">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Материал (рус)</label><input type="text" name="MaterialRu" class="input-product-edit" value="@Model.MaterialRu">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Тип запчасти (рус)</label><input type="text" name="SparesTypeRu" class="input-product-edit" value="@Model.SparesTypeRu">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Вид текстильного изделия (рус)</label><input type="text" name="TextileProductTypeRu" class="input-product-edit" value="@Model.TextileProductTypeRu">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Описание (рус)</label><textarea name="DescriptionRu" class="input-product-edit">@Model.DescriptionRu</textarea>
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Цвет (рус)</label><input type="text" name="ColorRu" class="input-product-edit" value="@Model.ColorRu">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Плотность (рус)</label><input type="text" name="DensityRu" class="input-product-edit" value="@Model.DensityRu">
                         </div>
                     </div>
-                    <div class="product-tab" style="position: absolute; visibility: hidden;">
+                    <div class="tab-element" style="position: absolute; visibility: hidden;">
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Название</label><input type="text" name="NameUa" class="input-product-edit" required value="@Model.NameUa">
+                            <label class="edit__title">Название (укр)</label><input type="text" name="NameUa" class="input-product-edit" value="@Model.NameUa" required>
                         </div>
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Покрытие</label><input type="text" name="CoveringUa" class="input-product-edit" required value="@Model.CoveringUa">
+                            <label class="edit__title">Покрытие (укр)</label><input type="text" name="CoveringUa" class="input-product-edit" value="@Model.CoveringUa">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Производитель (укр)</label><input type="text" name="ManufacturerUa" class="input-product-edit" value="@Model.ManufacturerRu">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Спецификация (укр)</label><input type="text" name="SpecificationUa" class="input-product-edit" value="@Model.SpecificationUa">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Нить (укр)</label><input type="text" name="ThreadUa" class="input-product-edit" value="@Model.ThreadUa">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Страна производитель (укр)</label><input type="text" name="CountryOfOriginUa" class="input-product-edit" value="@Model.CountryOfOriginUa">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Сезон (укр)</label><input type="text" name="SeasonUa" class="input-product-edit" value="@Model.SeasonUa">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Материал (укр)</label><input type="text" name="MaterialUa" class="input-product-edit" value="@Model.MaterialUa">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Тип запчасти (укр)</label><input type="text" name="SparesTypeUa" class="input-product-edit" value="@Model.SparesTypeUa">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Вид текстильного изделия (укр)</label><input type="text" name="TextileProductTypeUa" class="input-product-edit" value="@Model.TextileProductTypeUa">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Описание (укр)</label><textarea name="DescriptionUa" class="input-product-edit">@Model.DescriptionUa</textarea>
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Цвет (укр)</label><input type="text" name="ColorUa" class="input-product-edit" value="@Model.ColorUa">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Плотность (укр)</label><input type="text" name="DensityUa" class="input-product-edit" value="@Model.DensityUa">
                         </div>
                     </div>
-                    <div class="product-tab" style="position: absolute; visibility: hidden;">
+                    <div class="tab-element" style="position: absolute; visibility: hidden;">
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Название</label><input type="text" name="NameEn" class="input-product-edit" required value="@Model.NameEn">
+                            <label class="edit__title">Название</label><input type="text" name="NameEn" class="input-product-edit" value="@Model.NameEn" required>
                         </div>
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Покрытие</label><input type="text" name="CoveringEn" class="input-product-edit" required value="@Model.CoveringEn">
+                            <label class="edit__title">Покрытие</label><input type="text" name="CoveringEn" class="input-product-edit" value="@Model.CoveringEn">
                         </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Производитель (англ)</label><input type="text" name="ManufacturerEn" class="input-product-edit" value="@Model.ManufacturerEn">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Спецификация (англ)</label><input type="text" name="SpecificationEn" class="input-product-edit" value="@Model.SpecificationEn">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Нить (англ)</label><input type="text" name="ThreadEn" class="input-product-edit" value="@Model.ThreadEn">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Страна производитель (англ)</label><input type="text" name="CountryOfOriginEn" class="input-product-edit" value="@Model.CountryOfOriginEn">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Сезон (англ)</label><input type="text" name="SeasonEn" class="input-product-edit" value="@Model.SeasonEn">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Материал (англ)</label><input type="text" name="MaterialEn" class="input-product-edit" value="@Model.MaterialEn">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Тип запчасти (англ)</label><input type="text" name="SparesTypeEn" class="input-product-edit" value="@Model.SparesTypeEn">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Вид текстильного изделия (англ)</label><input type="text" name="TextileProductTypeEn" class="input-product-edit" value="@Model.TextileProductTypeEn">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Описание (англ)</label><textarea name="DescriptionEn" class="input-product-edit">@Model.DescriptionEn</textarea>
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Цвет (англ)</label><input type="text" name="ColorEn" class="input-product-edit" value="@Model.ColorEn">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Плотность (англ)</label><input type="text" name="DensityEn" class="input-product-edit" value="@Model.DensityEn">
+                        </div>
+                    </div>
+                    <label class="edit__title additional-information">Дополнительная информация <i class="fas fa-angle-down"></i></label>
+                    <div class="product-edit__wrapper additional-information__more" style="display: none;">
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Гарантийный срок</label><input type="text" name="WarrantyPeriod" class="input-product-edit" value="@Model.WarrantyPeriod">
+                            <label class="edit__text">год</label>
+                        </div>
+                    </div>
+                    <div class="product-edit__wrapper additional-information__more" style="display: none;">
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Время изготовления</label><input type="text" name="PreparationTime" class="input-product-edit" value="@Model.PreparationTime">
+                            <label class="edit__text">дн</label>
+                        </div>
+                    </div>
+                    <div class="product-edit__wrapper tab-button__list" style="display: none;">
+                        <button type="button" class="tab-button__item btn btn-info">Русский</button>
+                        <button type="button" class="tab-button__item btn btn-light">Украинский</button>
+                        <button type="button" class="tab-button__item btn btn-light">Английский</button>
+                    </div>
+                    <div class="tab-element" style="position: absolute; visibility: hidden;">
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Размер (рус)</label><input type="text" name="SizeRu" class="input-product-edit" value="@Model.SizeRu">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Вид текстильного изделия (рус)</label><input type="text" name="TextileProductTypeRu" class="input-product-edit" value="@Model.TextileProductTypeRu">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Спецификация (рус)</label><input type="text" name="SpecificationeRu" class="input-product-edit" value="@Model.SpecificationRu">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Тип запчасти (рус)</label><input type="text" name="SparesTypeRu" class="input-product-edit" value="@Model.SparesTypeRu">
+                        </div>
+                    </div>
+                    <div class="tab-element" style="position: absolute; visibility: hidden;">
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Размер (укр)</label><input type="text" name="SizeUa" class="input-product-edit" value="@Model.SizeUa">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Вид текстильного изделия (укр)</label><input type="text" name="TextileProductTypeUa" class="input-product-edit" value="@Model.TextileProductTypeUa">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Спецификация (укр)</label><input type="text" name="SpecificationeUa" class="input-product-edit" value="@Model.SpecificationUa">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Тип запчасти (укр)</label><input type="text" name="SparesTypeUa" class="input-product-edit" value="@Model.SparesTypeUa">
+                        </div>
+                    </div>
+                    <div class="tab-element" style="position: absolute; visibility: hidden;">
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Размер (англ)</label><input type="text" name="SizeEn" class="input-product-edit" value="@Model.SizeEn">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Вид текстильного изделия (англ)</label><input type="text" name="TextileProductTypeEn" class="input-product-edit" value="@Model.TextileProductTypeEn">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Спецификация (англ)</label><input type="text" name="SpecificationeEn" class="input-product-edit" value="@Model.SpecificationEn">
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Тип запчасти (англ)</label><input type="text" name="SparesTypeEn" class="input-product-edit" value="@Model.SparesTypeEn">
+                        </div>
+                    </div>
+                    <label class="edit__title">Цена</label>
+                    <div class="product-edit__wrapper">
+                        <label class="edit__title">Цена</label><input type="text" name="PriceUa" class="input-product-edit product-edit__price" value="@Model.PriceUa"><label class="edit__text">грн.</label>
                     </div>
                     <div class="product-edit__wrapper">
-                        <label class="edit__title">Цена</label><input type="text" name="PriceUa" class="input-product-edit product-edit__price" required value="@Model.PriceUa"><label class="edit__text">грн.</label>
-                    </div>
-                    <div class="product-edit__wrapper">
-                        <label class="edit__title">Цена</label><input type="text" name="PriceEn" class="input-product-edit product-edit__price" required value="@Model.PriceEn"><label class="edit__text">$</label>
+                        <label class="edit__title">Цена</label><input type="text" name="PriceEn" class="input-product-edit product-edit__price" value="@Model.PriceEn"><label class="edit__text">$</label>
                     </div>
                     <label class="edit__title">Изображения</label>
                     <div class="product-edit__wrapper upload__img-wrapper">
                         <div class="upload__img-item">
-                            <label for="upload__img1"><img src="~/Content/images/items/@Model.Image1"></label>
-                            <input class="upload__img" id="upload__img1" type="file" name="uploads">
+                            @if (Model.Image1 != null)
+                            {
+                                <label for="upload__img1"><img src="~/Content/images/items/@Model.Image1"></label>
+                            }
+                            else
+                            {
+                                <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
+                            }
+                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
                             <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image1"></i>
                         </div>
                         <div class="upload__img-item">
-                            <label for="upload__img2"><img src="~/Content/images/items/@Model.Image2"></label>
-                            <input class="upload__img" id="upload__img2" type="file" name="uploads">
+                            @if (Model.Image2 != null)
+                            {
+                                <label for="upload__img1"><img src="~/Content/images/items/@Model.Image2"></label>
+                            }
+                            else
+                            {
+                                <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
+                            }
+                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
                             <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image2"></i>
                         </div>
                         <div class="upload__img-item">
-                            <label for="upload__img3"><img src="~/Content/images/items/@Model.Image3"></label>
-                            <input class="upload__img" id="upload__img3" type="file" name="uploads">
+                            @if (Model.Image3 != null)
+                            {
+                                <label for="upload__img1"><img src="~/Content/images/items/@Model.Image3"></label>
+                            }
+                            else
+                            {
+                                <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
+                            }
+                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
                             <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image3"></i>
                         </div>
                         <div class="upload__img-item">
-                            <label for="upload__img4"><img src="~/Content/images/items/@Model.Image4"></label>
-                            <input class="upload__img" id="upload__img4" type="file" name="uploads">
+                            @if (Model.Image4 != null)
+                            {
+                                <label for="upload__img1"><img src="~/Content/images/items/@Model.Image4"></label>
+                            }
+                            else
+                            {
+                                <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
+                            }
+                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
                             <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image4"></i>
                         </div>
                     </div>
@@ -232,14 +495,34 @@
                             <label class="edit__title edit-stock__toggle"><input type="checkbox" name="IsStock" class="product-edit__stock" value="true">Сделать акционным</label>
                         }
                     </div>
-                    <div class="product-edit-stock" style="display: none;">
-                        <div class="product-edit__wrapper">
-                            <label class="edit__title">Цена</label><input type="text" name="StockPriceUa" class="input-product-edit product-edit__price" required disabled><label class="edit__text">ГРН.</label>
+                    if (Model.IsStock)
+                    {
+                        <div class="product-edit-stock">
+                            <div class="product-edit__wrapper">
+                                <label class="edit__title">Цена</label><input type="text" name="StockPriceUa" class="input-product-edit product-edit__price" required value="@Model.StockPriceUa" pattern="\d+(,\d)?"><label class="edit__text">ГРН.</label>
+                            </div>
+                            <div class="product-edit__wrapper">
+                                <label class="edit__title">Цена</label><input type="text" name="StockPriceEn" class="input-product-edit product-edit__price" required value="@Model.StockPriceEn"><label class="edit__text">USD.</label>
+                            </div>
                         </div>
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Цена</label><input type="text" name="StockPriceEn" class="input-product-edit product-edit__price" required disabled><label class="edit__text">USD.</label>
+                            <label class="edit__title">Цена неопределена</label><input type="text" name="PriceUndefined" class="input-product-edit product-edit__price" value="@Model.PriceUndefined">
                         </div>
-                    </div>
+                    }
+                    else
+                    {
+                        <div class="product-edit-stock" style="display: none;">
+                            <div class="product-edit__wrapper">
+                                <label class="edit__title">Цена</label><input type="text" name="StockPriceUa" class="input-product-edit product-edit__price" required disabled value=""><label class="edit__text">ГРН.</label>
+                            </div>
+                            <div class="product-edit__wrapper">
+                                <label class="edit__title">Цена</label><input type="text" name="StockPriceEn" class="input-product-edit product-edit__price" required disabled value=""><label class="edit__text">USD.</label>
+                            </div>
+                        </div>
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title">Цена неопределена</label><input type="text" name="PriceUndefined" class="input-product-edit product-edit__price" value="@Model.PriceUndefined">
+                        </div>
+                    }
                     <div class="product-edit__wrapper">
                         <button type="submit" class="btn btn-success">Сохранить</button>
                         <a href="/admin/items" class="btn btn-secondary">Отмена</a>

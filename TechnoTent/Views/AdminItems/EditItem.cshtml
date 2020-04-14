@@ -6,8 +6,8 @@
         $(".remove__img").click(function () {
             var vendorCode = $(this).attr("data-id");
             var imageName = $(this).attr("data-name");
+            console.log(imageName);
             url = "@Url.Action("DeleteImage", "AdminItems")?vendorCode=" + vendorCode + "&imageName=" + imageName;
-            console.log(url);
             $('.result').load(url);
         });
     })
@@ -445,7 +445,7 @@
                                 <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
                             }
                             @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
-                            <i class="fas fa-times remove__img"></i>
+                            <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image1"></i>
                         </div>
                         <div class="upload__img-item">
                             @if (Model.Image2 != null)
@@ -457,7 +457,7 @@
                                 <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
                             }
                             @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
-                            <i class="fas fa-times remove__img"></i>
+                            <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image2"></i>
                         </div>
                         <div class="upload__img-item">
                             @if (Model.Image3 != null)
@@ -469,7 +469,7 @@
                                 <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
                             }
                             @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
-                            <i class="fas fa-times remove__img"></i>
+                            <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image3"></i>
                         </div>
                         <div class="upload__img-item">
                             @if (Model.Image4 != null)
@@ -481,7 +481,7 @@
                                 <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
                             }
                             @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
-                            <i class="fas fa-times remove__img"></i>
+                            <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image4"></i>
                         </div>
                     </div>
                     <label class="edit__title">Акция</label>
