@@ -30,5 +30,6 @@ namespace TechnoTent.Models.DataBase
         public DbSet<DbContactsKievInfo> KievInfoDb { get; set; }
         public DbSet<DbKonstantinovkaContactsInfo> KonstantinovkaInfoDb { get; set; }
         public DbSet<DbPrices> PricesDb { get; set; }
+        public DbSet<DbPartners> PartnersDb { get; set; }
     }
 }

@@ -143,6 +143,7 @@
     <Compile Include="Controllers\AdminMainImagesController.cs" />
     <Compile Include="Controllers\AdminNewsController.cs" />
     <Compile Include="Controllers\AdminOrderController.cs" />
+    <Compile Include="Controllers\AdminPartnersController.cs" />
     <Compile Include="Controllers\AdminPricesController.cs" />
     <Compile Include="Controllers\AdminReviewsController.cs" />
     <Compile Include="Controllers\AdminStocksController.cs" />
@@ -408,6 +409,10 @@
     <Compile Include="Migrations\202003311601221_new db.Designer.cs">
       <DependentUpon>202003311601221_new db.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004161851597_added dbs.cs" />
+    <Compile Include="Migrations\202004161851597_added dbs.Designer.cs">
+      <DependentUpon>202004161851597_added dbs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutInfo.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -651,6 +656,11 @@
     <Content Include="Views\Partial\FooterContacts.cshtml" />
     <Content Include="Views\Delivery\Index.cshtml" />
     <Content Include="Views\AdminItems\CopyItem.cshtml" />
+    <Content Include="Views\AdminPartners\Index.cshtml" />
+    <Content Include="Views\AdminPartners\AddImages.cshtml" />
+    <Content Include="Views\AdminPartners\MovePositionUp.cshtml" />
+    <Content Include="Views\AdminPartners\MovePositionDown.cshtml" />
+    <Content Include="Views\AdminPartners\DeleteImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -658,6 +668,7 @@
     <Folder Include="Content\images\category\" />
     <Folder Include="Content\images\items\" />
     <Folder Include="Content\images\news\" />
+    <Folder Include="Content\images\partners\" />
     <Folder Include="Content\images\stocks\" />
     <Folder Include="Views\AdminPrices\" />
     <Folder Include="Views\Category\" />
@@ -849,6 +860,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003311601221_new db.resx">
       <DependentUpon>202003311601221_new db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161851597_added dbs.resx">
+      <DependentUpon>202004161851597_added dbs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

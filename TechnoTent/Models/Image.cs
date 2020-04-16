@@ -131,7 +131,6 @@ namespace TechnoTent.Models
 
                     string fileNameOnly = Path.GetFileNameWithoutExtension(filePath);
 
-
                     string extension = Path.GetExtension(filePath);
                     string newFileName = fileNameOnly + extension;
 
@@ -140,6 +139,31 @@ namespace TechnoTent.Models
                     image.SaveAs(filePath);
 
                     counter++;
+                }
+
+            return images;
+        }
+
+        ///<summary>
+        /// Для добавления новых изображений для партнеров
+        /// </summary>
+        public static List<string> UploadNewPartnersImages(PartnersVM partners)
+        {
+            List<string> images = new List<string>();
+
+            if (partners.Images[0] != null)
+                foreach (var image in partners.Images)
+                {
+                    string filePath = ChecPartnersImageForExisting(image.FileName);
+
+                    string fileNameOnly = Path.GetFileNameWithoutExtension(filePath);
+
+                    string extension = Path.GetExtension(filePath);
+                    string newFileName = fileNameOnly + extension;
+
+                    images.Add(newFileName);
+
+                    image.SaveAs(filePath);
                 }
 
             return images;
@@ -261,12 +285,56 @@ namespace TechnoTent.Models
             return newFullPath;
         }
 
+        //public static string CheckItemImageNameForExisting(string imageName)
+        //{
+        //    string filePath = HttpContext.Current.Server.MapPath("~/Content/images/items/" + imageName);
+
+        //    int count = 1;
+
+        //    string fileNameOnly = Path.GetFileNameWithoutExtension(filePath);
+        //    string extension = Path.GetExtension(filePath);
+        //    string path = Path.GetDirectoryName(filePath);
+        //    string newFullPath = filePath;
+        //    string newFileName = fileNameOnly + extension;
+
+        //    while (File.Exists(newFullPath))
+        //    {
+        //        newFileName = string.Format("{0}({1})", fileNameOnly, count++);
+        //        newFileName += extension;
+        //        newFullPath = Path.Combine(path, newFileName);
+        //    }
+
+        //    return newFileName;
+        //}
+
         /**
          * возвращает полный путь для картинок на главной странице
          * **/
         public static string CheckMainImageForExisting(string imageName)
         {
             string filePath = HttpContext.Current.Server.MapPath("~/Content/images/main/" + imageName);
+
+            int count = 1;
+
+            string fileNameOnly = Path.GetFileNameWithoutExtension(filePath);
+            string extension = Path.GetExtension(filePath);
+            string path = Path.GetDirectoryName(filePath);
+            string newFullPath = filePath;
+            string newFileName = fileNameOnly + extension;
+
+            while (File.Exists(newFullPath))
+            {
+                newFileName = string.Format("{0}({1})", fileNameOnly, count++);
+                newFileName += extension;
+                newFullPath = Path.Combine(path, newFileName);
+            }
+
+            return newFullPath;
+        }
+
+        public static string ChecPartnersImageForExisting(string imageName)
+        {
+            string filePath = HttpContext.Current.Server.MapPath("~/Content/images/partners/" + imageName);
 
             int count = 1;
 

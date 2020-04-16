@@ -575,6 +575,56 @@ namespace TechnoTent.Models
 
                 data.VendorCode = vendorCode;
 
+                //Copy image
+
+                string image = "";
+
+                if (data.Image1 != null)
+                {
+                    image = Image.CheckItemImageForExisting(data.Image1);
+
+                    data.Image1 = HttpContext.Current.Server.MapPath("~/Content/images/items/" + data.Image1);
+
+                    File.Copy(data.Image1, image, false);
+
+                    data.Image1 = Path.GetFileName(image);
+                }
+
+                if (data.Image2 != null)
+                {
+                    image = Image.CheckItemImageForExisting(data.Image2);
+
+                    data.Image2 = HttpContext.Current.Server.MapPath("~/Content/images/items/" + data.Image2);
+
+                    File.Copy(data.Image2, image, false);
+
+                    data.Image2 = Path.GetFileName(image);
+                }
+
+                if (data.Image3 != null)
+                {
+                    image = Image.CheckItemImageForExisting(data.Image3);
+
+                    data.Image3 = HttpContext.Current.Server.MapPath("~/Content/images/items/" + data.Image3);
+
+                    File.Copy(data.Image3, image, false);
+
+                    data.Image3 = Path.GetFileName(image);
+                }
+
+                if (data.Image4 != null)
+                {
+                    image = Image.CheckItemImageForExisting(data.Image4);
+
+                    data.Image4 = HttpContext.Current.Server.MapPath("~/Content/images/items/" + data.Image4);
+
+                    File.Copy(data.Image4, image, false);
+
+                    data.Image4 = Path.GetFileName(image);
+                }
+
+                //
+
                 db.ItemsDb.Add(data);
 
                 db.SaveChanges();

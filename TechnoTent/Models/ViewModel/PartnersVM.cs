@@ -10,5 +10,7 @@ namespace TechnoTent.Models.ViewModel
         public int Id { get; set; }
         public int OrderNumber { get; set; }
         public string ImagePath { get; set; }
+        public List<PartnersVM> ImagesList { get; set; }
+        public HttpPostedFileBase[] Images { get; set; }
     }
 }

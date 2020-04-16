@@ -11,34 +11,34 @@ namespace TechnoTent.Models
     {
         public static PartnersVM GetImages()
         {
-            PartnersVM images = new PartnersVM();
+            PartnersVM partners = new PartnersVM();
 
             using (DataBaseContext db = new DataBaseContext())
             {
-                images.MainImages = db.MainImagesDb.Select(u =>
-                    new MainImagesVM
+                partners.ImagesList = db.PartnersDb.Select(u =>
+                    new PartnersVM
                     {
                         Id = u.Id,
-                        Image = u.Image,
+                        ImagePath = u.ImagePath,
                         OrderNumber = u.OrderNumber,
                     }).OrderBy(u => u.OrderNumber).ToList();
             }
 
-            return images;
+            return partners;
         }
 
-        public static void AddImages(MainImagesVM image)
+        public static void AddImages(PartnersVM partners)
         {
-            List<string> images = Image.UploadNewMainImages(image);
+            List<string> images = Image.UploadNewPartnersImages(partners);
 
             using (DataBaseContext db = new DataBaseContext())
             {
                 foreach (var img in images)
                 {
-                    db.MainImagesDb.Add(
-                        new DbMainImages
+                    db.PartnersDb.Add(
+                        new DbPartners
                         {
-                            Image = img,
+                            ImagePath = img,
                             OrderNumber = GetLastOrder() + 1,
                         });
 
@@ -47,29 +47,29 @@ namespace TechnoTent.Models
             }
         }
 
-        public static List<MainImagesVM> DeleteImage(int imageId)
+        public static List<PartnersVM> DeleteImage(int imageId)
         {
-            List<MainImagesVM> images = new List<MainImagesVM>();
+            List<PartnersVM> images = new List<PartnersVM>();
 
             string imageName = "";
 
             using (DataBaseContext db = new DataBaseContext())
             {
-                var image = db.MainImagesDb.Where(u => u.Id == imageId).FirstOrDefault();
+                var image = db.PartnersDb.Where(u => u.Id == imageId).FirstOrDefault();
 
-                imageName = image.Image;
+                imageName = image.ImagePath;
 
-                db.MainImagesDb.Remove(image);
+                db.PartnersDb.Remove(image);
 
-                db.MainImagesDb.Where(u => u.OrderNumber > image.OrderNumber).ToList().ForEach(u => u.OrderNumber -= 1);
+                db.PartnersDb.Where(u => u.OrderNumber > image.OrderNumber).ToList().ForEach(u => u.OrderNumber -= 1);
 
                 db.SaveChanges();
 
-                images = db.MainImagesDb.Select(u =>
-                    new MainImagesVM
+                images = db.PartnersDb.Select(u =>
+                    new PartnersVM
                     {
                         Id = u.Id,
-                        Image = u.Image,
+                        ImagePath = u.ImagePath,
                         OrderNumber = u.OrderNumber,
                     }).OrderBy(u => u.OrderNumber).ToList();
             }
@@ -87,7 +87,7 @@ namespace TechnoTent.Models
             {
                 using (DataBaseContext db = new DataBaseContext())
                 {
-                    number = db.MainImagesDb.Select(u => u.OrderNumber).Count();
+                    number = db.PartnersDb.Select(u => u.OrderNumber).Count();
                 }
             }
             catch (Exception)
@@ -102,13 +102,13 @@ namespace TechnoTent.Models
             {
                 using (DataBaseContext db = new DataBaseContext())
                 {
-                    var image = db.MainImagesDb.Where(u => u.OrderNumber == orderNumber).FirstOrDefault();
+                    var image = db.PartnersDb.Where(u => u.OrderNumber == orderNumber).FirstOrDefault();
 
                     int newOrderNumber = orderNumber - 1;
 
                     image.OrderNumber = newOrderNumber;
 
-                    db.MainImagesDb.Where(u => u.OrderNumber == newOrderNumber).First().OrderNumber = orderNumber;
+                    db.PartnersDb.Where(u => u.OrderNumber == newOrderNumber).First().OrderNumber = orderNumber;
 
                     db.SaveChanges();
                 }
@@ -123,13 +123,13 @@ namespace TechnoTent.Models
             {
                 using (DataBaseContext db = new DataBaseContext())
                 {
-                    var image = db.MainImagesDb.Where(u => u.OrderNumber == orderNumber).FirstOrDefault();
+                    var image = db.PartnersDb.Where(u => u.OrderNumber == orderNumber).FirstOrDefault();
 
                     int newOrderNumber = orderNumber + 1;
 
                     image.OrderNumber = newOrderNumber;
 
-                    db.MainImagesDb.Where(u => u.OrderNumber == newOrderNumber).First().OrderNumber = orderNumber;
+                    db.PartnersDb.Where(u => u.OrderNumber == newOrderNumber).First().OrderNumber = orderNumber;
 
                     db.SaveChanges();
                 }

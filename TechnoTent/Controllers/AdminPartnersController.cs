@@ -3,29 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TechnoTent.Filters;
 using TechnoTent.Models;
 using TechnoTent.Models.ViewModel;
 
 namespace TechnoTent.Controllers
 {
-    [AdminAuth]
-    public class AdminMainImagesController : Controller
+    public class AdminPartnersController : Controller
     {
-        // GET: AdminMainImages
+        // GET: AdminPartners
         public ActionResult Index()
         {
-            var data = AdminMainImages.GetImages();
+            var data = AdminPartners.GetImages();
 
             return View(data);
         }
 
         [HttpPost]
-        public ActionResult AddImages(MainImagesVM img)
+        public ActionResult AddImages(PartnersVM img)
         {
             if (ModelState.IsValid)
             {
-                AdminMainImages.AddImages(img);
+                AdminPartners.AddImages(img);
 
                 return RedirectToAction("Index");
             }
@@ -35,27 +33,27 @@ namespace TechnoTent.Controllers
 
         public ActionResult MovePositionUp(int orderNumber)
         {
-            AdminMainImages.UpImageOrderNumber(orderNumber);
+            AdminPartners.UpImageOrderNumber(orderNumber);
 
-            var data = AdminMainImages.GetImages();
+            var data = AdminPartners.GetImages();
 
             return PartialView(data);
         }
 
         public ActionResult MovePositionDown(int orderNumber)
         {
-            AdminMainImages.DownImageOrderNumber(orderNumber);
+            AdminPartners.DownImageOrderNumber(orderNumber);
 
-            var data = AdminMainImages.GetImages();
+            var data = AdminPartners.GetImages();
 
             return PartialView(data);
         }
 
         public ActionResult DeleteImage(int imageId)
         {
-            AdminMainImages.DeleteImage(imageId);
+            AdminPartners.DeleteImage(imageId);
 
-            var data = AdminMainImages.GetImages();
+            var data = AdminPartners.GetImages();
 
             return PartialView(data);
         }
