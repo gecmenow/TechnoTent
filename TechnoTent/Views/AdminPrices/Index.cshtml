@@ -1,23 +1,11 @@
-﻿@model TechnoTent.Models.ViewModel.PartnersVM
+﻿@model List<TechnoTent.Models.ViewModel.PricesVM>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
-        $(".Up").click(function () {
-            var id = $(this).attr("data-id");
-            url = "@Url.Action("MovePositionUp", "AdminPartners")?orderNumber=" + id;
-            $('#result').load(url);
-        });
-
-        $(".Down").click(function () {
-            var id = $(this).attr("data-id");
-            url = "@Url.Action("MovePositionDown", "AdminPartners")?orderNumber=" + id;
-            $('#result').load(url);
-        });
-
         $(".RemoveLink").click(function () {
             var id = $(this).attr("data-id");
-            url = "@Url.Action("DeleteImage", "AdminPartners")?imageId=" + id;
+            url = "@Url.Action("DeletePrices", "AdminPrices")?id=" + id;
             $('#result').load(url);
         });
     })
@@ -42,6 +30,7 @@
         </nav>
     </header>
 }
+
 <div id="result">
     <main class="main-admin">
         <aside class="admin-sidebar">
@@ -123,69 +112,63 @@
         <div class="admin-content-wrapper">
             <section class="admin-content-header">
                 <h1 class="admin-page__title">
-                    Управление слайдером партнёров главной странице
+                    Управление прайсом
                 </h1>
             </section>
             <section class="admin-content-main">
-                <table class="slider-photo-table">
-                    <tr>
-                        <th>
-                            Номер
-                        </th>
-                        <th>
-                            Изображение
-                        </th>
-                        <th>
-                            Управление
-                        </th>
-                    </tr>
-                    @foreach (var item in Model.ImagesList)
-                    {
+                <section class="admin-content-main">
+                    <table class="price-table">
                         <tr>
                             <th>
-                                @Html.DisplayFor(modelItem => item.OrderNumber)
+                                Номер
                             </th>
                             <th>
-                                <img src="~/Content/images/partners/@item.ImagePath">
+                                Файл
                             </th>
                             <th>
-                                @if (item.OrderNumber != 1)
-                                {
-                                    <button type="button" class="btn btn-danger Up" data-id="@item.OrderNumber">
-                                        <i class="fas fa-arrow-up"></i> Вверх
-                                    </button>
-                                }
-                                <button type="button" class="btn btn-danger Down" data-id="@item.OrderNumber">
-                                    <i class="fas fa-arrow-down"></i> Вниз
-                                </button>
-                                <button type="button" class="btn btn-danger RemoveLink" data-id="@item.Id">
-                                    <i class="fas fa-trash-alt"></i> Удалить
-                                </button>
+                                Упарвление
                             </th>
                         </tr>
+                        @foreach (var price in Model)
+                        {
+                            <tr>
+                                <th>
+                                    @price.Id
+                                </th>
+                                <th>
+                                    <a href="~/Content/prices/@price.FilePath">@price.Name</a>
+                                </th>
+                                <th>
+                                    <button type="button" class="btn btn-danger RemoveLink" data-id="@price.Id">
+                                        <i class="fas fa-trash-alt"></i> Удалить
+                                    </button>
+                                </th>
+                            </tr>
+                        }
+                    </table>
+                </section>
+                <section class="admin-content-header">
+                    <h1 class="admin-page__title">
+                        Загрузка фаил
+                    </h1>
+                </section>
+                <section class="admin-content-main">
+                    @using (Html.BeginForm("AddPrices", "AdminPrices", FormMethod.Post, new { enctype = "multipart/form-data", @class = "upload-price" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="upload-price__wrapper">
+                            <input class="upload-price__input" type="file" name="upload">
+                        </div>
+                        <div class="upload-price__wrapper">
+                            <label class="edit__title">Описание</label><input type="text" name="name" class="input-settings-edit" required="">
+                        </div>
+                        <div class="upload-price__wrapper">
+                            <button type="submit" class="btn btn-success">Загрузить</button>
+                            <button type="button" class="btn btn-secondary" onclick="location.reload()">Отмена</button>
+                        </div>
                     }
-                </table>
-            </section>
-            <section class="admin-content-header">
-                <h1 class="admin-page__title">
-                    Загрузка изображений
-                </h1>
-            </section>
-            <section class="admin-content-main">
-                @using (Html.BeginForm("AddImages", "AdminPartners", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="upload__slider-img-wrapper">
-                    </div>
-                    <div class="slider-edit__wrapper">
-                        @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @class = "upload__slider-img-multiple", @multiple = "multiple" })
-                    </div>
-                    <div class="slider-edit__wrapper">
-                        <button type="submit" class="btn btn-success">Загрузить</button>
-                        <button type="button" class="btn btn-secondary" onclick="location.reload()">Отмена</button>
-                    </div>
-                }
+                </section>
             </section>
         </div>
     </main>

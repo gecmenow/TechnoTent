@@ -18,9 +18,9 @@ namespace TechnoTent.Controllers
             return View(data);
         }
 
-        public ActionResult AddPrices(PricesVM prices)
+        public ActionResult AddPrices(PricesVM prices, HttpPostedFileBase upload)
         {
-            Prices.AddPrices(prices);
+            Prices.AddPrices(prices, upload);
 
             return RedirectToAction("Index");
         }
@@ -29,7 +29,9 @@ namespace TechnoTent.Controllers
         {
             Prices.DeletePrice(id);
 
-            return View();
+            var data = Prices.GetPrices();
+
+            return PartialView(data);
         }
     }
 }

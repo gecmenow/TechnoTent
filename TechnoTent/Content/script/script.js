@@ -1020,7 +1020,7 @@ $(document).ready(function () {
 
     //edit stock toggle    
     $(".edit-stock__toggle").on("change", function(){
-        if($(".product-edit__stock")[0].checked == true){
+        if($(".product-edit__stock")[1].checked == true){
             $(".product-edit-stock").slideDown();
             $(".product-edit-stock input").removeAttr("disabled");
         }

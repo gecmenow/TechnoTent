@@ -1,1 +1,192 @@
-﻿
+﻿@model TechnoTent.Models.ViewModel.PartnersVM
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".Up").click(function () {
+            var id = $(this).attr("data-id");
+            url = "@Url.Action("MovePositionUp", "AdminPartners")?orderNumber=" + id;
+            $('#result').load(url);
+        });
+
+        $(".Down").click(function () {
+            var id = $(this).attr("data-id");
+            url = "@Url.Action("MovePositionDown", "AdminPartners")?orderNumber=" + id;
+            $('#result').load(url);
+        });
+
+        $(".RemoveLink").click(function () {
+            var id = $(this).attr("data-id");
+            url = "@Url.Action("DeleteImage", "AdminPartners")?imageId=" + id;
+            $('#result').load(url);
+        });
+    })
+</script>
+
+@section AdminHeader
+{
+    <header class="admin-header">
+        <a href="/" class="admin-header__logo">
+            <span class="logo-lg"><b>Админ</b> панель</span>
+        </a>
+        <nav class="navbar-header-top">
+            <a href="#" class="settings navbar-header__toggle"><i class="fa fa-cogs" aria-hidden="true"></i></a>
+            <ul class="navbar-header__list" style="display: none;">
+                <li class="navbar-header__item">
+                    <a href="/admin"><i class="fas fa-cog"><span>Настройки</span></i></a>
+                </li>
+                <li class="navbar-header__item">
+                    <a href="/admin/logout"><i class="fas fa-sign-out-alt"><span>Выйти</span></i></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+}
+<div id="result">
+    <main class="main-admin">
+        <aside class="admin-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar__list" data-widget="tree">
+                    <li class="sidebar__item" style="height: 37px;"></li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/mainImages">
+                            <i class="fas fa-images"></i>
+                            <span>Нстройки галереи</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/orders">
+                            <i class="fas fa-book-open"></i>
+                            <span>Заказы</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/categories">
+                            <i class="fas fa-list"></i>
+                            <span>Категории</span>
+                        </a>
+                    </li>
+                    @{
+                        Html.RenderAction("GetCategoriesAndSubCategoriesForAdmin", "Partial");
+                    }
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/add/item/">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить товар</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/news">
+                            <i class="far fa-newspaper"></i>
+                            <span>Статьи</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/news/add">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить статью</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/stocks">
+                            <i class="far fa-money-bill-alt"></i>
+                            <span>Акции</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/stocks/add">
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить акцию</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/reviews">
+                            <i class="fas fa-comments"></i>
+                            <span>Отзывы</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/about">
+                            <i class="fas fa-id-card"></i>
+                            <span>Информация о компании</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__item-link" href="/admin/contacts">
+                            <i class="fas fa-id-card"></i>
+                            <span>Контактная информация</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+        <div class="admin-content-wrapper">
+            <section class="admin-content-header">
+                <h1 class="admin-page__title">
+                    Управление слайдером партнёров главной странице
+                </h1>
+            </section>
+            <section class="admin-content-main">
+                <table class="slider-photo-table">
+                    <tr>
+                        <th>
+                            Номер
+                        </th>
+                        <th>
+                            Изображение
+                        </th>
+                        <th>
+                            Управление
+                        </th>
+                    </tr>
+                    @foreach (var item in Model.ImagesList)
+                    {
+                        <tr>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.OrderNumber)
+                            </th>
+                            <th>
+                                <img src="~/Content/images/partners/@item.ImagePath">
+                            </th>
+                            <th>
+                                @if (item.OrderNumber != 1)
+                                {
+                                    <button type="button" class="btn btn-danger Up" data-id="@item.OrderNumber">
+                                        <i class="fas fa-arrow-up"></i> Вверх
+                                    </button>
+                                }
+                                <button type="button" class="btn btn-danger Down" data-id="@item.OrderNumber">
+                                    <i class="fas fa-arrow-down"></i> Вниз
+                                </button>
+                                <button type="button" class="btn btn-danger RemoveLink" data-id="@item.Id">
+                                    <i class="fas fa-trash-alt"></i> Удалить
+                                </button>
+                            </th>
+                        </tr>
+                    }
+                </table>
+            </section>
+            <section class="admin-content-header">
+                <h1 class="admin-page__title">
+                    Загрузка изображений
+                </h1>
+            </section>
+            <section class="admin-content-main">
+                @using (Html.BeginForm("AddImages", "AdminPartners", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="upload__slider-img-wrapper">
+                    </div>
+                    <div class="slider-edit__wrapper">
+                        @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @class = "upload__slider-img-multiple", @multiple = "multiple" })
+                    </div>
+                    <div class="slider-edit__wrapper">
+                        <button type="submit" class="btn btn-success">Загрузить</button>
+                        <button type="button" class="btn btn-secondary" onclick="location.reload()">Отмена</button>
+                    </div>
+                }
+            </section>
+        </div>
+    </main>
+</div>
