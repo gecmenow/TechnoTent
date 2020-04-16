@@ -88,7 +88,7 @@ namespace TechnoTent.Models
         //    }
         //}
 
-        public static void AddOrder(OrderVM order)
+        public static string AddOrder(OrderVM order)
         {
             var data = Cart.ShowCart();
 
@@ -109,10 +109,10 @@ namespace TechnoTent.Models
 
             var language = Cookie.CheckLanguageCookie();
 
+            string orderNumber = "000001";
+
             using (DataBaseContext db = new DataBaseContext())
             {
-                string orderNumber = "000001";
-
                 try
                 {
                     orderNumber = db.ItemsDb.OrderByDescending(u=>u.VendorCode).First().VendorCode;
@@ -151,6 +151,82 @@ namespace TechnoTent.Models
 
                 db.SaveChanges();
             }
+
+            return orderNumber;
+        }
+
+        public static OrderVM GetOrderById(string orderNumber)
+        {
+            OrderVM data = new OrderVM();
+
+            using (DataBaseContext db = new DataBaseContext())
+            {
+                data = db.OrderDb.Where(u => u.OrderNumber == orderNumber).Select(u => new OrderVM
+                {
+                    Id = u.Id,
+                    OrderNumber = u.OrderNumber,
+                    UserName = u.UserName,
+                    UserEmail = u.UserEmail,
+                    UserPhone = u.UserPhone,
+                    DeliveryCity = u.DeliveryCity,
+                    DeliveryOffice = u.DeliveryOffice,
+                    DeliveryMethod = u.DeliveryMethod,
+                    PaymentMethod = u.PaymentMethod,
+                    PaymentStatus = u.PaymentStatus,
+                    TotalPrice = u.TotalPrice,
+                    TotalItemsCount = u.TotalitemsCount,
+                    ItemsCount = u.ItemsCount,
+                    OrderStatus = u.OrderStatus,
+                    Date = u.Date,
+                    ItemsVendorCode = u.ItemsVendorCode,
+                    ItemsPrice = u.ItemsPrice,
+                    OrderLanguage = u.OrderLanguage,
+                }).FirstOrDefault();
+
+                List<string> itemsPriceList = new List<string>();
+                List<string> itemsCount = new List<string>();
+
+                List<OrderItemsVM> orderItems = new List<OrderItemsVM>();
+
+                data.ItemsVendorCodeList = data.ItemsVendorCode.Split('/').Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
+                itemsPriceList = data.ItemsPrice.Split('/').Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
+                itemsCount = data.ItemsCount.Split('/').Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
+                //чек на язык
+                for (int i = 0; i < data.ItemsVendorCodeList.Count(); i++)
+                {
+                    var itemVendoreCode = data.ItemsVendorCodeList[i];
+
+                    var item = db.ItemsDb.Where(u => u.VendorCode == itemVendoreCode).FirstOrDefault();
+
+                    double itemMinOrder = 0;
+
+                    if (item.ProductBuyTypeMeter)
+                        itemMinOrder = item.Width;
+                    else
+                        itemMinOrder = 1;
+
+                    try
+                    {
+                        //чек на язык
+                        orderItems.Add(new OrderItemsVM
+                        {
+                            ItemName = item.NameRu,
+                            ItemImages = item.Image1,
+                            ItemPrice = itemsPriceList[i],
+                            ItemCount = itemsCount[i],
+                            ItemVendorCode = data.ItemsVendorCodeList[i],
+                            ItemMinOrder = itemMinOrder.ToString(),
+                            ProductBuyTypeMeter = item.ProductBuyTypeMeter,
+                        });
+                    }
+                    catch (Exception e)
+                    { }
+
+                    data.Items = orderItems;
+                }
+            }
+
+            return data;
         }
 
         public static List<OrderVM> GetOrders(int id)

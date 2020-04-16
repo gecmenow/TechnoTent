@@ -130,7 +130,7 @@ namespace TechnoTent.Controllers
         {
             var session = Convert.ToInt32(User.Identity.Name);
 
-            var orders = Order.GetOrders(session);
+            var orders = Models.Order.GetOrders(session);
 
             return View(orders);
         }

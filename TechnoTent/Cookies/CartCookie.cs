@@ -49,14 +49,19 @@ namespace TechnoTent.Cookies
 
             string sharedKey = "123";
 
-            try
+            if
+                (HttpContext.Current.Request.Cookies["scnu"] != null)
             {
-                string value = HttpContext.Current.Request.Cookies["scnu"].Value;
+                try
+                {
+                    string value = HttpContext.Current.Request.Cookies["scnu"].Value;
 
-                data = Hashing.Hash.DecryptStringAES(value, sharedKey);
+                    data = Hashing.Hash.DecryptStringAES(value, sharedKey);
+                }
+                catch (Exception)
+                { }
             }
-            catch (Exception)
-            { }
+            
 
             return data;
         }

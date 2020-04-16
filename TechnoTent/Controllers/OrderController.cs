@@ -33,7 +33,11 @@ namespace TechnoTent.Controllers
                 orderVM.UserId = sessionId;
             }
 
-            Order.AddOrder(orderVM);
+            string orderNumber = Order.AddOrder(orderVM);
+
+            orderVM = Order.GetOrderById(orderNumber);
+
+            Mailing.Order.SendMail(orderVM);
 
             Cart.ClearCart();
 

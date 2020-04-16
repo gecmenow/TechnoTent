@@ -88,13 +88,28 @@ namespace TechnoTent.Controllers
             return PartialView("decoy");
         }
 
-        public ActionResult DeleteItem(int id)
+        public ActionResult CopyItem(int id, int? page)
+        {
+            AdminItems.CopyItem(id);
+
+            var data = AdminItems.GetAllItems();
+
+            int pageSize = 12;
+            int pageNumber = (page ?? 1);
+
+            return PartialView(data.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult DeleteItem(int id, int? page)
         {
             AdminItems.DeleteItemById(id);
 
             var data = AdminItems.GetAllItems();
 
-            return PartialView(data);
+            int pageSize = 12;
+            int pageNumber = (page ?? 1);
+
+            return PartialView(data.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult DeleteImage(string vendorCode, string imageName)

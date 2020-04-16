@@ -29,5 +29,6 @@ namespace TechnoTent.Models.DataBase
         public DbSet<DbHeaderInfo> HeaderInfoDb { get; set; }
         public DbSet<DbContactsKievInfo> KievInfoDb { get; set; }
         public DbSet<DbKonstantinovkaContactsInfo> KonstantinovkaInfoDb { get; set; }
+        public DbSet<DbPrices> PricesDb { get; set; }
     }
 }

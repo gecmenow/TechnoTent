@@ -143,6 +143,7 @@
     <Compile Include="Controllers\AdminMainImagesController.cs" />
     <Compile Include="Controllers\AdminNewsController.cs" />
     <Compile Include="Controllers\AdminOrderController.cs" />
+    <Compile Include="Controllers\AdminPricesController.cs" />
     <Compile Include="Controllers\AdminReviewsController.cs" />
     <Compile Include="Controllers\AdminStocksController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -157,6 +158,8 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PartialController.cs" />
+    <Compile Include="Controllers\PartnersController.cs" />
+    <Compile Include="Controllers\PricesController.cs" />
     <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -168,6 +171,7 @@
     <Compile Include="Filters\AdminAuthAttribute.cs" />
     <Compile Include="Filters\CultureAttribute.cs" />
     <Compile Include="Mailing\BackCall.cs" />
+    <Compile Include="Mailing\Order.cs" />
     <Compile Include="Migrations\201908311114450_item changed db.cs" />
     <Compile Include="Migrations\201908311114450_item changed db.Designer.cs">
       <DependentUpon>201908311114450_item changed db.cs</DependentUpon>
@@ -413,6 +417,7 @@
     <Compile Include="Models\AdminMainImages.cs" />
     <Compile Include="Models\AdminNews.cs" />
     <Compile Include="Models\AdminOrders.cs" />
+    <Compile Include="Models\AdminPartners.cs" />
     <Compile Include="Models\AdminReviews.cs" />
     <Compile Include="Models\AdminStocks.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -433,6 +438,8 @@
     <Compile Include="Models\DataBase\DbHeaderInfo.cs" />
     <Compile Include="Models\DataBase\DbNews.cs" />
     <Compile Include="Models\DataBase\DbOrder.cs" />
+    <Compile Include="Models\DataBase\DbPartners.cs" />
+    <Compile Include="Models\DataBase\DbPrices.cs" />
     <Compile Include="Models\DataBase\DbReview.cs" />
     <Compile Include="Models\DataBase\DbStocks.cs" />
     <Compile Include="Models\DataBase\DbSubCategory.cs" />
@@ -455,6 +462,7 @@
     <Compile Include="Models\NovaPoshtaAPI\NovaPoshtaPostOfficeModel.cs" />
     <Compile Include="Models\NovaPoshtaAPI\NovaPoshtaPostOffice.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Prices.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\Stocks.cs" />
     <Compile Include="Models\UrlHelper.cs" />
@@ -496,6 +504,8 @@
     <Compile Include="Models\ViewModel\NewsVM.cs" />
     <Compile Include="Models\ViewModel\OrderItemsVM.cs" />
     <Compile Include="Models\ViewModel\OrderVM.cs" />
+    <Compile Include="Models\ViewModel\PartnersVM.cs" />
+    <Compile Include="Models\ViewModel\PricesVM.cs" />
     <Compile Include="Models\ViewModel\ReviewVM.cs" />
     <Compile Include="Models\ViewModel\StocksVM.cs" />
     <Compile Include="Models\ViewModel\SubCategoryVM.cs" />
@@ -640,6 +650,7 @@
     <Content Include="Views\Partial\HeaderContacts.cshtml" />
     <Content Include="Views\Partial\FooterContacts.cshtml" />
     <Content Include="Views\Delivery\Index.cshtml" />
+    <Content Include="Views\AdminItems\CopyItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -648,8 +659,11 @@
     <Folder Include="Content\images\items\" />
     <Folder Include="Content\images\news\" />
     <Folder Include="Content\images\stocks\" />
+    <Folder Include="Views\AdminPrices\" />
     <Folder Include="Views\Category\" />
     <Folder Include="Views\Language\" />
+    <Folder Include="Views\Partners\" />
+    <Folder Include="Views\Prices\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

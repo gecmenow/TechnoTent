@@ -505,9 +505,9 @@
                                 <label class="edit__title">Цена</label><input type="text" name="StockPriceEn" class="input-product-edit product-edit__price" required value="@Model.StockPriceEn"><label class="edit__text">USD.</label>
                             </div>
                         </div>
-                        <div class="product-edit__wrapper">
+                        @*<div class="product-edit__wrapper">
                             <label class="edit__title">Цена неопределена</label><input type="text" name="PriceUndefined" class="input-product-edit product-edit__price" value="@Model.PriceUndefined">
-                        </div>
+                        </div>*@
                     }
                     else
                     {
@@ -519,9 +519,9 @@
                                 <label class="edit__title">Цена</label><input type="text" name="StockPriceEn" class="input-product-edit product-edit__price" required disabled value=""><label class="edit__text">USD.</label>
                             </div>
                         </div>
-                        <div class="product-edit__wrapper">
+                        @*<div class="product-edit__wrapper">
                             <label class="edit__title">Цена неопределена</label><input type="text" name="PriceUndefined" class="input-product-edit product-edit__price" value="@Model.PriceUndefined">
-                        </div>
+                        </div>*@
                     }
                     <div class="product-edit__wrapper">
                         <button type="submit" class="btn btn-success">Сохранить</button>

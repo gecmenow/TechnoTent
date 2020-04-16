@@ -548,6 +548,39 @@ namespace TechnoTent.Models
             }
         }
 
+        public static void CopyItem(int id)
+        {
+            using (DataBaseContext db = new DataBaseContext())
+            {
+                var data =
+                     (from entry in db.ItemsDb
+                      where entry.Id == id
+                      select entry).FirstOrDefault();
+
+                string vendorCode = "000001";
+
+                try
+                {
+                    vendorCode = db.ItemsDb.OrderByDescending(u => u.VendorCode).First().VendorCode;
+
+                    int number = Convert.ToInt32(vendorCode) + 1;
+
+                    vendorCode = number.ToString();
+
+                    for (int i = vendorCode.Length; i < 6; i++)
+                        vendorCode = vendorCode.PadLeft(vendorCode.Length + 1, '0');
+                }
+                catch (Exception e)
+                { }
+
+                data.VendorCode = vendorCode;
+
+                db.ItemsDb.Add(data);
+
+                db.SaveChanges();
+            }
+        }
+
         public static void ChangeItemStatus(int id, bool status)
         {
             using (DataBaseContext db = new DataBaseContext())
