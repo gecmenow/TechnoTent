@@ -427,6 +427,7 @@
     <Compile Include="Models\AdminStocks.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ColorFilter.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\DataBase\DbCart.cs" />
     <Compile Include="Models\DataBase\DataBaseContext.cs" />
@@ -467,6 +468,8 @@
     <Compile Include="Models\NovaPoshtaAPI\NovaPoshtaPostOfficeModel.cs" />
     <Compile Include="Models\NovaPoshtaAPI\NovaPoshtaPostOffice.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Partners.cs" />
+    <Compile Include="Models\PhoneNumber.cs" />
     <Compile Include="Models\Prices.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\Stocks.cs" />

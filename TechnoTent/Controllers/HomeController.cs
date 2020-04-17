@@ -16,6 +16,8 @@ namespace TechnoTent.Controllers
         {
             var data = Home.GetImages();
 
+            data.partners = Partners.GetPartners();
+
             return View(data);
         }
 

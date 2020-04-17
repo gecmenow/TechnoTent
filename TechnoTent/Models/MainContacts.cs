@@ -498,24 +498,6 @@ namespace TechnoTent.Models
                     data.KonstantinivkaContacts.PhoneNameRu.Add(entry.PhoneNameRu);
                     data.KonstantinivkaContacts.PhoneNameUa.Add(entry.PhoneNameUa);
                 }
-
-                //data.KonstantinivkaContacts = db.KonstantinovkaInfoDb.Select(x => new ContactsPageVM
-                //{
-                //    AddressEn = x.AddressEn,
-                //    AddressRu = x.AddressRu,
-                //    AddressUa = x.AddressUa,
-                //    PhoneNameEn = x.PhoneNameEn,
-                //    PhoneNameRu = x.PhoneNameRu,
-                //    PhoneNameUa = x.PhoneNameUa,
-                //    PhoneNumber = x.PhoneNumber,
-                //    ViberNameEn = x.ViberNameEn,
-                //    ViberNameRu = x.ViberNameRu,
-                //    ViberNameUa = x.ViberNameUa,
-                //    ViberNumber = x.ViberNumber,
-                //    WorkTimeEn = x.WorkTimeEn,
-                //    WorkTimeRu = x.WorkTimeRu,
-                //    WorkTimeUa = x.WorkTimeUa,
-                //}).ToList();
             }
 
             return data;
@@ -532,129 +514,81 @@ namespace TechnoTent.Models
                 switch (language)
                 {
                     case "uk":
-                        data.Contacts = db.ContactsDb.Select(x => new ContactsVM
+                        data.Contacts = db.ContactsDb.AsEnumerable().Select(x => new ContactsVM
                         {
                             Name = x.NameUa,
                             Phone = x.Phone,
+                            PhoneLink = PhoneNumber.MakePhoneNumber(x.Phone)
                         }).ToList();
 
-                        data.HeaderInfo = db.HeaderInfoDb.Select(x => new HeaderInfoVM
+                        data.HeaderInfo = db.HeaderInfoDb.AsEnumerable().Select(x => new HeaderInfoVM
                         {
                             Name = x.NameUa,
                             Phone = x.Phone,
+                            PhoneLink = PhoneNumber.MakePhoneNumber(x.Phone)
                         }).ToList();
 
-                        data.Footer = db.FooterInfoDb.Select(x => new FooterInfoVM
+                        data.Footer = db.FooterInfoDb.AsEnumerable().Select(x => new FooterInfoVM
                         {
                             Address = x.AddressUa,
                             Phone1 = x.Phone1,
+                            Phone1Link = PhoneNumber.MakePhoneNumber(x.Phone1),
                             Phone2 = x.Phone2,
+                            Phone2Link = PhoneNumber.MakePhoneNumber(x.Phone2),
                             Email = x.Email,
                         }).FirstOrDefault();
-
-                        //data.KievContacts = db.KievInfoDb.Select(x => new ContactsPageVM
-                        //{
-                        //    Address = x.AddressUa,
-                        //    PhoneName = x.PhoneNameUa,
-                        //    PhoneNumber = x.PhoneNumber,
-                        //    ViberName = x.ViberNameUa,
-                        //    ViberNumber = x.ViberNumber,
-                        //    WorkTime = x.WorkTimeUa,
-                        //}).ToList();
-
-                        //data.KonstantinivkaContacts = db.KonstantinovkaInfoDb.Select(x => new ContactsPageVM
-                        //{
-                        //    Address = x.AddressUa,
-                        //    PhoneName = x.PhoneNameUa,
-                        //    PhoneNumber = x.PhoneNumber,
-                        //    ViberName = x.ViberNameUa,
-                        //    //ViberNumber = x.ViberNumber,
-                        //    WorkTime = x.WorkTimeUa,
-                        //}).ToList();
 
                         break;
                     case "en":
-                        data.Contacts = db.ContactsDb.Select(x => new ContactsVM
+                        data.Contacts = db.ContactsDb.AsEnumerable().Select(x => new ContactsVM
                         {
                             Name = x.NameEn,
                             Phone = x.Phone,
+                            PhoneLink = PhoneNumber.MakePhoneNumber(x.Phone)
                         }).ToList();
 
-                        data.HeaderInfo = db.HeaderInfoDb.Select(x => new HeaderInfoVM
+                        data.HeaderInfo = db.HeaderInfoDb.AsEnumerable().Select(x => new HeaderInfoVM
                         {
                             Name = x.NameEn,
                             Phone = x.Phone,
+                            PhoneLink = PhoneNumber.MakePhoneNumber(x.Phone)
                         }).ToList();
 
-                        data.Footer = db.FooterInfoDb.Select(x => new FooterInfoVM
+                        data.Footer = db.FooterInfoDb.AsEnumerable().Select(x => new FooterInfoVM
                         {
                             Address = x.AddressEn,
                             Phone1 = x.Phone1,
+                            Phone1Link = PhoneNumber.MakePhoneNumber(x.Phone1),
                             Phone2 = x.Phone2,
+                            Phone2Link = PhoneNumber.MakePhoneNumber(x.Phone2),
                             Email = x.Email,
                         }).FirstOrDefault();
-
-                        //data.KievContacts = db.KievInfoDb.Select(x => new ContactsPageVM
-                        //{
-                        //    Address = x.AddressEn,
-                        //    PhoneName = x.PhoneNameEn,
-                        //    PhoneNumber = x.PhoneNumber,
-                        //    ViberName = x.ViberNameEn,
-                        //    ViberNumber = x.ViberNumber,
-                        //    WorkTime = x.WorkTimeEn,
-                        //}).ToList();
-
-                        //data.KonstantinivkaContacts = db.KonstantinovkaInfoDb.Select(x => new ContactsPageVM
-                        //{
-                        //    Address = x.AddressEn,
-                        //    PhoneName = x.PhoneNameEn,
-                        //    PhoneNumber = x.PhoneNumber,
-                        //    ViberName = x.ViberNameEn,
-                        //    //ViberNumber = x.ViberNumber,
-                        //    WorkTime = x.WorkTimeEn,
-                        //}).ToList();
 
                         break;
                     default:
-                        data.Contacts = db.ContactsDb.Select(x => new ContactsVM
+                        data.Contacts = db.ContactsDb.AsEnumerable().Select(x => new ContactsVM
                         {
                             Name = x.NameRu,
                             Phone = x.Phone,
+                            PhoneLink = PhoneNumber.MakePhoneNumber(x.Phone)
                         }).ToList();
 
-                        data.HeaderInfo = db.HeaderInfoDb.Select(x => new HeaderInfoVM
+                        data.HeaderInfo = db.HeaderInfoDb.AsEnumerable().Select(x => new HeaderInfoVM
                         {
                             Name = x.NameRu,
                             Phone = x.Phone,
+                            PhoneLink = PhoneNumber.MakePhoneNumber(x.Phone)
                         }).ToList();
 
-                        data.Footer = db.FooterInfoDb.Select(x => new FooterInfoVM
+                        data.Footer = db.FooterInfoDb.AsEnumerable().Select(x => new FooterInfoVM
                         {
                             Address = x.AddressRu,
                             Phone1 = x.Phone1,
+                            Phone1Link = PhoneNumber.MakePhoneNumber(x.Phone1),
                             Phone2 = x.Phone2,
+                            Phone2Link = PhoneNumber.MakePhoneNumber(x.Phone2),
                             Email = x.Email,
                         }).FirstOrDefault();
-
-                        //data.KievContacts = db.KievInfoDb.Select(x => new ContactsPageVM
-                        //{
-                        //    Address = x.AddressRu,
-                        //    PhoneName = x.PhoneNameRu,
-                        //    PhoneNumber = x.PhoneNumber,
-                        //    ViberName = x.ViberNameRu,
-                        //    ViberNumber = x.ViberNumber,
-                        //    WorkTime = x.WorkTimeRu,
-                        //}).ToList();
-
-                        //data.KonstantinivkaContacts = db.KonstantinovkaInfoDb.Select(x => new ContactsPageVM
-                        //{
-                        //    Address = x.AddressRu,
-                        //    PhoneName = x.PhoneNameRu,
-                        //    PhoneNumber = x.PhoneNumber,
-                        //    ViberName = x.ViberNameRu,
-                        //    //ViberNumber = x.ViberNumber,
-                        //    WorkTime = x.WorkTimeRu,
-                        //}).ToList();
 
                         break;
                 }

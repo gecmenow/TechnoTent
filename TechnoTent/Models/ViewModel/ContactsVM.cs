@@ -13,5 +13,6 @@ namespace TechnoTent.Models.ViewModel
         public string NameUa { get; set; }
         public string NameEn { get; set; }
         public string Phone { get; set; }
+        public string PhoneLink { get; set; }
     }
 }

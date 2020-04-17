@@ -351,6 +351,12 @@
   <data name="edit_tel" xml:space="preserve">
     <value>Phone</value>
   </data>
+  <data name="exchange" xml:space="preserve">
+    <value>Exchange at</value>
+  </data>
+  <data name="exchange_vallet" xml:space="preserve">
+    <value>uah</value>
+  </data>
   <data name="home_advantage1" xml:space="preserve">
     <value>We sell any volume of products</value>
   </data>

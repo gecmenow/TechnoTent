@@ -351,6 +351,12 @@
   <data name="edit_tel" xml:space="preserve">
     <value>Телефон</value>
   </data>
+  <data name="exchange" xml:space="preserve">
+    <value>Курс на</value>
+  </data>
+  <data name="exchange_vallet" xml:space="preserve">
+    <value>грн</value>
+  </data>
   <data name="home_advantage1" xml:space="preserve">
     <value>Реализуем любой объем продукции</value>
   </data>

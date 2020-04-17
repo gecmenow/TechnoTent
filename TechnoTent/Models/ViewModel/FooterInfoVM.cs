@@ -13,7 +13,9 @@ namespace TechnoTent.Models.ViewModel
         public string AddressUa { get; set; }
         public string AddressEn { get; set; }
         public string Phone1 { get; set; }
+        public string Phone1Link { get; set; }
         public string Phone2 { get; set; }
+        public string Phone2Link { get; set; }
         public string Email { get; set; }
     }
 }

@@ -463,15 +463,26 @@
                             <div class="desc__value">@Model.TextileProductType</div>
                         </li>
                     }
-                    @if (@Model.Description != null)
+                    @*@if (@Model.Description != null)
                     {
                         <li class="product-card-desc__item">
                             <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_description</div></div>
                             <div class="desc__value">@Model.Description</div>
                         </li>
-                    }
+                    }*@
                 </ul>
             </div>
+            @if (Model.Description != null)
+            {
+                <div class="product-card-desc">
+                    <h2 class="product-card__title">@Resources.Resource.item_description</h2>
+                    <div class="ql-snow">
+                        <div class="ql-editor">
+                                @Html.Raw(Model.Description)
+                        </div>
+                    </div>
+                </div>
+            }
             <div class="similar-product">
                 <h2 class="product-card__title">@Resources.Resource.item_similar</h2>
                 <ul class="catalog__list">

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using TechnoTent.Cookies;
 using TechnoTent.Models.DataBase;
+using static TechnoTent.Models.ViewModel.ItemsOutputVM;
 
 namespace TechnoTent.Models.ViewModel.Items
 {
@@ -950,11 +951,11 @@ namespace TechnoTent.Models.ViewModel.Items
 
                     foreach (var color in colors)
                     {
-                        if (temp.Where(u => u.Color == color).Count() != 0)
+                        if (temp.Where(u => u.Color == ColorFilter.ChangeColorNameFromFilter(color)).Count() != 0)
                         {
                             foreach (var item in temp)
                             {
-                                if (item.Color == color)
+                                if (item.Color == ColorFilter.ChangeColorNameFromFilter(color))
                                     filteredItems.Add(item);
                             }
                         }
@@ -986,7 +987,7 @@ namespace TechnoTent.Models.ViewModel.Items
                         break;
                 }
 
-                List<string> categories;
+                List<FiltersVM.Filters> categories;
 
                 using (DataBaseContext db = new DataBaseContext())
                 {
@@ -1000,7 +1001,12 @@ namespace TechnoTent.Models.ViewModel.Items
                             categories =
                                 (from entry in db.SubCategoryDb
                                  where entry.CategoryId == categoryId
-                                 select entry.SubCategoryNameUa).ToList();
+                                 select entry).AsEnumerable().Select(entry =>
+                                   new FiltersVM.Filters
+                                   {
+                                       BrandName = entry.SubCategoryNameUa,
+                                       BrandUrl = UrlHelper.GenerateSeoFriendlyURL(entry.SubCategoryNameEn)
+                                   }).ToList();
                             break;
                         case "en":
                             categoryId = db.CategoryDb.Where(u => u.CategoryNameEn == category).FirstOrDefault().Id;
@@ -1008,7 +1014,12 @@ namespace TechnoTent.Models.ViewModel.Items
                             categories =
                                 (from entry in db.SubCategoryDb
                                  where entry.CategoryId == categoryId
-                                 select entry.SubCategoryNameEn).ToList();
+                                 select entry).AsEnumerable().Select(entry =>
+                                   new FiltersVM.Filters
+                                   {
+                                       BrandName = entry.SubCategoryNameEn,
+                                       BrandUrl = UrlHelper.GenerateSeoFriendlyURL(entry.SubCategoryNameEn)
+                                   }).ToList();
                             break;
                         default:
                             categoryId = db.CategoryDb.Where(u => u.CategoryNameEn == category).FirstOrDefault().Id;
@@ -1016,7 +1027,12 @@ namespace TechnoTent.Models.ViewModel.Items
                             categories =
                                 (from entry in db.SubCategoryDb
                                  where entry.CategoryId == categoryId
-                                 select entry.SubCategoryNameRu).ToList();
+                                 select entry ).AsEnumerable().Select(entry =>
+                                    new FiltersVM.Filters
+                                    {
+                                        BrandName = entry.SubCategoryNameRu,
+                                        BrandUrl = UrlHelper.GenerateSeoFriendlyURL(entry.SubCategoryNameEn)
+                                    }).ToList();
                             break;
                     }
                 }
@@ -1034,7 +1050,16 @@ namespace TechnoTent.Models.ViewModel.Items
                     }
                 };
 
-                var colorsList = items.Where(x => x.Color != "" && x.Color != " " && x.Color != null).Select(x => x.Color).Distinct().ToList();
+                //var colorsList = items.Where(x => x.Color != "" && x.Color != " " && x.Color != null).Select(x => x.Color).Distinct().ToList();
+
+                var colorsList = (from data in items
+                                 where data.Color != "" && data.Color != " " && data.Color != null
+                                 select data).AsEnumerable().Distinct().
+                 Select(entry => new Color
+                 {
+                     ColorFilter = ColorFilter.ChangeColorNameForFilter(entry.Color),
+                     ColorName = entry.Color,
+                 }).ToList();
 
                 if (filteredItems.Count() != 0)
                 {
@@ -1051,10 +1076,10 @@ namespace TechnoTent.Models.ViewModel.Items
                 else
                 {
                     itemsList.Add(new ItemsOutputVM
-                    {
-                        Filters = filtersList,
-                        CategoryName = items.Select(u => u.CategoryName).First(),
-                    }
+                        {
+                            Filters = filtersList,
+                            CategoryName = items.Select(u => u.CategoryName).First(),
+                        }
                     );
                 }
 
@@ -1062,8 +1087,8 @@ namespace TechnoTent.Models.ViewModel.Items
                 {
                     if (item.Items != null)
                     {
-                        item.PriceMax = Convert.ToDouble(item.Items.Max(u => u.Price));
-                        item.PriceMin = Convert.ToDouble(item.Items.Min(u => u.Price));
+                        item.PriceMax = Convert.ToDouble(item.Items.Max(u => Convert.ToDouble(u.Price)));
+                        item.PriceMin = Convert.ToDouble(item.Items.Min(u => Convert.ToDouble(u.Price)));
 
                         if (item.PriceMin == item.PriceMax)
                             item.PriceMin = 0;

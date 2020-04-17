@@ -10,5 +10,6 @@ namespace TechnoTent.Models.ViewModel
         public List<MainImagesVM> mainImages { get; set; }
         public List<StocksVM> stokcs { get; set; }
         public List<NewsVM> news { get; set; }
+        public List<PartnersVM> partners { get; set; }
     }
 }

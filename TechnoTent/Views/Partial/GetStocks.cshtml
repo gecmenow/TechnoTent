@@ -20,7 +20,7 @@
                         <div class="info-item__text">
                             <div class="info-item__date"><i class="far fa-calendar-alt"></i> @Model[i].DateTime.ToShortDateString()</div>
                             <h3 class="info-item__title">@Model[i].Title</h3>
-                            <p class="info-item__excerpt">@Html.Raw(Model[i].Text.Remove(Model[i].Text.IndexOf("</p>")))</p>
+                            <p class="info-item__excerpt">@Html.Raw(Model[i].Text.Substring(0, 190)) ...</p>
                             <a href="/stocks/@Model[i].Id" class="info-link__read-more">@Resources.Resource.partial_articles_more</a>
                         </div>
                     </div>

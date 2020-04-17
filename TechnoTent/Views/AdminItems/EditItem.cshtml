@@ -191,10 +191,10 @@
 
                     </div>
                     @*<div class="product-edit__wrapper product-edit__type-toggle" style="display: none;">
-                <label class="edit__title">
-                    <input type="checkbox" name="" class="product-edit__type" disabled>Индивидуальный заказ
-                </label>
-            </div>*@
+                            <label class="edit__title">
+                                <input type="checkbox" name="" class="product-edit__type" disabled>Индивидуальный заказ
+                            </label>
+                        </div>*@
                     <label class="edit__title">Основная информация</label>
                     <div class="product-edit__wrapper additional-information__more">
                         <div class="product-edit__wrapper">
@@ -274,8 +274,14 @@
                         <div class="product-edit__wrapper">
                             <label class="edit__title">Вид текстильного изделия (рус)</label><input type="text" name="TextileProductTypeRu" class="input-product-edit" value="@Model.TextileProductTypeRu">
                         </div>
-                        <div class="product-edit__wrapper">
-                            <label class="edit__title">Описание (рус)</label><textarea name="DescriptionRu" class="input-product-edit">@Model.DescriptionRu</textarea>
+                        <div class="settings-edit__wrapper">
+                            <label class="edit__title">Описание (рус)</label>
+                            <div>
+                                <textarea class="main-info-textarea" name="DescriptionRu" style="position: absolute;visibility: hidden;z-index: -1" required>@Model.DescriptionRu</textarea>
+                                <div id="main-info-container__one" class="editor-container">
+
+                                </div>
+                            </div>
                         </div>
                         <div class="product-edit__wrapper">
                             <label class="edit__title">Цвет (рус)</label><input type="text" name="ColorRu" class="input-product-edit" value="@Model.ColorRu">
@@ -315,8 +321,14 @@
                         <div class="product-edit__wrapper">
                             <label class="edit__title">Вид текстильного изделия (укр)</label><input type="text" name="TextileProductTypeUa" class="input-product-edit" value="@Model.TextileProductTypeUa">
                         </div>
-                        <div class="product-edit__wrapper">
-                            <label class="edit__title">Описание (укр)</label><textarea name="DescriptionUa" class="input-product-edit">@Model.DescriptionUa</textarea>
+                        <div class="settings-edit__wrapper">
+                            <label class="edit__title">Описание (укр)</label>
+                            <div>
+                                <textarea class="main-info-textarea" name="DescriptionUa" style="position: absolute;visibility: hidden;z-index: -1" required>@Model.DescriptionUa</textarea>
+                                <div id="main-info-container__two" class="editor-container">
+
+                                </div>
+                            </div>
                         </div>
                         <div class="product-edit__wrapper">
                             <label class="edit__title">Цвет (укр)</label><input type="text" name="ColorUa" class="input-product-edit" value="@Model.ColorUa">
@@ -356,8 +368,14 @@
                         <div class="product-edit__wrapper">
                             <label class="edit__title">Вид текстильного изделия (англ)</label><input type="text" name="TextileProductTypeEn" class="input-product-edit" value="@Model.TextileProductTypeEn">
                         </div>
-                        <div class="product-edit__wrapper">
-                            <label class="edit__title">Описание (англ)</label><textarea name="DescriptionEn" class="input-product-edit">@Model.DescriptionEn</textarea>
+                        <div class="settings-edit__wrapper">
+                            <label class="edit__title">Описание (англ)</label>
+                            <div>
+                                <textarea class="main-info-textarea" name="DescriptionEn" style="position: absolute;visibility: hidden;z-index: -1" required>@Model.DescriptionEn</textarea>
+                                <div id="main-info-container__three" class="editor-container">
+
+                                </div>
+                            </div>
                         </div>
                         <div class="product-edit__wrapper">
                             <label class="edit__title">Цвет (англ)</label><input type="text" name="ColorEn" class="input-product-edit" value="@Model.ColorEn">
@@ -506,8 +524,8 @@
                             </div>
                         </div>
                         @*<div class="product-edit__wrapper">
-                            <label class="edit__title">Цена неопределена</label><input type="text" name="PriceUndefined" class="input-product-edit product-edit__price" value="@Model.PriceUndefined">
-                        </div>*@
+                                <label class="edit__title">Цена неопределена</label><input type="text" name="PriceUndefined" class="input-product-edit product-edit__price" value="@Model.PriceUndefined">
+                            </div>*@
                     }
                     else
                     {
@@ -520,8 +538,8 @@
                             </div>
                         </div>
                         @*<div class="product-edit__wrapper">
-                            <label class="edit__title">Цена неопределена</label><input type="text" name="PriceUndefined" class="input-product-edit product-edit__price" value="@Model.PriceUndefined">
-                        </div>*@
+                                <label class="edit__title">Цена неопределена</label><input type="text" name="PriceUndefined" class="input-product-edit product-edit__price" value="@Model.PriceUndefined">
+                            </div>*@
                     }
                     <div class="product-edit__wrapper">
                         <button type="submit" class="btn btn-success">Сохранить</button>
@@ -532,3 +550,66 @@
         </div>
     </main>
 </div>
+
+<script src='~/Content/libs/quill/quill.js'></script>
+<script>
+    var quill = new Quill('#main-info-container__one', {
+        modules: {
+            toolbar: [
+                [{ 'size': ['small', false, 'large', 'huge'] }],
+                [{ 'header': ['1', '2', '3', '4'] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['link', 'blockquote'],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                [{ 'color': [] }, { 'background': [] }],
+                [{ 'align': [] }],
+                ['image', 'video'],
+                ['clean']
+            ]
+        },
+        placeholder: 'Введдите текст',
+        theme: 'snow'
+    });
+    var quill = new Quill('#main-info-container__two', {
+        modules: {
+            toolbar: [
+                [{ 'size': ['small', false, 'large', 'huge'] }],
+                [{ 'header': ['1', '2', '3', '4'] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['link', 'blockquote'],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                [{ 'color': [] }, { 'background': [] }],
+                [{ 'align': [] }],
+                ['image', 'video'],
+                ['clean']
+            ]
+        },
+        placeholder: 'Введдите текст',
+        theme: 'snow'
+    });
+    var quill = new Quill('#main-info-container__three', {
+        modules: {
+            toolbar: [
+                [{ 'size': ['small', false, 'large', 'huge'] }],
+                [{ 'header': ['1', '2', '3', '4'] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['link', 'blockquote'],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                [{ 'color': [] }, { 'background': [] }],
+                [{ 'align': [] }],
+                ['image', 'video'],
+                ['clean']
+            ]
+        },
+        placeholder: 'Введдите текст',
+        theme: 'snow'
+    });
+    $(".ql-editor").each(function () {
+        $(this).html($(this).parents().eq(1).children(".main-info-textarea").val());
+    });
+    $(".product-edit").click(function () {
+        $(".main-info-textarea").each(function () {
+            $(this).val($(this).parents().eq(0).children(".editor-container").children(".ql-editor").html())
+        });
+    });
+</script>

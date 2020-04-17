@@ -132,9 +132,13 @@
             <div class="wrapper">
                 <div class="partners-container">
                     <h2 class="section-title color__blue">@Resources.Resource.home_partners</h2>
-                    <div class="partners__list">
-                        <img src="~/Content/images/logo_branda.jpg" alt="" class="partners__item">
-                        <img src="~/Content/images/logo_branda2.jpg" alt="" class="partners__item">
+                    <div class="swiper-container partners-slider">
+                        <div class="swiper-wrapper">
+                            @foreach (var image in Model.partners)
+                            {
+                                <div class="swiper-slide"><img src="~/Content/images/partners/@image.ImagePath" alt="@image.ImagePath"></div>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
@@ -218,6 +222,16 @@
                 $(".popup__bg").show();
                 $('<div class="successful-buy-wraper"> <h2 class="successful-buy__title">Спасибо!</h2> <img src="Content/images/box.jpg" alt="коробка" class="successful-buy__img"> <p class="successful-buy__text">Ваш заказ успешно оформлен. Мы свяжемся с вами в ближайшее время</p> <i class="fas fa-times popup-close__button"></i> </div>').appendTo('.popup__bg');
                 document.cookie = "successfulOrder=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
+
+        var partnersSwiper = new Swiper('.swiper-container.partners-slider', {
+            slidesPerView: 2,
+            loop: true,
+            breakpoints: {
+                670: {
+                    slidesPerView: 1,
+                },
             }
+        })
     </script>
 }

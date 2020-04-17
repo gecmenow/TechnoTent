@@ -763,6 +763,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Курс на.
+        /// </summary>
+        public static string exchange {
+            get {
+                return ResourceManager.GetString("exchange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на грн.
+        /// </summary>
+        public static string exchange_vallet {
+            get {
+                return ResourceManager.GetString("exchange_vallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на почему с нами выгодно сотрудничать?.
         /// </summary>
         public static string home_advantage_title {

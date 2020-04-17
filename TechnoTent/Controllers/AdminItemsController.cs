@@ -42,7 +42,7 @@ namespace TechnoTent.Controllers
             return View(data);
         }
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult AddItem(AdminItemVM item)
         {
             //if (ModelState.IsValid)
@@ -62,7 +62,7 @@ namespace TechnoTent.Controllers
             return View(data);
         }
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult EditItem(AdminItemVM item, IEnumerable<HttpPostedFileBase> uploads)
         {
             AdminItems.EditItem(item, uploads);

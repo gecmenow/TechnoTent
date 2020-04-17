@@ -109,18 +109,18 @@
                                                     {
                                                         foreach (var filter in ViewBag.Filters)
                                                         {
-                                                            if (filter.Colors != null && filter.Colors.Contains(colors) == true)
+                                                            if (filter.Colors != null && filter.Colors.Contains(colors.ColorFilter) == true)
                                                             {
                                                                 <li class="filter-inp__item">
-                                                                    <input class="form-input__checkbox" type="checkbox" value="@colors" name="colors" checked>
-                                                                    <span>@colors</span>
+                                                                    <input class="form-input__checkbox" type="checkbox" value="@colors.ColorFilter" name="colors" checked>
+                                                                    <span>@colors.ColorName</span>
                                                                 </li>
                                                             }
                                                             else
                                                             {
                                                                 <li class="filter-inp__item">
-                                                                    <input class="form-input__checkbox" type="checkbox" name="colors" value="@colors">
-                                                                    <span>@colors</span>
+                                                                    <input class="form-input__checkbox" type="checkbox" name="colors" value="@colors.ColorFilter">
+                                                                    <span>@colors.ColorName</span>
                                                                 </li>
                                                             }
                                                         }
@@ -151,16 +151,16 @@
                                                                 {
                                                                     foreach (var selectedBrand in filter.Brands)
                                                                     {
-                                                                        if (brand == selectedBrand)
+                                                                        if (brand.BrandName == selectedBrand)
                                                                         {
                                                                             <li class="filter-inp__item">
-                                                                                <input class="form-input__checkbox" type="checkbox" name="subCategory" value="@brand" checked> @brand
+                                                                                <input class="form-input__checkbox" type="checkbox" name="subCategory" value="@brand.BrandUrl" checked> @brand.BrandName
                                                                             </li>
                                                                         }
                                                                         else
                                                                         {
                                                                             <li class="filter-inp__item">
-                                                                                <input class="form-input__checkbox" name="subCategory" type="checkbox" value="@brand"> @brand
+                                                                                <input class="form-input__checkbox" name="subCategory" type="checkbox" value="@brand.BrandUrl"> @brand.BrandName
                                                                             </li>
                                                                         }
                                                                     }
@@ -168,7 +168,7 @@
                                                                 else
                                                                 {
                                                                     <li class="filter-inp__item">
-                                                                        <input class="form-input__checkbox" name="subCategory" type="checkbox" value="@brand"> @brand
+                                                                        <input class="form-input__checkbox" name="subCategory" type="checkbox" value="@brand.BrandUrl"> @brand.BrandName
                                                                     </li>
                                                                 }
                                                             }
@@ -207,11 +207,15 @@
                                                             <a class="catalog__item-link" href="/product/@item.NameUrl/@item.VendorCode">
                                                                 @if (item.Image1 != null)
                                                                 {
-                                                                    <img class="catalog__item-img" src="~/Content/images/items/@item.Image1" alt="@item.Name">
+                                                                    <span class="catalog__item-img-wrapper">
+                                                                        <img class="catalog__item-img" src="~/Content/images/items/@item.Image1" alt="@item.Name">
+                                                                    </span>
                                                                 }
                                                                 else
                                                                 {
-                                                                    <img class="catalog__item-img" src="~/Content/images/noimg.gif" alt="@item.Name">
+                                                                    <span class="catalog__item-img-wrapper">
+                                                                        <img class="catalog__item-img" src="~/Content/images/noimg.gif" alt="@item.Name">
+                                                                    </span>
                                                                 }
                                                                 <h3 class="catalog__item-title">@item.Name</h3>
                                                                 <span class="catalog__item-price-wrapper">
@@ -225,10 +229,6 @@
                                                                         {
                                                                             <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet</span>
                                                                         }
-                                                                        @*@if (item.IsStock == true)
-                        {
-                            <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet</span>
-                        }*@
                                                                     }
                                                                     else
                                                                     {
@@ -243,13 +243,17 @@
                                                             <a class="catalog__item-link" href="/product/@item.NameUrl/@item.VendorCode">
                                                                 @if (item.Image1 != null)
                                                                 {
-                                                                    <img class="catalog__item-img" src="~/Content/images/items/@item.Image1" alt="@item.Name">
+                                                                    <span class="catalog__item-img-wrapper">
+                                                                        <img class="catalog__item-img" src="~/Content/images/items/@item.Image1" alt="@item.Name">
+                                                                        </span>
                                                                 }
                                                                 else
                                                                 {
-                                                                    <img class="catalog__item-img" src="~/Content/images/no_image.svg" alt="@item.Name">
+                                                                    <span class="catalog__item-img-wrapper">
+                                                                        <img class="catalog__item-img" src="~/Content/images/no_image.svg" alt="@item.Name">
+                                                                    </span>
                                                                 }
-                                                                <h3 class="catalog__item-title">@item.NameRu</h3>
+                                                                <h3 class="catalog__item-title">@item.Name</h3>
                                                                 <span class="catalog__item-price-wrapper">
                                                                     @if (item.inStock == true)
                                                                     {

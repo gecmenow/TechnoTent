@@ -12,6 +12,12 @@ namespace TechnoTent.Models.ViewModel
         public List<string> Colors { get; set; }
         public double PriceMin { get; set; }
         public double PriceMax { get; set; }
-        public List<string> BrandsForFilters { get; set; }
+        public List<Filters> BrandsForFilters { get; set; }
+
+        public class Filters 
+        {
+            public string BrandName { get; set; }
+            public string BrandUrl { get; set; }
+        }
     }
 }

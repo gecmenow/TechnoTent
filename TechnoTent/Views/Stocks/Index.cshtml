@@ -25,7 +25,9 @@
                             </h3>
                             <div class="article__introtext">
                                 <p>
-                                    @Html.Raw(stocks.Text.Remove(stocks.Text.IndexOf("</p>")))
+                                    @Html.Raw(news.Text.Substring(0, 190))
+                                    ...
+                                    @*@Html.Raw(stocks.Text.Remove(stocks.Text.IndexOf("</p>")))*@
                                 </p>
                             </div>
                             <div class="article__date">
