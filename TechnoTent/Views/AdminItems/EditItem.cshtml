@@ -477,43 +477,43 @@
                             {
                                 <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
                             }
-                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
+                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple", @id = "upload__img1" })
                             <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image1"></i>
                         </div>
                         <div class="upload__img-item">
                             @if (Model.Image2 != null)
                             {
-                                <label for="upload__img1"><img src="~/Content/images/items/@Model.Image2"></label>
+                                <label for="upload__img2"><img src="~/Content/images/items/@Model.Image2"></label>
                             }
                             else
                             {
-                                <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
+                                <label for="upload__img2"><img src="~/Content/images/no_image.svg"></label>
                             }
-                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
+                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple", @id = "upload__img2" })
                             <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image2"></i>
                         </div>
                         <div class="upload__img-item">
                             @if (Model.Image3 != null)
                             {
-                                <label for="upload__img1"><img src="~/Content/images/items/@Model.Image3"></label>
+                                <label for="upload__img3"><img src="~/Content/images/items/@Model.Image3"></label>
                             }
                             else
                             {
-                                <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
+                                <label for="upload__img3"><img src="~/Content/images/no_image.svg"></label>
                             }
-                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
+                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple", @id = "upload__img3" })
                             <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image3"></i>
                         </div>
                         <div class="upload__img-item">
                             @if (Model.Image4 != null)
                             {
-                                <label for="upload__img1"><img src="~/Content/images/items/@Model.Image4"></label>
+                                <label for="upload__img4"><img src="~/Content/images/items/@Model.Image4"></label>
                             }
                             else
                             {
-                                <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
+                                <label for="upload__img4"><img src="~/Content/images/no_image.svg"></label>
                             }
-                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple" })
+                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple", @id = "upload__img4" })
                             <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image4"></i>
                         </div>
                     </div>
@@ -626,5 +626,26 @@
         $(".main-info-textarea").each(function () {
             $(this).val($(this).parents().eq(0).children(".editor-container").children(".ql-editor").html())
         });
+    });
+
+    $("input[name='PriceEn']").keyup(function () {
+        if ($("input[name='ProductBuyTypeMeter']:checked").length >= 1) {
+            if ($(this).val() > 0) {
+                $("input[name='PriceUa']").val(($(this).val() * $(".exchange-value").html()).toFixed(2))
+            }
+            else {
+                $("input[name='PriceUa']").val("");
+            }
+        }
+    });
+    $("input[name='StockPriceEn']").keyup(function () {
+        if ($("input[name='ProductBuyTypeMeter']:checked").length >= 1) {
+            if ($(this).val() > 0) {
+                $("input[name='StockPriceUa']").val(($(this).val() * $(".exchange-value").html()).toFixed(2))
+            }
+            else {
+                $("input[name='StockPriceUa']").val("");
+            }
+        }
     });
 </script>

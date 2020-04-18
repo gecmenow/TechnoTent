@@ -192,15 +192,15 @@
                     <div class="order-edit__wrapper">
                         <label class="edit__title">Способ оплаты</label><br>
                         <select class="payment-method" name="PaymentMethod">
-                            @if (Model.PaymentMethod == "На карту Приват банка")
+                            @if (Model.PaymentMethod == "Безналичный расчёт")
                             {
-                                <option class="payment-method__item" value="На карту Приват банка" selected>На карту Приват банка</option>
-                                <option class="payment-method__item" value="Оплата при получении">Оплата при получении</option>
+                                <option class="payment-method__item" value="Безналичный расчёт" selected>Безналичный расчёт</option>
+                                <option class="payment-method__item" value="Наложенный платеж">Наложенный платеж</option>
                             }
                             else
                             {
-                                <option class="payment-method__item" value="На карту Приват банка">На карту Приват банка</option>
-                                <option class="payment-method__item" value="Оплата при получении" selected>Оплата при получении</option>
+                        <option class="payment-method__item" value="Безналичный расчёт">Безналичный расчёт</option>
+                        <option class="payment-method__item" value="Наложенный платеж" selected>Наложенный платеж</option>
                             }
 
                         </select>
@@ -208,13 +208,13 @@
                     <div class="order-edit__wrapper">
                         <label class="edit__title">Способ доставки</label><br>
                         <select class="delivery-status" name="DeliveryMethod">
-                            @if (Model.DeliveryMethod == "Самовывоз")
+                            @if (Model.DeliveryMethod == "samovyvoz")
                             {
                                 <option class="delivery-method__item" value="Самовывоз" selected>Самовывоз</option>
                                 <option class="delivery-method__item" value="Новая почта">Новая почта</option>
                                 <option class="delivery-method__item" value="Другой способ доставки">Другой способ доставки</option>
                             }
-                            else if (Model.DeliveryMethod == "Новая почта")
+                            else if (Model.DeliveryMethod == "nova_poshta")
                             {
                                 <option class="delivery-method__item" value="Самовывоз">Самовывоз</option>
                                 <option class="delivery-method__item" value="Новая почта" selected>Новая почта</option>
@@ -320,11 +320,15 @@
                                     }
                                 }
                             }
-                            <li class="col-3">
-                                <div class="catalog__item">
-                                    Товар был удалён
-                                </div>
-                            </li>
+                            else
+                            {
+                                <li class="col-3">
+                                    <div class="catalog__item">
+                                        Товар был удалён
+                                    </div>
+                                </li>
+                            }
+
                         </ul>
                     </div>
                     <div class="add-order-product__title">Добавить товар к заказу</div>

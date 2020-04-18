@@ -1145,15 +1145,4 @@ $(document).ready(function () {
         }
     });
     //
-
-    if ($(".header-info").find(".exchange-rates").length == 1) {
-        $.ajax({
-            dataType: 'json',
-            url: "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=USD&json",
-            success: function (data) {
-                $(".exchange-date").html(data[0].exchangedate.replace(/\./g, '/'));
-                $(".exchange-value").html(data[0].rate.toFixed(2));
-            }
-        })
-    }
 })

@@ -26,32 +26,47 @@
                                     <div class="order-history__quantity">@order.TotalItemsCount на @order.TotalPrice</div>
                                 </div>
                                 <div class="order-history__details-inner order-history-products__list" style="display: none;">
-                                    <!-- style="display: none;" -->
-                                    @foreach (var item in order.Items)
+                                    @if (order.Items.Count != 0)
+                                    {
+                                        foreach (var item in order.Items)
+                                        {
+                                            <div class="order-history-products__item">
+                                                @if (item.ItemImages != null)
+                                                {
+                                                    <img src="~/Content/images/items/@item.ItemImages" alt="@item.ItemName" class="order-history-products__img">
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/Content/images/no_image.svg" alt="@item.ItemName" class="order-history-products__img">
+                                                }
+                                                <div class="order-history-products__title">
+                                                    <a href="" class="order-history-products__title-link">@item.ItemName</a>
+                                                    <span class="order-history-products__code">@item.ItemVendorCode</span>
+                                                    <div class="order-history-products__price">@item.ItemPrice</div>
+                                                </div>
+                                                @if (item.ProductBuyTypeMeter)
+                                                {
+                                                    <div class="order-history-products__quantity">
+                                                        @item.ItemCount @Resources.Resource.vallet_to_meter
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="order-history-products__quantity">
+                                                        @item.ItemCount @Resources.Resource.vallet_item_type
+                                                    </div>
+                                                }
+
+                                                <div class="order-history-products__cost">
+                                                    @item.ItemCount @Resources.Resource.vallet
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    else
                                     {
                                         <div class="order-history-products__item">
-                                            <img src="~/Content/images/items/@item.ItemImages" alt="@item.ItemName" class="order-history-products__img">
-                                            <div class="order-history-products__title">
-                                                <a href="" class="order-history-products__title-link">@item.ItemName</a>
-                                                <span class="order-history-products__code">@item.ItemVendorCode</span>
-                                                <div class="order-history-products__price">@item.ItemPrice</div>
-                                            </div>
-                                            @if (item.ProductBuyTypeMeter)
-                                            {
-                                                <div class="order-history-products__quantity">
-                                                    @item.ItemCount @Resources.Resource.vallet_to_meter
-                                                </div>
-                                            }
-                                            else
-                                            {
-                                                <div class="order-history-products__quantity">
-                                                    @item.ItemCount @Resources.Resource.vallet_item_type
-                                                </div>
-                                            }
-
-                                            <div class="order-history-products__cost">
-                                                @item.ItemCount @Resources.Resource.vallet
-                                            </div>
+                                            Товар удалён
                                         </div>
                                     }
                                 </div>
@@ -88,7 +103,18 @@
                                             @Resources.Resource.orders_delivery
                                         </div>
                                         <div class="profile-order-info-field">
-                                            @order.DeliveryMethod
+                                            @if (order.DeliveryMethod == "nova_poshta")
+                                            {
+                                                @Resources.Resource.order_form_delivery2
+                                            }
+                                            else if (order.DeliveryMethod == "another")
+                                            {
+                                                @Resources.Resource.order_delivery_another
+                                            }
+                                            else
+                                            {
+                                                @Resources.Resource.order_form_delivery1
+                                            }
                                         </div>
                                     </div>
                                     <div class="profile-order-info__item">

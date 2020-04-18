@@ -517,4 +517,25 @@
             $(this).val($(this).parents().eq(0).children(".editor-container").children(".ql-editor").html())  
         });
     });
+
+    $("input[name='PriceEn']").keyup(function () {
+        if ($("input[name='ProductBuyTypeMeter']:checked").length >= 1) {
+            if ($(this).val() > 0) {
+                $("input[name='PriceUa']").val(($(this).val() * $(".exchange-value").html()).toFixed(2))
+            }
+            else {
+                $("input[name='PriceUa']").val("");
+            }
+        }
+    });
+    $("input[name='StockPriceEn']").keyup(function () {
+        if ($("input[name='ProductBuyTypeMeter']:checked").length >= 1) {
+            if ($(this).val() > 0) {
+                $("input[name='StockPriceUa']").val(($(this).val() * $(".exchange-value").html()).toFixed(2))
+            }
+            else {
+                $("input[name='StockPriceUa']").val("");
+            }
+        }
+    });
 </script>

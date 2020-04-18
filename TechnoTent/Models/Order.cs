@@ -272,15 +272,30 @@ namespace TechnoTent.Models
                     {
                         var itemVendoreCode = item.ItemsVendorCodeList[i];
                         //чек на язык
-                        orderItems.Add(new OrderItemsVM
+                        try
                         {
-                            ItemName = db.ItemsDb.Where(u => u.VendorCode == itemVendoreCode).FirstOrDefault().NameEn,
-                            ItemImages = db.ItemsDb.Where(u => u.VendorCode == itemVendoreCode).FirstOrDefault().Image1,
-                            ItemPrice = itemsPriceList[i],
-                            ItemCount = itemsCount[i],
-                        });
+                            string itemName = "";
+                            string itemImages = "";
 
-                        item.Items = orderItems;
+                            if (db.ItemsDb.Any(x => x.VendorCode == itemVendoreCode))
+                            {
+                                itemName = db.ItemsDb.Where(u => u.VendorCode == itemVendoreCode).FirstOrDefault().NameRu;
+                                itemImages = db.ItemsDb.Where(u => u.VendorCode == itemVendoreCode).FirstOrDefault().Image1;
+
+                                //чек на язык
+                                orderItems.Add(new OrderItemsVM
+                                {
+                                    ItemName = itemName,
+                                    ItemImages = itemImages,
+                                    ItemPrice = itemsPriceList[i],
+                                    ItemCount = itemsCount[i],
+                                });
+                            }
+
+                            item.Items = orderItems;
+                        }
+                        catch (Exception)
+                        { }
 
                         //item.ItemsNameList.Add(db.ItemsDb.Where(u => u.VendorCode == vendorCode).FirstOrDefault().NameEn);
                         //item.ItemsImagesList.Add(db.ItemsDb.Where(u => u.VendorCode == itemsList).FirstOrDefault().Image1);
