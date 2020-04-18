@@ -843,6 +843,9 @@
   <data name="partial_cat_menu6" xml:space="preserve">
     <value>Contacts</value>
   </data>
+  <data name="partial_cat_menu7" xml:space="preserve">
+    <value>Prices</value>
+  </data>
   <data name="partial_cat_title" xml:space="preserve">
     <value>Products and service</value>
   </data>

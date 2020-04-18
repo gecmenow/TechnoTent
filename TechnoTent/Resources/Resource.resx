@@ -845,6 +845,9 @@
   <data name="partial_cat_menu6" xml:space="preserve">
     <value>Контакты</value>
   </data>
+  <data name="partial_cat_menu7" xml:space="preserve">
+    <value>Прайсы</value>
+  </data>
   <data name="partial_cat_title" xml:space="preserve">
     <value>Товары и услуги</value>
   </data>

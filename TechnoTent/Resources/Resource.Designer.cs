@@ -2235,6 +2235,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Прайсы.
+        /// </summary>
+        public static string partial_cat_menu7 {
+            get {
+                return ResourceManager.GetString("partial_cat_menu7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Товары и услуги.
         /// </summary>
         public static string partial_cat_title {

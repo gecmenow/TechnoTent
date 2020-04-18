@@ -170,6 +170,18 @@ namespace TechnoTent
                url: "admin/contacts",
                defaults: new { controller = "AdminMainContacts", action = "Index" }
            );
+
+            routes.MapRoute(
+               name: "adminPrices",
+               url: "admin/prices",
+               defaults: new { controller = "AdminPrices", action = "Index" }
+           );
+
+            routes.MapRoute(
+               name: "adminPartners",
+               url: "admin/partners",
+               defaults: new { controller = "AdminPartners", action = "Index" }
+           );
             //End of Admin Part
 
             routes.MapRoute(
@@ -344,6 +356,12 @@ namespace TechnoTent
                 name: "delivery",
                 url: "delivery",
                 defaults: new { controller = "Delivery", action = "Index" }
+           );
+
+            routes.MapRoute(
+                name: "prices",
+                url: "prices",
+                defaults: new { controller = "Prices", action = "Index" }
            );
 
             routes.MapRoute(
