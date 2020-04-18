@@ -1,0 +1,18 @@
+namespace TechnoTent.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class addedcommentfieldtoorderdb : DbMigration
+    {
+        public override void Up()
+        {
+            AddColumn("dbo.DbOrders", "Comment", c => c.String());
+        }
+        
+        public override void Down()
+        {
+            DropColumn("dbo.DbOrders", "Comment");
+        }
+    }
+}

@@ -14,7 +14,7 @@ namespace TechnoTent.Models
     {
         public static List<string> GetImagesByItemId(int id)
         {
-            string noImage = "no_image.png";
+            string noImage = "no_image.svg";
 
             List<string> images = new List<string>();
 
@@ -50,7 +50,7 @@ namespace TechnoTent.Models
 
         public static string GetImageIfNull()
         {
-            string noImage = "no_image.png";
+            string noImage = "no_image.svg";
 
             return noImage;
         }

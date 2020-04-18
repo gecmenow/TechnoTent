@@ -205,7 +205,7 @@ $(document).ready(function () {
         errorName = checkInput(inputName, langth, errorName);
         errorEmail = checkEmail(inputEmail, errorEmail);
         errorTel = checkTel(inputTel, errorTel);        
-        if($(".form-input__delivery:checked").val() == "samovyvoz"){
+        if ($(".form-input__delivery:checked").val() == "samovyvoz" || $(".form-input__delivery:checked").val() == "another"){
             if(errorName == false && errorEmail == false && errorTel == false)
             {
                 $(".checkout-form").submit();                              
@@ -676,7 +676,7 @@ $(document).ready(function () {
         let delivery = $(this).val();
         $(".form-input__city").val("");
         $(".form-input__address").val("");
-        if(delivery == "samovyvoz"){ 
+        if (delivery == "samovyvoz" || delivery == "another"){ 
             $(".checkout-step__title.city").css("text-decoration", "line-through");
             $(".form-section.city").slideUp("slow");
             $(".form-input__city").attr("disabled", "disabled");

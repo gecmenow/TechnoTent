@@ -729,8 +729,14 @@
   <data name="orders_tel" xml:space="preserve">
     <value>Phone</value>
   </data>
+  <data name="order_comment" xml:space="preserve">
+    <value>Order comment</value>
+  </data>
   <data name="order_confirm" xml:space="preserve">
     <value>The order is confirmed</value>
+  </data>
+  <data name="order_delivery_another" xml:space="preserve">
+    <value>Another delivery method</value>
   </data>
   <data name="order_edit_order" xml:space="preserve">
     <value>Edit order</value>

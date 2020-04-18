@@ -730,8 +730,14 @@
   <data name="orders_tel" xml:space="preserve">
     <value>Телефон</value>
   </data>
+  <data name="order_comment" xml:space="preserve">
+    <value>Коментарiй до заказу</value>
+  </data>
   <data name="order_confirm" xml:space="preserve">
     <value>Замовлення підтверджую</value>
+  </data>
+  <data name="order_delivery_another" xml:space="preserve">
+    <value>Iтший спосiб доставки</value>
   </data>
   <data name="order_edit_order" xml:space="preserve">
     <value>Редагувати замовлення</value>

@@ -1830,11 +1830,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Комментарий к заказу.
+        /// </summary>
+        public static string order_comment {
+            get {
+                return ResourceManager.GetString("order_comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Заказ подтверждаю.
         /// </summary>
         public static string order_confirm {
             get {
                 return ResourceManager.GetString("order_confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Другой способ доставки.
+        /// </summary>
+        public static string order_delivery_another {
+            get {
+                return ResourceManager.GetString("order_delivery_another", resourceCulture);
             }
         }
         

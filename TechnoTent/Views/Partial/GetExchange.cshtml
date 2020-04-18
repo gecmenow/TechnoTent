@@ -1,0 +1,5 @@
+﻿@model TechnoTent.Models.Exchange
+
+<div class="exchange-rates">
+    Курс на <span class="exchange-date">@Model.Date</span><i class="fas fa-dollar-sign"></i><span class="exchange-value">@Model.rate.Substring(0,5)</span>грн.
+</div>

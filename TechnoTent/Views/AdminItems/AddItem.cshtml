@@ -6,22 +6,25 @@
 
 @section AdminHeader
 {
-<header class="admin-header">
-    <a href="/" class="admin-header__logo">
-        <span class="logo-lg"><b>Админ</b> панель</span>
-    </a>
-    <nav class="navbar-header-top">
-        <a href="#" class="settings navbar-header__toggle"><i class="fa fa-cogs" aria-hidden="true"></i></a>
-        <ul class="navbar-header__list" style="display: none;">
-            <li class="navbar-header__item">
-                <a href="/admin"><i class="fas fa-cog"><span>Настройки</span></i></a>
-            </li>
-            <li class="navbar-header__item">
-                <a href="/admin/logout"><i class="fas fa-sign-out-alt"><span>Выйти</span></i></a>
-            </li>
-        </ul>
-    </nav>
-</header>
+    <header class="admin-header">
+        <a href="/" class="admin-header__logo">
+            <span class="logo-lg"><b>Админ</b> панель</span>
+        </a>
+        @{
+            Html.RenderAction("GetExchange", "Partial");
+        }
+        <nav class="navbar-header-top">
+            <a href="#" class="settings navbar-header__toggle"><i class="fa fa-cogs" aria-hidden="true"></i></a>
+            <ul class="navbar-header__list" style="display: none;">
+                <li class="navbar-header__item">
+                    <a href="/admin"><i class="fas fa-cog"><span>Настройки</span></i></a>
+                </li>
+                <li class="navbar-header__item">
+                    <a href="/admin/logout"><i class="fas fa-sign-out-alt"><span>Выйти</span></i></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 }
 <main class="main-admin">
     <aside class="admin-sidebar">

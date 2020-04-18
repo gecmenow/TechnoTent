@@ -731,8 +731,14 @@
   <data name="orders_tel" xml:space="preserve">
     <value>Телефон</value>
   </data>
+  <data name="order_comment" xml:space="preserve">
+    <value>Комментарий к заказу</value>
+  </data>
   <data name="order_confirm" xml:space="preserve">
     <value>Заказ подтверждаю</value>
+  </data>
+  <data name="order_delivery_another" xml:space="preserve">
+    <value>Другой способ доставки</value>
   </data>
   <data name="order_edit_order" xml:space="preserve">
     <value>Редактировать заказ</value>

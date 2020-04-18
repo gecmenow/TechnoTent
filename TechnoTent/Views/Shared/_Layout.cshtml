@@ -53,9 +53,9 @@
                             <a href="/language/uk/" class="lang-switch__item">ua</a>
                             <a href="/language/en/" class="lang-switch__item">eng</a>
                         </div>
-                        <div class="exchange-rates">
-                            @Resources.Resource.exchange <span class="exchange-date"></span><i class="fas fa-dollar-sign"></i><span class="exchange-value"></span>@Resources.Resource.exchange_vallet.
-                        </div>
+                        @{
+                            Html.RenderAction("GetExchange", "Partial");
+                        }
                     </div>
                     @{
                         Html.RenderAction("CheckLoggedIn", "Partial");

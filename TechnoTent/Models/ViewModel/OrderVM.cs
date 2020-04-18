@@ -33,6 +33,7 @@ namespace TechnoTent.Models.ViewModel
         public string OrderStatus { get; set; }
         public string PaymentStatus { get; set; }
         public string OrderLanguage { get; set; }
+        public string Comment { get; set; }
         public DateTime Date { get; set; }
         public Dictionary<Guid, string> NovaPoshtaCities { get; set; }
         public List<string> NovaPoshtaCitiePostOffice { get; set; }

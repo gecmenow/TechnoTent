@@ -413,6 +413,10 @@
     <Compile Include="Migrations\202004161851597_added dbs.Designer.cs">
       <DependentUpon>202004161851597_added dbs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004181821212_added comment field to orderdb.cs" />
+    <Compile Include="Migrations\202004181821212_added comment field to orderdb.Designer.cs">
+      <DependentUpon>202004181821212_added comment field to orderdb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutInfo.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -450,6 +454,7 @@
     <Compile Include="Models\DataBase\DbStocks.cs" />
     <Compile Include="Models\DataBase\DbSubCategory.cs" />
     <Compile Include="Models\DataBase\DbUser.cs" />
+    <Compile Include="Models\Exchange.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Home.cs" />
     <Compile Include="Models\Image.cs" />
@@ -486,7 +491,6 @@
     <Compile Include="Models\ViewModel\Admin\AdminEditVM.cs" />
     <Compile Include="Models\ViewModel\Admin\AdminItemVM.cs" />
     <Compile Include="Models\ViewModel\Admin\AdminNewsVM.cs" />
-    <Compile Include="Models\ViewModel\Admin\AdminOrdersVM.cs" />
     <Compile Include="Models\ViewModel\Admin\AdminStocksVM.cs" />
     <Compile Include="Models\UserModels\Authentication.cs" />
     <Compile Include="Models\ViewModel\Admin\AdminSubCategoryVM.cs" />
@@ -667,6 +671,7 @@
     <Content Include="Views\Prices\Index.cshtml" />
     <Content Include="Views\AdminPrices\Index.cshtml" />
     <Content Include="Views\AdminPrices\DeletePrices.cshtml" />
+    <Content Include="Views\Partial\GetExchange.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -868,6 +873,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004161851597_added dbs.resx">
       <DependentUpon>202004161851597_added dbs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004181821212_added comment field to orderdb.resx">
+      <DependentUpon>202004181821212_added comment field to orderdb.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

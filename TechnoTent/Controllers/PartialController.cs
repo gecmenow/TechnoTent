@@ -60,6 +60,14 @@ namespace TechnoTent.Controllers
         }
 
         [ChildActionOnly] // action cannot be requested directly via URL
+        public ActionResult GetExchange()
+        {
+            var data = Exchange.GetExchange();
+
+            return PartialView(data);
+        }
+
+        [ChildActionOnly] // action cannot be requested directly via URL
         public ActionResult CheckLoggedIn()
         {
             var data = Models.User.CheckLoggedIn();

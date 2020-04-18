@@ -23,6 +23,9 @@
         <a href="/" class="admin-header__logo">
             <span class="logo-lg"><b>Админ</b> панель</span>
         </a>
+        @{
+            Html.RenderAction("GetExchange", "Partial");
+        }
         <nav class="navbar-header-top">
             <a href="#" class="settings navbar-header__toggle"><i class="fa fa-cogs" aria-hidden="true"></i></a>
             <ul class="navbar-header__list" style="display: none;">

@@ -35,6 +35,7 @@ namespace TechnoTent.Models
                     ItemsVendorCode = u.ItemsVendorCode,
                     ItemsPrice = u.ItemsPrice,
                     OrderLanguage = u.OrderLanguage,
+                    Comment = u.Comment,
                 }).ToList();
 
                 List<string> itemsPriceList = new List<string>();
@@ -54,16 +55,26 @@ namespace TechnoTent.Models
                         for (int i = 0; i < order.ItemsVendorCodeList.Count(); i++)
                         {
                             var itemVendoreCode = order.ItemsVendorCodeList[i];
+
                             try
                             {
-                                //чек на язык
-                                orderItems.Add(new OrderItemsVM
+                                string itemName = "";
+                                string itemImages = "";
+
+                                if (db.ItemsDb.Any(x=>x.VendorCode == itemVendoreCode))
                                 {
-                                    ItemName = db.ItemsDb.Where(u => u.VendorCode == itemVendoreCode).FirstOrDefault().NameRu,
-                                    ItemImages = db.ItemsDb.Where(u => u.VendorCode == itemVendoreCode).FirstOrDefault().Image1,
-                                    ItemPrice = itemsPriceList[i],
-                                    ItemCount = itemsCount[i],
-                                });
+                                    itemName = db.ItemsDb.Where(u => u.VendorCode == itemVendoreCode).FirstOrDefault().NameRu;
+                                    itemImages = db.ItemsDb.Where(u => u.VendorCode == itemVendoreCode).FirstOrDefault().Image1;
+
+                                    //чек на язык
+                                    orderItems.Add(new OrderItemsVM
+                                    {
+                                        ItemName = itemName,
+                                        ItemImages = itemImages,
+                                        ItemPrice = itemsPriceList[i],
+                                        ItemCount = itemsCount[i],
+                                    });
+                                }
 
                                 order.Items = orderItems;
                             }
@@ -103,6 +114,7 @@ namespace TechnoTent.Models
                     ItemsVendorCode = u.ItemsVendorCode,
                     ItemsPrice = u.ItemsPrice,
                     OrderLanguage = u.OrderLanguage,
+                    Comment = u.Comment,
                 }).FirstOrDefault();
 
                 List<string> itemsPriceList = new List<string>();
@@ -120,31 +132,34 @@ namespace TechnoTent.Models
 
                     var item = db.ItemsDb.Where(u => u.VendorCode == itemVendoreCode).FirstOrDefault();
 
-                    double itemMinOrder = 0;
-
-                    if (item.ProductBuyTypeMeter)
-                        itemMinOrder = item.Width;
-                    else
-                        itemMinOrder = 1;
-
-                    try
+                    if (item != null)
                     {
-                        //чек на язык
-                        orderItems.Add(new OrderItemsVM
-                        {
-                            ItemName = item.NameRu,
-                            ItemImages = item.Image1,
-                            ItemPrice = itemsPriceList[i],
-                            ItemCount = itemsCount[i],
-                            ItemVendorCode = data.ItemsVendorCodeList[i],
-                            ItemMinOrder = itemMinOrder.ToString(),
-                            ProductBuyTypeMeter = item.ProductBuyTypeMeter,
-                        });
-                    }
-                    catch(Exception e)
-                    { }
+                        double itemMinOrder = 0;
 
-                    data.Items = orderItems;
+                        if (item.ProductBuyTypeMeter)
+                            itemMinOrder = item.Width;
+                        else
+                            itemMinOrder = 1;
+
+                        try
+                        {
+                            //чек на язык
+                            orderItems.Add(new OrderItemsVM
+                            {
+                                ItemName = item.NameRu,
+                                ItemImages = item.Image1,
+                                ItemPrice = itemsPriceList[i],
+                                ItemCount = itemsCount[i],
+                                ItemVendorCode = data.ItemsVendorCodeList[i],
+                                ItemMinOrder = itemMinOrder.ToString(),
+                                ProductBuyTypeMeter = item.ProductBuyTypeMeter,
+                            });
+                        }
+                        catch (Exception e)
+                        { }
+
+                        data.Items = orderItems;
+                    }
                 }
             }
 
@@ -209,6 +224,7 @@ namespace TechnoTent.Models
                 data.OrderStatus = order.OrderStatus;
                 data.PaymentStatus = order.PaymentStatus;
                 data.Date = DateTime.Now;
+                data.Comment = order.Comment;
 
                 data.ItemsCount = "";
                 data.ItemsVendorCode = "";

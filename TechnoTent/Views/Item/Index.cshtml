@@ -208,8 +208,9 @@
                                     {
                                         if (Model.IsStock == true)
                                         {
-                                            <div class="product__price" data-price="@Model.StockPrice">@Model.StockPrice</div>
-                                            <div class="product__price price__old" data-old-price="@Model.Price">@Model.Price <span>@Resources.Resource.vallet.</span></div><!-- <span>грн./кв.м</span> -->
+                                            <div class="product__price price__old" data-old-price="@Model.Price">@Model.Price <span>@Resources.Resource.vallet.</span></div>
+                                            <div class="product__price" data-price="@Model.StockPrice">@Model.StockPrice <span>@Resources.Resource.vallet.</span></div>
+                                            <!-- <span>грн./кв.м</span> -->
                                         }
                                         else
                                         {
@@ -228,7 +229,7 @@
                             if (Model.IsStock == true)
                             {
                                 <div class="product-price__discount">
-                                    @Resources.Resource.item_stock_text: <span class="discount-value"></span>@(Convert.ToDouble(Model.Price) - Model.StockPrice)<span>@Resources.Resource.vallet.</span>
+                                    @Resources.Resource.item_stock_text: <span class="discount-value"></span><span>@Resources.Resource.vallet.</span>
                                 </div>
                             }
                             if (Model.PriceUndefined == null)

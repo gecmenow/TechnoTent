@@ -196,8 +196,8 @@
                         }
                     }
                 </div>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
             </section>
         </div>
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
     </main>
 </div>

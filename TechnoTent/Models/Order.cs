@@ -115,7 +115,7 @@ namespace TechnoTent.Models
             {
                 try
                 {
-                    orderNumber = db.ItemsDb.OrderByDescending(u=>u.VendorCode).First().VendorCode;
+                    orderNumber = db.OrderDb.OrderByDescending(u=>u.OrderNumber).First().OrderNumber;
 
                     int number = Convert.ToInt32(orderNumber) + 1;
 
@@ -146,6 +146,7 @@ namespace TechnoTent.Models
                         UserName = order.UserName,
                         UserPhone = order.UserPhone,
                         OrderLanguage = language,
+                        Comment = order.Comment,
                         Date = DateTime.Now,
                     });
 
@@ -181,6 +182,7 @@ namespace TechnoTent.Models
                     ItemsVendorCode = u.ItemsVendorCode,
                     ItemsPrice = u.ItemsPrice,
                     OrderLanguage = u.OrderLanguage,
+                    Comment = u.Comment,
                 }).FirstOrDefault();
 
                 List<string> itemsPriceList = new List<string>();
@@ -252,6 +254,7 @@ namespace TechnoTent.Models
                     Date = u.Date,
                     ItemsVendorCode = u.ItemsVendorCode,
                     ItemsPrice = u.ItemsPrice,
+                    Comment = u.Comment,
                 }).ToList();
 
                 List<string> itemsPriceList = new List<string>();
