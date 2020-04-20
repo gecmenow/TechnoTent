@@ -59,7 +59,7 @@ namespace TechnoTent.Models
                             IndividualOrder = u.IndividualOrders,
                         }).First();
 
-                        var similar = db.ItemsDb.Where(u => u.CategoryNameUa == item.CategoryName && u.Id != item.Id).Select(u => new ItemsVM
+                        var similar = db.ItemsDb.Where(u => u.CategoryNameUa == item.CategoryName && u.Id != item.Id).AsEnumerable().Select(u => new ItemsVM
                         {
                             VendorCode = u.VendorCode,
                             inStock = u.inStock,
@@ -68,6 +68,7 @@ namespace TechnoTent.Models
                             CategoryNameEn = u.CategoryNameEn,
                             SubCategoryName = u.SubCategoryNameUa,
                             Name = u.NameUa,
+                            NameUrl = UrlHelper.GenerateSeoFriendlyURL(u.NameEn),
                             Price = u.PriceUa.ToString(),
                             PriceUndefined = u.PriceUndefined,
                             IsStock = u.IsStock,
@@ -135,7 +136,7 @@ namespace TechnoTent.Models
                             IndividualOrder = u.IndividualOrders,
                         }).First();
 
-                        var similar = db.ItemsDb.Where(u => u.CategoryNameEn == item.CategoryName && u.Id != item.Id).Select(u => new ItemsVM
+                        var similar = db.ItemsDb.Where(u => u.CategoryNameEn == item.CategoryName && u.Id != item.Id).AsEnumerable().Select(u => new ItemsVM
                         {
                             VendorCode = u.VendorCode,
                             inStock = u.inStock,
@@ -144,6 +145,7 @@ namespace TechnoTent.Models
                             CategoryNameEn = u.CategoryNameEn,
                             SubCategoryName = u.SubCategoryNameEn,
                             Name = u.NameEn,
+                            NameUrl = UrlHelper.GenerateSeoFriendlyURL(u.NameEn),
                             Price = u.PriceEn.ToString(),
                             PriceUndefined = u.PriceUndefined,
                             IsStock = u.IsStock,
@@ -211,7 +213,7 @@ namespace TechnoTent.Models
                             IndividualOrder = u.IndividualOrders,
                         }).First();
 
-                        var similar = db.ItemsDb.Where(u => u.CategoryNameRu == item.CategoryName && u.Id != item.Id).Select(u => new ItemsVM
+                        var similar = db.ItemsDb.Where(u => u.CategoryNameRu == item.CategoryName && u.Id != item.Id).AsEnumerable().Select(u => new ItemsVM
                         {
                             VendorCode = u.VendorCode,
                             inStock = u.inStock,
@@ -220,6 +222,7 @@ namespace TechnoTent.Models
                             CategoryNameEn = u.CategoryNameEn,
                             SubCategoryName = u.SubCategoryNameRu,
                             Name = u.NameRu,
+                            NameUrl = UrlHelper.GenerateSeoFriendlyURL(u.NameEn),
                             Price = u.PriceUa.ToString(),
                             PriceUndefined = u.PriceUndefined,
                             IsStock = u.IsStock,

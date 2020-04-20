@@ -1720,6 +1720,18 @@ footer {
   -webkit-transform: scale(1.1) !important;
           transform: scale(1.1) !important;
 }
+.production__link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
 .subtitle__bg {
   position: absolute;
   width: 100%;
@@ -3090,6 +3102,8 @@ footer {
 .catalog__item {
   height: 100%;
   position: relative;
+  max-width: 340px;
+  margin: 0 auto;
 }
 .catalog__item-wrapper {
   display: -webkit-box;
@@ -3148,7 +3162,10 @@ footer {
 .catalog__item-img {
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
-  width: 100%;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
 }
 .catalog__item-title {
   line-height: 35px;
@@ -3750,7 +3767,6 @@ div.form-input__address {
   margin-bottom: 15px;
 }
 .price__text {
-  padding-right: 40px;
   font-size: 18px;
 }
 .price__content {
@@ -4439,7 +4455,7 @@ div.form-input__address {
   width: 40px;
 }
 .order-table button:not(:last-child) {
-  margin-bottom: 5px;
+  margin: 5px 0;
 }
 .order-table tbody th {
   font-weight: 400;
@@ -4567,8 +4583,8 @@ div.form-input__address {
   margin: 0 auto;
   margin-bottom: 10px;
 }
-.order-edit__wrapper .product-count .product-count__content {
-  margin-left: 20px;
+.order-edit__wrapper .catalog__item {
+  min-width: 175px;
 }
 .order-edit__wrapper .catalog__item-extra-info {
   margin-top: 145%;
@@ -4759,7 +4775,7 @@ div.form-input__address {
   width: 40px;
 }
 .products-table button:not(:last-child) {
-  margin-bottom: 5px;
+  margin: 5px 0;
 }
 .products-table tbody th {
   font-weight: 400;
@@ -5020,7 +5036,7 @@ div.form-input__address {
   width: 40px;
 }
 .category-table button:not(:last-child) {
-  margin-bottom: 5px;
+  margin: 5px 0;
 }
 .category-table tbody th {
   font-weight: 400;
@@ -5418,6 +5434,7 @@ div.form-input__address {
 .delivery-item__img {
   margin: 0 auto;
   display: block;
+  width: 250px;
 }
 .delivery-item__desc {
   display: -webkit-box;

@@ -459,15 +459,15 @@ $(document).ready(function () {
 
     //change the quantity of product
     let focusoutQuantityInput = false;
-    $(".product-card-content .change-quantity").on("click", function() {
+    $(".product-card-content .change-quantity, .order-edit__wrapper .change-quantity").on("click", function() {
         let thisElement = $(this);
         ChangeQuantityClick(thisElement);
     });
-    $(".product-card-content .input_quantity-value").on("input", function() {
+    $(".product-card-content .input_quantity-value, .order-edit__wrapper .input_quantity-value").on("input", function() {
         let thisElement = $(this);
         ChangeQuantityInput(thisElement);
     }); 
-    $(".product-card-content .input_quantity-value").focusout(function() {
+    $(".product-card-content .input_quantity-value, .order-edit__wrapper .input_quantity-value").focusout(function() {
         let thisElement = $(this);
         ChangeQuantityFocusout(thisElement);
     });

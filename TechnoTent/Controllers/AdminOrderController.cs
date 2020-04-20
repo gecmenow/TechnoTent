@@ -68,13 +68,16 @@ namespace TechnoTent.Controllers
             return View(data);
         }
 
-        public ActionResult RemoveOrder(int orderId)
+        public ActionResult RemoveOrder(int orderId, int? page)
         {
             AdminOrders.DelteOrder(orderId);
 
             var data = AdminOrders.GetOrders();
 
-            return PartialView(data);
+            int pageSize = 12;
+            int pageNumber = (page ?? 1);
+
+            return PartialView(data.ToPagedList(pageNumber, pageSize));
         }
     }
 }

@@ -492,8 +492,10 @@
                         <li class="col-xs-12 col-sm-6 col-md-6 col-lg-3 ">
                             <div class="catalog__item">
                                 <div class="catalog__item-wrapper">
-                                    <a class="catalog__item-link" href="/">
-                                        <img class="catalog__item-img" src="~/Content/images/items/@items.Image1">
+                                    <a class="catalog__item-link" href="/product/@items.NameUrl/@items.VendorCode">
+                                        <span class="catalog__item-img-wrapper">
+                                            <img class="catalog__item-img" src="~/Content/images/items/@items.Image1">
+                                        </span>
                                         <h3 class="catalog__item-title">@items.Name</h3>
                                         <span class="catalog__item-price-wrapper">
                                             @if (items.PriceUndefined == null)

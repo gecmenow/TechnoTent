@@ -153,6 +153,7 @@ namespace TechnoTent.Models
                                 ItemVendorCode = data.ItemsVendorCodeList[i],
                                 ItemMinOrder = itemMinOrder.ToString(),
                                 ProductBuyTypeMeter = item.ProductBuyTypeMeter,
+                                ItemUrl = UrlHelper.GenerateSeoFriendlyURL(item.NameEn),
                             });
                         }
                         catch (Exception e)
@@ -180,21 +181,21 @@ namespace TechnoTent.Models
 
                 if (item.ProductBuyTypeMeter != false)
                 {
-                    itemCount = 1;
+                    itemCount = item.Width;
 
                     data.ItemsCount += itemCount + "/";
                 }
                 else
                 { 
-                    itemCount = item.Width;
+                    itemCount = 1;
 
                     data.ItemsCount += itemCount + "/";
                 }
 
                 if (data.OrderLanguage != "en")
                 {
-                    data.ItemsPrice += item.PriceEn + "/";
-                    data.TotalPrice += (item.PriceEn * itemCount);
+                    data.ItemsPrice += item.PriceUa + "/";
+                    data.TotalPrice += (item.PriceUa * itemCount);
                 }
                 else
                 {
@@ -232,20 +233,23 @@ namespace TechnoTent.Models
 
                 List<OrderItemsVM> orderItems = new List<OrderItemsVM>();
 
-                foreach (var item in order.Items)
+                if (order.Items != null)
                 {
-                    data.ItemsVendorCode += item.ItemVendorCode + "/";
-                    
-                    data.ItemsCount += item.ItemCount + "/";
+                    foreach (var item in order.Items)
+                    {
+                        data.ItemsVendorCode += item.ItemVendorCode + "/";
 
-                    var product = db.ItemsDb.Where(u => u.VendorCode == item.ItemVendorCode).First();
+                        data.ItemsCount += item.ItemCount + "/";
 
-                    if (data.OrderLanguage != "en" || data.OrderLanguage != null)
-                        data.TotalPrice += (product.PriceUa * Convert.ToDouble(item.ItemCount));
-                    else
-                        data.TotalPrice += (product.PriceEn * Convert.ToDouble(item.ItemCount));
+                        var product = db.ItemsDb.Where(u => u.VendorCode == item.ItemVendorCode).First();
+
+                        if (data.OrderLanguage != "en" || data.OrderLanguage != null)
+                            data.TotalPrice += (product.PriceUa * Convert.ToDouble(item.ItemCount));
+                        else
+                            data.TotalPrice += (product.PriceEn * Convert.ToDouble(item.ItemCount));
+                    }
                 }
-
+                
                 var totalItemsCount = data.ItemsCount.Split('/').Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
 
                 data.TotalitemsCount = totalItemsCount.Count();
@@ -277,7 +281,7 @@ namespace TechnoTent.Models
 
                 var ItemsVendorCodeList = data.ItemsVendorCode.Split('/').Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
                 var itemsPriceList = data.ItemsPrice.Split('/').Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
-                var itemsCount = data.ItemsPrice.Split('/').Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
+                var itemsCount = data.ItemsCount.Split('/').Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
 
                 for (int i = 0; i < ItemsVendorCodeList.Count(); i++)
                 {
@@ -292,6 +296,13 @@ namespace TechnoTent.Models
                 data.ItemsVendorCode = String.Join("/", ItemsVendorCodeList.ToArray()) + "/";
                 data.ItemsPrice = String.Join("/", itemsPriceList.ToArray()) + "/";
                 data.ItemsCount = String.Join("/", itemsCount.ToArray()) + "/";
+
+                if (ItemsVendorCodeList.Count() != 0)
+                    for (int i = 0; i < ItemsVendorCodeList.Count(); i++)
+                        data.TotalPrice = Convert.ToDouble(itemsPriceList[i]) * Convert.ToDouble(itemsCount[i]);
+                else
+                    data.TotalPrice = 0;
+
 
                 db.SaveChanges();
             }

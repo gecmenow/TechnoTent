@@ -177,15 +177,15 @@
                     <div class="order-edit__wrapper">
                         <label class="edit__title">Способ оплаты</label><br>
                         <select class="payment-method" name="PaymentMethod">
-                            @if (Model.PaymentMethod == "На карту Приват банка")
+                            @if (Model.PaymentMethod == "Безналичный расчёт")
                             {
-                                <option class="payment-method__item" value="На карту Приват банка" selected>На карту Приват банка</option>
-                                <option class="payment-method__item" value="Оплата при получении">Оплата при получении</option>
+                                <option class="payment-method__item" value="Безналичный расчёт" selected>Безналичный расчёт</option>
+                                <option class="payment-method__item" value="Наложенный платеж">Наложенный платеж</option>
                             }
                             else
                             {
-                                <option class="payment-method__item" value="На карту Приват банка">На карту Приват банка</option>
-                                <option class="payment-method__item" value="Оплата при получении" selected>Оплата при получении</option>
+                                <option class="payment-method__item" value="Безналичный расчёт">Безналичный расчёт</option>
+                                <option class="payment-method__item" value="Наложенный платеж" selected>Наложенный платеж</option>
                             }
 
                         </select>
@@ -193,13 +193,13 @@
                     <div class="order-edit__wrapper">
                         <label class="edit__title">Способ доставки</label><br>
                         <select class="delivery-status" name="DeliveryMethod">
-                            @if (Model.DeliveryMethod == "Самовывоз")
+                            @if (Model.DeliveryMethod == "samovyvoz")
                             {
                                 <option class="delivery-method__item" value="Самовывоз" selected>Самовывоз</option>
                                 <option class="delivery-method__item" value="Новая почта">Новая почта</option>
                                 <option class="delivery-method__item" value="Другой способ доставки">Другой способ доставки</option>
                             }
-                            else if (Model.DeliveryMethod == "Новая почта")
+                            else if (Model.DeliveryMethod == "nova_poshta")
                             {
                                 <option class="delivery-method__item" value="Самовывоз">Самовывоз</option>
                                 <option class="delivery-method__item" value="Новая почта" selected>Новая почта</option>
@@ -245,17 +245,44 @@
                                         <li class="col-3">
                                             <div class="catalog__item">
                                                 <div class="catalog__item-wrapper">
-                                                    <a class="catalog__item-link" href="/">
-                                                        <img class="catalog__item-img" src="~/Content/images/items/@Model.Items[i].ItemImages">
+                                                    <a class="catalog__item-link" href="/product/@Model.Items[i].ItemUrl/@Model.Items[i].ItemVendorCode">
+                                                        @if (Model.Items[i].ItemImages != null)
+                                                        {
+                                                            <span class="catalog__item-img-wrapper">
+                                                                <img class="catalog__item-img" src="~/Content/images/items/@Model.Items[i].ItemImages">
+                                                            </span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="catalog__item-img-wrapper">
+                                                                <img class="catalog__item-img" src="~/Content/images/no_image.svg">
+                                                            </span>
+                                                        }
                                                         <h3 class="catalog__item-title">@Model.Items[i].ItemName</h3>
                                                         <div class="catalog__item-price-wrapper">
                                                             @if (Model.OrderLanguage == "ru" || Model.OrderLanguage == "ua")
                                                             {
-                                                                <span class="catalog__item-price">@Model.Items[i].ItemPrice грн./кв.м</span>
+                                                                if (Model.Items[i].ProductBuyTypeMeter)
+                                                                {
+                                                                    <span class="catalog__item-price">@Model.Items[i].ItemPrice грн./кв.м</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="catalog__item-price">@Model.Items[i].ItemPrice грн./шт</span>
+                                                                }
+
                                                             }
                                                             else
                                                             {
-                                                                <span class="catalog__item-price">@Model.Items[i].ItemPrice $./кв.м</span>
+                                                                if (Model.Items[i].ProductBuyTypeMeter)
+                                                                {
+                                                                    <span class="catalog__item-price">@Model.Items[i].ItemPrice $./кв.м</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="catalog__item-price">@Model.Items[i].ItemPrice $./шт</span>
+                                                                }
+
                                                             }
                                                         </div>
                                                     </a>
@@ -267,7 +294,14 @@
                                                                     <path class="btn-in__path" d="M0.16,7.31L7.31,0.16A0.49,0.49,0,0,1,7.77,0a1.09,1.09,0,0,1,.46.15L9.85,1.78a0.82,0.82,0,0,1,.15.46,1.09,1.09,0,0,1-.15.46L4.7,7.85l5.15,5a1.09,1.09,0,0,1,.15.46,1.09,1.09,0,0,1-.15.46L8.23,15.38a1.09,1.09,0,0,1-.46.15,1.09,1.09,0,0,1-.46-0.15L0.16,8.23A0.49,0.49,0,0,1,0,7.77,1.09,1.09,0,0,1,.16,7.31Z"></path>
                                                                 </svg>
                                                             </button>
-                                                            @Html.TextBox("Items[" + i + "].ItemCount", Model.Items[i].ItemCount, new { @class = "input_quantity-value", data_type = "area", data_width = @Model.Items[i].ItemMinOrder })
+                                                            @if (Model.Items[i].ProductBuyTypeMeter)
+                                                            {
+                                                                @Html.TextBox("Items[" + i + "].ItemCount", Model.Items[i].ItemCount, new { @class = "input_quantity-value", data_type = "area", data_width = @Model.Items[i].ItemMinOrder })
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.TextBox("Items[" + i + "].ItemCount", Model.Items[i].ItemCount, new { @class = "input_quantity-value", data_type = "piece", data_width = @Model.Items[i].ItemMinOrder })
+                                                            }
                                                             @*<input type="text" name="@Model.Items[i].ItemCount" class="input_quantity-value" value="2.5" data-type="area" data-width="2.5"> <!-- тип: piece - поштучно / area - м2    || value зависит от типа товара-->*@
                                                             <button type="button" class="change-quantity quantity-plus" title="Увеличить">
                                                                 <svg class="btn-in__icon" width="10" height="15.53" viewBox="0 0 10 15.53">
@@ -275,7 +309,7 @@
                                                                 </svg>
                                                             </button>
                                                         </div>
-                                                        <div class="product-count__type-value">кв.м</div>
+                                                        @*<div class="product-count__type-value">кв.м</div>*@
                                                         @if (Model.Items[i].ProductBuyTypeMeter)
                                                         {
                                                             <div class="product-count__desc">Минимальный заказ @Model.Items[i].ItemMinOrder кв.м</div>
@@ -305,11 +339,15 @@
                                     }
                                 }
                             }
-                            <li class="col-3">
-                                <div class="catalog__item">
-                                    Товар был удалён
-                                </div>
-                            </li>
+                            else
+                            {
+                                <li class="col-3">
+                                    <div class="catalog__item">
+                                        Товар был удалён
+                                    </div>
+                                </li>
+                            }
+
                         </ul>
                     </div>
                     <div class="add-order-product__title">Добавить товар к заказу</div>
@@ -337,7 +375,6 @@
         </div>
     </main>
 </div>
-
 @section AdminFooter
 {
 

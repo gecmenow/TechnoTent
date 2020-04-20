@@ -10,6 +10,12 @@
             url = "@Url.Action("DeleteImage", "AdminItems")?vendorCode=" + vendorCode + "&imageName=" + imageName;
             $('.result').load(url);
         });
+
+        $('.separator_ua').val($('.separator_ua').val().replace(',', '.'));
+        $('.separator_en').val($('.separator_en').val().replace(',', '.'));
+
+        $('.separator_ua_s').val($('.separator_ua_s').val().replace(',', '.'));
+        $('.separator_en_s').val($('.separator_en_s').val().replace(',', '.'));
     })
 </script>
 
@@ -461,10 +467,10 @@
                     </div>
                     <label class="edit__title">Цена</label>
                     <div class="product-edit__wrapper">
-                        <label class="edit__title">Цена</label><input type="text" name="PriceUa" class="input-product-edit product-edit__price" value="@Model.PriceUa"><label class="edit__text">грн.</label>
+                        <label class="edit__title">Цена</label><input type="text" name="PriceUa" class="input-product-edit product-edit__price separator_ua" value="@Model.PriceUa"><label class="edit__text">грн.</label>
                     </div>
                     <div class="product-edit__wrapper">
-                        <label class="edit__title">Цена</label><input type="text" name="PriceEn" class="input-product-edit product-edit__price" value="@Model.PriceEn"><label class="edit__text">$</label>
+                        <label class="edit__title">Цена</label><input type="text" name="PriceEn" class="input-product-edit product-edit__price separator_en" value="@Model.PriceEn"><label class="edit__text">$</label>
                     </div>
                     <label class="edit__title">Изображения</label>
                     <div class="product-edit__wrapper upload__img-wrapper">
@@ -477,7 +483,7 @@
                             {
                                 <label for="upload__img1"><img src="~/Content/images/no_image.svg"></label>
                             }
-                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple", @id = "upload__img1" })
+                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @class = "upload__img", @id = "upload__img1" })
                             <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image1"></i>
                         </div>
                         <div class="upload__img-item">
@@ -489,7 +495,7 @@
                             {
                                 <label for="upload__img2"><img src="~/Content/images/no_image.svg"></label>
                             }
-                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple", @id = "upload__img2" })
+                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @class = "upload__img", @id = "upload__img2" })
                             <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image2"></i>
                         </div>
                         <div class="upload__img-item">
@@ -501,7 +507,7 @@
                             {
                                 <label for="upload__img3"><img src="~/Content/images/no_image.svg"></label>
                             }
-                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple", @id = "upload__img3" })
+                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @class = "upload__img", @id = "upload__img3" })
                             <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image3"></i>
                         </div>
                         <div class="upload__img-item">
@@ -513,7 +519,7 @@
                             {
                                 <label for="upload__img4"><img src="~/Content/images/no_image.svg"></label>
                             }
-                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @multiple = "multiple", @class = "upload__img-multiple", @id = "upload__img4" })
+                            @Html.TextBoxFor(model => model.Images, "", new { @type = "file", @class = "upload__img", @id = "upload__img4" })
                             <i class="fas fa-times remove__img" data-id="@Model.VendorCode" data-name="@Model.Image4"></i>
                         </div>
                     </div>
@@ -532,10 +538,10 @@
                     {
                         <div class="product-edit-stock">
                             <div class="product-edit__wrapper">
-                                <label class="edit__title">Цена</label><input type="text" name="StockPriceUa" class="input-product-edit product-edit__price" required value="@Model.StockPriceUa" pattern="\d+(,\d)?"><label class="edit__text">ГРН.</label>
+                                <label class="edit__title">Цена</label><input type="text" name="StockPriceUa" class="input-product-edit product-edit__price separator_ua_s" required value="@Model.StockPriceUa" pattern="\d+(,\d)?"><label class="edit__text">ГРН.</label>
                             </div>
                             <div class="product-edit__wrapper">
-                                <label class="edit__title">Цена</label><input type="text" name="StockPriceEn" class="input-product-edit product-edit__price" required value="@Model.StockPriceEn"><label class="edit__text">USD.</label>
+                                <label class="edit__title">Цена</label><input type="text" name="StockPriceEn" class="input-product-edit product-edit__price separator_en_s" required value="@Model.StockPriceEn"><label class="edit__text">USD.</label>
                             </div>
                         </div>
                         @*<div class="product-edit__wrapper">

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using TechnoTent.Models.DataBase;
 using TechnoTent.Models.ViewModel.Admin;
@@ -143,6 +144,8 @@ namespace TechnoTent.Models
 
         public static AdminItemVM GetItemById(string vendorCode)
         {
+            Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator = ".";
+
             AdminItemVM item;
 
             using (DataBaseContext db = new DataBaseContext())
@@ -224,6 +227,8 @@ namespace TechnoTent.Models
                          ItemStatus = entry.ItemStatus,
                          ProductBuyTypeMeter = entry.ProductBuyTypeMeter
                      }).FirstOrDefault();
+
+                item.PriceUa = double.Parse(item.PriceUa.ToString(), Thread.CurrentThread.CurrentCulture.NumberFormat);
 
                 var categories = db.CategoryDb.Select(u => u.CategoryNameRu).ToList();
                 var subCategories = db.SubCategoryDb.Select(u => u.SubCategoryNameRu).ToList();

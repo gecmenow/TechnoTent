@@ -16,5 +16,6 @@ namespace TechnoTent.Models.ViewModel
         public bool ProductBuyTypeMeter { get; set; }
         public string ItemMinOrder { get; set; }
         public string ItemDescription { get; set; }
+        public string ItemUrl { get; set; }
     }
 }
