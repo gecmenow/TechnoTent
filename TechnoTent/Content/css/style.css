@@ -1882,8 +1882,9 @@ footer {
           justify-content: center;
 }
 .partners-slider .swiper-slide img {
-  width: 100%;
-  max-width: 300px;
+  /* width: 100%; */
+  max-width: 230px;
+  max-height: 70px;
 }
 .partners-slider .swiper-wrapper {
   -webkit-box-align: center;
@@ -5149,7 +5150,10 @@ div.form-input__address {
 .slider-photo-table th {
   padding: 10px;
   background-color: #f7f9fc;
-  padding: 5px;
+  padding: 5px;  
+}
+.slider-photo-table th:nth-child(2) img{
+  max-width: 400px;
 }
 .slider-photo-table th:first-letter {
   text-transform: uppercase;

@@ -16,12 +16,10 @@
             cityKeyup = this.value;
             if (this.value.match(/[A-zА-яЁё]/g) && cityKeydown != cityKeyup) {
                 var city = $(this).val();
-                if ($(".form-input__delivery:checked").val() == "nova_pochta") {
+
+                if ($(".form-input__delivery:checked").val() == "Новая почта") {
                     url = "@Url.Action("GetNPCities", "Order")?city=" + city;
-                    $('#city').load(url);
-                }
-                else if ($(".form-input__delivery:checked").val() == "in_time") {
-                    url = "@Url.Action("GetInTimeCities", "Order")?city=" + city;
+                    
                     $('#city').load(url);
                 }
 
@@ -36,12 +34,12 @@
             }
         });
 
-        $("#in_time").click(function () {
+        @*$("#in_time").click(function () {
             url = "@Url.Action("GetInTimeCities", "Order")?city=" + "";
             $('#city').load(url);
             $(".loader").show();
             loadingBar();
-        });
+        });*@
 
         function loadingBar() {
             if ($("#city").find(".city__list").length == 1) {
@@ -56,12 +54,8 @@
             {
                 var cityId = $(".form-input__city").attr("data-city");
                 console.log(cityId);
-                if ($(".form-input__delivery:checked").val() == "nova_pochta") {
+                if ($(".form-input__delivery:checked").val() == "Новая почта") {
                     url = "@Url.Action("GetNPCityPostOffice", "Order")?cityId=" + cityId;
-                    $('#postOffice').load(url);
-                }
-                else if ($(".form-input__delivery:checked").val() == "in_time") {
-                    url = "@Url.Action("GetInTimeCityPostOffice", "Order")?cityId=" + cityId;
                     $('#postOffice').load(url);
                 }
             }
@@ -97,7 +91,7 @@
                         </div>
                         <label>@Resources.Resource.order_form_email</label>
                         <div class="form-input-wrapper">
-                            @Html.TextBoxFor(m => m.UserEmail, new { placeholder = @Resources.Resource.order_form_email_placeholder, @class = "form-input form-input__email", @type = "tel" })
+                            @Html.TextBoxFor(m => m.UserEmail, new { placeholder = @Resources.Resource.order_form_email_placeholder, @class = "form-input form-input__email", @type = "text" })
                             <div class="form-input__underlined"></div>
                             <i class="form-input__icon fas fa-envelope"></i>
                             <div class="error-message email__error-message" style="display: none;">@Resources.Resource.order_form_email_err.</div>
