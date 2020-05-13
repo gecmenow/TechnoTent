@@ -219,43 +219,96 @@
                     <label class="edit__title">Основная информация</label>
                     <div class="product-edit__wrapper additional-information__more">
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Ширина</label><input type="text" name="Width" class="input-product-edit" value="@Model.Width">
+                            @if (Model.Width != null)
+                            {
+                                <label class="edit__title">Ширина</label><input type="text" name="Width" class="input-product-edit" value="@Model.Width.ToString().Replace(",", ".")">
+                            }
+                            else
+                            {
+                                <label class="edit__title">Ширина</label><input type="text" name="Width" class="input-product-edit" value="@Model.Width">
+                            }
+
                             <label class="edit__text">м</label>
                         </div>
                     </div>
                     <div class="product-edit__wrapper additional-information__more">
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Намотка</label><input type="text" name="Winding" class="input-product-edit" value="@Model.Winding">
+                            @if (Model.Winding != null)
+                            {
+                                <label class="edit__title">Намотка</label><input type="text" name="Winding" class="input-product-edit" value="@Model.Winding.ToString().Replace(",", ".")">
+                            }
+                            else
+                            {
+                                <label class="edit__title">Намотка</label><input type="text" name="Winding" class="input-product-edit" value="@Model.Winding">
+                            }
+
                             <label class="edit__text">м.п.</label>
                         </div>
                     </div>
                     <div class="product-edit__wrapper additional-information__more">
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Прочность</label><input type="text" name="Strength" class="input-product-edit" value="@Model.Strength">
+                            @if (Model.Strength != null)
+                            {
+                                <label class="edit__title">Прочность</label><input type="text" name="Strength" class="input-product-edit" value="@Model.Strength.ToString().Replace(",", ".")">
+                            }
+                            else
+                            {
+                                <label class="edit__title">Прочность</label><input type="text" name="Strength" class="input-product-edit" value="@Model.Strength">
+                            }
                             <label class="edit__text">Н</label>
                         </div>
                     </div>
                     <div class="product-edit__wrapper additional-information__more">
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Прочность на розрыв</label><input type="text" name="BreakingStrength" class="input-product-edit" value="@Model.BreakingStrength">
+                            @if (Model.BreakingStrength != null)
+                            {
+                                <label class="edit__title">Прочность на розрыв</label><input type="text" name="BreakingStrength" class="input-product-edit" value="@Model.BreakingStrength.ToString().Replace(",", ".")">
+                            }
+                            else
+                            {
+                                <label class="edit__title">Прочность на розрыв</label><input type="text" name="BreakingStrength" class="input-product-edit" value="@Model.BreakingStrength">
+                            }
                             <label class="edit__text">Н</label>
                         </div>
                     </div>
                     <div class="product-edit__wrapper additional-information__more">
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Общий вес</label><input type="text" name="TotalWeight" class="input-product-edit" value="@Model.TotalWeight">
+                            @if (Model.TotalWeight != null)
+                            {
+                                <label class="edit__title">Общий вес</label><input type="text" name="TotalWeight" class="input-product-edit" value="@Model.TotalWeight.ToString().Replace(",", ".")">
+                            }
+                            else
+                            {
+                                <label class="edit__title">Общий вес</label><input type="text" name="TotalWeight" class="input-product-edit" value="@Model.TotalWeight">
+                            }
+
                             <label class="edit__text">кг</label>
                         </div>
                     </div>
                     <div class="product-edit__wrapper additional-information__more">
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Температура</label><input type="text" name="Temperature" class="input-product-edit" value="@Model.Temperature">
+                            @if (Model.Temperature != null)
+                            {
+                                <label class="edit__title">Температура</label><input type="text" name="Temperature" class="input-product-edit" value="@Model.Temperature.ToString().Replace(",", ".")">
+                            }
+                            else
+                            {
+                                <label class="edit__title">Температура</label><input type="text" name="Temperature" class="input-product-edit" value="@Model.Temperature">
+                            }
                             <label class="edit__text">Ц</label>
                         </div>
                     </div>
                     <div class="product-edit__wrapper additional-information__more">
                         <div class="product-edit__wrapper">
-                            <label class="edit__title">Прочность при адгезии</label><input type="text" name="AdhesionStrength" class="input-product-edit" value="@Model.AdhesionStrength">
+                            @if (Model.AdhesionStrength != null)
+                            {
+                                <label class="edit__title">Прочность при адгезии</label><input type="text" name="AdhesionStrength" class="input-product-edit" value="@Model.AdhesionStrength.ToString().Replace(",", ".")">
+                            }
+                            else
+                            {
+                                <label class="edit__title">Прочность при адгезии</label><input type="text" name="AdhesionStrength" class="input-product-edit" value="@Model.AdhesionStrength">
+                            }
+
                         </div>
                         <label class="edit__text">Н</label>
                     </div>

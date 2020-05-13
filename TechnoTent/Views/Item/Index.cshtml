@@ -96,13 +96,13 @@
                                     if (!Model.IsStock)
                                     {
                                         <div class="product__price price__old" data-old-price="100">
-                                            @Model.Price
+                                            @Model.Price.ToString().Replace(",", ".")
                                         <span>@Resources.Resource.vallet_item_type</span>
                                     </div><!-- <span>грн./кв.м</span> -->
                                     }
                                     else
                                     {
-                                        <div class="product__price" data-price="@Model.StockPrice">@Model.StockPrice <span>@Resources.Resource.vallet_item_type</span></div>
+                                        <div class="product__price" data-price="@Model.StockPrice">@Model.StockPrice.ToString().Replace(",", ".")<span>@Resources.Resource.vallet_item_type</span></div>
                                     }
                                 }
                                 else
@@ -208,13 +208,13 @@
                                     {
                                         if (Model.IsStock == true)
                                         {
-                                            <div class="product__price price__old" data-old-price="@Model.Price">@Model.Price <span>@Resources.Resource.vallet.</span></div>
-                                            <div class="product__price" data-price="@Model.StockPrice">@Model.StockPrice <span>@Resources.Resource.vallet.</span></div>
+                                            <div class="product__price price__old" data-old-price="@Model.Price.ToString().Replace(",", ".")">@Model.Price.ToString().Replace(",", ".") <span>@Resources.Resource.vallet.</span></div>
+                                            <div class="product__price" data-price="@Model.StockPrice.ToString().Replace(",", ".")">@Model.StockPrice.ToString().Replace(",", ".") <span>@Resources.Resource.vallet.</span></div>
                                             <!-- <span>грн./кв.м</span> -->
                                         }
                                         else
                                         {
-                                            <div class="product__price" data-price="@Model.Price">@Model.Price <span>@Resources.Resource.vallet.</span></div>
+                                            <div class="product__price" data-price="@Model.Price.ToString().Replace(",", ".")">@Model.Price.ToString().Replace(",", ".") <span>@Resources.Resource.vallet.</span></div>
                                         }
                                     }
                                     else
@@ -248,7 +248,7 @@
                                         }
                                         else
                                         {
-                                            <input type="text" name="quantity" class="input_quantity-value" value="@Model.Width" data-width="@Model.Width" data-type="area">
+                                            <input type="text" name="quantity" class="input_quantity-value" value="@Model.Width.ToString().Replace(",", ".")" data-width="@Model.Width.ToString().Replace(",", ".")" data-type="area">
                                         }
                                         <button type="button" class="change-quantity quantity-plus" title="@Resources.Resource.item_up">
                                             <svg class="btn-in__icon" width="10" height="15.53" viewBox="0 0 10 15.53">
@@ -349,14 +349,14 @@
                     {
                         <li class="product-card-desc__item">
                             <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_totalWeight</div></div>
-                            <div class="desc__value">@Model.TotalWeight</div>
+                            <div class="desc__value">@Model.TotalWeight.ToString().Replace(",", ".")</div>
                         </li>
                     }
                     @if (@Model.Width != 0)
                     {
                         <li class="product-card-desc__item">
                             <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_width</div></div>
-                            <div class="desc__value">@Model.Width</div>
+                            <div class="desc__value">@Model.Width.ToString().Replace(",", ".")</div>
                         </li>
                     }
                     @if (@Model.Winding != null)
@@ -370,28 +370,28 @@
                     {
                         <li class="product-card-desc__item">
                             <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_strength</div></div>
-                            <div class="desc__value">@Model.Strength</div>
+                            <div class="desc__value">@Model.Strength.ToString().Replace(",", ".")</div>
                         </li>
                     }
                     @if (@Model.BreakingStrength != null)
                     {
                         <li class="product-card-desc__item">
                             <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_breakingStrength</div></div>
-                            <div class="desc__value">@Model.BreakingStrength</div>
+                            <div class="desc__value">@Model.BreakingStrength.ToString().Replace(",", ".")</div>
                         </li>
                     }
                     @if (@Model.AdhesionStrength != null)
                     {
                         <li class="product-card-desc__item">
                             <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_adhesionStrength</div></div>
-                            <div class="desc__value">@Model.AdhesionStrength</div>
+                            <div class="desc__value">@Model.AdhesionStrength.ToString().Replace(",", ".")</div>
                         </li>
                     }
                     @if (@Model.Temperature != null)
                     {
                         <li class="product-card-desc__item">
                             <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_temperature</div></div>
-                            <div class="desc__value">@Model.Temperature</div>
+                            <div class="desc__value">@Model.Temperature.ToString().Replace(",", ".")</div>
                         </li>
                     }
                     @if (@Model.Color != null)
@@ -433,7 +433,7 @@
                     {
                         <li class="product-card-desc__item">
                             <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_size</div></div>
-                            <div class="desc__value">@Model.Size</div>
+                            <div class="desc__value">@Model.Size.ToString().Replace(",", ".")</div>
                         </li>
                     }
                     @if (@Model.WarrantyPeriod != null)
@@ -500,7 +500,7 @@
                                         <span class="catalog__item-price-wrapper">
                                             @if (items.PriceUndefined == null)
                                             {
-                                                <span class="catalog__item-price">@items.Price @Resources.Resource.vallet_to_meter</span>
+                                                <span class="catalog__item-price">@items.Price.ToString().Replace(",", ".") @Resources.Resource.vallet_to_meter</span>
                                             }
                                             else
                                             {
@@ -508,7 +508,7 @@
                                             }
                                             @if (items.IsStock != false)
                                             {
-                                                <span class="catalog__item-price price__old">@items.StockPrice @Resources.Resource.vallet_to_meter</span>
+                                                <span class="catalog__item-price price__old">@items.StockPrice.ToString().Replace(",", ".") @Resources.Resource.vallet_to_meter</span>
                                             }
                                         </span>
                                     </a>
@@ -543,7 +543,26 @@
                                                 @Resources.Resource.item_code: @items.VendorCode
                                             </div>
                                             <div class="catalog__item-descr">
-                                                @Resources.Resource.item_description @items.Description
+                                                @if (items.Manufacturer != null)
+                                                {
+                                                    @items.Manufacturer
+                                                }
+                                                @if (items.TextileProductType != null)
+                                                {
+                                                    @items.TextileProductType
+                                                }
+                                                @if (items.Width != 0)
+                                                {
+                                                    @items.Width.ToString().Replace(",", ".")
+                                                }
+                                                @if (items.Color != null)
+                                                {
+                                                    @items.Color
+                                                }
+                                                @if (items.TotalWeight != null)
+                                                {
+                                                    @items.TotalWeight
+                                                }
                                             </div>
                                         </div>
                                     </div>

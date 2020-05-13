@@ -91,10 +91,10 @@
                             <span class="item-filter__title opened">@Resources.Resource.items_price:</span>
                             <ul class="filter-inp__list">
                                 <div class="filter-price-inp">
-                                    <input type="number" class="filter-price__from" value="@ViewBag.PriceMin" name="minPrice">
-                                    <input type="number" class="filter-price__to" value="@ViewBag.PriceMax" name="maxPrice">
+                                    <input type="number" class="filter-price__from" value="@ViewBag.PriceMin.ToString().Replace(",",".")" name="minPrice">
+                                    <input type="number" class="filter-price__to" value="@ViewBag.PriceMax.ToString().Replace(",",".")" name="maxPrice">
                                 </div>
-                                <input type="text" class="js-range-slider" name="my_range" value="" data-min-price="@ViewBag.PriceMin" data-max-price="@ViewBag.PriceMax">
+                                <input type="text" class="js-range-slider" name="my_range" value="" data-min-price="@ViewBag.PriceMin.ToString().Replace(",",".")" data-max-price="@ViewBag.PriceMax.ToString().Replace(",",".")">
                             </ul>
                         </div>
                         if (ViewBag.Colors != null)

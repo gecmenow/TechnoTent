@@ -461,60 +461,60 @@
     var quill = new Quill('#main-info-container__one', {
         modules: {
             toolbar: [
-            [{ 'size': ['small', false, 'large', 'huge'] }],
-            [{ 'header': ['1','2','3','4'] }],
-            ['bold', 'italic','underline', 'strike'],
-            ['link', 'blockquote'],
-            [{ list: 'ordered' }, { list: 'bullet' }],
-            [{ 'color': [] }, { 'background': [] }],
-            [{ 'align': [] }],
-            ['image','video'],
-            ['clean'] 
-            ]
-        },
-        placeholder: 'Введдите текст',
-        theme: 'snow'
-    }); 
-    var quill = new Quill('#main-info-container__two', {
-        modules: {
-            toolbar: [
-            [{ 'size': ['small', false, 'large', 'huge'] }],
-            [{ 'header': ['1','2','3','4'] }],
-            ['bold', 'italic','underline', 'strike'],
-            ['link', 'blockquote'],
-            [{ list: 'ordered' }, { list: 'bullet' }],
-            [{ 'color': [] }, { 'background': [] }],
-            [{ 'align': [] }],
-            ['image','video'],
-            ['clean'] 
-            ]
-        },
-        placeholder: 'Введдите текст',
-        theme: 'snow'
-    }); 
-    var quill = new Quill('#main-info-container__three', {
-        modules: {
-            toolbar: [
-            [{ 'size': ['small', false, 'large', 'huge'] }],
-            [{ 'header': ['1','2','3','4'] }],
-            ['bold', 'italic','underline', 'strike'],
-            ['link', 'blockquote'],
-            [{ list: 'ordered' }, { list: 'bullet' }],
-            [{ 'color': [] }, { 'background': [] }],
-            [{ 'align': [] }],
-            ['image','video'],
-            ['clean'] 
+                [{ 'size': ['small', false, 'large', 'huge'] }],
+                [{ 'header': ['1', '2', '3', '4'] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['link', 'blockquote'],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                [{ 'color': [] }, { 'background': [] }],
+                [{ 'align': [] }],
+                ['image', 'video'],
+                ['clean']
             ]
         },
         placeholder: 'Введдите текст',
         theme: 'snow'
     });
-    $(".ql-editor").each(function(){       
+    var quill = new Quill('#main-info-container__two', {
+        modules: {
+            toolbar: [
+                [{ 'size': ['small', false, 'large', 'huge'] }],
+                [{ 'header': ['1', '2', '3', '4'] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['link', 'blockquote'],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                [{ 'color': [] }, { 'background': [] }],
+                [{ 'align': [] }],
+                ['image', 'video'],
+                ['clean']
+            ]
+        },
+        placeholder: 'Введдите текст',
+        theme: 'snow'
+    });
+    var quill = new Quill('#main-info-container__three', {
+        modules: {
+            toolbar: [
+                [{ 'size': ['small', false, 'large', 'huge'] }],
+                [{ 'header': ['1', '2', '3', '4'] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['link', 'blockquote'],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                [{ 'color': [] }, { 'background': [] }],
+                [{ 'align': [] }],
+                ['image', 'video'],
+                ['clean']
+            ]
+        },
+        placeholder: 'Введдите текст',
+        theme: 'snow'
+    });
+    $(".ql-editor").each(function () {
         $(this).html($(this).parents().eq(1).children(".main-info-textarea").val());
-    });    
-    $(".product-edit").click(function(){
-        $(".main-info-textarea").each(function(){
-            $(this).val($(this).parents().eq(0).children(".editor-container").children(".ql-editor").html())  
+    });
+    $(".product-edit").click(function () {
+        $(".main-info-textarea").each(function () {
+            $(this).val($(this).parents().eq(0).children(".editor-container").children(".ql-editor").html())
         });
     });
 
@@ -538,4 +538,10 @@
             }
         }
     });
+
+    $('.separator_ua').val($('.separator_ua').val().replace(',', '.'));
+    $('.separator_en').val($('.separator_en').val().replace(',', '.'));
+
+    $('.separator_ua_s').val($('.separator_ua_s').val().replace(',', '.'));
+    $('.separator_en_s').val($('.separator_en_s').val().replace(',', '.'));
 </script>

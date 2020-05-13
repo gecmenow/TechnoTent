@@ -7,6 +7,13 @@
             $('#result').load(url);
         });
 
+         $(".Copy").click(function () {
+            var id = $(this).attr("data-id");
+            var page = $(this).attr("data-page");
+            url = "@Url.Action("CopyItem", "AdminItems")?id=" + id + "&page=" + page;
+            $('#result').load(url);
+        });
+
         $(".status__item").click(function () {
             var id = $(this).attr("data-id");
             var status = $(this).attr("data-in-stock");
@@ -161,6 +168,7 @@
                             <tr>
                                 <th>
                                     <a href="/admin/edit/item/@item.VendorCode" class="btn btn-warning" data-title="Редактировать товар"><i class="fas fa-edit"></i></a><br>
+                                    <button type="button" class="btn btn-danger Copy" data-id="@item.Id" data-page="@Model.PageNumber" data-title="Скопировать товар"><i class="fas fa-copy"></i></button>
                                     <button type="button" class="btn btn-danger RemoveLink" data-id="@item.Id" data-title="Удалить товар"><i class="fas fa-trash-alt"></i></button>
                                 </th>
                                 <th>@item.VendorCode</th>

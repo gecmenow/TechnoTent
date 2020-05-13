@@ -144,7 +144,10 @@ namespace TechnoTent.Models
 
         public static AdminItemVM GetItemById(string vendorCode)
         {
-            Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator = ".";
+            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            customCulture.NumberFormat.NumberDecimalSeparator = ".";
+
+            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
 
             AdminItemVM item;
 
@@ -241,6 +244,8 @@ namespace TechnoTent.Models
 
         public static void AddItem(AdminItemVM item)
         {
+            System.Globalization.CultureInfo.DefaultThreadCurrentCulture = new System.Globalization.CultureInfo("en-Us");
+
             List<string> images = Image.UploadNewImages(item);
 
             using (DataBaseContext db = new DataBaseContext())

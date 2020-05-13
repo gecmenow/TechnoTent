@@ -1052,14 +1052,31 @@ namespace TechnoTent.Models.ViewModel.Items
 
                 //var colorsList = items.Where(x => x.Color != "" && x.Color != " " && x.Color != null).Select(x => x.Color).Distinct().ToList();
 
-                var colorsList = (from data in items
-                                 where data.Color != "" && data.Color != " " && data.Color != null
-                                 select data).AsEnumerable().Distinct().
-                 Select(entry => new Color
-                 {
-                     ColorFilter = ColorFilter.ChangeColorNameForFilter(entry.Color),
-                     ColorName = entry.Color,
-                 }).ToList();
+                List<Color> colorsList = new List<Color>();
+
+                List<string> foo = new List<string>();
+
+                foreach(var clr in items)
+                {
+                    if(!foo.Contains(clr.Color) && clr.Color != "" && clr.Color != " " && clr.Color != null)
+                    {
+                        colorsList.Add(new Color {
+                           ColorFilter = ColorFilter.ChangeColorNameForFilter(clr.Color),
+                           ColorName = clr.Color,
+                        });
+
+                        foo.Add(clr.Color);
+                    }
+                }
+
+                //var colorsList = (from data in items
+                //                 where data.Color != "" && data.Color != " " && data.Color != null
+                //                 select data).AsEnumerable().Distinct().
+                // Select(entry => new Color
+                // {
+                //     ColorFilter = ColorFilter.ChangeColorNameForFilter(entry.Color),
+                //     ColorName = entry.Color,
+                // }).ToList();
 
                 if (filteredItems.Count() != 0)
                 {
@@ -1070,8 +1087,7 @@ namespace TechnoTent.Models.ViewModel.Items
                         Colors = colorsList,
                         CategoryName = items.Select(u => u.CategoryName).First(),
                         CategoryId = filteredItems.Select(u => u.CategoryId).First(),
-                    }
-                    );
+                    });
                 }
                 else
                 {
