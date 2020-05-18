@@ -324,11 +324,11 @@
                             <div class="desc__value">@Model.Manufacturer</div>
                         </li>
                     }
-                    @if (@Model.TextileProductType != null)
+                    @if (@Model.Covering != null)
                     {
                         <li class="product-card-desc__item">
-                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_type</div></div>
-                            <div class="desc__value">@Model.TextileProductType</div>
+                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_covering</div></div>
+                            <div class="desc__value">@Model.Covering</div>
                         </li>
                     }
                     @if (@Model.Thread != null)
@@ -412,7 +412,7 @@
                     {
                         <li class="product-card-desc__item">
                             <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_season</div></div>
-                            <div class="desc__value">@Model.Manufacturer</div>
+                            <div class="desc__value">@Model.Season</div>
                         </li>
                     }
                     @if (@Model.Material != null)
@@ -465,12 +465,12 @@
                         </li>
                     }
                     @*@if (@Model.Description != null)
-                    {
-                        <li class="product-card-desc__item">
-                            <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_description</div></div>
-                            <div class="desc__value">@Model.Description</div>
-                        </li>
-                    }*@
+        {
+            <li class="product-card-desc__item">
+                <div class="desc__name"><div class="desc__name-text">@Resources.Resource.item_description</div></div>
+                <div class="desc__value">@Model.Description</div>
+            </li>
+        }*@
                 </ul>
             </div>
             @if (Model.Description != null)
