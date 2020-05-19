@@ -91,10 +91,10 @@
                                     <span class="item-filter__title opened">@Resources.Resource.items_price:</span>
                                     <ul class="filter-inp__list">
                                         <div class="filter-price-inp">
-                                            <input type="number" class="filter-price__from" value="@ViewBag.PriceMin.ToString().Replace(",",".")" name="minPrice">
-                                            <input type="number" class="filter-price__to" value="@ViewBag.PriceMax.ToString().Replace(",",".")" name="maxPrice">
+                                            <input type="number" class="filter-price__from" value="@ViewBag.PriceMin.ToString("#")" name="minPrice">
+                                            <input type="number" class="filter-price__to" value="@ViewBag.PriceMax.ToString("#")" name="maxPrice">
                                         </div>
-                                        <input type="text" class="js-range-slider" name="my_range" value="" data-min-price="@ViewBag.PriceMin.ToString().Replace(",",".")" data-max-price="@ViewBag.PriceMax.ToString().Replace(",",".")">
+                                        <input type="text" class="js-range-slider" name="my_range" value="" data-min-price="@ViewBag.PriceMin.ToString("#")" data-max-price="@ViewBag.PriceMax.ToString("#")">
                                     </ul>
                                 </div>
                                 if (ViewBag.Colors != null)
@@ -224,21 +224,43 @@
                                                                     {
                                                                         if (item.IsStock == false)
                                                                         {
-                                                                            <span class="catalog__item-price">@item.Price @Resources.Resource.vallet</span>
+                                                                            if (item.PriceUndefined != null)
+                                                                            {
+                                                                                <span class="catalog__item-price">@Resources.Resource.item_price_undf</span>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (item.ProductBuyTypeMeter == false)
+                                                                                {
+                                                                                    <span class="catalog__item-price">@item.Price @Resources.Resource.vallet</span>
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <span class="catalog__item-price">@item.Price @Resources.Resource.vallet_to_meter</span>
+                                                                                }
+                                                                            }
+
                                                                         }
                                                                         else
                                                                         {
-                                                                            <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet</span>
+                                                                            if (item.ProductBuyTypeMeter == false)
+                                                                            { 
+                                                                                <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet</span>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet_to_meter</span>
+                                                                            }
                                                                         }
                                                                     }
                                                                     else
                                                                     {
-                                                                        <span class="catalog__item-price">Нет в наличии</span>
+                                                                        <span class="catalog__item-price">@Resources.Resource.item_not_in_stock</span>
                                                                     }
-
                                                                 </span>
                                                             </a>
                                                         }
+                                                        @*
                                                         else
                                                         {
                                                             <a class="catalog__item-link" href="/product/@item.NameUrl/@item.VendorCode">
@@ -280,7 +302,7 @@
                                                                                 }
                                                                                 else
                                                                                 {
-                                                                                    <span class="catalog__item-price">@item.Price @Resources.Resource.vallet</span>
+                                                                                    <span class="catalog__item-price">@item.Price @Resources.Resource.vallet_to_meter</span>
                                                                                 }
                                                                             }
                                                                         }
@@ -305,30 +327,19 @@
                                                                                 }
                                                                                 else
                                                                                 {
-                                                                                    <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet</span>
+                                                                                    <span class="catalog__item-price">@item.StockPrice @Resources.Resource.vallet_to_meter</span>
                                                                                 }
                                                                             }
                                                                         }
                                                                     }
                                                                     else
                                                                     {
-                                                                        <span class="catalog__item-price">нет в наличии</span>
+                                                                        <span class="catalog__item-price">@Resources.Resource.item_not_in_stock</span>
                                                                     }
-                                                                    @*@if (item.IsStock == true)
-                    {
-                        if (item.ProductBuyTypeMeter == false)
-                        {
-                            <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet</span>
-                        }
-                        else
-                        {
-                            <span class="catalog__item-price price__old">@item.Price @Resources.Resource.vallet_to_meter</span>
-                        }
-
-                    }*@
                                                                 </span>
                                                             </a>
                                                         }
+                                                        *@
                                                         @if (item.inStock)
                                                         {
                                                             if (item.PriceUndefined == null)

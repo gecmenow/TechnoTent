@@ -1222,6 +1222,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Нет в наличии.
+        /// </summary>
+        public static string item_not_in_stock {
+            get {
+                return ResourceManager.GetString("item_not_in_stock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Оригинал.
         /// </summary>
         public static string item_original {
@@ -1254,6 +1263,15 @@ namespace Resources {
         public static string item_price {
             get {
                 return ResourceManager.GetString("item_price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Цену уточняйте.
+        /// </summary>
+        public static string item_price_undf {
+            get {
+                return ResourceManager.GetString("item_price_undf", resourceCulture);
             }
         }
         

@@ -561,6 +561,9 @@
   <data name="item_material" xml:space="preserve">
     <value>Материал</value>
   </data>
+  <data name="item_not_in_stock" xml:space="preserve">
+    <value>Нет в наличии</value>
+  </data>
   <data name="item_original" xml:space="preserve">
     <value>Оригинал</value>
   </data>
@@ -572,6 +575,9 @@
   </data>
   <data name="item_price" xml:space="preserve">
     <value>Цена</value>
+  </data>
+  <data name="item_price_undf" xml:space="preserve">
+    <value>Цену уточняйте</value>
   </data>
   <data name="item_route1" xml:space="preserve">
     <value>Товары и услуги</value>

@@ -425,9 +425,10 @@
                 <div class="product-edit__wrapper">
                     <label class="edit__title">Цена</label><input type="text" name="PriceEn" class="input-product-edit product-edit__price separator_en" value="@Model.PriceEn"><label class="edit__text">$</label>
                 </div>
-                @*<div class="product-edit__wrapper">
-                    <label class="edit__title">Цена неопределена</label><input type="text" name="PriceUndefined" class="input-product-edit product-edit__price" value="@Model.PriceUndefined">
-                </div>*@
+                <div class="product-edit__wrapper">
+                    <input type="checkbox" name="PriceUndefined" class="product-edit__type">Цена неопределена
+                    @*<label class="edit__title">Цена неопределена</label><input type="text" name="PriceUndefined" class="input-product-edit product-edit__price" value="@Model.PriceUndefined">*@
+                </div>
                 <label class="edit__title">Изображения</label>
                 <div class="product-edit__wrapper upload__img-wrapper">
                 </div>

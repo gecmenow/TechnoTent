@@ -561,6 +561,9 @@
   <data name="item_material" xml:space="preserve">
     <value>Material</value>
   </data>
+  <data name="item_not_in_stock" xml:space="preserve">
+    <value>Not in stock</value>
+  </data>
   <data name="item_original" xml:space="preserve">
     <value>Original</value>
   </data>
@@ -572,6 +575,9 @@
   </data>
   <data name="item_price" xml:space="preserve">
     <value>Price</value>
+  </data>
+  <data name="item_price_undf" xml:space="preserve">
+    <value>Specify the price</value>
   </data>
   <data name="item_route1" xml:space="preserve">
     <value>Products and service</value>
@@ -922,6 +928,6 @@
     <value>pc</value>
   </data>
   <data name="vallet_to_meter" xml:space="preserve">
-    <value>hrn/m2</value>
+    <value>$/m2</value>
   </data>
 </root>

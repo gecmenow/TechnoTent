@@ -31,8 +31,8 @@ namespace TechnoTent.Controllers.Items
                     ViewBag.Filters = item.Filters;
                     ViewBag.CategoryId = item.CategoryId;
                     ViewBag.CategoryName = item.CategoryName;
-                    ViewBag.PriceMax = item.PriceMax;
-                    ViewBag.PriceMin = item.PriceMin;
+                    ViewBag.PriceMax = item.PriceMax + 1; //Добавил для фильтров из-за округления
+                    ViewBag.PriceMin = item.PriceMin - 1; //Убрал для фильтров из-за округления
                     ViewBag.Colors = item.Colors;
                     products = item.Items;
                 }

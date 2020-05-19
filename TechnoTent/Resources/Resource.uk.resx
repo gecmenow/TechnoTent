@@ -561,6 +561,9 @@
   <data name="item_material1" xml:space="preserve">
     <value>Матеріал</value>
   </data>
+  <data name="item_not_in_stock" xml:space="preserve">
+    <value>Немає в наявності</value>
+  </data>
   <data name="item_original" xml:space="preserve">
     <value>Оригінал</value>
   </data>
@@ -572,6 +575,9 @@
   </data>
   <data name="item_price" xml:space="preserve">
     <value>Ціна</value>
+  </data>
+  <data name="item_price_undf" xml:space="preserve">
+    <value>Ціну уточнюйте</value>
   </data>
   <data name="item_route1" xml:space="preserve">
     <value>Товари та послуги</value>
