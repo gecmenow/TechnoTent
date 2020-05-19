@@ -417,6 +417,10 @@
     <Compile Include="Migrations\202004181821212_added comment field to orderdb.Designer.cs">
       <DependentUpon>202004181821212_added comment field to orderdb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005192145231_priseUndefined changed to bool.cs" />
+    <Compile Include="Migrations\202005192145231_priseUndefined changed to bool.Designer.cs">
+      <DependentUpon>202005192145231_priseUndefined changed to bool.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutInfo.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -876,6 +880,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004181821212_added comment field to orderdb.resx">
       <DependentUpon>202004181821212_added comment field to orderdb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005192145231_priseUndefined changed to bool.resx">
+      <DependentUpon>202005192145231_priseUndefined changed to bool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

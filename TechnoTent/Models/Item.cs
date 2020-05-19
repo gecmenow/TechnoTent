@@ -14,6 +14,8 @@ namespace TechnoTent.Models
         {
             ItemsVM item = new ItemsVM();
 
+            List<ItemsVM> similar = new List<ItemsVM>();
+
             var language = Cookie.CheckLanguageCookie();
 
             switch (language)
@@ -69,7 +71,7 @@ namespace TechnoTent.Models
                             IndividualOrder = u.IndividualOrders,
                         }).First();
 
-                        var similar = db.ItemsDb.Where(u => u.CategoryNameUa == item.CategoryName && u.Id != item.Id).AsEnumerable().Select(u => new ItemsVM
+                        similar = db.ItemsDb.Where(u => u.CategoryNameUa == item.CategoryName && u.Id != item.Id).AsEnumerable().Select(u => new ItemsVM
                         {
                             VendorCode = u.VendorCode,
                             inStock = u.inStock,
@@ -166,7 +168,7 @@ namespace TechnoTent.Models
                             IndividualOrder = u.IndividualOrders,
                         }).First();
 
-                        var similar = db.ItemsDb.Where(u => u.CategoryNameEn == item.CategoryName && u.Id != item.Id).AsEnumerable().Select(u => new ItemsVM
+                        similar = db.ItemsDb.Where(u => u.CategoryNameEn == item.CategoryName && u.Id != item.Id).AsEnumerable().Select(u => new ItemsVM
                         {
                             VendorCode = u.VendorCode,
                             inStock = u.inStock,
@@ -263,7 +265,7 @@ namespace TechnoTent.Models
                             IndividualOrder = u.IndividualOrders,
                         }).First();
 
-                        var similar = db.ItemsDb.Where(u => u.CategoryNameRu == item.CategoryName && u.Id != item.Id).AsEnumerable().Select(u => new ItemsVM
+                        similar = db.ItemsDb.Where(u => u.CategoryNameRu == item.CategoryName && u.Id != item.Id).AsEnumerable().Select(u => new ItemsVM
                         {
                             VendorCode = u.VendorCode,
                             inStock = u.inStock,
@@ -305,56 +307,56 @@ namespace TechnoTent.Models
                             ProductBuyTypeMeter = u.ProductBuyTypeMeter,
                             IndividualOrder = u.IndividualOrders,
                         }).ToList();
-
-                        Random r = new Random();
-
-                        List<ItemsVM> temp = new List<ItemsVM>();
-
-                        temp = similar.ToList();
-
-                        similar.Clear();
-
-                        if(temp.Count() > 4)
-                        {
-                            while (similar.Count < 3)
-                            {
-                                var count = temp.Count() - 1;
-
-                                int index = r.Next(count);
-
-                                if (similar.Count() != 0)
-                                {
-                                    if (!similar.Contains(temp[index]))
-                                        similar.Add(temp[index]);
-                                }
-                                else
-                                    similar.Add(temp[index]);
-                            }
-                        }
-                        else
-                            while (similar.Count < temp.Count() - 1)
-                            {
-                                var count = temp.Count() - 1;
-
-                                int index = r.Next(count);
-
-                                if (similar.Count() != 0)
-                                {
-                                    if (!similar.Contains(temp[index]))
-                                        similar.Add(temp[index]);
-                                }
-                                else
-                                    similar.Add(temp[index]);
-                            }
-
-                        foreach (var data in similar)
-                            if (data.Image1 == null && data.Image2 == null && data.Image3 == null && data.Image4 == null)
-                                data.Image1 = Image.GetImageIfNull();
-
-                        item.SimilarItems = similar;
                     }
                     break;
             }
+
+            Random r = new Random();
+
+            List<ItemsVM> temp = new List<ItemsVM>();
+
+            temp = similar.ToList();
+
+            similar.Clear();
+
+            if (temp.Count() > 4)
+            {
+                while (similar.Count < 4)
+                {
+                    var count = temp.Count() - 1;
+
+                    int index = r.Next(count);
+
+                    if (similar.Count() != 0)
+                    {
+                        if (!similar.Contains(temp[index]))
+                            similar.Add(temp[index]);
+                    }
+                    else
+                        similar.Add(temp[index]);
+                }
+            }
+            else
+                while (similar.Count < temp.Count() - 1)
+                {
+                    var count = temp.Count() - 1;
+
+                    int index = r.Next(count);
+
+                    if (similar.Count() != 0)
+                    {
+                        if (!similar.Contains(temp[index]))
+                            similar.Add(temp[index]);
+                    }
+                    else
+                        similar.Add(temp[index]);
+                }
+
+            foreach (var data in similar)
+                if (data.Image1 == null && data.Image2 == null && data.Image3 == null && data.Image4 == null)
+                    data.Image1 = Image.GetImageIfNull();
+
+            item.SimilarItems = similar;
 
             if (item.Image1 == null &&
                 item.Image2 == null &&

@@ -525,6 +525,18 @@
                     <div class="product-edit__wrapper">
                         <label class="edit__title">Цена</label><input type="text" name="PriceEn" class="input-product-edit product-edit__price separator_en" value="@Model.PriceEn"><label class="edit__text">$</label>
                     </div>
+                    if (Model.PriceUndefined == true)
+                    {
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title"><input type="checkbox" name="PriceUndefined" class="product-edit__stock" value="true" checked>Цена неопределена</label>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="product-edit__wrapper">
+                            <label class="edit__title"><input type="checkbox" name="PriceUndefined" class="product-edit__stock" value="true">Цена неопределена</label>
+                        </div>
+                    }
                     <label class="edit__title">Изображения</label>
                     <div class="product-edit__wrapper upload__img-wrapper">
                         <div class="upload__img-item">
@@ -609,16 +621,8 @@
                             </div>
                         </div>
                         @*<div class="product-edit__wrapper">
-                            <label class="edit__title">Цена неопределена</label><input type="text" name="PriceUndefined" class="input-product-edit product-edit__price" value="@Model.PriceUndefined">
-                        </div>*@
-                    }
-                    if (Model.PriceUndefined == "true")
-                    {
-                        <label class="edit__title"><input type="checkbox" name="PriceUndefined" class="input-product-edit product-edit__price" value="true" checked>Цена неопределена</label>
-                    }
-                    else
-                    {
-                        <label class="edit__title"><input type="checkbox" name="PriceUndefined" class="input-product-edit product-edit__price" value="true">Цена неопределена</label>
+                    <label class="edit__title">Цена неопределена</label><input type="text" name="PriceUndefined" class="input-product-edit product-edit__price" value="@Model.PriceUndefined">
+                </div>*@
                     }
                     <div class="product-edit__wrapper">
                         <button type="submit" class="btn btn-success">Сохранить</button>

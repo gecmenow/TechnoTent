@@ -197,12 +197,12 @@
                 {
             <div class="col-lg-4 col-md-5 col-xs-12 col-sm-12">
                 <div class="product-price__wrapper">
-                    @if (Model.inStock && Model.PriceUndefined == null)
+                    @if (Model.inStock && Model.PriceUndefined == false)
                     {
                         <div class="price__text">@Resources.Resource.item_price</div>
                     }
                     <div class="price__content">
-                        @if (Model.PriceUndefined != null)
+                        @if (Model.PriceUndefined != false)
                         {
                         <div class="product__price" data-price="@Resources.Resource.item_price_undf">@Resources.Resource.item_price_undf</div>
                         }
@@ -266,7 +266,7 @@
                             @Resources.Resource.item_stock_text: <span class="discount-value"></span><span>@Resources.Resource.vallet.</span>
                         </div>
                     }
-                    if (Model.PriceUndefined == null)
+                    if (Model.PriceUndefined == false)
                     {
                         <div class="product-count">
                             <div class="product-count__title">@Resources.Resource.item_count:</div>
@@ -292,7 +292,7 @@
                             </div>
                         </div>
                     }
-                    if (Model.PriceUndefined == null)
+                    if (Model.PriceUndefined == false)
                     {
                         <button type="button" class="product__add-to-cart" data-id="@Model.VendorCode" title="@Resources.Resource.item_add_to_cart">
                             <i class="fas fa-shopping-cart"></i>
@@ -523,11 +523,18 @@
                                 <div class="catalog__item-wrapper">
                                     <a class="catalog__item-link" href="/product/@items.NameUrl/@items.VendorCode">
                                         <span class="catalog__item-img-wrapper">
-                                            <img class="catalog__item-img" src="~/Content/images/items/@items.Image1">
+                                            @if (Model.Image1 == null)
+                                            {
+                                                <img src="~/Content/images/no_image.svg">
+                                            }
+                                            else
+                                            {
+                                                <img class="catalog__item-img" src="~/Content/images/items/@items.Image1">
+                                            }
                                         </span>
                                         <h3 class="catalog__item-title">@items.Name</h3>
                                         <span class="catalog__item-price-wrapper">
-                                            @if (items.PriceUndefined == null)
+                                            @if (items.PriceUndefined == false)
                                             {
                                                 <span class="catalog__item-price">@items.Price.ToString().Replace(",", ".") @Resources.Resource.vallet_to_meter</span>
                                             }
@@ -543,7 +550,7 @@
                                     </a>
                                     @if (items.inStock)
                                     {
-                                        if (items.PriceUndefined == null)
+                                        if (items.PriceUndefined == false)
                                         {
                                             <button class="add-to-cart" data-id="@items.VendorCode"><i class="fas fa-shopping-cart"></i>@Resources.Resource.item_to_cart</button>
                                         }

@@ -28,7 +28,7 @@ namespace TechnoTent.Models.DataBase
         public double StockPriceEn { get; set; }
         public double PriceUa { get; set; }
         public double PriceEn { get; set; }
-        public string PriceUndefined { get; set; }
+        public bool PriceUndefined { get; set; }
         public string Image1 { get; set; }
         public string Image2 { get; set; }
         public string Image3 { get; set; }

@@ -224,7 +224,7 @@
                                                                     {
                                                                         if (item.IsStock == false)
                                                                         {
-                                                                            if (item.PriceUndefined != null)
+                                                                            if (item.PriceUndefined != false)
                                                                             {
                                                                                 <span class="catalog__item-price">@Resources.Resource.item_price_undf</span>
                                                                             }
@@ -342,7 +342,7 @@
                                                         *@
                                                         @if (item.inStock)
                                                         {
-                                                            if (item.PriceUndefined == null)
+                                                            if (item.PriceUndefined == false)
                                                             {
                                                                 <button class="add-to-cart" data-id="@item.VendorCode"><i class="fas fa-shopping-cart"></i>@Resources.Resource.item_to_cart</button>
                                                             }

@@ -126,7 +126,15 @@
                 @Html.HiddenFor(m => m.Id)
                 <div class="articles-form-group-row">
                     <div class="form-input-wrapper articles-form-group-column upload__img-wrapper">
-                        <label for="upload__img"><img class="articles-form__img" src="~/Content/images/news/@Model.Image"></label>
+                        @if (Model.Image != null)
+                        {
+                            <label for="upload__img"><img class="articles-form__img" src="~/Content/images/stocks/@Model.Image"></label>
+                        }
+                        else
+                        {
+                            <label for="upload__img"><img class="articles-form__img" src="~/Content/images/no_image.svg"></label>
+                        }
+                        
                         <input class="upload__img" id="upload__img" type="file" name="upload">
                     </div>
                     <div class="form-input-wrapper input-wrapper__height">

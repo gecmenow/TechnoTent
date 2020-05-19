@@ -75,7 +75,7 @@ namespace TechnoTent.Models.ViewModel
             }
         }
         
-        public string PriceUndefined { get; set; }
+        public bool PriceUndefined { get; set; }
         //акция
         public bool IsStock { get; set; }
         public double StockPrice { get; set; }

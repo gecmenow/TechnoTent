@@ -263,6 +263,12 @@ namespace TechnoTent.Models
                     item.SubCategoryNameUa = subCategory.SubCategoryNameUa;
                 }
 
+                if (item.SubCategoryNameRu == "Без подкатегории")
+                {
+                    item.SubCategoryNameEn = "Without subcategory";
+                    item.SubCategoryNameUa = "Без пiдкатегорії";
+                }
+
                 string vendorCode = "000001";
 
                 try
@@ -383,6 +389,12 @@ namespace TechnoTent.Models
                 {
                     item.SubCategoryNameEn = subCategory.SubCategoryNameEn;
                     item.SubCategoryNameUa = subCategory.SubCategoryNameUa;
+                }
+
+                if (item.SubCategoryNameRu == "Без подкатегории")
+                {
+                    item.SubCategoryNameEn = "Without subcategory";
+                    item.SubCategoryNameUa = "Без пiдкатегорії";
                 }
 
                 if (data.NameUa != item.NameUa)

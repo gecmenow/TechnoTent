@@ -93,6 +93,18 @@
                         <span>Контактная информация</span>
                     </a>
                 </li>
+                <li class="sidebar__item">
+                    <a class="sidebar__item-link" href="/admin/partners">
+                        <i class="far fa-handshake"></i>
+                        <span>Партнёры компании</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a class="sidebar__item-link" href="/admin/prices">
+                        <i class="fas fa-tags"></i>
+                        <span>Прайсы</span>
+                    </a>
+                </li>
             </ul>
         </section>
     </aside>
@@ -114,7 +126,14 @@
                 @Html.HiddenFor(m => m.Id)
                 <div class="articles-form-group-row">
                     <div class="form-input-wrapper articles-form-group-column upload__img-wrapper">
-                        <label for="upload__img"><img class="articles-form__img" src="~/Content/images/news/@Model.Image"></label>
+                        @if(Model.Image != null)
+                        {
+                            <label for="upload__img"><img class="articles-form__img" src="~/Content/images/news/@Model.Image"></label>
+                        }
+                        else
+                        {
+                            <label for="upload__img"><img class="articles-form__img" src="~/Content/images/no_image.svg"></label>
+                        }
                         <input class="upload__img" id="upload__img" type="file" name="upload">
                     </div>
                     <div class="form-input-wrapper input-wrapper__height">
