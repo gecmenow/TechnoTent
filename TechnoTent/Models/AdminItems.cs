@@ -78,7 +78,11 @@ namespace TechnoTent.Models
                          StockPriceUa = entry.StockPriceUa,
                          StockPriceEn = entry.StockPriceEn,
 
-                     }).ToList();                
+                     }).ToList();
+
+                foreach (var item in items)
+                    if (item.ProductBuyTypeMeter)
+                        item.PriceUa = Math.Round(item.PriceEn * Convert.ToDouble(Exchange.GetExchange().rate), 2);
 
             }
                 return items;
@@ -138,17 +142,16 @@ namespace TechnoTent.Models
                          StockPriceUa = entry.StockPriceUa,
                          StockPriceEn = entry.StockPriceEn,
                      }).ToList();
+
+                foreach (var item in items)
+                    if (item.ProductBuyTypeMeter)
+                        item.PriceUa = Math.Round(item.PriceEn * Convert.ToDouble(Exchange.GetExchange().rate), 2);
             }
             return items;
         }
 
         public static AdminItemVM GetItemById(string vendorCode)
         {
-            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
-            customCulture.NumberFormat.NumberDecimalSeparator = ".";
-
-            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
-
             AdminItemVM item;
 
             using (DataBaseContext db = new DataBaseContext())
@@ -231,21 +234,20 @@ namespace TechnoTent.Models
                          ProductBuyTypeMeter = entry.ProductBuyTypeMeter
                      }).FirstOrDefault();
 
-                item.PriceUa = double.Parse(item.PriceUa.ToString(), Thread.CurrentThread.CurrentCulture.NumberFormat);
-
                 var categories = db.CategoryDb.Select(u => u.CategoryNameRu).ToList();
                 var subCategories = db.SubCategoryDb.Select(u => u.SubCategoryNameRu).ToList();
 
                 item.CategoriesList = categories;
                 item.SubCategoriesList = subCategories;
+
+                if (item.ProductBuyTypeMeter)
+                    item.PriceUa = Math.Round(item.PriceEn * Convert.ToDouble(Exchange.GetExchange().rate), 2);
             }
             return item;
         }
 
         public static void AddItem(AdminItemVM item)
         {
-            System.Globalization.CultureInfo.DefaultThreadCurrentCulture = new System.Globalization.CultureInfo("en-Us");
-
             List<string> images = Image.UploadNewImages(item);
 
             using (DataBaseContext db = new DataBaseContext())
@@ -644,6 +646,9 @@ namespace TechnoTent.Models
 
                     data.Image4 = Path.GetFileName(image);
                 }
+
+                if (data.ProductBuyTypeMeter)
+                    data.PriceUa = Math.Round(data.PriceEn * Convert.ToDouble(Exchange.GetExchange().rate), 2);
 
                 //
 

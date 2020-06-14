@@ -42,6 +42,7 @@ namespace TechnoTent.Models.ViewModel.Items
                                      Name = entry.NameUa,
                                      //Brand = entry.Brand,
                                      Price = entry.PriceUa.ToString(),
+                                     PriceEn = entry.PriceEn,
                                      StockPrice = entry.StockPriceUa,
                                      PriceUndefined = entry.PriceUndefined,
                                      Image1 = entry.Image1,
@@ -97,6 +98,7 @@ namespace TechnoTent.Models.ViewModel.Items
                                      Name = entry.NameEn,
                                      //Brand = entry.Brand,
                                      Price = entry.PriceEn.ToString(),
+                                     PriceEn = entry.PriceEn,
                                      StockPrice = entry.StockPriceEn,
                                      PriceUndefined = entry.PriceUndefined,
                                      Image1 = entry.Image1,
@@ -152,6 +154,7 @@ namespace TechnoTent.Models.ViewModel.Items
                                      Name = entry.NameRu,
                                      //Brand = entry.Brand,
                                      Price = entry.PriceUa.ToString(),
+                                     PriceEn = entry.PriceEn,
                                      StockPrice = entry.StockPriceUa,
                                      PriceUndefined = entry.PriceUndefined,
                                      Image1 = entry.Image1,
@@ -187,6 +190,14 @@ namespace TechnoTent.Models.ViewModel.Items
                     }
                     break;
             }
+
+            foreach (var item in items)
+                if (item.ProductBuyTypeMeter)
+                {
+                    var rate = Convert.ToDouble(Exchange.GetExchange().rate);
+
+                    item.Price = Math.Round((item.PriceEn * rate), 2).ToString();
+                }
 
             List<ItemsOutputVM> filteredItems = new List<ItemsOutputVM>();
 
@@ -371,6 +382,7 @@ namespace TechnoTent.Models.ViewModel.Items
                                      Name = entry.NameUa,
                                      //Brand = entry.Brand,
                                      Price = entry.PriceUa.ToString(),
+                                     PriceEn = entry.PriceEn,
                                      StockPrice = entry.StockPriceUa,
                                      PriceUndefined = entry.PriceUndefined,
                                      Image1 = entry.Image1,
@@ -426,6 +438,7 @@ namespace TechnoTent.Models.ViewModel.Items
                                      Name = entry.NameEn,
                                      //Brand = entry.Brand,
                                      Price = entry.PriceEn.ToString(),
+                                     PriceEn = entry.PriceEn,
                                      StockPrice = entry.StockPriceEn,
                                      PriceUndefined = entry.PriceUndefined,
                                      Image1 = entry.Image1,
@@ -481,6 +494,7 @@ namespace TechnoTent.Models.ViewModel.Items
                                      Name = entry.NameRu,
                                      //Brand = entry.Brand,
                                      Price = entry.PriceUa.ToString(),
+                                     PriceEn = entry.PriceEn,
                                      StockPrice = entry.StockPriceUa,
                                      PriceUndefined = entry.PriceUndefined,
                                      Image1 = entry.Image1,
@@ -516,6 +530,14 @@ namespace TechnoTent.Models.ViewModel.Items
                     }
                     break;
             }
+
+            foreach (var item in items)
+                if (item.ProductBuyTypeMeter)
+                {
+                    var rate = Convert.ToDouble(Exchange.GetExchange().rate);
+
+                    item.Price = Math.Round((item.PriceEn * rate), 2).ToString();
+                }
 
             List<ItemsOutputVM> filteredItems = new List<ItemsOutputVM>();
 
@@ -556,6 +578,7 @@ namespace TechnoTent.Models.ViewModel.Items
                                      Name = entry.NameUa,
                                      //Brand = entry.Brand,
                                      Price = entry.PriceUa.ToString(),
+                                     PriceEn = entry.PriceEn,
                                      StockPrice = entry.StockPriceUa,
                                      PriceUndefined = entry.PriceUndefined,
                                      Image1 = entry.Image1,
@@ -611,6 +634,7 @@ namespace TechnoTent.Models.ViewModel.Items
                                      Name = entry.NameEn,
                                      //Brand = entry.Brand,
                                      Price = entry.PriceEn.ToString(),
+                                     PriceEn = entry.PriceEn,
                                      StockPrice = entry.StockPriceEn,
                                      PriceUndefined = entry.PriceUndefined,
                                      Image1 = entry.Image1,
@@ -666,6 +690,7 @@ namespace TechnoTent.Models.ViewModel.Items
                                      Name = entry.NameRu,
                                      //Brand = entry.Brand,
                                      Price = entry.PriceUa.ToString(),
+                                     PriceEn = entry.PriceEn,
                                      StockPrice = entry.StockPriceUa,
                                      PriceUndefined = entry.PriceUndefined,
                                      Image1 = entry.Image1,
@@ -701,6 +726,14 @@ namespace TechnoTent.Models.ViewModel.Items
                     }
                     break;
             }
+
+            foreach (var item in items)
+                if (item.ProductBuyTypeMeter)
+                {
+                    var rate = Convert.ToDouble(Exchange.GetExchange().rate);
+
+                    item.Price = Math.Round((item.PriceEn * rate), 2).ToString();
+                }
 
             List<ItemsOutputVM> filteredItems = new List<ItemsOutputVM>();
 
@@ -741,6 +774,7 @@ namespace TechnoTent.Models.ViewModel.Items
                                      Name = entry.NameUa,
                                      //Brand = entry.Brand,
                                      Price = entry.PriceUa.ToString(),
+                                     PriceEn = entry.PriceEn,
                                      StockPrice = entry.StockPriceUa,
                                      PriceUndefined = entry.PriceUndefined,
                                      Image1 = entry.Image1,
@@ -796,6 +830,7 @@ namespace TechnoTent.Models.ViewModel.Items
                                      Name = entry.NameEn,
                                      //Brand = entry.Brand,
                                      Price = entry.PriceEn.ToString(),
+                                     PriceEn = entry.PriceEn,
                                      StockPrice = entry.StockPriceEn,
                                      PriceUndefined = entry.PriceUndefined,
                                      Image1 = entry.Image1,
@@ -851,6 +886,7 @@ namespace TechnoTent.Models.ViewModel.Items
                                      Name = entry.NameRu,
                                      //Brand = entry.Brand,
                                      Price = entry.PriceUa.ToString(),
+                                     PriceEn = entry.PriceEn,
                                      StockPrice = entry.StockPriceUa,
                                      PriceUndefined = entry.PriceUndefined,
                                      Image1 = entry.Image1,
@@ -886,6 +922,14 @@ namespace TechnoTent.Models.ViewModel.Items
                     }
                     break;
             }
+
+            foreach (var item in items)
+                if (item.ProductBuyTypeMeter)
+                {
+                    var rate = Convert.ToDouble(Exchange.GetExchange().rate);
+
+                    item.Price = Math.Round((item.PriceEn * rate), 2).ToString();
+                }
 
             List<ItemsOutputVM> filteredItems = new List<ItemsOutputVM>();
 
@@ -1162,6 +1206,7 @@ namespace TechnoTent.Models.ViewModel.Items
                                      Name = entry.NameUa,
                                      //Brand = entry.Brand,
                                      Price = entry.PriceUa.ToString(),
+                                     PriceEn = entry.PriceEn,
                                      StockPrice = entry.StockPriceUa,
                                      PriceUndefined = entry.PriceUndefined,
                                      Image1 = entry.Image1,
@@ -1215,6 +1260,7 @@ namespace TechnoTent.Models.ViewModel.Items
                                      Name = entry.NameEn,
                                      //Brand = entry.Brand,
                                      Price = entry.PriceEn.ToString(),
+                                     PriceEn = entry.PriceEn,
                                      StockPrice = entry.StockPriceEn,
                                      PriceUndefined = entry.PriceUndefined,
                                      Image1 = entry.Image1,
@@ -1268,6 +1314,7 @@ namespace TechnoTent.Models.ViewModel.Items
                                      Name = entry.NameRu,
                                      //Brand = entry.Brand,
                                      Price = entry.PriceUa.ToString(),
+                                     PriceEn = entry.PriceEn,
                                      StockPrice = entry.StockPriceUa,
                                      PriceUndefined = entry.PriceUndefined,
                                      Image1 = entry.Image1,
@@ -1302,7 +1349,15 @@ namespace TechnoTent.Models.ViewModel.Items
                     break;
             }
 
-            foreach(var item in items)
+            foreach (var item in items)
+                if (item.ProductBuyTypeMeter)
+                {
+                    var rate = Convert.ToDouble(Exchange.GetExchange().rate);
+
+                    item.Price = Math.Round((item.PriceEn * rate), 2).ToString();
+                }
+
+            foreach (var item in items)
                 if (item.Image1 == null &&
                     item.Image2 == null &&
                     item.Image3 == null &&

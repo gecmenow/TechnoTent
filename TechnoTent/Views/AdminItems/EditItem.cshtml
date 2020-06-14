@@ -219,7 +219,7 @@
                     <label class="edit__title">Основная информация</label>
                     <div class="product-edit__wrapper additional-information__more">
                         <div class="product-edit__wrapper">
-                            @if (Model.Width != null)
+                            @if (Model.Width != 0)
                             {
                                 <label class="edit__title">Ширина</label><input type="text" name="Width" class="input-product-edit" value="@Model.Width.ToString().Replace(",", ".")">
                             }
@@ -520,10 +520,10 @@
                     </div>
                     <label class="edit__title">Цена</label>
                     <div class="product-edit__wrapper">
-                        <label class="edit__title">Цена</label><input type="text" name="PriceUa" class="input-product-edit product-edit__price separator_ua" value="@Model.PriceUa"><label class="edit__text">грн.</label>
+                        <label class="edit__title">Цена</label><input type="text" name="PriceUa" class="input-product-edit product-edit__price separator_ua" value="@Model.PriceUa.ToString().Replace(",", ".")"><label class="edit__text">грн.</label>
                     </div>
                     <div class="product-edit__wrapper">
-                        <label class="edit__title">Цена</label><input type="text" name="PriceEn" class="input-product-edit product-edit__price separator_en" value="@Model.PriceEn"><label class="edit__text">$</label>
+                        <label class="edit__title">Цена</label><input type="text" name="PriceEn" class="input-product-edit product-edit__price separator_en" value="@Model.PriceEn.ToString().Replace(",", ".")"><label class="edit__text">$</label>
                     </div>
                     if (Model.PriceUndefined == true)
                     {
@@ -614,10 +614,10 @@
                     {
                         <div class="product-edit-stock" style="display: none;">
                             <div class="product-edit__wrapper">
-                                <label class="edit__title">Цена</label><input type="text" name="StockPriceUa" class="input-product-edit product-edit__price" required disabled value=""><label class="edit__text">ГРН.</label>
+                                <label class="edit__title">Цена</label><input type="text" name="StockPriceUa" class="input-product-edit product-edit__price" required disabled value="@Model.StockPriceUa.ToString().Replace(",",".")"><label class="edit__text">ГРН.</label>
                             </div>
                             <div class="product-edit__wrapper">
-                                <label class="edit__title">Цена</label><input type="text" name="StockPriceEn" class="input-product-edit product-edit__price" required disabled value=""><label class="edit__text">USD.</label>
+                                <label class="edit__title">Цена</label><input type="text" name="StockPriceEn" class="input-product-edit product-edit__price" required disabled value="@Model.StockPriceEn.ToString().Replace(",",".")"><label class="edit__text">USD.</label>
                             </div>
                         </div>
                         @*<div class="product-edit__wrapper">

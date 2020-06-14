@@ -36,6 +36,7 @@ namespace TechnoTent.Models
                             SubCategoryName = u.SubCategoryNameUa,
                             Name = u.NameUa,
                             Price = u.PriceUa.ToString(),
+                            PriceEn = u.PriceEn,
                             PriceUndefined = u.PriceUndefined,
                             IsStock = u.IsStock,
                             StockPrice = u.StockPriceUa,
@@ -82,6 +83,7 @@ namespace TechnoTent.Models
                             Name = u.NameUa,
                             NameUrl = UrlHelper.GenerateSeoFriendlyURL(u.NameEn),
                             Price = u.PriceUa.ToString(),
+                            PriceEn = u.PriceEn,
                             PriceUndefined = u.PriceUndefined,
                             IsStock = u.IsStock,
                             StockPrice = u.StockPriceUa,
@@ -133,6 +135,7 @@ namespace TechnoTent.Models
                             SubCategoryName = u.SubCategoryNameEn,
                             Name = u.NameEn,
                             Price = u.PriceEn.ToString(),
+                            PriceEn = u.PriceEn,
                             PriceUndefined = u.PriceUndefined,
                             IsStock = u.IsStock,
                             StockPrice = u.StockPriceEn,
@@ -179,6 +182,7 @@ namespace TechnoTent.Models
                             Name = u.NameEn,
                             NameUrl = UrlHelper.GenerateSeoFriendlyURL(u.NameEn),
                             Price = u.PriceEn.ToString(),
+                            PriceEn = u.PriceEn,
                             PriceUndefined = u.PriceUndefined,
                             IsStock = u.IsStock,
                             StockPrice = u.StockPriceEn,
@@ -230,6 +234,7 @@ namespace TechnoTent.Models
                             SubCategoryName = u.SubCategoryNameRu,
                             Name = u.NameRu,
                             Price = u.PriceUa.ToString(),
+                            PriceEn = u.PriceEn,
                             PriceUndefined = u.PriceUndefined,
                             IsStock = u.IsStock,
                             StockPrice = u.StockPriceUa,
@@ -276,6 +281,7 @@ namespace TechnoTent.Models
                             Name = u.NameRu,
                             NameUrl = UrlHelper.GenerateSeoFriendlyURL(u.NameEn),
                             Price = u.PriceUa.ToString(),
+                            PriceEn = u.PriceEn,
                             PriceUndefined = u.PriceUndefined,
                             IsStock = u.IsStock,
                             StockPrice = u.StockPriceUa,
@@ -309,6 +315,13 @@ namespace TechnoTent.Models
                         }).ToList();
                     }
                     break;
+            }
+
+            if (item.ProductBuyTypeMeter)
+            {
+                var rate = Convert.ToDouble(Exchange.GetExchange().rate);
+
+                item.Price = Math.Round((item.PriceEn * rate), 2).ToString();
             }
 
             Random r = new Random();
